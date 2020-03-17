@@ -67,60 +67,58 @@ channel = 0
 for path, q in fileName_quality:
     with io.capture_output() as captured:
         raw  = mne.io.read_raw_edf(path);
-        print(raw.info)
         freq = raw.info['sfreq'];
         num_samples = raw.n_times
-        print(raw.info)
     lower_bound = list(range(0, int(num_samples/freq)-window_size, window_size-int(window_size/2)))
     upper_bound = list(range(window_size, int(num_samples/freq), window_size-int(window_size/2)))
     
     
-    for low, up in zip(lower_bound,upper_bound):
-        # Copy the data so we stil have the full data file after crop
-        with io.capture_output() as captured:
-            raw_subset = raw.copy();
+    # for low, up in zip(lower_bound,upper_bound):
+    #     # Copy the data so we stil have the full data file after crop
+    #     with io.capture_output() as captured:
+    #         raw_subset = raw.copy();
         
-        # crop the copy
-        with io.capture_output() as captured:
-            raw_subset.crop(tmin = low, tmax = up).load_data();
+    #     # crop the copy
+    #     with io.capture_output() as captured:
+    #         raw_subset.crop(tmin = low, tmax = up).load_data();
         
-        # filter the data
-        with io.capture_output() as captured:
-            raw_subset.filter(l_freq=0.4, h_freq=40);
-        # extract the data values
-        with io.capture_output() as captured:
-            data = raw_subset.get_data();
+    #     # filter the data
+    #     with io.capture_output() as captured:
+    #         raw_subset.filter(l_freq=0.4, h_freq=40);
+    #     # extract the data values
+    #     with io.capture_output() as captured:
+    #         data = raw_subset.get_data();
         
-        # Choose channel
-        data = data[channel]
-        #raw_subset.plot()
-        # Create spectrogram
-        pxx, freqs, bins, im = plt.specgram(data, Fs = freq,noverlap =200,NFFT = 201,scale= 'dB')
-        pxx = np.log1p(pxx)
-        #plt.yscale('log')
-        #plt.axis('off')
-        plt.show()
+    #     # Choose channel
+    #     data = data[channel]
+    #     #raw_subset.plot()
+    #     # Create spectrogram
+    #     pxx, freqs, bins, im = plt.specgram(data, Fs = freq,noverlap =200,NFFT = 201,scale= 'dB')
+    #     pxx = np.log1p(pxx)
+    #     #plt.yscale('log')
+    #     #plt.axis('off')
+    #     plt.show()
         
         
-        # decide between test or train
-        test_or_train = uniform(0, 1)
+    #     # decide between test or train
+        # test_or_train = uniform(0, 1)
         
-        # # save spectrogram into correct folder
+        # save spectrogram into correct folder
         # if q == 1: # Tjek if current data is recorded on male
         #     Img_name = '3_or_above'+str(count)+'_'+str(channel)+'.jpg'
         #     if test_or_train < 0.9:
-        #         plt.savefig('D:/qulety_data/Train/3_or_above/'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
+        #         plt.savefig(r'C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\dataEEG\spectrograms\train\3_or_above'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
         #     else:
-        #         plt.savefig('D:/qulety_data/Test/3_or_above/'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
+        #         plt.savefig(r'C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\dataEEG\spectrograms\train\3_or_above'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
         # else:
         #     Img_name = 'below_3'+str(count)+'_'+str(channel)+'.jpg'
         #     if test_or_train < 0.9:
-        #         plt.savefig('D:/qulety_data/Train/below_3/'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
+        #         plt.savefig(r'C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\dataEEG\spectrograms\train\below_3'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
         #     else:
-        #         plt.savefig('D:/qulety_data/Test/below_3/'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
-        del raw_subset
-        plt.close()
-        count +=1
+        #         plt.savefig(r'C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\dataEEG\spectrograms\train\below_3'+Img_name, edgecolor = None, bbox_inches='tight',pad_inches = 0)
+        # del raw_subset
+        # plt.close()
+        # count +=1
     del raw
     #breaks +=1
     #if breaks > 0:
