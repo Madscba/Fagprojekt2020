@@ -3,52 +3,54 @@ import torch.nn as nn
 import torchvision
 from torchvision import models
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import numpy as np
 from PIL import Image
+from sklearn import preprocessing
 
+def importPretrained():
+    #Import pretrained VGG16 from pytorchs database.
+    return models.vgg16(pretrained=True)
 
-
-
-def importPretrained(modeltype = ''):
-    #print("Dimension of vgg16. ",InDim: 224x224x3", 'outDim: 1000')
-    if modeltype == 'RES':
-        return models.resnet18(pretrained=True)
-    else:
-        return models.vgg16(pretrained=True)
-vgg16 = importPretrained()
-
-class VGG16(nn.Module):
+class VGG16_NoSoftMax(nn.Module):
     def __init__(self):
-        super(VGG16, self).__init__()
+        super(VGG16_NoSoftMax, self).__init__()
         self.features = nn.Sequential(*list(vgg16.features.children())[:-1] )
-
     def forward(self, x):
         x = self.features(x)
         return x
 
-#img=mpimg.imread(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG')
-#plt.axis('off')
-#imgplot = plt.imshow(img)
+vgg16 = importPretrained()
+
+for i, data in enumerate(train_data_loader):
+    pass
 
 img = Image.open(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG')
 plt.imshow(img)
 img = img.resize((224,224))
 plt.imshow(img)
 a = np.asarray(img)
+b = np.empty_like(a,dtype=float)
+print(type(b))
+min_max_scaler = preprocessing.MinMaxScaler()
 
-model = VGG16()
-a = a.reshape((1, a.shape[2], a.shape[0], a.shape[1]))
-img2 = torch.from_numpy(a)
+for i in range(a.shape[2]):
+    a_stand = min_max_scaler.fit_transform(a[:,:,i])
+    b[:,:,i] = a_stand
 
+model = VGG16_NoSoftMax()
+print(model)
+b = b.transpose((2, 0, 1))
+img2 = torch.from_numpy(b)
+#vgg16(img2) #
+##input should be: (batch size, number of channels, height, width)
 
-vgg16(img2)
-model(img2)
+model.eval()
+vgg16.eval()
+
+output = model(img2.unsqueeze_(0).float())
+out2 = vgg16(img2.float())
 #latent = model.forward(img2)
-a =2
 
-
-pass
-
+#
 # for i, data in enumerate(train_data_loader):
 #     pass
