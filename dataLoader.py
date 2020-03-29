@@ -5,6 +5,8 @@ from torchvision import transforms
 import os
 import matplotlib.pyplot as plt
 import numpy as np
+
+
 root_dir = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms'
 #mean of [red channel, green channel, blue channel]
 means = [0.485,0.456,0.405]
@@ -36,7 +38,7 @@ def convertBackToNumpyAndPlot(tensor):
 batchSize =3
 dataloader = DataLoader(train_data,batch_size=batchSize, shuffle=True)
 train_data_loader = iter(dataloader)
-x,y = next(train_loader)
+x,y = next(train_data_loader)
 
 #
 # for i, data in enumerate(train_data_loader):
