@@ -1,9 +1,10 @@
 """ @author: Johannes"""
-from GMM.load_data_bc import *
+#from GMM.load_data_bc import *
 from sklearn.mixture import GaussianMixture
 from sklearn import model_selection
 from GMM.init import clusterval, clusterplot, gauss_2d
 import matplotlib.pyplot as plt
+import numpy as np
 
 def gaussian_mixture(X,K,covar_type,reps,init_procedure):
     """""
@@ -51,9 +52,9 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
         -reps: number of fits with different initalizations, best result will be kept
         -init_procedure:'kmeans' or 'random'
     """
+    import numpy as np
     T = len(K_range)
 
-    # Allocate variables
     BIC = np.zeros((T,))
     AIC = np.zeros((T,))
     CVE = np.zeros((T,))
@@ -65,7 +66,7 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
     #cds = []
     #cls = []
 
-    for t, K in enumerate(K_Range):
+    for t, K in enumerate(K_range):
         print('Fitting model for K={0}'.format(K))
 
         # Fit Gaussian mixture model
@@ -75,7 +76,7 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
         # Get BIC and AIC
         BIC[t,] = gmm2.bic(X)
         AIC[t,] = gmm2.aic(X)
-
+        gmm2.bic()
         #cds.append(gmm.means_)
         #cls.append(gmm.predict(X))
 
@@ -94,9 +95,9 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
 
     # Plot results for all K's
     plt.figure(1)
-    plt.plot(KRange, BIC, '-*b')
-    plt.plot(KRange, AIC, '-xr')
-    plt.plot(KRange, 2 * CVE, '-ok')
+    plt.plot(K_range, BIC, '-*b')
+    plt.plot(K_range, AIC, '-xr')
+    plt.plot(K_range, 2 * CVE, '-ok')
     plt.legend(['BIC', 'AIC', 'Crossvalidation'])
     plt.xlabel('K')
     plt.ylabel(['Loss'])
