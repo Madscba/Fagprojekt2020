@@ -19,10 +19,10 @@ plt.show()
 
 cov_type = 'full'
 
-cds, cls, covs, gmm = gaussian_mixture(pca_fv,5,covar_type=cov_type,reps=5,init_procedure= 'random')
+cds, cls, covs, gmm = gaussian_mixture(pca_fv,2,covar_type=cov_type,reps=5,init_procedure= 'random')
 
 plot_cluster(X=pca_fv,cls=cls,cds=cds,y='None',covs=covs,idx=[0,1])
 
-cv_gmm(pca_fv,K_range=range(1,11),n_splits=10,covar_type=cov_type,reps=5,init_procedure='random')
+#cv_gmm(pca_fv,K_range=range(1,11),n_splits=10,covar_type=cov_type,reps=5,init_procedure='random')
 
 outliers, probs = potential_outliers(cluster_model=gmm, data=pca_fv, threshold=0.01)

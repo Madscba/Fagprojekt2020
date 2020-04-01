@@ -44,7 +44,7 @@ for folder, subfolder, filenames in os.walk(path):
         idx = None
 
         # search for filename index
-        for i, file_name in enumerate(file_names):
+        for i, file_name in enumerate(file_names[0:500]):
             if file_name == edf_file:
                 idx = i
                 break

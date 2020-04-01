@@ -52,7 +52,6 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
         -reps: number of fits with different initalizations, best result will be kept
         -init_procedure:'kmeans' or 'random'
     """
-    import numpy as np
     T = len(K_range)
 
     BIC = np.zeros((T,))
