@@ -6,6 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
+#Responsible: Mads Christian
 
 root_dir = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms'
 #mean of [red channel, green channel, blue channel]
