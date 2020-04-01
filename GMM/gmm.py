@@ -1,3 +1,4 @@
+""" @author: Johannes"""
 from GMM.load_data_bc import *
 from sklearn.mixture import GaussianMixture
 from sklearn import model_selection

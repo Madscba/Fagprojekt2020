@@ -1,3 +1,4 @@
+""" @author: Johannes"""
 from GMM.load_data_bc import *
 from GMM.gmm import gaussian_mixture, plot_cluster, cv_gmm, potential_outliers
 from sklearn.preprocessing import StandardScaler

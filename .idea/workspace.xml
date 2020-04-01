@@ -34,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/GMM/init.py" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.gmm">
     <configuration name="MNE4" type="PythonConfigurationType" factoryName="Python">
@@ -321,9 +321,10 @@
     </state>
     <state width="936" height="485" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1585425294837" />
     <state width="938" height="485" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585419064044" />
-    <state x="81" y="162" key="SettingsEditor" timestamp="1585211724730">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="65" y="110" key="SettingsEditor" timestamp="1585731731462">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="65" y="110" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585731731462" />
     <state x="81" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585211724730" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1585407187541">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -345,11 +346,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MNE_test3_J.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/data_processing.py</url>
           <line>11</line>
