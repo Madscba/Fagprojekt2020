@@ -27,16 +27,15 @@ class preprossingPipeline:
 
     def get_spectrogram(self,name):
         """
-        Takes name of spectrogram
+        Takes name of edf file.
         returns spectrograms
         """
         dataDict=self.readRawEdf(self.edfDict[name])
         dataDict["cleanData"]=self.filter(dataDict["rawData"])
         #tensor=self.spectrogramMake(dataDict["cleanData"])
-        specktogram=self.slidingWindow(dataDict, tN=dataDict["cleanData"].last_samp,
-                     tStep=dataDict["tStep"]*dataDict["fS"],
-                     )
-        return spectrogram
+        specktograms=self.slidingWindow(dataDict, tN=dataDict["cleanData"].last_samp,
+                     tStep=dataDict["tStep"]*dataDict["fS"])
+        return specktograms
 
 
 
@@ -73,21 +72,13 @@ class preprossingPipeline:
         #t, f, Sxx = signal.spectrogram(chWindows, fs=edfFs)
         #plt.pcolormesh(f, t, Sxx)
         fTemp, tTemp, Sxx = signal.spectrogram(chWindows, fs=edfFs)
-        plt.pcolormesh(tTemp, fTemp, np.log(Sxx[0]))
+        #plt.pcolormesh(tTemp, fTemp, np.log(Sxx[0]))
          #plt.ylabel('Frequency [Hz]')
          #plt.xlabel('Time [sec]')
          #plt.title("channel spectrogram: "+EEGseries.ch_names[count])
          #plt.show()
-        pxx, freqs, bins, im = plt.specgram(chWindows, Fs = edfFs,cmap='gray')
-        img = img.resize((224, 224))
-        a = np.asarray(img)
-        b = np.empty_like(a, dtype=float) # DIM: (224,224,3)
-        min_max_scaler = preprocessing.MinMaxScaler() #Rescale values to interval 0-1
-        for i in range(a.shape[2]):
-            a_stand = min_max_scaler.fit_transform(a[:, :, i])
-            b[:, :, i] = a_stand
-        b = b.transpose((2, 0, 1))
-        img2 = torch.from_numpy(b)
+       # pxx, freqs, bins, im = plt.specgram(chWindows, Fs = edfFs,cmap='gray')
+        Sxx=np.resize(Sxx,(14,224, 224))
         return torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
 
     def slidingWindow(self,edfInfo=None, tN=0, tStep=60, localSave={"sliceSave":False, "saveDir":os.getcwd()}):
