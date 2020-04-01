@@ -7,22 +7,43 @@ import numpy as np
 from PIL import Image
 from sklearn import preprocessing
 
-def importPretrainedVGG16():
-    #Import pretrained VGG16 from pytorchs database.
-    return models.vgg16(pretrained=True)
-
-class VGG16_NoSoftMax(nn.Module):
+#Responsible: Mads Christian
+class VGG16_NoSoftmax_OneChannel(nn.Module):
     def __init__(self):
-        super(VGG16_NoSoftMax, self).__init__()
+        super(VGG16_NoSoftmax_OneChannel, self).__init__()
+        vgg_firstlayer = models.vgg16(pretrained=True).features[0]  # load just the first conv layer
         vgg16 = models.vgg16(pretrained=True)
-        self.features = nn.Sequential(*list(vgg16.features.children())[:])
-        self.classifier = nn.Sequential()
+        w1 = vgg_firstlayer.state_dict()['weight'][:, 0, :, :]
+        w2 = vgg_firstlayer.state_dict()['weight'][:, 1, :, :]
+        w3 = vgg_firstlayer.state_dict()['weight'][:, 2, :, :]
+        w4 = w1 + w2 + w3  # add the three weigths of the channels
+        w4 = w4.unsqueeze(1)
+        first_conv = nn.Conv2d(1, 64, 3, padding=(1, 1))  # create a new conv layer
+        first_conv.weigth = torch.nn.Parameter(w4, requires_grad=True)  # initialize  the conv layer's weigths with w4
+        first_conv.bias = torch.nn.Parameter(vgg_firstlayer.state_dict()['bias'],
+                                             requires_grad=True)  # initialize  the conv layer's weigths with vgg's first conv bias
+
+        self.first_convlayer = first_conv  # the first layer is 1 channel (Grayscale) conv  layer
+        self.features = nn.Sequential(*list(vgg16.features.children())[1:])
+        self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
+        self.classifier = nn.Sequential(
+            nn.Linear(512 * 7 * 7, 4096),
+            nn.ReLU(True),
+            nn.Dropout(),
+            nn.Linear(4096, 4096),
+            nn.ReLU(True))
+
     def forward(self, x):
+        x = self.first_convlayer(x)
         x = self.features(x)
+        x = self.avgpool(x)
+        x = torch.flatten(x,1)
+        x = self.classifier(x)
         return x
-class VGG16_NoSoftMax1(nn.Module):
+
+class VGG16_NoSoftmax_RGB(nn.Module):
     def __init__(self):
-        super(VGG16_NoSoftMax1, self).__init__()
+        super(VGG16_NoSoftmax_RGB, self).__init__()
         vgg16 = models.vgg16(pretrained=True)
         self.features = nn.Sequential(*list(vgg16.features.children())[:])
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
@@ -39,54 +60,31 @@ class VGG16_NoSoftMax1(nn.Module):
         x = torch.flatten(x,1)
         x = self.classifier(x)
         return x
-    # def __init__(self):
-    #     super(VGG16_NoSoftMax1,self).__init__()
-    #     features = list(models.vgg16(pretrained=True).features)
-    #     self.features = nn.ModuleList(features).eval()
-    # def forward(self,x):
-    #     featureVector = self.features[-1](x)
-    #     return featureVector
 
-#torch.cat((a,b))
-#reshape b = a.reshape(1,8)
-if __name__ == "__main__":
-    vgg = importPretrainedVGG16()
-
-    # for i, data in enumerate(train_data_loader):
-    #     pass
-
-    img = Image.open(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG')
-    plt.imshow(img)
-    img = img.resize((224,224))
-    plt.imshow(img)
+def fetchImage(path =r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG' ):
+    img = Image.open(path)
+    img = img.resize((224, 224))
     a = np.asarray(img)
-    b = np.empty_like(a,dtype=float)
-    print(type(b))
-    min_max_scaler = preprocessing.MinMaxScaler()
-
+    b = np.empty_like(a, dtype=float) # DIM: (224,224,3)
+    min_max_scaler = preprocessing.MinMaxScaler() #Rescale values to interval 0-1
     for i in range(a.shape[2]):
-        a_stand = min_max_scaler.fit_transform(a[:,:,i])
-        b[:,:,i] = a_stand
-
-    model = VGG16_NoSoftMax()
-    model1 = VGG16_NoSoftMax1()
-    print(model)
+        a_stand = min_max_scaler.fit_transform(a[:, :, i])
+        b[:, :, i] = a_stand
     b = b.transpose((2, 0, 1))
     img2 = torch.from_numpy(b)
-    #vgg16(img2) #
-    ##input should be: (batch size, number of channels, height, width)
+    return img2
 
-    model.eval()
-    vgg.eval()
-    print(model)
-    print(model1)
-    print(vgg)
+if __name__ == "__main__":
+    model_gray = VGG16_NoSoftmax_OneChannel()
+    model_RGB = VGG16_NoSoftmax_RGB()
 
-    out0 = model(img2.unsqueeze_(0).float())
-    out1 = model1(img2.float())
-    out2 = vgg(img2.float())
-    #latent = model.forward(img2)
+    model_gray.eval()
+    model_RGB.eval()
 
-    #
-    # for i, data in enumerate(train_data_loader):
+    img2 = fetchImage()
+
+    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
+    out2 = model_RGB(img2.unsqueeze_(0).float())
+
+
     pass
