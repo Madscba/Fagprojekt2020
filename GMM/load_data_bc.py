@@ -44,7 +44,7 @@ for folder, subfolder, filenames in os.walk(path):
         idx = None
 
         # search for filename index
-        for i, file_name in enumerate(file_names[0:500]):
+        for i, file_name in enumerate(file_names):
             if file_name == edf_file:
                 idx = i
                 break
@@ -54,9 +54,9 @@ for folder, subfolder, filenames in os.walk(path):
         else:
             continue
 
-window_size=60
+window_size=120
 i = 0
-for filename, quality in fileName_quality[0:500]:
+for filename, quality in fileName_quality:
     raw  = mne.io.read_raw_edf(filename)
 
     freq = raw.info['sfreq']
