@@ -1,6 +1,6 @@
 '''
 Class to make preprosseing easy
-
+test
 Responsble Andreas
 '''
 import os, mne, torch,json
