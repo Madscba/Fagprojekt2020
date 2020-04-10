@@ -1,0 +1,974 @@
+{
+    "137_BAH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "134_ETT.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "67~ 67_ddd401b3-1cf8-483d-a289-cb20bf07db27.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "66~ 66_3279d30c-9286-47e4-a9ca-693e1b37fc58.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "138_CAM (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "141_SAL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "138_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "129_CON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "133_MAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "128_SYL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "132_BOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "140_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "130_KAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "131_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "139_KON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "103_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "60_MAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "53_KEI.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "72_JAC.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "101_MAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "87_DIA (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "98_KEB.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "106_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "74_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "52_KON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "65_SYL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "71_TOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "70_SOW.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "84_OAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "63_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "58_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "61_BAH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "85_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "94_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "86_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "64_BAH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "104_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "99_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "90_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "93_SAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "92_CON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "62_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "42_SAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "87_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "69_BAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "96_SER.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "105_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "77_CAM (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "95_SID.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "82_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "76_BAL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "83_KER.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "79_MUI (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "100_TON.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "97_YOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "16_YOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "14_KOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "1_AIS.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "67_MAH (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "67_MAH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "2_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "15_KAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "23_SOW.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "17_CIS.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "13_RAF.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "9_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "10_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "21_SAR (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "19_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "5_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "20_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "18_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "68_MBA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "6_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "4_AMI.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "7_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "3_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "73_BAY.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "41_NAN (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": NaN
+        }
+    },
+    "102_KAB.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "22_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "11_CAM (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "24_SOW.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "78_AIS.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "38_CIS.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "33_TAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "44_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "136_KOL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "89_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "12_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "41_NAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "91_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "135_MOH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "44_CAM (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "81_SAG.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "59_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "50_BAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "8_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "80_MAG.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "11_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "88_KAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "142_KAL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "75_SYL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "51_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "54_TRA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "54_TRA (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "43_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "31_MOH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "25_BAL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "45_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "32_MAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "35_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "27_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "37_SOR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "39_LY.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "46_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "26_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "30_MAG.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "36_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "48_CIS.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "28_DAG.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "47_DOR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "29_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "34_MAL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "56~ 56_33df0a33-bf81-4add-a6d1-cc81cbbdd369.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "27~ 27_147b1ff0-3059-44fc-ba9e-46902f46ddf4.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "79~ 79_a3a35662-3209-44c7-963f-4eb68eb9f8dd.edf": {
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "107_CAM.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "117_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 10.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "122_TRA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "111_SON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "115_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 10.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "110_SID.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "112_SYL.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "118_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "113_SOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": NaN,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "109_HAI.edf": {
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "120_BOU.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "116_BAN.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "119_BAH.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "114_SAF.edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "108_NAI (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "93~ 93_914148d1-a3bd-4722-a843-c3e92e932152.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "89~ 89_f5980458-ea1d-4f42-8e1e-99dd3a119cbb.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "94~ 94_759698d7-0a4d-49dd-8778-2ffa8211e447.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "84~ 84_50e8889f-6fe7-4156-9f83-40bc79235091.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "97~ 97_f997844a-d3e7-4315-96df-53f12c7123b9.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "83~ 83_7caf8e68-7fd4-437d-8313-1f5b0a005e41.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "96~ 96_c84c4cbf-0384-4b95-8705-98cede677426.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "92~ 92_4965f23f-4403-4d29-b0fd-01e3c7bff6b9.edf": {
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "98~ 98_fcdcd101-73f9-4756-8e19-641ac9195267.edf": {
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "91~ 91_5c546202-11e4-4dec-9f42-fbdf7f420e2e.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "90~ 90_22986551-4275-4e78-a0e1-0978d08b947c.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "86~ 86_33f006f5-6631-4266-bd34-49aee813eaf0.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "87~ 87_55165193-fc18-4242-87f0-5040e9ecef8a.edf": {
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "95~ 95_2f2e2b5a-4585-4f98-bacd-5952bc2753bf.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "85~ 85_8a45512e-c12d-4233-b459-0700bed102d5.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "50~ 50_c0b78dc1-d524-45d6-98cc-63ccc213f035.edf": {
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "57_BAR.edf": {
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "55_DIA.edf": {
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "66_CON.edf": {
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "56_LY (2).edf": {
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    }
+}

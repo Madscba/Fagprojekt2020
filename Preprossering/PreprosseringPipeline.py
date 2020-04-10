@@ -10,9 +10,10 @@ import numpy as np
 from mne.io import read_raw_edf
 from scipy import signal
 import matplotlib.pyplot as plt
+from skimage.transform import resize
 
 #Import David functions
-from Davidclean import jsonLoad,readRawEdf
+from loadData import jsonLoad
 
 class preprossingPipeline:
     def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
@@ -35,6 +36,7 @@ class preprossingPipeline:
         #tensor=self.spectrogramMake(dataDict["cleanData"])
         specktograms=self.slidingWindow(dataDict, tN=dataDict["cleanData"].last_samp,
                      tStep=dataDict["tStep"]*dataDict["fS"])
+        specktograms["annotations"]=self.edfDict[name]["annotation"]
         return specktograms
 
 
@@ -66,20 +68,18 @@ class preprossingPipeline:
         # EEGseries.plot_sensors(show_names=True)
         return EEGseries
 
-    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120):
+    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=True):
+        #Not debygged
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
-        #t, f, Sxx = signal.spectrogram(chWindows, fs=edfFs)
-        #plt.pcolormesh(f, t, Sxx)
-        fTemp, tTemp, Sxx = signal.spectrogram(chWindows, fs=edfFs)
-        #plt.pcolormesh(tTemp, fTemp, np.log(Sxx[0]))
-         #plt.ylabel('Frequency [Hz]')
-         #plt.xlabel('Time [sec]')
-         #plt.title("channel spectrogram: "+EEGseries.ch_names[count])
-         #plt.show()
-       # pxx, freqs, bins, im = plt.specgram(chWindows, Fs = edfFs,cmap='gray')
-        Sxx=np.resize(Sxx,(14,224, 224))
-        return torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
+
+        if resized:
+            pxx, freqs, bins, im = plt.specgram(chWindows, Fs = edfFs)
+            image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
+            return torch.tensor(image_resized)
+        else:
+            fTemp, tTemp, Sxx = signal.spectrogram(chWindows, fs=edfFs)
+            return torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
 
     def slidingWindow(self,edfInfo=None, tN=0, tStep=60, localSave={"sliceSave":False, "saveDir":os.getcwd()}):
         windowEEG = defaultdict(list)
@@ -105,5 +105,5 @@ class preprossingPipeline:
         return windowOut
 
 #Debugging
-C=preprossingPipeline()
-C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")    
+#C=preprossingPipeline()
+#C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")    
