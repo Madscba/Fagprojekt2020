@@ -1,9 +1,39 @@
 from loadPretrainedCNN import VGG16_NoSoftmax_OneChannel,VGG16_NoSoftmax_RGB, fetchImage
 #Responsible: Mads Christian
+import torch
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 
-def getFeatureVectorFromWindow(spec):
-    pass
+
+def getFeatureVecWholeFile(filePath):
+    spectrogramDict = C.get_spectrogram(filePath)
+    windowVec = []
+    for windowName in spectrogramDict:
+        windowValues = spectrogramDict[windowName]
+        featureVec = []
+        for channelSpectrogram in windowValues.values():
+            #channelValue = windowValues[channelName]
+            tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+            if len(featureVec)==0:
+                featureVec = tempFeatureVec
+            else:
+                featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+        if len(windowVec) ==0:
+            windowVec = featureVec
+        else:
+            windowVec = torch.cat((windowVec,featureVec),0)
+                #windowFeatureVec.append(tempFeatureVec)
+    return windowVec
+
+def getFeatureVec(windowValues):
+    featureVec = []
+    for channelSpectrogram in windowValues.values():
+        #channelValue = windowValues[channelName]
+        tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+        if len(featureVec)==0:
+            featureVec = tempFeatureVec
+        else:
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+    return featureVec
 
 if __name__ == "__main__":
     model = VGG16_NoSoftmax_OneChannel()
@@ -11,16 +41,13 @@ if __name__ == "__main__":
 
 
     C=preprossingPipeline(r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
-    spec = C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")
+    fileNames = C.edfDict
 
-    allVal = spec.values()
-    for value in spec.values():
-        a = model(value.unsqueeze(0).unsqueeze(0).float())
-        pass
+    randomFile = fileNames.__iter__().__next__()
+    spec = C.get_spectrogram(randomFile)
+    randomWindow = spec.__iter__().__next__()
 
-    pass
-
-
+    featureVec = getFeatureVec(spec[randomWindow])
 
 
     #Generate a pretrained VGG model
