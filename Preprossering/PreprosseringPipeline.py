@@ -16,18 +16,23 @@ from scipy import signal
 from skimage.transform import resize
 
 # Import David functions
-from Preprossering.loadData import jsonLoad
+from loadData import jsonLoad
 
 
 class preprossingPipeline:
-    def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
+    def __init__(self,BC_datapath,resize=True,filters={"lpfq": 1, "hpfq": 40, "notchfq": 50}):
         """
-        args BC datapath: your local path to bc dataset. 
+        args BC datapath: your local path to bc dataset: 
+        resize: bool if true rezise spectrogram to 224*224
+        filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
+         
         """
         Wdir=os.getcwd()
         self.dataDir =BC_datapath
         jsonDir =os.path.join(Wdir,r"Preprossering\edfFiles.json")
         self.edfDict = jsonLoad(jsonDir)
+        self.filters=filters
+        self.resize=resize
 
 
     def get_spectrogram(self,name):
@@ -57,7 +62,7 @@ class preprossingPipeline:
         return edfDict
 
     # pre-processing pipeline single file
-    def filter(self,EEGseries=None, lpfq=1, hpfq=40, notchfq=50):
+    def filter(self,EEGseries=None):
         """
         Credit david. 
         Original name pipeline
@@ -65,21 +70,23 @@ class preprossingPipeline:
         # EEGseries.plot
         EEGseries.set_montage(mne.channels.read_montage(kind='easycap-M1', ch_names=EEGseries.ch_names))
         # EEGseries.plot_psd()
-        EEGseries.notch_filter(freqs=notchfq, notch_widths=5)
+        if "notchfq" in self.filters:
+            EEGseries.notch_filter(freqs=self.filters["notchfq"], notch_widths=5)
         # EEGseries.plot_psd()
-        EEGseries.filter(lpfq, hpfq, fir_design='firwin')
+        if ("lpfq" in self.filters) and ("hpfq" in self.filters):
+            EEGseries.filter(self.filters["lpfq"],self.filters["hpfq"], fir_design='firwin')
         EEGseries.set_eeg_reference()
         # EEGseries.plot_sensors(show_names=True)
         return EEGseries
 
-    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=True):
+    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120):
         #Not debygged
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
 
         for i,ch in enumerate(EEGseries.ch_names):
-            if resized:
+            if self.resize:
                 pxx, freqs, bins, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized+np.finfo(float).eps)
@@ -113,12 +120,6 @@ class preprossingPipeline:
             windowOut = None
         return windowOut
 
-def plot_spectrogram(windows,win_idx,ch_idx):
-    win_name=windows.keys()[win_idx]
-    ch_name=windows[win_name].keys()
-    plt.plot(windows[win_name][ch_name])
-    plt.show()
-#Debugging
 
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
@@ -151,9 +152,14 @@ def getFeatureVec(windowValues,model):
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
 
+def plot_spectrogram(windows,win_idx,ch_idx):
+    plt.imshow(windows[win_idx][ch_idx])
+    plt.show()
+#Debugging
+
 if __name__=="__main__":
-    C=preprossingPipeline()
+    C=preprossingPipeline(BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC",filters={"lpfq": 1, "hpfq": 40,"notchfq":50})
     windows=C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")
     win_idx=windows.keys()
     ch_idx=win_idx
-    plot_spectrogram(windows,1,1)
+    plot_spectrogram(windows,"window_0_15360","Fz")
