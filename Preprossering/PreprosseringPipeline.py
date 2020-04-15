@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from skimage.transform import resize
 
 #Import David functions
-from loadData import jsonLoad
+from Preprossering.loadData import jsonLoad
 
 class preprossingPipeline:
     def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
