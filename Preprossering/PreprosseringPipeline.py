@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from skimage.transform import resize
 
 #Import David functions
-from Preprossering.loadData import jsonLoad
+from loadData import jsonLoad
 
 class preprossingPipeline:
     def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
@@ -21,7 +21,7 @@ class preprossingPipeline:
         args BC datapath: your local path to bc dataset. 
         """
         Wdir=os.getcwd()
-        self.dataDir =os.path.join(Wdir,BC_datapath)
+        self.dataDir =BC_datapath
         jsonDir =os.path.join(Wdir,r"Preprossering\edfFiles.json")
         self.edfDict = jsonLoad(jsonDir)
 
