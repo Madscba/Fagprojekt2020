@@ -13,12 +13,12 @@ import matplotlib.pyplot as plt
 from skimage.transform import resize
 
 #Import David functions
-from loadData import jsonLoad
+from Preprossering.loadData import jsonLoad
 
 class preprossingPipeline:
     def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
         """
-        To do make it posiple to change settings for now just init something that works 
+        args BC datapath: your local path to bc dataset. 
         """
         Wdir=os.getcwd()
         self.dataDir =os.path.join(Wdir,BC_datapath)
@@ -72,14 +72,18 @@ class preprossingPipeline:
         #Not debygged
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
+        ch_dict=defaultdict()
 
-        if resized:
-            pxx, freqs, bins, im = plt.specgram(chWindows, Fs = edfFs)
-            image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
-            return torch.tensor(image_resized)
-        else:
-            fTemp, tTemp, Sxx = signal.spectrogram(chWindows, fs=edfFs)
-            return torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
+        for i,ch in enumerate(EEGseries.ch_names):
+            if resized:
+                pxx, freqs, bins, im = plt.specgram(chWindows[i], Fs = edfFs)
+                image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
+                ch_dict[ch]=torch.tensor(image_resized+np.finfo(float).eps)
+            else:
+                fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
+                ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
+
+        return ch_dict
 
     def slidingWindow(self,edfInfo=None, tN=0, tStep=60, localSave={"sliceSave":False, "saveDir":os.getcwd()}):
         windowEEG = defaultdict(list)
@@ -105,5 +109,6 @@ class preprossingPipeline:
         return windowOut
 
 #Debugging
-#C=preprossingPipeline()
-#C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")    
+if __name__=="__main__":
+    C=preprossingPipeline()
+    C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")    
