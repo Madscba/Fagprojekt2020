@@ -1,40 +1,7 @@
 from loadPretrainedCNN import VGG16_NoSoftmax_OneChannel,VGG16_NoSoftmax_RGB, fetchImage
 #Responsible: Mads Christian
 import torch
-from Preprossering.PreprosseringPipeline import preprossingPipeline
-
-
-def getFeatureVecWholeFile(filePath):
-    spectrogramDict = C.get_spectrogram(filePath)
-    windowVec = []
-    for windowName in spectrogramDict:
-        windowValues = spectrogramDict[windowName]
-        featureVec = []
-        for channelSpectrogram in windowValues.values():
-            #channelValue = windowValues[channelName]
-            tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
-            if len(featureVec)==0:
-                featureVec = tempFeatureVec
-            else:
-                featureVec = torch.cat((featureVec, tempFeatureVec), 1)
-        if len(windowVec) ==0:
-            windowVec = featureVec
-        else:
-            windowVec = torch.cat((windowVec,featureVec),0)
-                #windowFeatureVec.append(tempFeatureVec)
-    return windowVec
-
-def getFeatureVec(windowValues):
-    featureVec = []
-    for channelSpectrogram in windowValues.values():
-        #channelValue = windowValues[channelName]
-        tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
-        if len(featureVec)==0:
-            featureVec = tempFeatureVec
-        else:
-            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
-    return featureVec
-
+from Preprossering.PreprosseringPipeline import preprossingPipeline, getFeatureVec
 if __name__ == "__main__":
     model = VGG16_NoSoftmax_OneChannel()
     model.eval()
@@ -47,7 +14,7 @@ if __name__ == "__main__":
     spec = C.get_spectrogram(randomFile)
     randomWindow = spec.__iter__().__next__()
 
-    featureVec = getFeatureVec(spec[randomWindow])
+    featureVec = getFeatureVec(spec[randomWindow],model)
 
 
     #Generate a pretrained VGG model

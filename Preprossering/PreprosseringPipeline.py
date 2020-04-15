@@ -3,17 +3,21 @@ Class to make preprosseing easy
 test
 Responsble Andreas
 '''
-import os, mne, torch,json
+import mne
+import os
+import torch
 from collections import defaultdict
 from datetime import datetime
+
+import matplotlib.pyplot as plt
 import numpy as np
 from mne.io import read_raw_edf
 from scipy import signal
-import matplotlib.pyplot as plt
 from skimage.transform import resize
 
-#Import David functions
+# Import David functions
 from Preprossering.loadData import jsonLoad
+
 
 class preprossingPipeline:
     def __init__(self,BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC"):
@@ -115,6 +119,38 @@ def plot_spectrogram(windows,win_idx,ch_idx):
     plt.plot(windows[win_name][ch_name])
     plt.show()
 #Debugging
+
+def getFeatureVecWholeFile(filePath):
+    spectrogramDict = C.get_spectrogram(filePath)
+    windowVec = []
+    for windowName in spectrogramDict:
+        windowValues = spectrogramDict[windowName]
+        featureVec = []
+        for channelSpectrogram in windowValues.values():
+            #channelValue = windowValues[channelName]
+            tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+            if len(featureVec)==0:
+                featureVec = tempFeatureVec
+            else:
+                featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+        if len(windowVec) ==0:
+            windowVec = featureVec
+        else:
+            windowVec = torch.cat((windowVec,featureVec),0)
+                #windowFeatureVec.append(tempFeatureVec)
+    return windowVec
+
+def getFeatureVec(windowValues,model):
+    featureVec = []
+    for channelSpectrogram in windowValues.values():
+        #channelValue = windowValues[channelName]
+        tempFeatureVec = model(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+        if len(featureVec)==0:
+            featureVec = tempFeatureVec
+        else:
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+    return featureVec
+
 if __name__=="__main__":
     C=preprossingPipeline()
     windows=C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")
