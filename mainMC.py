@@ -7,13 +7,12 @@ if __name__ == "__main__":
     model.eval()
 
 
-    C=preprossingPipeline(r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
+    C=preprossingPipeline(mac=True, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
     fileNames = C.edfDict
 
     randomFile = fileNames.__iter__().__next__()
     spec = C.get_spectrogram(randomFile)
     randomWindow = spec.__iter__().__next__()
-
     featureVec = getFeatureVec(spec[randomWindow],model)
 
 

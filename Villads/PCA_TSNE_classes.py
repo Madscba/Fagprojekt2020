@@ -18,13 +18,13 @@ def make_pca(X, data_transform=None):
     pca = PCA()
     pca.fit(X)
     pca_fit = pca.transform(data_transform)
-    return pca_fit, pca
+    return pca, pca_fit
 
 
 def make_TSNE(X):
     tsne = TSNE()
     tsne_fit = tsne.fit_transform(X)
-    return tsne_fit
+    return tsne, tsne_fit
 
 
 def plot_pca_tsne_2D(fitted_data):
