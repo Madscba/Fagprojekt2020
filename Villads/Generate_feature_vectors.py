@@ -3,33 +3,33 @@ from Preprossering.PreprosseringPipeline import preprossingPipeline, getFeatureV
 import numpy as np
 import os
 
-#Responsible: Mads Christian
-import torch
+
 
 model = VGG16_NoSoftmax_OneChannel()
 model.eval()
 C=preprossingPipeline(BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG",mac=True)
 fileNames = C.edfDict.keys()
-wdir=os.getcwd()
+wdir="/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt"
 for file in fileNames:
-    i = 0
-    if os.path.exists(wdir+r'/feature_vectors/'+file)==True
-        break
-    spec = C.get_spectrogram(file)
-    for window_value in spec.keys():
-        if window_value=='annotations':
-            break
-        if i == 0:
-            featureVec = getFeatureVec(spec[window_value], model).detach().numpy()
-            featureVectors = featureVec
-        else:
-            featureVec = getFeatureVec(spec[window_value],model).detach().numpy()
-            featureVectors=np.vstack((featureVectors,featureVec))
-        i+=1
-        print(i)
-    filename=r'/feature_vectors/'+file
-    np.save(wdir+filename,featureVectors)
-    del featureVectors
+    if os.path.exists(wdir+r'/feature_vectors/'+file+".npy")==True:
+        pass
+    else:
+        spec = C.get_spectrogram(file)
+        i = 0
+        for window_value in spec.keys():
+            if window_value=='annotations':
+                break
+            if i == 0:
+                featureVec = getFeatureVec(spec[window_value], model).detach().numpy()
+                featureVectors = featureVec
+            else:
+                featureVec = getFeatureVec(spec[window_value],model).detach().numpy()
+                featureVectors=np.vstack((featureVectors,featureVec))
+            i+=1
+            print(i)
+        filename=r'/feature_vectors/'+file
+        np.save(wdir+filename,featureVectors)
+
 
 
 
@@ -50,4 +50,3 @@ for file in fileNames:
     # out1 = model(img2.unsqueeze(0).unsqueeze(0).float()) #input should be tensor with dim: [1,1,224,224] corresponding to [batchsize, channels, breadth, width], [output 1x4096]
     # out2 = model_rgb(img.unsqueeze(0).float()) #input should be tensor with dim: [1,3,224,224] corresponding to [batchsize, channels, breadth, width], output [1x4096]
 
-    pass

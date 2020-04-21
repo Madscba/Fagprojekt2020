@@ -69,7 +69,7 @@ class preprossingPipeline:
     # pre-processing pipeline single file
     def filter(self,EEGseries=None, lpfq=1, hpfq=40, notchfq=50):
         """
-        Credit david. 
+        Credit david.
         Original name pipeline
         """
         # EEGseries.plot
@@ -87,7 +87,6 @@ class preprossingPipeline:
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
-
         for i,ch in enumerate(EEGseries.ch_names):
             if resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
