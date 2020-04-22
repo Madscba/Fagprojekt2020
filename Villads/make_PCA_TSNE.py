@@ -1,9 +1,18 @@
 
 from Villads.PCA_TSNE_classes import *
+from Villads.Load_spectograms import spectograms
 
-feature_vectors_scaled=scale_data(featureVectors)
-pca, pca_features=make_pca(feature_vectors_scaled)
+spectograms=spectograms.squeeze()
+spectograms_scaled=scale_data(spectograms)
+pca, pca_features=make_pca(spectograms_scaled)
 tsne, tsne_features=make_TSNE(pca_features[:,:1000])
-plot_pca_tsne_2D(tsne_features)
+
+
+
+
+
+
+
+
 
 
