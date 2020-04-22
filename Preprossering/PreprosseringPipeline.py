@@ -16,23 +16,28 @@ from scipy import signal
 from skimage.transform import resize
 
 # Import David functions
-from loadData import jsonLoad
+from Preprossering.loadData import jsonLoad
+
 
 
 class preprossingPipeline:
-    def __init__(self,BC_datapath,resize=True,filters={"lpfq": 1, "hpfq": 40, "notchfq": 50}):
+    def __init__(self,mac=False,BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG"):
         """
-        args BC datapath: your local path to bc dataset: 
-        resize: bool if true rezise spectrogram to 224*224
-        filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
-         
+        args BC datapath: your local path to bc dataset.
         """
         Wdir=os.getcwd()
         self.dataDir =BC_datapath
-        jsonDir =os.path.join(Wdir,r"Preprossering\edfFiles.json")
-        self.edfDict = jsonLoad(jsonDir)
-        self.filters=filters
-        self.resize=resize
+        if mac:
+            jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
+            print(jsonDir)
+            self.edfDict = jsonLoad(jsonDir)
+            for key in self.edfDict.keys():
+                self.edfDict[key]['path'][0]=re.sub(r'\\',r'/',self.edfDict[key]['path'][0])
+        else:
+            jsonDir = os.path.join(Wdir, r"Preprossering\edfFiles.json")
+            self.edfDict = jsonLoad(jsonDir)
+
+
 
 
     def get_spectrogram(self,name):
@@ -64,7 +69,7 @@ class preprossingPipeline:
     # pre-processing pipeline single file
     def filter(self,EEGseries=None):
         """
-        Credit david. 
+        Credit david.
         Original name pipeline
         """
         # EEGseries.plot
@@ -84,12 +89,11 @@ class preprossingPipeline:
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
-
         for i,ch in enumerate(EEGseries.ch_names):
-            if self.resize:
-                pxx, freqs, bins, im = plt.specgram(chWindows[i], Fs = edfFs)
+            if resized:
+                _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
-                ch_dict[ch]=torch.tensor(image_resized+np.finfo(float).eps)
+                ch_dict[ch]=torch.tensor(image_resized)
             else:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
                 ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
