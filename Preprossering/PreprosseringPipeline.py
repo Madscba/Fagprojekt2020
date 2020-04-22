@@ -17,16 +17,20 @@ from skimage.transform import resize
 
 # Import David functions
 from Preprossering.loadData import jsonLoad
-
+import re
 
 
 class preprossingPipeline:
-    def __init__(self,mac=False,BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG"):
+    def __init__(self,BC_datapath,resize=True,filters={"lpfq": 1, "hpfq": 40, "notchfq": 50},mac=False):
         """
         args BC datapath: your local path to bc dataset.
+        mac: set true if you are using a mac
         """
         Wdir=os.getcwd()
         self.dataDir =BC_datapath
+        self.edfDict = jsonLoad(jsonDir)
+        self.filters=filters
+        self.resize=resize
         if mac:
             jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
             print(jsonDir)
@@ -90,7 +94,7 @@ class preprossingPipeline:
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
-            if resized:
+            if self.resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)

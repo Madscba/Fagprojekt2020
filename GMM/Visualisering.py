@@ -1,17 +1,18 @@
 import numpy as np
 import pickle
 import os
-from Preprossering import PreprosseringPipeline
+from Preprossering.PreprosseringPipeline import preprossingPipeline
 
 
-pca = pickle.load(open('/Users/johan/iCloudDrive/DTU/KID/4. semester/Fagprojekt/Kode/Johannes/PCA_TSNE/PCA.sav', 'rb'))
-TSNE = pickle.load(open('/Users/johan/iCloudDrive/DTU/KID/4. semester/Fagprojekt/Kode/Johannes/PCA_TSNE/TSNE.sav', 'rb'))
-tsne_fv=np.load('/Users/johan/iCloudDrive/DTU/KID/4. semester/Fagprojekt/Kode/Johannes/PCA_TSNE/tsne_features.npy')
-pca_fv=np.load('/Users/johan/iCloudDrive/DTU/KID/4. semester/Fagprojekt/Kode/Johannes/PCA_TSNE/pca_features.npy')
+pca = pickle.load(open(r'C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE/PCA.sav', 'rb'))
+TSNE = pickle.load(open(r'C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE/TSNE.sav', 'rb'))
+tsne_fv=np.load(r'C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE\tsne_features.npy')
+pca_fv=np.load(r'C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE\pca_features.npy')
 
 
-C = preprossingPipeline(
-    BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG", mac=True)
+#C = preprossingPipeline(
+#    BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG", mac=True)
+C= preprossingPipeline(r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
 fileNames = C.edfDict.keys()
 i = 0
 #Change wdir to the directory of the folder 'feature_vectors'
