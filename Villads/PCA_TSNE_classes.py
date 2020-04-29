@@ -15,7 +15,7 @@ def scale_data(X):
 def make_pca(X, data_transform=None):
     if data_transform == None:
         data_transform = X
-    pca = PCA()
+    pca = PCA(n_components=10)
     pca.fit(X)
     return pca
 
