@@ -22,26 +22,26 @@ filenames=filenames+filenames1
 labels=labels_1+labels_9_10
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
+plot_pca(pca_vectors,labels,np.unique(labels),plot_extremes=True,pca_components=[0,2])
 
 
-feature_vectors,labels, _= C.make_label(max_files=100,make_from_names=filenames,path = path)
+feature_vectors,labels, _,_= C.make_label(max_files=100,make_from_names=filenames,path = path)
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
+plot_pca(pca_vectors,labels,np.unique(labels),pca_components=[0,2],plot_extremes=True)
 
 
 
-feature_vectors_1,labels_1,filenames= C.make_label(max_files=5,is_usable='Yes',path = path)
-feature_vectors_9_10,labels_9_10, filenames1= C.make_label(max_files=5,is_usable='No',path = path)
+feature_vectors_1,labels_1,filenames,_= C.make_label(max_files=5,is_usable='Yes',path = path,seed=1)
+feature_vectors_9_10,labels_9_10,filenames1,_= C.make_label(max_files=5,is_usable='No',path = path,seed=1)
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames1
 labels=labels_1+labels_9_10
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
+plot_pca(pca_vectors,labels,np.unique(labels),plot_extremes=True,pca_components=[0,3])
 
-feature_vectors,labels, _= C.make_label(max_files=100,make_from_names=filenames,path = path)
+feature_vectors,labels, _,_= C.make_label(max_files=100,make_from_names=filenames,path = path)
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
+plot_pca(pca_vectors,labels,np.unique(labels),plot_extremes=True,pca_components=[0,3])

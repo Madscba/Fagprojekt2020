@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
 
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA'):
+def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA',plot_extremes=True):
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
         le = LabelEncoder()
         ydata = le.fit_transform(ydata)
@@ -24,8 +24,9 @@ def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA'):
     for i in range(n_label):
         indices = np.where(ydata == i)
         plt.scatter(Xdata[indices, pca_components[0]], Xdata[indices, pca_components[1]], color=cdict[i], label=label_dict[i])
-        
         #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
+    if plot_extremes is not True:
+        plt.axis(plot_extremes)
     plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
     plt.ylabel('PC {:d} '.format(int(pca_components[1])+1))
     plt.legend(loc='best')
