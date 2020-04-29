@@ -5,7 +5,6 @@ from Visualization.PCA_TSNE_plot import plot_pca
 import numpy as np
 import pickle
 import os
-import torch
 
 path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/'
 C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
