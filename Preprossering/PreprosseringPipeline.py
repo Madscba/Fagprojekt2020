@@ -30,7 +30,7 @@ class preprossingPipeline:
         filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
         """
         Wdir=os.getcwd()
-        self.dataDir =BC_datapath
+        dataDir =BC_datapath
         self.filters=filters
         self.resized=resize
         if mac:
@@ -40,7 +40,7 @@ class preprossingPipeline:
             for key in self.edfDict.keys():
                 self.edfDict[key]['path'][0]=re.sub(r'\\',r'/',self.edfDict[key]['path'][0])
         else:
-            jsonDir = os.path.join(Wdir, r"Preprossering\edfFiles.json")
+            jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
             self.edfDict = jsonLoad(jsonDir)
 
 
@@ -148,53 +148,53 @@ class preprossingPipeline:
         return windowOut
 
 
-def make_label(self, make_spectograms=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
-               path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
-    i = 0
-    if quality is not None:
-        label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
-        fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
-    elif is_usable is not None:
-        label_dict = {key: is_usable for key in
-                      self.edfDict.keys() if
-                      self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
-        fileNames = list(label_dict.keys())
-    elif make_from_names is not None:
-        label_dict = {key: key for key in make_from_names}
-        fileNames = make_from_names
+    def make_label(self, make_spectograms=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
+                path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+        i = 0
+        if quality is not None:
+            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
+            fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
+        elif is_usable is not None:
+            label_dict = {key: is_usable for key in
+                        self.edfDict.keys() if
+                        self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+            fileNames = list(label_dict.keys())
+        elif make_from_names is not None:
+            label_dict = {key: key for key in make_from_names}
+            fileNames = make_from_names
 
-    else:
-        label_dict = {key: key for key in self.edfDict.keys()}
-        fileNames = list(self.edfDict.keys())
-    np.random.seed(seed)
-    np.random.shuffle(fileNames)
-    filenames = []
-    for filename in fileNames:
-        fv_path = os.path.join(path, filename + '.npy')
-        if i == max_files:
-            break
-        if not os.path.exists(fv_path):
-            pass
         else:
-            if i == 0:
-                spectogram = np.load(fv_path)
-                if make_spectograms:
-                    spectogram = spectogram.squeeze()
-                spectograms = spectogram
-                labels = spectogram.shape[0] * [label_dict[filename]]
-                filenames.append(filename)
-                i += 1
+            label_dict = {key: key for key in self.edfDict.keys()}
+            fileNames = list(self.edfDict.keys())
+        np.random.seed(seed)
+        np.random.shuffle(fileNames)
+        filenames = []
+        for filename in fileNames:
+            fv_path = os.path.join(path, filename + '.npy')
+            if i == max_files:
+                break
+            if not os.path.exists(fv_path):
+                pass
             else:
-                spectogram = np.load(fv_path)
-                if make_spectograms:
-                    spectogram = spectogram.squeeze()
-                spectograms = np.vstack((spectograms, spectogram))
-                label = spectogram.shape[0] * [label_dict[filename]]
-                labels = labels + label
-                filenames.append(filename)
-                i += 1
+                if i == 0:
+                    spectogram = np.load(fv_path)
+                    if make_spectograms:
+                        spectogram = spectogram.squeeze()
+                    spectograms = spectogram
+                    labels = spectogram.shape[0] * [label_dict[filename]]
+                    filenames.append(filename)
+                    i += 1
+                else:
+                    spectogram = np.load(fv_path)
+                    if make_spectograms:
+                        spectogram = spectogram.squeeze()
+                    spectograms = np.vstack((spectograms, spectogram))
+                    label = spectogram.shape[0] * [label_dict[filename]]
+                    labels = labels + label
+                    filenames.append(filename)
+                    i += 1
 
-    return spectograms, labels, filenames
+        return spectograms, labels, filenames
 
 
 
@@ -236,5 +236,6 @@ if __name__ == "__main__":
 
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
-    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
+    #c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
+    feature_vectors_1,labels_1,filenames= c.make_label(max_files=10,quality=[1],is_usable=None,make_spectograms=True,path = path)
     #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
