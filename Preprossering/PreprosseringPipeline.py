@@ -237,5 +237,6 @@ if __name__ == "__main__":
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
     #c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
-    feature_vectors_1,labels_1,filenames= c.make_label(max_files=10,quality=[1],is_usable=None,make_spectograms=True,path = path)
+    pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
+    c.make_label(path=pca_path)
     #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
