@@ -1,9 +1,19 @@
-
+from Villads.Load_FeatureVectors import featureVectors
 from Villads.PCA_TSNE_classes import *
+import pickle
 
-feature_vectors_scaled=scale_data(featureVectors)
-pca, pca_features=make_pca(feature_vectors_scaled)
-tsne, tsne_features=make_TSNE(pca_features[:,:1000])
-plot_pca_tsne_2D(tsne_features)
+spectograms_scaled=scale_data(featureVectors)
+pca=make_pca(spectograms_scaled)
+filename='PCA_feature_vectors_1.sav'
+pickle.dump(pca, open(filename, 'wb'))
+#tsne, tsne_features=make_TSNE(pca_features[:,:1000])
+
+
+
+
+
+
+
+
 
 

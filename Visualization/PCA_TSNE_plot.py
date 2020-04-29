@@ -2,8 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
+<<<<<<< HEAD
 data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
 def plot_pca(Xdata,ydata,considered_classes):
+=======
+
+#data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
+def plot_pca(Xdata,ydata,considered_classes, model='PCA'):
+>>>>>>> 672a64102ddd2898f112fa90c48dfffd4ba46b10
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
         le = LabelEncoder()
         ydata = le.fit_transform(ydata)
@@ -23,10 +29,10 @@ def plot_pca(Xdata,ydata,considered_classes):
         indices = np.where(ydata == i)
         plt.scatter(Xdata[indices, 0], Xdata[indices, 1], color=cdict[i], label=label_dict[i])
 
-        plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
+        #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
 
     plt.legend(loc='best')
-    plt.title('PCA 2D of activation')
+    plt.title(model+'2D of activation')
     plt.show()
 
 # plot_pca(data[0:100,:],np.random.randint(0,10,100),np.arange(0,10))

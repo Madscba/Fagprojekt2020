@@ -17,16 +17,22 @@ from skimage.transform import resize
 
 # Import David functions
 from Preprossering.loadData import jsonLoad
-
+import re
 
 
 class preprossingPipeline:
-    def __init__(self,mac=False,BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG"):
+    def __init__(self,BC_datapath,resize=True,filters={"lpfq": 1, "hpfq": 40, "notchfq": 50},mac=False):
         """
         args BC datapath: your local path to bc dataset.
+        mac: set true if you are using a mac
+        args BC datapath: your local path to bc dataset: 
+        resize: bool if true rezise spectrogram to 224*224
+        filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
         """
         Wdir=os.getcwd()
         self.dataDir =BC_datapath
+        self.filters=filters
+        self.resized=resize
         if mac:
             jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
             print(jsonDir)
@@ -67,7 +73,7 @@ class preprossingPipeline:
         return edfDict
 
     # pre-processing pipeline single file
-    def filter(self,EEGseries=None):
+    def filter(self,EEGseries=None, lpfq=1, hpfq=40, notchfq=50):
         """
         Credit david.
         Original name pipeline
@@ -75,22 +81,20 @@ class preprossingPipeline:
         # EEGseries.plot
         EEGseries.set_montage(mne.channels.read_montage(kind='easycap-M1', ch_names=EEGseries.ch_names))
         # EEGseries.plot_psd()
-        if "notchfq" in self.filters:
-            EEGseries.notch_filter(freqs=self.filters["notchfq"], notch_widths=5)
+        EEGseries.notch_filter(freqs=notchfq, notch_widths=5)
         # EEGseries.plot_psd()
-        if ("lpfq" in self.filters) and ("hpfq" in self.filters):
-            EEGseries.filter(self.filters["lpfq"],self.filters["hpfq"], fir_design='firwin')
+        EEGseries.filter(lpfq, hpfq, fir_design='firwin')
         EEGseries.set_eeg_reference()
         # EEGseries.plot_sensors(show_names=True)
         return EEGseries
 
-    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120):
+    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=True):
         #Not debygged
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
-            if resized:
+            if self.resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)
@@ -125,6 +129,62 @@ class preprossingPipeline:
         return windowOut
 
 
+def make_label(self, make_spectograms=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
+               path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+    i = 0
+    if quality is not None:
+        label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
+        fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
+    elif is_usable is not None:
+        label_dict = {key: is_usable for key in
+                      self.edfDict.keys() if
+                      self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+        fileNames = list(label_dict.keys())
+    elif make_from_names is not None:
+        label_dict = {key: key for key in make_from_names}
+        fileNames = make_from_names
+
+    else:
+        label_dict = {key: key for key in self.edfDict.keys()}
+        fileNames = list(self.edfDict.keys())
+    np.random.seed(seed)
+    np.random.shuffle(fileNames)
+    filenames = []
+    for filename in fileNames:
+        fv_path = os.path.join(path, filename + '.npy')
+        if i == max_files:
+            break
+        if not os.path.exists(fv_path):
+            pass
+        else:
+            if i == 0:
+                spectogram = np.load(fv_path)
+                if make_spectograms:
+                    spectogram = spectogram.squeeze()
+                spectograms = spectogram
+                labels = spectogram.shape[0] * [label_dict[filename]]
+                filenames.append(filename)
+                i += 1
+            else:
+                spectogram = np.load(fv_path)
+                if make_spectograms:
+                    spectogram = spectogram.squeeze()
+                spectograms = np.vstack((spectograms, spectogram))
+                label = spectogram.shape[0] * [label_dict[filename]]
+                labels = labels + label
+                filenames.append(filename)
+                i += 1
+
+    return spectograms, labels, filenames
+
+
+def plot_spectrogram(windows,win_idx,ch_idx):
+    win_name=windows.keys()[win_idx]
+    ch_name=windows[win_name].keys()
+    plt.plot(windows[win_name][ch_name])
+    plt.show()
+#Debugging
+
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
     windowVec = []
@@ -156,14 +216,9 @@ def getFeatureVec(windowValues,model):
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
 
-def plot_spectrogram(windows,win_idx,ch_idx):
-    plt.imshow(windows[win_idx][ch_idx])
-    plt.show()
-#Debugging
 
-if __name__=="__main__":
-    C=preprossingPipeline(BC_datapath= r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC",filters={"lpfq": 1, "hpfq": 40,"notchfq":50})
-    windows=C.get_spectrogram("sbs2data_2018_09_01_08_04_51_328.edf")
-    win_idx=windows.keys()
-    ch_idx=win_idx
-    plot_spectrogram(windows,"window_0_15360","Fz")
+if __name__ == "__main__":
+
+#C=preprossingPipeline(mac=True)
+    c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+    #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
