@@ -94,7 +94,7 @@ class preprossingPipeline:
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
-            if self.resized:
+            if resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)
@@ -104,7 +104,26 @@ class preprossingPipeline:
 
         return ch_dict
 
+    def plot_window(self,name,win_idx,ch_idx):
+        dataDict=self.readRawEdf(self.edfDict[name])
+        dataDict["cleanData"]=self.filter(dataDict["rawData"])
+        #tN=dataDict["cleanData"].last_samp,
+        tStep=dataDict["tStep"]*dataDict["fS"]
+        sampleWindow = dataDict["tWindow"]*dataDict["fS"]
+        spectrograms=self.spectrogramMake(dataDict["rawData"], t0=win_idx*int(tStep), tWindow=sampleWindow,resized=True)
+        col=5 #Images per row
+        row=np.ceil(len(spectrograms.keys())/col)
+        for i,key in enumerate(spectrograms.keys()):
+            plt.subplot(row,col,i+1)
+            plt.imshow(spectrograms[key])
+            plt.xticks([])
+            plt.yticks([])
+            plt.title(key)
+        plt.show()
 
+
+            
+                
     def slidingWindow(self,edfInfo=None, tN=0, tStep=60, localSave={"sliceSave":False, "saveDir":os.getcwd()}):
         windowEEG = defaultdict(list)
         sampleWindow = edfInfo["tWindow"]*edfInfo["fS"]
@@ -178,12 +197,8 @@ def make_label(self, make_spectograms=False, make_from_names=None, quality=None,
     return spectograms, labels, filenames
 
 
-def plot_spectrogram(windows,win_idx,ch_idx):
-    win_name=windows.keys()[win_idx]
-    ch_name=windows[win_name].keys()
-    plt.plot(windows[win_name][ch_name])
-    plt.show()
-#Debugging
+
+
 
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
@@ -221,4 +236,5 @@ if __name__ == "__main__":
 
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
     #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
