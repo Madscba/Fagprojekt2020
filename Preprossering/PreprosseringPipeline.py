@@ -30,7 +30,7 @@ class preprossingPipeline:
         filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
         """
         Wdir=os.getcwd()
-        self.dataDir =BC_datapath
+        dataDir =BC_datapath
         self.filters=filters
         self.resized=resize
         if mac:
@@ -40,7 +40,7 @@ class preprossingPipeline:
             for key in self.edfDict.keys():
                 self.edfDict[key]['path'][0]=re.sub(r'\\',r'/',self.edfDict[key]['path'][0])
         else:
-            jsonDir = os.path.join(Wdir, r"Preprossering\edfFiles.json")
+            jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
             self.edfDict = jsonLoad(jsonDir)
 
 
@@ -94,7 +94,7 @@ class preprossingPipeline:
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
-            if self.resized:
+            if resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)
@@ -104,7 +104,26 @@ class preprossingPipeline:
 
         return ch_dict
 
+    def plot_window(self,name,win_idx,ch_idx):
+        dataDict=self.readRawEdf(self.edfDict[name])
+        dataDict["cleanData"]=self.filter(dataDict["rawData"])
+        #tN=dataDict["cleanData"].last_samp,
+        tStep=dataDict["tStep"]*dataDict["fS"]
+        sampleWindow = dataDict["tWindow"]*dataDict["fS"]
+        spectrograms=self.spectrogramMake(dataDict["rawData"], t0=win_idx*int(tStep), tWindow=sampleWindow,resized=True)
+        col=5 #Images per row
+        row=np.ceil(len(spectrograms.keys())/col)
+        for i,key in enumerate(spectrograms.keys()):
+            plt.subplot(row,col,i+1)
+            plt.imshow(spectrograms[key])
+            plt.xticks([])
+            plt.yticks([])
+            plt.title(key)
+        plt.show()
 
+
+            
+                
     def slidingWindow(self,edfInfo=None, tN=0, tStep=60, localSave={"sliceSave":False, "saveDir":os.getcwd()}):
         windowEEG = defaultdict(list)
         sampleWindow = edfInfo["tWindow"]*edfInfo["fS"]
@@ -130,15 +149,24 @@ class preprossingPipeline:
 
 
     def make_label(self, make_spectograms=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
+<<<<<<< HEAD
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+=======
+                path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+>>>>>>> 1d4ebc892a09f2aba14734bc6e0f26f450f3c0b8
         i = 0
         if quality is not None:
             label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
             fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
         elif is_usable is not None:
             label_dict = {key: is_usable for key in
+<<<<<<< HEAD
                           self.edfDict.keys() if
                           self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+=======
+                        self.edfDict.keys() if
+                        self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+>>>>>>> 1d4ebc892a09f2aba14734bc6e0f26f450f3c0b8
             fileNames = list(label_dict.keys())
         elif make_from_names is not None:
             label_dict = {key: key for key in make_from_names}
@@ -176,14 +204,13 @@ class preprossingPipeline:
                     i += 1
 
         return spectograms, labels, filenames
+<<<<<<< HEAD
+=======
 
 
-def plot_spectrogram(windows,win_idx,ch_idx):
-    win_name=windows.keys()[win_idx]
-    ch_name=windows[win_name].keys()
-    plt.plot(windows[win_name][ch_name])
-    plt.show()
-#Debugging
+>>>>>>> 1d4ebc892a09f2aba14734bc6e0f26f450f3c0b8
+
+
 
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
@@ -221,4 +248,6 @@ if __name__ == "__main__":
 
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+    #c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
+    feature_vectors_1,labels_1,filenames= c.make_label(max_files=10,quality=[1],is_usable=None,make_spectograms=True,path = path)
     #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
