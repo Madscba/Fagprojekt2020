@@ -16,6 +16,7 @@ feature_vectors_1, labels_1, filenames, window_idx= C.make_label(max_files=5,qua
 feature_vectors_9_10, labels_9_10, filenames1, window_idx1= C.make_label(max_files=5,quality=[8,9,10],is_usable=None,path = path,seed=10)
 
 
+
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames1
 labels=labels_1+labels_9_10
