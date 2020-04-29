@@ -18,11 +18,12 @@ for filename in fileNames:
 
             spectogram = np.load(wdir + r'/spectograms_all_ch/' + filename + '.npy')
             spectograms = spectogram
+
         else:
             spectogram = np.load(wdir + r'/spectograms_all_ch/' + filename + '.npy')
             spectograms = np.hstack((spectograms, spectogram))
-        if i==63
-            break
+        i+=1
+
 
 
 

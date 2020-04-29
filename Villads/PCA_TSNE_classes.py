@@ -17,8 +17,7 @@ def make_pca(X, data_transform=None):
         data_transform = X
     pca = PCA()
     pca.fit(X)
-    pca_fit = pca.transform(data_transform)
-    return pca, pca_fit
+    return pca
 
 
 def make_TSNE(X):

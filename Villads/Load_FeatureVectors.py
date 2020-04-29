@@ -8,7 +8,7 @@ C = preprossingPipeline(
 fileNames = C.edfDict.keys()
 i = 0
 #Change wdir to the directory of the folder 'feature_vectors'
-wdir = os.getcwd()
+wdir = '/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt'
 for filename in fileNames:
     if not os.path.exists(wdir + r'/feature_vectors/' + filename+'.npy'):
         pass
