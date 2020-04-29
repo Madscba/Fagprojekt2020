@@ -21,11 +21,18 @@ import re
 
 
 class preprossingPipeline:
+    def __init__(self,BC_datapath,resize=True,filters={"lpfq": 1, "hpfq": 40, "notchfq": 50},mac=False):
         """
         args BC datapath: your local path to bc dataset.
+        mac: set true if you are using a mac
+        args BC datapath: your local path to bc dataset: 
+        resize: bool if true rezise spectrogram to 224*224
+        filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
         """
         Wdir=os.getcwd()
         self.dataDir =BC_datapath
+        self.filters=filters
+        self.resized=resize
         if mac:
             jsonDir = os.path.join(Wdir, r"Preprossering/edfFiles.json")
             print(jsonDir)
@@ -87,7 +94,7 @@ class preprossingPipeline:
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
-            if resized:
+            if self.resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
                 image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)
@@ -209,3 +216,9 @@ def getFeatureVec(windowValues,model):
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
 
+
+if __name__ == "__main__":
+
+#C=preprossingPipeline(mac=True)
+    c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+    #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
