@@ -21,8 +21,6 @@ import re
 
 
 class preprossingPipeline:
-    def __init__(self,mac=False,BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. "
-                                            r"semester/Fagprojekt/BrainCapture/dataEEG"):
         """
         args BC datapath: your local path to bc dataset.
         """
