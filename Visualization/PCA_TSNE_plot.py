@@ -2,18 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
-<<<<<<< HEAD
 data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca(Xdata,ydata,considered_classes):
-=======
 
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-<<<<<<< HEAD
 def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA'):
-=======
-def plot_pca(Xdata,ydata,considered_classes, model='PCA'):
->>>>>>> 672a64102ddd2898f112fa90c48dfffd4ba46b10
->>>>>>> 29770884eb809827712313893d058ef89aafed24
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
         le = LabelEncoder()
         ydata = le.fit_transform(ydata)
@@ -31,7 +23,7 @@ def plot_pca(Xdata,ydata,considered_classes, model='PCA'):
     f = plt.figure(figsize=(8,8))
     for i in range(n_label):
         indices = np.where(ydata == i)
-        plt.scatter(Xdata[indices, 0], Xdata[indices, 1], color=cdict[i], label=label_dict[i])
+        plt.scatter(Xdata[indices, pca_components[0]], Xdata[indices, pca_components[1]], color=cdict[i], label=label_dict[i])
         
         #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
     plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
