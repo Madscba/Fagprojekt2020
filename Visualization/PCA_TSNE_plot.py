@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 
-
 data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
 def plot_pca(Xdata,ydata,considered_classes):
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
@@ -32,6 +31,6 @@ def plot_pca(Xdata,ydata,considered_classes):
 
 # plot_pca(data[0:100,:],np.random.randint(0,10,100),np.arange(0,10))
 #plot_pca(data[0:100,:],['a','b','c','a','b','c','a','b','c','d']*10,np.arange(0,4))
-#plot_pca(data[0:100,:],[True,False]*50,np.arange(0,2))
+plot_pca(data[0:100,:],[True,False]*50,np.arange(0,2))
 
 
