@@ -19,15 +19,16 @@ def plot_pca(Xdata,ydata,considered_classes, model='PCA'):
     label_dict = {i: considered_classes[i] for i in range(n_label)}
 
 
-    f = plt.figure(figsize=(10,10))
+    f = plt.figure(figsize=(8,8))
     for i in range(n_label):
         indices = np.where(ydata == i)
-        plt.scatter(Xdata[indices, 0], Xdata[indices, 1], color=cdict[i], label=label_dict[i])
-
+        plt.scatter(Xdata[indices, pca_components[0]], Xdata[indices, pca_components[1]], color=cdict[i], label=label_dict[i])
+        
         #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
-
+    plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
+    plt.ylabel('PC {:d} '.format(int(pca_components[1])+1))
     plt.legend(loc='best')
-    plt.title(model+'2D of activation')
+    plt.title(model)
     plt.show()
 
 # plot_pca(data[0:100,:],np.random.randint(0,10,100),np.arange(0,10))

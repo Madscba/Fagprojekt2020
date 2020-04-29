@@ -9,6 +9,7 @@ C=preprossingPipeline(mac=True)
 
 feature_vectors_1,labels_1,filenames= C.make_label(max_files=5,quality=[1],is_usable=None,make_spectograms=True,path = path)
 feature_vectors_9_10,labels_9_10, filenames1= C.make_label(max_files=5,quality=[9,10],is_usable=None,make_spectograms=True,path = path)
+
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames1
 labels=labels_1+labels_9_10
