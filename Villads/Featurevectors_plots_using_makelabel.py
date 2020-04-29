@@ -3,12 +3,18 @@ from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Villads.PCA_TSNE_classes import scale_data
 from Visualization.PCA_TSNE_plot import plot_pca
 import numpy as np
+import pickle
+import os
 
-path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG'
-C=preprossingPipeline(BC_datapath=,mac=True)
+path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/'
+C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
+path_pca='/Users/villadsstokbro/Dokumenter/DTU/GitHub/Fagprojekt2020/Fagprojekt2020/Villads/PCA_feature_vectors_1.sav'
+#path_pca='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/PCA:TSNE/PCA.sav'
+pca = pickle.load(open(path_pca, 'rb'))
 
-feature_vectors_1,labels_1,filenames= C.make_label(max_files=5,quality=[1],is_usable=None,make_spectograms=False,path = path)
-feature_vectors_9_10,labels_9_10, filenames1= C.make_label(max_files=5,quality=[9,10],is_usable=None,make_spectograms=True,path = path)
+feature_vectors_1,labels_1,filenames= C.make_label(max_files=5,quality=[1],is_usable=None,make_spectograms=False,path = path,seed=10)
+feature_vectors_9_10,labels_9_10, filenames1= C.make_label(max_files=5,quality=[8,9,10],is_usable=None,make_spectograms=True,path = path,seed=10)
+
 
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames1
