@@ -121,50 +121,54 @@ class preprossingPipeline:
             windowOut = None
         return windowOut
 
-    def make_label(self,make_spectograms=False,make_from_names=None, quality=None, is_usable =None, max_files=10, path = '/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/',seed=0):
-        i=0
-        if quality is not None:
-            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
-            fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
-        elif is_usable is not None:
-            label_dict = {key: is_usable for key in
-                            self.edfDict.keys() if self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable }
-            fileNames = list(label_dict.keys())
-        elif make_from_names is not None:
-            label_dict = {key:key for key in make_from_names}
-            fileNames = make_from_names
 
+def make_label(self, make_spectograms=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
+               path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+    i = 0
+    if quality is not None:
+        label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
+        fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
+    elif is_usable is not None:
+        label_dict = {key: is_usable for key in
+                      self.edfDict.keys() if
+                      self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+        fileNames = list(label_dict.keys())
+    elif make_from_names is not None:
+        label_dict = {key: key for key in make_from_names}
+        fileNames = make_from_names
+
+    else:
+        label_dict = {key: key for key in self.edfDict.keys()}
+        fileNames = list(self.edfDict.keys())
+    np.random.seed(seed)
+    np.random.shuffle(fileNames)
+    filenames = []
+    for filename in fileNames:
+        fv_path = os.path.join(path, filename + '.npy')
+        if i == max_files:
+            break
+        if not os.path.exists(fv_path):
+            pass
         else:
-            label_dict={key:key for key in self.edfDict.keys()}
-            fileNames = list(self.edfDict.keys())
-        np.random.seed(seed)
-        np.random.shuffle(fileNames)
-        filenames=[]
-        for filename in fileNames:
-            if i==max_files:
-                break
-            if not os.path.exists(path+filename + '.npy'):
-                pass
+            if i == 0:
+                spectogram = np.load(fv_path)
+                if make_spectograms:
+                    spectogram = spectogram.squeeze()
+                spectograms = spectogram
+                labels = spectogram.shape[0] * [label_dict[filename]]
+                filenames.append(filename)
+                i += 1
             else:
-                if i == 0:
-                    spectogram = np.load(path+filename + '.npy')
-                    if make_spectograms:
-                        spectogram=spectogram.squeeze()
-                    spectograms = spectogram
-                    labels = spectogram.shape[0]*[label_dict[filename]]
-                    filenames.append(filename)
-                    i+=1
-                else:
-                    spectogram = np.load(path + filename + '.npy')
-                    if make_spectograms:
-                        spectogram=spectogram.squeeze()
-                    spectograms = np.vstack((spectograms, spectogram))
-                    label=spectogram.shape[0]*[label_dict[filename]]
-                    labels=labels+label
-                    filenames.append(filename)
-                    i+= 1
+                spectogram = np.load(fv_path)
+                if make_spectograms:
+                    spectogram = spectogram.squeeze()
+                spectograms = np.vstack((spectograms, spectogram))
+                label = spectogram.shape[0] * [label_dict[filename]]
+                labels = labels + label
+                filenames.append(filename)
+                i += 1
 
-        return spectograms, labels, filenames
+    return spectograms, labels, filenames
 
 
 def plot_spectrogram(windows,win_idx,ch_idx):
