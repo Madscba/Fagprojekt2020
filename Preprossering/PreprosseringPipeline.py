@@ -30,7 +30,7 @@ class preprossingPipeline:
         filters: dict: with index "lpfq": , "hpfq":, "notchfq": if and idex is missing the filter will not be applied
         """
         Wdir=os.getcwd()
-        dataDir =BC_datapath
+        self.dataDir =BC_datapath
         self.filters=filters
         self.resized=resize
         if mac:
@@ -104,7 +104,10 @@ class preprossingPipeline:
 
         return ch_dict
 
-    def plot_window(self,name,win_idx,ch_idx):
+    def plot_window(self,name,win_idx):
+        """
+        takes name of file (str), the window index (int). Makes a spectrogram for all channels in the window 
+        """
         dataDict=self.readRawEdf(self.edfDict[name])
         dataDict["cleanData"]=self.filter(dataDict["rawData"])
         #tN=dataDict["cleanData"].last_samp,
@@ -150,6 +153,9 @@ class preprossingPipeline:
 
     def make_label(self, make_from_names=None, quality=None, is_usable=None, max_files=10,
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
+        """
+        Lavet at villads 
+        """
         i = 0
         if quality is not None:
             label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
@@ -234,7 +240,8 @@ if __name__ == "__main__":
 
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
-    #c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,1)
-    pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
-    c.make_label(path=pca_path)
+    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1)
+
+    #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
+    #c.make_label(path=pca_path)
     #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
