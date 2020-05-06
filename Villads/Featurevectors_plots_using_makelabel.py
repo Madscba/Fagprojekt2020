@@ -13,22 +13,22 @@ path_pca='/Users/villadsstokbro/Dokumenter/DTU/GitHub/Fagprojekt2020/Fagprojekt2
 pca = pickle.load(open(path_pca, 'rb'))
 
 feature_vectors_1, labels_1, filenames, window_idx= C.make_label(max_files=5,quality=[1],is_usable=None,path = path,seed=10)
-feature_vectors_9_10, labels_9_10, filenames1, window_idx1= C.make_label(max_files=5,quality=[8,9,10],is_usable=None,path = path,seed=10)
+feature_vectors_9_10, labels_9_10, filenames1, window_idx1= C.make_label(max_files=5,quality=[9,10],is_usable=None,path = path,seed=10)
 
-
+print('hej')
 
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames1
 labels=labels_1+labels_9_10
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels),plot_extremes=True,pca_components=[0,2])
+plot_pca(pca_vectors,labels,np.unique(labels),plot_extremes=[-100,100,-100,100],pca_components=[0,1])
 
 
 feature_vectors,labels, _,_= C.make_label(max_files=100,make_from_names=filenames,path = path)
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels),pca_components=[0,2],plot_extremes=True)
+plot_pca(pca_vectors,labels,np.unique(labels),pca_components=[0,1],plot_extremes=[-100,100,-100,100])
 
 
 
