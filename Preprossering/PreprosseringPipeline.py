@@ -173,13 +173,15 @@ class preprossingPipeline:
         """
         Lavet at villads 
         """
+        edfDict_keys=list(self.edfDict.keys())
+        edfDict_keys.sort()
         i = 0
         if quality is not None:
-            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
-            fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
+            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in edfDict_keys}
+            fileNames = [key for key in edfDict_keys if np.any(int(label_dict[key]) == np.array(quality))]
         elif is_usable is not None:
             label_dict = {key: is_usable for key in
-                          self.edfDict.keys() if
+                          edfDict_keys if
                           self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
             fileNames = list(label_dict.keys())
         elif make_from_names is not None:
@@ -187,8 +189,9 @@ class preprossingPipeline:
             fileNames = make_from_names
 
         else:
-            label_dict = {key: key for key in self.edfDict.keys()}
-            fileNames = list(self.edfDict.keys())
+            label_dict = {key: key for key in edfDict_keys}
+            fileNames = list(edfDict_keys)
+
         np.random.seed(seed)
         np.random.shuffle(fileNames)
         filenames = []
@@ -217,14 +220,7 @@ class preprossingPipeline:
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
-        if make_pca is not False:
-            if make_spectograms==True:
-                path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_spectograms.sav')
-            else:
-                path_pca=os.path.join(os.getcwd(),'Villads','PCA_feature_vectors_1.sav')
-            pca = pickle.load(open(path_pca, 'rb'))
-            windows=scale_data(windows)
-            windows=pca.transform(windows)
+
 
 
         return windows, labels, filenames, window_idx_full
@@ -260,6 +256,17 @@ def getFeatureVec(windowValues,model):
         else:
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
+
+
+def make_pca(windows,make_spectograms=False):
+    if make_spectograms:
+        path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_spectograms.sav')
+    else:
+        path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_feature_vectors_1.sav')
+    pca = pickle.load(open(path_pca, 'rb'))
+    windows = scale_data(windows)
+    windows = pca.transform(windows)
+    return windows
 
 
 if __name__ == "__main__":
