@@ -78,14 +78,14 @@ class preprossingPipeline:
         Credit david.
         Original name pipeline
         """
-        # EEGseries.plot
+        #EEGseries.plot()
         EEGseries.set_montage(mne.channels.read_montage(kind='easycap-M1', ch_names=EEGseries.ch_names))
         # EEGseries.plot_psd()
         EEGseries.notch_filter(freqs=notchfq, notch_widths=5)
         # EEGseries.plot_psd()
         EEGseries.filter(lpfq, hpfq, fir_design='firwin')
         EEGseries.set_eeg_reference()
-        # EEGseries.plot_sensors(show_names=True)
+        #EEGseries.plot_sensors(show_names=True)
         return EEGseries
 
     def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=True):
