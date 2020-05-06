@@ -14,6 +14,8 @@ import numpy as np
 from mne.io import read_raw_edf
 from scipy import signal
 from skimage.transform import resize
+from Villads.PCA_TSNE_classes import scale_data
+import pickle
 
 # Import David functions
 from Preprossering.loadData import jsonLoad
@@ -151,7 +153,7 @@ class preprossingPipeline:
         return windowOut
 
 
-    def make_label(self, make_from_names=None, quality=None, is_usable=None, max_files=10,
+    def make_label(self, make_spectograms=False,make_pca=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
         """
         Lavet at villads 
@@ -183,25 +185,34 @@ class preprossingPipeline:
                 pass
             else:
                 if i == 0:
-                    spectogram = np.load(fv_path)
-                    spectogram = spectogram.squeeze()
-                    spectograms = spectogram
-                    window_idx_full=[(filename,idx) for idx in range(spectogram.shape[0])]
-                    labels = spectogram.shape[0] * [label_dict[filename]]
+                    window = np.load(fv_path)
+                    window = window.squeeze()
+                    windows = window
+                    window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
+                    labels = window.shape[0] * [label_dict[filename]]
                     filenames.append(filename)
                     i += 1
                 else:
-                    spectogram = np.load(fv_path)
-                    spectogram = spectogram.squeeze()
-                    spectograms = np.vstack((spectograms, spectogram))
-                    window_idx=[(filename,idx) for idx in range(spectogram.shape[0])]
+                    window = np.load(fv_path)
+                    window = window.squeeze()
+                    windows = np.vstack((windows, window))
+                    window_idx=[(filename,idx) for idx in range(window.shape[0])]
                     window_idx_full =window_idx_full+window_idx
-                    label = spectogram.shape[0] * [label_dict[filename]]
+                    label = window.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
+        if make_pca is not False:
+            if make_spectograms==True:
+                path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_spectograms.sav')
+            else:
+                path_pca=os.path.join(os.getcwd(),'Villads','PCA_feature_vectors_1.sav')
+            pca = pickle.load(open(path_pca, 'rb'))
+            windows=scale_data(windows)
+            windows=pca.transform(windows)
 
-        return spectograms, labels, filenames, window_idx_full
+
+        return windows, labels, filenames, window_idx_full
 
 
 def getFeatureVecWholeFile(filePath):
@@ -238,7 +249,6 @@ def getFeatureVec(windowValues,model):
 
 if __name__ == "__main__":
 
-#C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
     c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1)
 
