@@ -8,7 +8,8 @@ def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA',pl
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
         le = LabelEncoder()
         ydata = le.fit_transform(ydata)
-    elif type(ydata[0]==bool): #If ydata is an array of categorical boolean values, convert them into numerical categorical values
+    elif type(ydata[0]==bool):
+        #If ydata is an array of categorical boolean values, convert them into numerical categorical values
         ydata = np.multiply(ydata, 1)
 
     n_label = len(considered_classes)
@@ -40,8 +41,8 @@ def plot_pca_interactiv(Xdata,ydata,considered_classes, model='PCA'):
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
             le = LabelEncoder()
             ydata = le.fit_transform(ydata)
-        elif type(ydata[0]==bool): #If ydata is an array of categorical boolean values, convert them into numerical categorical values
-            ydata = np.multiply(ydata, 1)
+    elif type(ydata[0]==bool): #If ydata is an array of categorical boolean values, convert them into numerical categorical values
+        ydata = np.multiply(ydata, 1)
 
         n_label = len(considered_classes)
         colors =  plt.cm.rainbow(np.linspace(0, 1, n_label))
