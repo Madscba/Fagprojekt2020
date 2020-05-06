@@ -17,26 +17,13 @@ pca_vectors=make_pca(feature_vectors,make_spectograms=True)
 plot_pca(pca_vectors,labels,np.unique(labels))
 
 
-feature_vectors,labels, _,_= C.make_label(max_files=100,make_from_names=filenames,path = path,make_spectograms=True)
+feature_vectors,labels, _,_= C.make_label(max_files=100, make_from_filenames=filenames, path = path, make_spectograms=True)
 scaled_feature_vectors=scale_data(feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
 plot_pca(pca_vectors,labels,np.unique(labels))
 
 
 
-feature_vectors_1,labels_1,filenames= C.make_label(max_files=5,is_usable='Yes',path = path, make_spectograms=True)
-feature_vectors_9_10,labels_9_10, filenames1= C.make_label(max_files=5,is_usable='No',make_spectograms=True,path = path)
-feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
-filenames=filenames+filenames1
-labels=labels_1+labels_9_10
-scaled_feature_vectors=scale_data(feature_vectors)
-pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
-
-feature_vectors,labels, _= C.make_label(max_files=100,make_from_names=filenames,path = path,make_spectograms=True)
-scaled_feature_vectors=scale_data(feature_vectors)
-pca_vectors=pca.transform(scaled_feature_vectors)
-plot_pca(pca_vectors,labels,np.unique(labels))
 
 
 
