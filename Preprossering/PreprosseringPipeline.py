@@ -104,25 +104,40 @@ class preprossingPipeline:
 
         return ch_dict
 
-    def plot_window(self,name,win_idx):
+    def plot_window(self,name,win_idx,type="spec",plot=True):
         """
-        takes name of file (str), the window index (int). Makes a spectrogram for all channels in the window 
+        ARGS:\\
+        name: str name of file\\
+        window_idx: int: index of window\\
+        type: str: spec og EEG\\
+        plot: bool if true plot, else returns values NOT implementet 
         """
         dataDict=self.readRawEdf(self.edfDict[name])
-        dataDict["cleanData"]=self.filter(dataDict["rawData"])
+        EEGserie=self.filter(dataDict["rawData"])
         #tN=dataDict["cleanData"].last_samp,
         tStep=dataDict["tStep"]*dataDict["fS"]
-        sampleWindow = dataDict["tWindow"]*dataDict["fS"]
-        spectrograms=self.spectrogramMake(dataDict["rawData"], t0=win_idx*int(tStep), tWindow=sampleWindow,resized=True)
-        col=5 #Images per row
-        row=np.ceil(len(spectrograms.keys())/col)
-        for i,key in enumerate(spectrograms.keys()):
-            plt.subplot(row,col,i+1)
-            plt.imshow(spectrograms[key])
-            plt.xticks([])
-            plt.yticks([])
-            plt.title(key)
-        plt.show()
+
+
+        
+        if type=="spec":
+            sampleWindow = dataDict["tWindow"]*dataDict["fS"]
+            t0=win_idx*int(tStep)
+            spectrograms=self.spectrogramMake(EEGserie, t0=t0, tWindow=sampleWindow,resized=True)
+            col=5 #Images per row
+            row=np.ceil(len(spectrograms.keys())/col)
+            for i,key in enumerate(spectrograms.keys()):
+                plt.subplot(row,col,i+1)
+                plt.imshow(spectrograms[key])
+                plt.xticks([])
+                plt.yticks([])
+                plt.title(key)
+            
+            plt.show()
+        elif type=="EEG":
+            fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
+            fig.show()
+        else:
+            raise ("type not specified, use Spec or EEG")
 
 
             
@@ -240,7 +255,7 @@ if __name__ == "__main__":
 
 #C=preprossingPipeline(mac=True)
     c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
-    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1)
+    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,type="EEG")
 
     #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
     #c.make_label(path=pca_path)
