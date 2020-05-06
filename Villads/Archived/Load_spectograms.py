@@ -10,6 +10,7 @@ i = 0
 #Change wdir to the directory of the folder 'feature_vectors'
 wdir = '/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt'
 for filename in fileNames:
+
     if not os.path.exists(wdir + r'/spectograms_all_ch/' + filename+'.npy'):
         pass
     else:
@@ -23,6 +24,7 @@ for filename in fileNames:
             spectogram = np.load(wdir + r'/spectograms_all_ch/' + filename + '.npy')
             spectograms = np.hstack((spectograms, spectogram))
         i+=1
+
 
 
 
