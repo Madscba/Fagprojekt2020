@@ -168,27 +168,47 @@ class preprossingPipeline:
         return windowOut
 
 
-    def make_label(self, make_spectograms=False,make_pca=False, make_from_names=None, quality=None, is_usable=None, max_files=10,
+    def make_label(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10,
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
         """
-        Lavet at villads 
+        Funktion til at retunere labels på udvalgte EEG-recordings, det kan både være på spectogrammer
+        eller feature vectors.
+        Args:
+            make_from_filenames: if not none, list of strings including the names of the files
+                            you want to include
+            quality: if not none, list of integers including the quality_scores you want to include
+            is_usable: if not none, either 'Yes' or 'No'
+            max_files: maximum number of files to include
+            path: local path to folder containing either spectograms of feature vectors
+            seed: to make reproduction possible
+        Output:
+            Windows: array of windows, dimension_0=window, dimension_1=values for spectograms or
+                    feature vectors
+            labels: list of strings containg labels for each window
+            filenames: the filenames included
+            window_idx_full: list of tuples, with the first index corresponding to the first
+                             window. Tuple contains name of the i'th window and the window idx for
+                             for that recording
         """
+        edfDict_keys=list(self.edfDict.keys())
+        edfDict_keys.sort()
         i = 0
         if quality is not None:
-            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in self.edfDict.keys()}
-            fileNames = [key for key in self.edfDict.keys() if np.any(int(label_dict[key]) == np.array(quality))]
+            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in edfDict_keys}
+            fileNames = [key for key in edfDict_keys if np.any(int(label_dict[key]) == np.array(quality))]
         elif is_usable is not None:
             label_dict = {key: is_usable for key in
-                          self.edfDict.keys() if
+                          edfDict_keys if
                           self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
             fileNames = list(label_dict.keys())
-        elif make_from_names is not None:
-            label_dict = {key: key for key in make_from_names}
-            fileNames = make_from_names
+        elif make_from_filenames is not None:
+            label_dict = {key: key for key in make_from_filenames}
+            fileNames = make_from_filenames
 
         else:
-            label_dict = {key: key for key in self.edfDict.keys()}
-            fileNames = list(self.edfDict.keys())
+            label_dict = {key: key for key in edfDict_keys}
+            fileNames = list(edfDict_keys)
+
         np.random.seed(seed)
         np.random.shuffle(fileNames)
         filenames = []
@@ -217,14 +237,7 @@ class preprossingPipeline:
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
-        if make_pca is not False:
-            if make_spectograms==True:
-                path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_spectograms.sav')
-            else:
-                path_pca=os.path.join(os.getcwd(),'Villads','PCA_feature_vectors_1.sav')
-            pca = pickle.load(open(path_pca, 'rb'))
-            windows=scale_data(windows)
-            windows=pca.transform(windows)
+
 
 
         return windows, labels, filenames, window_idx_full
@@ -260,6 +273,17 @@ def getFeatureVec(windowValues,model):
         else:
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
+
+
+def make_pca(windows,make_spectograms=False):
+    if make_spectograms:
+        path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_spectograms.sav')
+    else:
+        path_pca = os.path.join(os.getcwd(), 'Villads', 'PCA_feature_vectors_1.sav')
+    pca = pickle.load(open(path_pca, 'rb'))
+    windows = scale_data(windows)
+    windows = pca.transform(windows)
+    return windows
 
 
 if __name__ == "__main__":
