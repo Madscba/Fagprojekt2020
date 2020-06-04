@@ -7,7 +7,7 @@ import mne
 import os
 import torch
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime,timedelta
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -65,10 +65,10 @@ class preprossingPipeline:
 
     def readRawEdf(self,edfDict=None, read_raw_edf_param={'preload':True, 'stim_channel':'auto'}, tWindow=120, tStep=30):
         edfDict["rawData"] = read_raw_edf(os.path.join(self.dataDir,edfDict["path"][0]), **read_raw_edf_param)
-        tStart = edfDict["rawData"].annotations.orig_time - 60*60
+        tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
         tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
-        edfDict["t0"] = datetime.fromtimestamp(tStart)
-        edfDict["tN"] = datetime.fromtimestamp(tStart + tLast),
+        edfDict["t0"] = tStart
+        edfDict["tN"] = tStart + timedelta(seconds=tLast)
         edfDict["tWindow"] = tWindow
         edfDict["tStep"] = tStep
         edfDict["fS"] = edfDict["rawData"].info["sfreq"]
@@ -80,11 +80,11 @@ class preprossingPipeline:
         Credit david.
         Original name pipeline
         """
-        #EEGseries.plot()
-        EEGseries.set_montage(mne.channels.read_montage(kind='easycap-M1', ch_names=EEGseries.ch_names))
-        # EEGseries.plot_psd()
+       # EEGseries.plot()
+        EEGseries.set_montage(mne.channels.make_standard_montage(kind='easycap-M1', head_size=0.095))
+        #EEGseries.plot_psd()
         EEGseries.notch_filter(freqs=notchfq, notch_widths=5)
-        # EEGseries.plot_psd()
+        #EEGseries.plot_psd()
         EEGseries.filter(lpfq, hpfq, fir_design='firwin')
         EEGseries.set_eeg_reference()
         #EEGseries.plot_sensors(show_names=True)
@@ -288,7 +288,7 @@ def make_pca(windows,make_spectograms=False):
 
 if __name__ == "__main__":
 
-    c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+    c=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
     c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,type="EEG")
 
     #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
