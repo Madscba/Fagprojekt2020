@@ -4,7 +4,7 @@ import numpy as np
 
 ##Load data (Featurevectors)
 
-test = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
+test = np.load(r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
 pass
 
 
