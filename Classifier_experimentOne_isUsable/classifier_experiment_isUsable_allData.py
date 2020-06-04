@@ -1,67 +1,43 @@
 ##Mads Christian
-
-#######################################################
-###########- Load data (Featurevectors)################
-#######################################################
 import numpy as np
+from sklearn import model_selection
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
 import os
 random.seed(42)
 
-# text_file = open("filenames.txt", "r")
-# lines = text_file.readlines()
-# text_file.close()
+text_file = open("filenames.txt", "r")
+x = text_file.read().splitlines() #Read 126 files, first 100 is usable, the next 26 is not usable
+text_file.close()
 
+text_file = open("isUsable.txt", "r")
+y = text_file.read().splitlines() #Read 126 files, first 100 is usable, the next 26 is not usable
+text_file.close()
 
-
+K = 5
+CV = model_selection.KFold(n_splits=K, shuffle=True)
 
 C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
 path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
-N=126
-feature_vectors_is_usable,labels_is_usable,filenames_is_usable,_= C.make_label(make_from_filenames=False,quality=None,max_files=N,is_usable="Yes",path = path) #18 files = 2144
-feature_vectors_not_usable,labels_not_usable,filenames_not_usable,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,path = path) #18 files = 1997
-
-l1 = np.append(np.repeat('Yes',len(filenames_is_usable)),np.repeat('No',len(filenames_not_usable)))
-f=open('isUsable.txt','w')
-for ele in l1:
-    f.write(ele+'\n')
-f.close()
-# x_train_feature = np.vstack((feature_vectors_is_usable[:2144,:],feature_vectors_not_usable[:1997,:]))
-# y_train_feature = np.hstack((labels__is_usable[:2144],labels_not_usable[:1997]))
-#
-# x_test_feature = np.vstack((feature_vectors_is_usable[2144:,:],feature_vectors_not_usable[1997:,:]))
-# y_test_feature = np.hstack((labels__is_usable[2144:],labels_not_usable[1997:]))
-#
-# #Free some memory
-# del feature_vectors_is_usable
-# del feature_vectors_not_usable
-# del labels__is_usable
-# del labels_not_usable
-# #
-# results_feature = tryNewDiv(x_train_feature,y_train_feature,5,x_test_feature,y_test_feature)
-# np.save(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt',results_feature,True)
-# #
-# del x_train_feature
-# del y_train_feature
-# del x_test_feature
-# del y_test_feature
-
 path_spec = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Spektrograms'
 
-spectrogram_is_usable,labels_is_usable_spec,_,_= C.make_label(make_from_filenames=filenames_is_usable,quality=None,is_usable="Yes",max_files=N,path = path) #18 files = 2074
-spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=filenames_not_usable,quality=None,is_usable='No',max_files=N ,path = path) #18 files = 1926
+N=126
+for (train_index, test_index) in CV.split(x,y):
+    x_train = list(x[i] for i in train_index)
+    x_test = list(x[i] for i in test_index)
 
 
-x_train_spec =np.vstack((spectrogram_is_usable[:2074,:],spectrogram_not_usable[:1926,:]))
-y_train_spec = np.hstack((labels_is_usable_spec[:2074],labels_not_usable_spec[:1926]))
+    feature_vectors_train,feature_vectors_labels_train,_,_= C.make_label(make_from_filenames=x_train,quality=None,is_usable=None,max_files=N,path = path) #18 files = 2144
+    spectrograms_train,spectrogram_labels_train, _, _ = C.make_label(make_from_filenames=x_train,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
 
-x_test_spec = np.vstack((spectrogram_is_usable[2074:,:],spectrogram_not_usable[1926:,:]))
-y_test_spec = np.hstack((labels_is_usable_spec[2074:],labels_not_usable_spec[1926:]))
+    feature_vectors_test,feature_vectors_labels_test,_,_= C.make_label(make_from_filenames=x_test,quality=None,is_usable=None,max_files=N,path = path) #18 files = 2144
+    spectrograms_test,spectrogram_labels_test, _, _ = C.make_label(make_from_filenames=x_test,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
 
-results_spec = tryNewDiv(x_train_spec,y_train_spec,5,x_test_spec,y_test_spec)
-np.save(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt',results_spec,True)
+    results_feature = tryNewDiv(feature_vectors_train,feature_vectors_labels_train,5,feature_vectors_test,feature_vectors_labels_test)
+    results_spec = tryNewDiv(spectrograms_train,spectrogram_labels_train,5,spectrograms_test,spectrogram_labels_test)
+    # np.save(r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Fagprojekt2020\Classifier_experimentOne_isUsable',results_spec,True)
+    # np.save(r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Fagprojekt2020\Classifier_experimentOne_isUsable', results_feature, True)
 
 # spec_is_usable_train = np.array([])
 # spec_not_usable_train = np.array([])

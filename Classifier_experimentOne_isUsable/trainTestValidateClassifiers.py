@@ -18,7 +18,6 @@ def getClassifierAccuracies(x,y,k,x_test,y_test):
     x = preprocessing.scale(x)
     #x = np.round(x,4)
 
-    #100 for leave one out.
     K = 5
     CV = model_selection.KFold(n_splits=K,shuffle=True)
     #random_state = 12
@@ -53,7 +52,7 @@ def getClassifierAccuracies(x,y,k,x_test,y_test):
         y_true = np.append(y_true,y_test)
 
         LDA = LinearDiscriminantAnalysis()
-        LDA.fit(X, y)
+        LDA.fit(x, y)
         LDA_predict = np.append(LDA_predict,LDA.predict(x_test))
 
         #support vector machine
@@ -134,10 +133,10 @@ def tryNewDiv(x,y,k,x_test,y_test):
     m_DecisionTree.fit(x_train, y_train)
     DecisionTree_predict = np.append(DecisionTree_predict, m_DecisionTree.predict(x_test))
     print("DT done",np.mean(y_true == DecisionTree_predict))
-    clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20, 20, 20, 10), random_state=1)
-    clf.fit(x_train, y_train)
-    clf_predict = np.append(clf_predict, clf.predict(x_test))
-    print("neural done",np.mean(y_true == clf_predict))
+    # clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20, 20, 20, 10), random_state=1)
+    # clf.fit(x_train, y_train)
+    # clf_predict = np.append(clf_predict, clf.predict(x_test))
+    # print("neural done",np.mean(y_true == clf_predict))
     m_gaus = GaussianNB()
     m_gaus.fit(x_train, y_train)
     GNB_predict = np.append(GNB_predict, m_gaus.predict(x_test))
@@ -150,7 +149,7 @@ def tryNewDiv(x,y,k,x_test,y_test):
     print("svm_acc:", np.mean(y_true == svm_predict))
     print("LDA:", np.mean(y_true == LDA_predict))
     print("Dec:", np.mean(y_true == DecisionTree_predict))
-    print("MLP:", np.mean(y_true == clf_predict))
+    # print("MLP:", np.mean(y_true == clf_predict))
     print("GNB:", np.mean(y_true == GNB_predict))
     print("RandForest:", np.mean(y_true == RF_predict))
-    return [np.mean(y_true == svm_predict),np.mean(y_true == LDA_predict),np.mean(y_true == DecisionTree_predict),np.mean(y_true == clf_predict),np.mean(y_true == RF_predict)]
+    return [np.mean(y_true == svm_predict),np.mean(y_true == LDA_predict),np.mean(y_true == DecisionTree_predict),np.mean(y_true == RF_predict)]
