@@ -81,8 +81,8 @@ C = preprossingPipeline(
 
 path_spec = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Spektrograms'
 N=10
-spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_names=True,quality=None,is_usable="Yes",max_files=N,path = path_spec) #18 files = 2074
-spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_names=True,quality=None,is_usable='No',max_files=N ,path = path_spec) #18 files = 1926
+spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable="Yes",max_files=N,path = path_spec) #18 files = 2074
+spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,path = path_spec) #18 files = 1926
 
 
 x_train = np.vstack((spectrogram_is_usable[:2074,:],spectrogram_not_usable[:1926,:]))
