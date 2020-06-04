@@ -81,10 +81,10 @@ if __name__ == "__main__":
     model_gray.eval()
     model_RGB.eval()
 
-    img2 = fetchImage()
+    #img2 = fetchImage()
 
-    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
-    out2 = model_RGB(img2.unsqueeze_(0).float())
+    #out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
+    #out2 = model_RGB(img2.unsqueeze_(0).float())
 
 
     pass

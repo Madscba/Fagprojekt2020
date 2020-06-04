@@ -8,14 +8,15 @@ import os
 import torch
 from collections import defaultdict
 from datetime import datetime
-
+from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 from mne.io import read_raw_edf
-from scipy import signal
+from scipy import signal, misc
 from skimage.transform import resize
 from Villads.PCA_TSNE_classes import scale_data
 import pickle
+
 
 # Import David functions
 from Preprossering.loadData import jsonLoad
@@ -98,12 +99,11 @@ class preprossingPipeline:
         for i,ch in enumerate(EEGseries.ch_names):
             if resized:
                 _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
-                image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
+                image_resized = resize(im, (224, 224), anti_aliasing = True)
                 ch_dict[ch]=torch.tensor(image_resized)
             else:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
                 ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
-
         return ch_dict
 
     def plot_window(self,name,win_idx):
@@ -247,10 +247,10 @@ def getFeatureVec(windowValues,model):
     return featureVec
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
 
-    c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
-    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1)
+#    c=preprossingPipeline(BC_datapath=r"C:\Users\Andreas\Desktop\KID\Fagproject\Data\BC")
+#    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1)
 
     #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
     #c.make_label(path=pca_path)
