@@ -18,9 +18,13 @@ text_file.close()
 K = 5
 CV = model_selection.KFold(n_splits=K, shuffle=True)
 
-C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
-path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
-path_spec = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Spektrograms'
+#C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
+#path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
+#path_spec = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Spektrograms'
+
+path_spec='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/'
+C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
+path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/'
 
 N=126
 for (train_index, test_index) in CV.split(x,y):
