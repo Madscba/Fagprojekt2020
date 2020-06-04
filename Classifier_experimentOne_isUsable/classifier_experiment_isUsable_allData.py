@@ -29,12 +29,12 @@ for (train_index, test_index) in CV.split(x,y):
 
 
     feature_vectors_train,feature_vectors_labels_train,_,_= C.make_label(make_from_filenames=x_train,quality=None,is_usable=None,max_files=N,path = path) #18 files = 2144
-    spectrograms_train,spectrogram_labels_train, _, _ = C.make_label(make_from_filenames=x_train,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
-
     feature_vectors_test,feature_vectors_labels_test,_,_= C.make_label(make_from_filenames=x_test,quality=None,is_usable=None,max_files=N,path = path) #18 files = 2144
-    spectrograms_test,spectrogram_labels_test, _, _ = C.make_label(make_from_filenames=x_test,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
-
     results_feature = tryNewDiv(feature_vectors_train,feature_vectors_labels_train,5,feature_vectors_test,feature_vectors_labels_test)
+
+
+    spectrograms_test,spectrogram_labels_test, _, _ = C.make_label(make_from_filenames=x_test,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
+    spectrograms_train,spectrogram_labels_train, _, _ = C.make_label(make_from_filenames=x_train,quality=None, is_usable=None, max_files=N,path=path)  # 18 files = 1926
     results_spec = tryNewDiv(spectrograms_train,spectrogram_labels_train,5,spectrograms_test,spectrogram_labels_test)
     # np.save(r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Fagprojekt2020\Classifier_experimentOne_isUsable',results_spec,True)
     # np.save(r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Fagprojekt2020\Classifier_experimentOne_isUsable', results_feature, True)
