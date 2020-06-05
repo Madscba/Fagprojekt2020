@@ -1,12 +1,15 @@
 #!/bin/sh
-#BSUB -q gpuk80
-#BSUB -gpu "num=1"
-#BSUB -J myJob
+#BSUB -J torch_gpu
+#BSUB -o torch_gpu_%J.out
+#BSUB -q gpuv100
+#BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -n 1
-#BSUB -W 10:00
-#BSUB -R "rusage[mem=32GB]"
-#BSUB -o logs/%J.out
-#BSUB -e logs/%J.err
- 
+#BSUB -R "rusage[mem=10G]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 1
+# end of BSUB options
+
 echo "Running script..."
+module load python3
+module load numpy
 python3 hpc_test.py
