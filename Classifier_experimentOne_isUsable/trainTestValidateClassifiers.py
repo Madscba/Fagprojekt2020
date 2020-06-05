@@ -102,8 +102,10 @@ def getClassifierAccuracies(x,y,k,x_test,y_test):
         print("RF:", np.mean(y_true==GNB_predict))
 
         print(np.std(y_true == svm_predict),np.std(y_true == DecisionTree_predict),np.std(y_true==clf_predict),np.std(y_true==GNB_predict))
-
+#TODO make double cross
 def tryNewDiv(x,y,k,x_test,y_test):
+
+
     svm_predict = np.array([])
     LDA_predict = np.array([])
     GNB_predict = np.array([])
