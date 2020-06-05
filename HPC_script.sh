@@ -11,4 +11,4 @@
 
 echo "Running script..."
 module load python3
-python hpc_test.py
+python3 hpc_test.py
