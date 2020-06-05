@@ -11,5 +11,5 @@
 
 echo "Running script..."
 module load python3
-module load numpy
+module load numpy/1.13.1-python-3.6.2-openblas-0.2.20
 python3 hpc_test.py
