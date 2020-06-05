@@ -288,9 +288,3 @@ def make_pca(windows,make_spectograms=False):
 
 if __name__ == "__main__":
 
-    c=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
-    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,type="EEG")
-
-    #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
-    #c.make_label(path=pca_path)
-    #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
