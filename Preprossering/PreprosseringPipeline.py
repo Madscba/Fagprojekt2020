@@ -230,6 +230,9 @@ class preprossingPipeline:
                         else:
                             window_idx_full = [(filename, idx) for idx in range(max_windows)]
                             labels = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx_full = [(filename, idx) for idx in range(window.shape[0])]
+                        labels = window.shape[0] * [label_dict[filename]]
                     filenames.append(filename)
                     i += 1
                 else:
@@ -245,6 +248,10 @@ class preprossingPipeline:
                             window_idx= [(filename, idx) for idx in range(max_windows)]
                             window_idx_full = window_idx_full + window_idx
                             label = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx = [(filename, idx) for idx in range(window.shape[0])]
+                        window_idx_full = window_idx_full + window_idx
+                        label = window.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
