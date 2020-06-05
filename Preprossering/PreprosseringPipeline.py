@@ -65,10 +65,13 @@ class preprossingPipeline:
 
     def readRawEdf(self,edfDict=None, read_raw_edf_param={'preload':True, 'stim_channel':'auto'}, tWindow=120, tStep=30):
         edfDict["rawData"] = read_raw_edf(os.path.join(self.dataDir,edfDict["path"][0]), **read_raw_edf_param)
-        tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
-        tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
-        edfDict["t0"] = tStart
-        edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
+        #comment this out to get meta data on recording time stamps, WARNING will given and error in python 3.7
+        #tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
+        #tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
+        #edfDict["t0"] = tStart
+        #edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
         edfDict["tWindow"] = tWindow
         edfDict["tStep"] = tStep
         edfDict["fS"] = edfDict["rawData"].info["sfreq"]
