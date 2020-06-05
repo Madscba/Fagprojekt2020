@@ -9,4 +9,5 @@
 #BSUB -e logs/%J.err
  
 echo "Running script..."
+module load python3
 python3 hpc_test.py
