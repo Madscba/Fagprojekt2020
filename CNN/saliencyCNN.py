@@ -1,7 +1,7 @@
 from CNN.trainCNN2 import *
 from flashtorch.saliency import Backprop
 import matplotlib.pyplot as plt
-from flashtorch.utils import apply_transforms, denormalize, format_for_plotting, visualize
+from flashtorch.utils import apply_transforms, denormalize, format_for_plotting
 
 
 x1 = x_train[0,:]
