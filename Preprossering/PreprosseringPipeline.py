@@ -65,10 +65,13 @@ class preprossingPipeline:
 
     def readRawEdf(self,edfDict=None, read_raw_edf_param={'preload':True, 'stim_channel':'auto'}, tWindow=120, tStep=30):
         edfDict["rawData"] = read_raw_edf(os.path.join(self.dataDir,edfDict["path"][0]), **read_raw_edf_param)
-        tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
-        tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
-        edfDict["t0"] = tStart
-        edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
+        #comment this out to get meta data on recording time stamps, WARNING will given and error in python 3.7
+        #tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
+        #tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
+        #edfDict["t0"] = tStart
+        #edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
         edfDict["tWindow"] = tWindow
         edfDict["tStep"] = tStep
         edfDict["fS"] = edfDict["rawData"].info["sfreq"]
@@ -168,7 +171,7 @@ class preprossingPipeline:
         return windowOut
 
 
-    def make_label(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10,
+    def make_label(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10, max_windows = None,
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
         """
         Funktion til at retunere labels på udvalgte EEG-recordings, det kan både være på spectogrammer
@@ -223,17 +226,35 @@ class preprossingPipeline:
                     window = np.load(fv_path)
                     window = window.squeeze()
                     windows = window
-                    window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
-                    labels = window.shape[0] * [label_dict[filename]]
+                    if max_windows:
+                        if max_windows >= window.shape[0]:
+                            window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
+                            labels = window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx_full = [(filename, idx) for idx in range(max_windows)]
+                            labels = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx_full = [(filename, idx) for idx in range(window.shape[0])]
+                        labels = window.shape[0] * [label_dict[filename]]
                     filenames.append(filename)
                     i += 1
                 else:
                     window = np.load(fv_path)
                     window = window.squeeze()
                     windows = np.vstack((windows, window))
-                    window_idx=[(filename,idx) for idx in range(window.shape[0])]
-                    window_idx_full =window_idx_full+window_idx
-                    label = window.shape[0] * [label_dict[filename]]
+                    if max_windows:
+                        if max_windows >= window.shape[0]:
+                            window_idx=[(filename,idx) for idx in range(window.shape[0])]
+                            window_idx_full = window_idx_full + window_idx
+                            label = window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx= [(filename, idx) for idx in range(max_windows)]
+                            window_idx_full = window_idx_full + window_idx
+                            label = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx = [(filename, idx) for idx in range(window.shape[0])]
+                        window_idx_full = window_idx_full + window_idx
+                        label = window.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
