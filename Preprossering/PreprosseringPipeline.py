@@ -171,7 +171,7 @@ class preprossingPipeline:
         return windowOut
 
 
-    def make_label(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10,
+    def make_label(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10, max_windows = None,
                    path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/', seed=0):
         """
         Funktion til at retunere labels på udvalgte EEG-recordings, det kan både være på spectogrammer
@@ -226,17 +226,35 @@ class preprossingPipeline:
                     window = np.load(fv_path)
                     window = window.squeeze()
                     windows = window
-                    window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
-                    labels = window.shape[0] * [label_dict[filename]]
+                    if max_windows:
+                        if max_windows >= window.shape[0]:
+                            window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
+                            labels = window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx_full = [(filename, idx) for idx in range(max_windows)]
+                            labels = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx_full = [(filename, idx) for idx in range(window.shape[0])]
+                        labels = window.shape[0] * [label_dict[filename]]
                     filenames.append(filename)
                     i += 1
                 else:
                     window = np.load(fv_path)
                     window = window.squeeze()
                     windows = np.vstack((windows, window))
-                    window_idx=[(filename,idx) for idx in range(window.shape[0])]
-                    window_idx_full =window_idx_full+window_idx
-                    label = window.shape[0] * [label_dict[filename]]
+                    if max_windows:
+                        if max_windows >= window.shape[0]:
+                            window_idx=[(filename,idx) for idx in range(window.shape[0])]
+                            window_idx_full = window_idx_full + window_idx
+                            label = window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx= [(filename, idx) for idx in range(max_windows)]
+                            window_idx_full = window_idx_full + window_idx
+                            label = max_windows * [label_dict[filename]]
+                    else:
+                        window_idx = [(filename, idx) for idx in range(window.shape[0])]
+                        window_idx_full = window_idx_full + window_idx
+                        label = window.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
