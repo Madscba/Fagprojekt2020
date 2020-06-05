@@ -86,8 +86,8 @@ N=10
 spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable="Yes",max_files=N,path = path_spec) #18 files = 2074
 spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,path = path_spec) #18 files = 1926
 
-x_train = np.vstack((spectrogram_is_usable[:900,:],spectrogram_not_usable[:900,:]))
-y_train = np.hstack((labels__is_usable_spec[:900],labels_not_usable_spec[:900]))
+x_train = np.vstack((spectrogram_is_usable[:100,:],spectrogram_not_usable[:100,:]))
+y_train = np.hstack((labels__is_usable_spec[:100],labels_not_usable_spec[:100]))
 
 x_valid = np.vstack((spectrogram_is_usable[900:,:],spectrogram_not_usable[900:,:]))
 y_valid = np.hstack((labels__is_usable_spec[900:],labels_not_usable_spec[900:]))
