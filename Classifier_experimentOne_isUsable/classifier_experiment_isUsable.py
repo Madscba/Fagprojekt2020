@@ -23,7 +23,7 @@ N=126
 feature_vectors_is_usable,labels_is_usable,filenames_is_usable,_= C.make_label(make_from_filenames=False,quality=None,max_files=N,is_usable="Yes",path = path) #18 files = 2144
 feature_vectors_not_usable,labels_not_usable,filenames_not_usable,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,path = path) #18 files = 1997
 
-l1 = np.append(np.repeat('Yes',len(filenames_is_usable)),np.repeat('No',len(filenames_not_usable)))
+l1 = np.append(np.repeat('Yes',len(filenames_is_usable.size)),np.repeat('No',len(filenames_not_usable)))
 f=open('isUsable.txt','w')
 for ele in l1:
     f.write(ele+'\n')
