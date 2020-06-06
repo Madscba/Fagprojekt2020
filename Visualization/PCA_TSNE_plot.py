@@ -27,8 +27,8 @@ def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA',pl
         #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
     if plot_extremes is not True:
         plt.axis(plot_extremes)
-    plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
-    plt.ylabel('PC {:d} '.format(int(pca_components[1])+1))
+    #plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
+    #plt.ylabel('PC {:d} '.format(int(pca_components[1])+1))
     plt.legend(loc='best')
     plt.title(model)
     plt.show()
