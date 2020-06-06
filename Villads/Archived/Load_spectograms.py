@@ -2,28 +2,20 @@ from Preprossering.PreprosseringPipeline import preprossingPipeline
 import os
 import numpy as np
 
+model = VGG16_NoSoftmax_OneChannel()
+model.eval()
+C=preprossingPipeline(BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG",mac=True)
+fileNames=C.edfDict.keys()
+wdir="/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt"
 
-C = preprossingPipeline(
-    BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG", mac=True)
-fileNames = C.edfDict.keys()
-i = 0
-#Change wdir to the directory of the folder 'feature_vectors'
-wdir = '/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt'
-for filename in fileNames:
 
-    if not os.path.exists(wdir + r'/spectograms_all_ch/' + filename+'.npy'):
+for file in fileNames:
+    if os.path.exists(wdir+r'/feature_vectors/'+file+".npy")==True:
         pass
     else:
-        print(i)
-        if i == 0:
+        spec = C.get_spectrogram(file)
+        break
 
-            spectogram = np.load(wdir + r'/spectograms_all_ch/' + filename + '.npy')
-            spectograms = spectogram
-
-        else:
-            spectogram = np.load(wdir + r'/spectograms_all_ch/' + filename + '.npy')
-            spectograms = np.hstack((spectograms, spectogram))
-        i+=1
 
 
 

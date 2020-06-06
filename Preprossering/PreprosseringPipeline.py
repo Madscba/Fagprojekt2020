@@ -65,10 +65,13 @@ class preprossingPipeline:
 
     def readRawEdf(self,edfDict=None, read_raw_edf_param={'preload':True, 'stim_channel':'auto'}, tWindow=120, tStep=30):
         edfDict["rawData"] = read_raw_edf(os.path.join(self.dataDir,edfDict["path"][0]), **read_raw_edf_param)
-        tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
-        tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
-        edfDict["t0"] = tStart
-        edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
+        #comment this out to get meta data on recording time stamps, WARNING will given and error in python 3.7
+        #tStart = edfDict["rawData"].annotations.orig_time-timedelta(hours=1)
+        #tLast = int((1+edfDict["rawData"].last_samp)/edfDict["rawData"].info["sfreq"])
+        #edfDict["t0"] = tStart
+        #edfDict["tN"] = tStart + timedelta(seconds=tLast)
+
         edfDict["tWindow"] = tWindow
         edfDict["tStep"] = tStep
         edfDict["fS"] = edfDict["rawData"].info["sfreq"]
@@ -306,9 +309,3 @@ def make_pca(windows,make_spectograms=False):
 
 if __name__ == "__main__":
 
-    c=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
-    c.plot_window("sbs2data_2018_09_03_15_59_54_363.edf",1,type="EEG")
-
-    #pca_path=r"C:\Users\Andreas\Desktop\KID\Fagproject\PCA_TSNE_01"
-    #c.make_label(path=pca_path)
-    #a,b= C.make_label(max_files=30,quality=None,is_usable=None,make_spectograms=False,path ='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/feature_vectors/')
