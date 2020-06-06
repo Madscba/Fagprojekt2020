@@ -1,8 +1,9 @@
-from CNN.modifyCNN import model, list
+from CNN.modifyCNN import model
 import torch.optim as optim
 import torch
 from skimage.transform import resize
 from sklearn import preprocessing
+from sklearn.utils import shuffle
 import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.nn as nn
@@ -78,26 +79,31 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size):
 
     return train_acc,train_cost,val_acc,validation_cost
 
-C = preprossingPipeline(
-    BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
+C = preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
 
 path_spec = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Spektrograms'
-N=60
-spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable="Yes",max_files=N,path = path_spec) #18 files = 2074
-spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,path = path_spec) #18 files = 1926
+N=100
+spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable="Yes",max_files=N,max_windows=20, path = path_spec) #18 files = 2074
+spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,max_windows=20, path = path_spec) #18 files = 1926
 
-x_train = np.vstack((spectrogram_is_usable[:900,:],spectrogram_not_usable[:900,:]))
-y_train = np.hstack((labels__is_usable_spec[:900],labels_not_usable_spec[:900]))
+x_train = np.vstack((spectrogram_is_usable[:1500,:],spectrogram_not_usable[:1500,:]))
+y_train = np.hstack((labels__is_usable_spec[:1500],labels_not_usable_spec[:1500]))
+X_train, Y_train = shuffle(x_train, y_train)
+X_train = X_train[:1000,:]
+Y_train = Y_train[:1000]
 
-x_valid = np.vstack((spectrogram_is_usable[900:,:],spectrogram_not_usable[900:,:]))
-y_valid = np.hstack((labels__is_usable_spec[900:],labels_not_usable_spec[900:]))
+x_valid = np.vstack((spectrogram_is_usable[1500:,:],spectrogram_not_usable[1500:,:]))
+y_valid = np.hstack((labels__is_usable_spec[1500:],labels_not_usable_spec[1500:]))
+X_valid, Y_valid = shuffle(x_valid,y_valid)
+X_valid = X_valid[250:,:]
+Y_valid = Y_valid[250:]
 
 batch_size = 20
 num_epochs = 10
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.01)
+optimizer = optim.Adam(model.parameters(), lr=0.005)
 
-train_acc, train_loss, val_acc, val_loss = test_CNN(model,x_train,y_train,x_valid,y_valid,batch_size)
+train_acc, train_loss, val_acc, val_loss = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size)
 print("\n Training accuracy: ", train_acc)
 print("\n Validation accuracy: ", val_acc)
