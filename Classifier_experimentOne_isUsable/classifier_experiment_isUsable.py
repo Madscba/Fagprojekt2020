@@ -22,8 +22,8 @@ random.seed(42)
 # C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
 # path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
 # N=126
-# C = preprossingPipeline(mac=False,BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
-# path = r'/work3/s173934/Fagprojekt/FeatureVectors'
+C = preprossingPipeline(mac=False,BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
+path = r'/work3/s173934/Fagprojekt/FeatureVectors'
 N = 7
 
 
