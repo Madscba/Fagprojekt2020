@@ -10,8 +10,5 @@
 # end of BSUB options
 
 echo "Running script..."
-module load python3/3.8.1
-numpy/1.18.1-python-3.8.1-openblas-0.3.7
-scipy/1.4.1-python-3.8.1
 
-python3 hpc_test.py
+python3 Classifier_experimentOne_isUsable/hpc_test.py
