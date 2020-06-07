@@ -10,5 +10,6 @@
 # end of BSUB options
 
 echo "Running script..."
-
-python3 Classifier_experimentOne_isUsable/hpc_test.py
+cd work3/s173934/Fagprojekt 
+source classifier-env/bin/activate
+python3 Fagprojekt2020/Classifier_experimentOne_isUsable/hpc_test.py
