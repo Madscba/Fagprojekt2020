@@ -4,12 +4,14 @@
 #BSUB -q gpuv100
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -n 1
-#BSUB -R "rusage[mem=10G]"
+#BSUB -R "rusage[mem=16G]"
 #BSUB -R "span[hosts=1]"
-#BSUB -W 1
+#BSUB -W 60:00
 # end of BSUB options
 
 echo "Running script..."
-module load python3
-module load numpy/1.13.1-python-3.6.2-openblas-0.2.20
+module load python3/3.8.1
+numpy/1.18.1-python-3.8.1-openblas-0.3.7
+scipy/1.4.1-python-3.8.1
+
 python3 hpc_test.py
