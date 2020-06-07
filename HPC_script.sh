@@ -1,7 +1,7 @@
 #!/bin/sh
 #BSUB -J torch_gpu
 #BSUB -o torch_gpu_%J.out
-#BSUB -q hpc
+#BSUB -q gpuv100
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -n 1
 #BSUB -R "rusage[mem=16G]"
