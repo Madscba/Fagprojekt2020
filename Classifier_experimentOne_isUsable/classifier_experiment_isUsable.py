@@ -9,6 +9,9 @@ from numpy import asarray
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
+import sys
+import pprint
+pprint.pprint(sys.path)
 import os
 random.seed(42)
 
