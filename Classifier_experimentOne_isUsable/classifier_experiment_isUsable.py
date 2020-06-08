@@ -9,6 +9,7 @@ from numpy import asarray
 import sys
 import pprint
 pprint.pprint(sys.path)
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
