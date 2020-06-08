@@ -9,7 +9,6 @@
 # end of BSUB options
 
 echo "Running script..."
-cd ..
 source classifier-env/bin/activate
 cd Fagprojekt2020
 python3 Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
