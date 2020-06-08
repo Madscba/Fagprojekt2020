@@ -6,9 +6,16 @@
 import numpy as np
 from numpy import save
 from numpy import asarray
+import sys
+import pprint
+pprint.pprint(sys.path)
+import os
+os.chdir(r'/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
+pprint.pprint(sys.path)
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
+
 import os
 random.seed(42)
 
@@ -19,11 +26,11 @@ random.seed(42)
 
 
 
-# C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
-# path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
+C=preprossingPipeline(mac=False, BC_datapath=r"C:\Users\Mads-\Documents\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG")
+path=r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors'
 # N=126
-C = preprossingPipeline(mac=False,BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
-path = r'/work3/s173934/Fagprojekt/FeatureVectors'
+# C = preprossingPipeline(mac=False,BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
+# path = r'/work3/s173934/Fagprojekt/FeatureVectors'
 N = 7
 
 

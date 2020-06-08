@@ -1,6 +1,6 @@
 #!/bin/sh
-#BSUB -J hpc_script2
-#BSUB -o hpc_script2_%J.out
+#BSUB -J hpc_script1
+#BSUB -o hpc_script1_%J.out
 #BSUB -q hpc
 #BSUB -n 1
 #BSUB -R "rusage[mem=2G]"
@@ -11,5 +11,5 @@
 echo "Running script..."
 cd ..
 source classifier-env/bin/activate
-cd Fagprojekt2020
-python3 Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
+cd Fagprojekt2020/Classifier_experimentOne_isUsable
+python3 classifier_experiment_isUsable.py
