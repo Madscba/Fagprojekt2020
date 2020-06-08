@@ -6,12 +6,13 @@
 import numpy as np
 from numpy import save
 from numpy import asarray
-from Preprossering.PreprosseringPipeline import preprossingPipeline
-from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
-import random
 import sys
 import pprint
 pprint.pprint(sys.path)
+from Preprossering.PreprosseringPipeline import preprossingPipeline
+from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
+import random
+
 import os
 random.seed(42)
 
