@@ -1,6 +1,6 @@
 #!/bin/sh
-#BSUB -J HPC_script
-#BSUB -o HPC_script_%J.out
+#BSUB -J hpc_script1
+#BSUB -o hpc_script1_%J.out
 #BSUB -q hpc
 #BSUB -n 1
 #BSUB -R "rusage[mem=2G]"
