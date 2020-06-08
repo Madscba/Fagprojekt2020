@@ -220,7 +220,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    CV=classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',logfile_path="ClassifierTestLogs")
+    CV=classifier_validation(Bc_path=r"/work3/s173934/Fagprojekt/dataEEG",feture_path=r'/work3/s173934/Fagprojekt/FeatureVectors',speck_path=r'/work3/s173934/Fagprojekt/Spektrograms',logfile_path="ClassifierTestLogs")
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
