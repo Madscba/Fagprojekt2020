@@ -10,4 +10,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-(cd Classifier_experimentOne_isUsable && python3 classifier_experiment_isUsable.py)
+python3 -m Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
