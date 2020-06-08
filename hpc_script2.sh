@@ -10,5 +10,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-cd Fagprojekt2020
-python3 Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
+(cd Classifier_experimentOne_isUsable && python3 classifier_experiment_isUsable.py)
