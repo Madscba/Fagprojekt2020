@@ -9,11 +9,8 @@ from numpy import asarray
 import sys
 import pprint
 pprint.pprint(sys.path)
-import os
-os.chdir(r'/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
-pprint.pprint(sys.path)
-from Preprossering.PreprosseringPipeline import preprossingPipeline
-from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
+from ..Preprossering.PreprosseringPipeline import preprossingPipeline
+from ..Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
 
 import os
