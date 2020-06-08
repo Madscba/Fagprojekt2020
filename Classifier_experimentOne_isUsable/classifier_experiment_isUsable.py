@@ -6,9 +6,14 @@
 import numpy as np
 from numpy import save
 from numpy import asarray
+import sys
+import pprint
+pprint.pprint(sys.path)
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
+
 import os
 random.seed(42)
 
@@ -24,7 +29,7 @@ random.seed(42)
 # N=126
 C = preprossingPipeline(mac=False,BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path = r'/work3/s173934/Fagprojekt/FeatureVectors'
-N = 7
+N = 25
 
 
 feature_vectors_is_usable,labels_is_usable,filenames_is_usable,_= C.make_label(make_from_filenames=False,quality=None,max_files=N,is_usable="Yes",path = path) #18 files = 2144
@@ -35,10 +40,10 @@ feature_vectors_not_usable,labels_not_usable,filenames_not_usable,_= C.make_labe
 # for ele in l1:
 #     f.write(ele+'\n')
 # f.close()
-# N1 = 2144
-# N2 = 1997
-N1 = 587
-N2 = 592
+N1 = 2144
+N2 = 1997
+# N1 = 587
+# N2 = 592
 x_train_feature = np.vstack((feature_vectors_is_usable[:N1,:],feature_vectors_not_usable[:N2,:]))
 y_train_feature = np.hstack((labels_is_usable[:N1],labels_not_usable[:N2]))
 #

@@ -1,7 +1,7 @@
 #!/bin/sh
-#BSUB -J torch_gpu
-#BSUB -o torch_gpu_%J.out
-#BSUB -q gpuk40
+#BSUB -J HPC_script
+#BSUB -o HPC_script_%J.out
+#BSUB -q gpuk80
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -n 1
 #BSUB -R "rusage[mem=2G]"
@@ -10,6 +10,7 @@
 # end of BSUB options
 
 echo "Running script..."
-cd ../../../../work3/s173934/Fagprojekt
+cd ..
 source classifier-env/bin/activate
-python3 Fagprojekt2020/Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
+cd Fagprojekt2020/Classifier_experimentOne_isUsable
+python3 classifier_experiment_isUsable.py
