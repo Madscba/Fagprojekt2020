@@ -17,6 +17,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
+random.seed(42)
 
 class classifier_validation():
     def __init__(self,Bc_path,feture_path,speck_path,Kfold_path=r"Preprossering//K-fold.json",max_files=None,logfile_path=None):
