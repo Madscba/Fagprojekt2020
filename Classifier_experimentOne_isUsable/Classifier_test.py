@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import model_selection
+import sys
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
