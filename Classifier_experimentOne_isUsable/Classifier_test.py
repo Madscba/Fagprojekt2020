@@ -21,6 +21,15 @@ random.seed(42)
 
 class classifier_validation():
     def __init__(self,Bc_path,feture_path,speck_path,Kfold_path=r"Preprossering//K-fold.json",max_files=None,logfile_path=None):
+        """
+
+        :param Bc_path:
+        :param feture_path: feture vektors dataset
+        :param speck_path: spectrograms dataset
+        :param Kfold_path: path to K-fold.json fille
+        :param max_files:  limet numbers of files for debugging purpes. WARNING the program would still show to numbers of files in your fold
+        :param logfile_path: path to folder where log files is to be saved
+        """
         self.max_files=max_files
         self.logfile_path=logfile_path
 
@@ -52,10 +61,11 @@ class classifier_validation():
         """
 
         :param type: fetures or spectrograms
-        :param folds: if None use fold outer fold of fold whos path was given, if dict  opbjet use that as
-        :param classifyers:
-        :param logname:
-        :return:
+        :param folds: if None use fold outer fold of fold whos path was given, if dict  opbjet use that as.
+        if list use that subfold eg: [1,2] for subfold 2 in subfold 1.
+        :param classifyers: list of clasifyers to test
+        :param logname: Name of json file if none don't make a log
+        :return: AC matrix
         """
 
         if isinstance(folds, dict):
@@ -119,9 +129,12 @@ class classifier_validation():
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"],EXP_name=None):
         """
         Implement two layers cross validation as spesified in 02450book algoritme 6 page 175
-        :param type:
-        :return:
+        :param type: spetrograms of fetures
+        :param classifyers: list of classifyers to test defult ["SVM", "LDA", "DecisionTree", "RF"]
+        :param EXP_name: name of experiment, all experiment files will be saved with that name
+        :return: if EXP_name== None return experiment log and log of genneralisation erro. both pd.DF opjects
         """
+
         folddic = self.Kfold
         Nfold=folddic['N_folds']
         Best_log=pd.DataFrame(index=np.arange(0, Nfold), columns=["Best","Best_AC","N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
