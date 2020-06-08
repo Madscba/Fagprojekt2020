@@ -258,11 +258,81 @@ class preprossingPipeline:
                     labels = labels + label
                     filenames.append(filename)
                     i += 1
-
-
-
         return windows, labels, filenames, window_idx_full
 
+    def make_label_cnn(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10, max_windows = -1,
+                   path=None, seed=0, ch_to_include=range(14)):
+
+        edfDict_keys=list(self.edfDict.keys())
+        edfDict_keys.sort()
+        i = 0
+        if quality is not None:
+            label_dict = {key: str(int(self.edfDict[key]["annotation"]['Quality Of Eeg'])) for key in edfDict_keys}
+            fileNames = [key for key in edfDict_keys if np.any(int(label_dict[key]) == np.array(quality))]
+        elif is_usable is not None:
+            label_dict = {key: is_usable for key in
+                          edfDict_keys if
+                          self.edfDict[key]["annotation"]["Is Eeg Usable For Clinical Purposes"] == is_usable}
+            fileNames = list(label_dict.keys())
+        elif make_from_filenames is not None:
+            label_dict = {key: key for key in make_from_filenames}
+            fileNames = make_from_filenames
+
+        else:
+            label_dict = {key: key for key in edfDict_keys}
+            fileNames = list(edfDict_keys)
+
+        np.random.seed(seed)
+        np.random.shuffle(fileNames)
+        filenames = []
+        for filename in fileNames:
+            fv_path = os.path.join(path, filename + '.pt')
+            if i == max_files:
+                break
+            if not os.path.exists(fv_path):
+                pass
+            else:
+                if i == 0:
+                    window = torch.load(fv_path)[:max_windows,ch_to_include,:,:]
+                    if max_windows != -1 :
+                        if max_windows >= window.shape[0]:
+                            window_idx_full=[[filename,idx,ch] for idx in range(window.shape[0]) for ch in ch_to_include]
+                            labels = len(ch_to_include)*window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx_full = [[filename, idx, ch] for idx in range(max_windows) for ch in
+                                               ch_to_include]
+                            labels = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    else:
+                        window_idx_full = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
+                                           ch_to_include]
+                        labels = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    filenames.append(filename)
+                    window = window.reshape(-1, 3, 224, 224)
+                    windows = window
+                    i += 1
+                else:
+                    window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
+                    if max_windows != -1:
+                        if max_windows >= window.shape[0]:
+                            window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
+                                               ch_to_include]
+                            label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                        else:
+                            window_idx = [[filename, idx, ch] for idx in range(max_windows) for ch in
+                                               ch_to_include]
+                            label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    else:
+                        window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
+                                           ch_to_include]
+                        label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    labels = labels + label
+                    window_idx_full=window_idx_full+window_idx
+                    window = window.reshape(-1, 3, 224, 224)
+                    windows = torch.cat((windows, window), dim=0)
+                    filenames.append(filename)
+                    i += 1
+
+        return windows, labels, filenames, window_idx_full
 
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
