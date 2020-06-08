@@ -1,0 +1,57 @@
+Running script...
+Traceback (most recent call last):
+  File "Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py", line 9, in <module>
+    from Preprossering.PreprosseringPipeline import preprossingPipeline
+ModuleNotFoundError: No module named 'Preprossering'
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n-62-21-99>
+Subject: Job 7096463: <hpc_script2> in cluster <dcc> Exited
+
+Job <hpc_script2> was submitted from host <gbarlogin1> by user <s173934> in cluster <dcc> at Mon Jun  8 11:57:57 2020
+Job was executed on host(s) <n-62-21-99>, in queue <hpc>, as user <s173934> in cluster <dcc> at Mon Jun  8 11:57:58 2020
+</zhome/87/9/127623> was used as the home directory.
+</zhome/87/9/127623/Fagprojekt/Fagprojekt2020> was used as the working directory.
+Started at Mon Jun  8 11:57:58 2020
+Terminated at Mon Jun  8 11:57:59 2020
+Results reported at Mon Jun  8 11:57:59 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J hpc_script2
+#BSUB -o hpc_script2_%J.out
+#BSUB -q hpc
+#BSUB -n 1
+#BSUB -R "rusage[mem=2G]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 5:00
+# end of BSUB options
+
+echo "Running script..."
+cd ..
+source classifier-env/bin/activate
+cd Fagprojekt2020
+python3 Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py
+
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.44 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     2048.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   1 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) is above this job summary.
+
