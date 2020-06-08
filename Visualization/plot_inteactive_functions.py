@@ -1,36 +1,68 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
-
+from Preprossering.PreprosseringPipeline import preprossingPipeline
+import pickle
+from Villads.PCA_TSNE_classes import scale_data
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+import plotly.tools as tls
+from plotly.subplots import make_subplots
 """
 Functions for interactive plots made by Andreas 
 
 """
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca_interactiv(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA',plot_extremes=True):
-    if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
-        le = LabelEncoder()
-        ydata = le.fit_transform(ydata)
-    elif type(ydata[0]==bool): #If ydata is an array of categorical boolean values, convert them into numerical categorical values
-        ydata = np.multiply(ydata, 1)
+def plot_pca_interactiv(pca_vectors,labels,window_id,pca1,pca2):
+    #make data frame
+    df=(pd.DataFrame(window_id,columns=["file","window"]))
+    df[int(pca1)]=pca_vectors[:,int(pca1)]
+    df[int(pca2)]=pca_vectors[:,int(pca2)]
+    df["label"]=labels
+    df["index"]=df.index
+    fig=px.scatter(df,x=int(pca1),y=int(pca2),color="label",hover_data=["file","window","index"])
+    fig.show()
 
-    n_label = len(considered_classes)
-    colors =  plt.cm.rainbow(np.linspace(0, 1, n_label))
+def plot_comand(feature_path,path_pca,BC_datapath,newplot=False):
+    pca = pickle.load(open(path_pca, 'rb'))
+    get_data=preprossingPipeline(BC_datapath=BC_datapath)
+    feature_vectors,labels,filenames,window_id= get_data.make_label( quality=None, is_usable=None, max_files=10,path = feature_path)
+    while True:
+        print("What you want to plot, options pca or")
+        command=input()
+        if command== "pca":
+            feature_vectors,labels,filenames,window_id= get_data.make_label( quality=None, is_usable=None, max_files=10,path = feature_path)
+            scaled_feature_vectors=scale_data(feature_vectors)
+            pca_vectors=pca.transform(scaled_feature_vectors)
+            print("what components ex 0 1")
+            components=input()
+            components=components.split(" ")
+            plot_pca_interactiv(pca_vectors,labels,window_id,components[0],components[1])
 
+        if command== "break":
+            break
 
-    cdict = {i: colors[i] for i in range(n_label)}
-    label_dict = {i: considered_classes[i] for i in range(n_label)}
+        if command== "spec" or command=="EEG":
+            print("Insert index")
+            idx=int(input())
+            if newplot==False:
+                get_data.plot_window(window_id[idx][0],window_id[idx][1],type=command)
+            else:
+                data,time,chanels=get_data.plot_window(window_id[idx][0],window_id[idx][1],type=command,plot=False)
+                data=np.array(data).T
+                df=pd.DataFrame(data,columns=chanels,index=time)
+                fig = make_subplots(rows=len(chanels), cols=1)
+                for i,ch in enumerate(chanels):
+                    fig.add_trace(
+                        px.line(df,y=ch,x=df.index),
+                        row=(i+1),col=1)
+                #fig=px.line(df,y=chanels[0],x=df.index)
+                fig.show()
 
+if __name__ == "__main__":
+    feature_path=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
+    path_pca=r'C:\Users\Andre\Desktop\Fagproject\PCA_TSNE\PCA.sav'
 
-    f = plt.figure(figsize=(8,8))
-    for i in range(n_label):
-        indices = np.where(ydata == i)
-        plt.scatter(Xdata[indices, pca_components[0]], Xdata[indices, pca_components[1]], color=cdict[i], label=label_dict[i])
-        #plt.annotate(label_dict[i], Xdata[indices[0][0], 0:2]) #First point in each class labelled
-    if plot_extremes is not True:
-        plt.axis(plot_extremes)
-    plt.xlabel('PC {:d} '.format(int(pca_components[0])+1))
-    plt.ylabel('PC {:d} '.format(int(pca_components[1])+1))
-    plt.legend(loc='best')
-    plt.title(model)
-    plt.show()
+    plot_comand(feature_path,path_pca,newplot=True,BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
