@@ -4,6 +4,8 @@ from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Villads.PCA_TSNE_classes import scale_data
 from Visualization.PCA_TSNE_plot import plot_pca
 import numpy as np
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
 
 path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/'
 C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
@@ -21,9 +23,12 @@ pca.fit(scaled_feature_vectors)
 pca_vectors=pca.transform(scaled_feature_vectors)
 tsne_vectors=tsne.fit_transform(scaled_feature_vectors)
 labels_new=[a[0] for a in idx+idx_1]
+clf = LinearDiscriminantAnalysis()
+ld = clf.fit(scaled_feature_vectors,labels)
 
 plot_pca(pca_vectors,labels,np.unique(labels))
 plot_pca(tsne_vectors,labels,np.unique(labels),model='TSNE')
 plot_pca(pca_vectors,labels_new,np.unique(labels_new))
 plot_pca(tsne_vectors,labels_new,np.unique(labels_new),model='TSNE')
+plot_pca(ld.transform(scaled_feature_vectors),)
 
