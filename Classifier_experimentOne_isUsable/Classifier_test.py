@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import model_selection
+import sys
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 from Classifier_experimentOne_isUsable.trainTestValidateClassifiers import getClassifierAccuracies,tryNewDiv
 import random
@@ -15,9 +17,19 @@ from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
+random.seed(42)
 
 class classifier_validation():
     def __init__(self,Bc_path,feture_path,speck_path,Kfold_path=r"Preprossering//K-fold.json",max_files=None,logfile_path=None):
+        """
+
+        :param Bc_path:
+        :param feture_path: feture vektors dataset
+        :param speck_path: spectrograms dataset
+        :param Kfold_path: path to K-fold.json fille
+        :param max_files:  limet numbers of files for debugging purpes. WARNING the program would still show to numbers of files in your fold
+        :param logfile_path: path to folder where log files is to be saved
+        """
         self.max_files=max_files
         self.logfile_path=logfile_path
 
@@ -49,10 +61,11 @@ class classifier_validation():
         """
 
         :param type: fetures or spectrograms
-        :param folds: if None use fold outer fold of fold whos path was given, if dict  opbjet use that as
-        :param classifyers:
-        :param logname:
-        :return:
+        :param folds: if None use fold outer fold of fold whos path was given, if dict  opbjet use that as.
+        if list use that subfold eg: [1,2] for subfold 2 in subfold 1.
+        :param classifyers: list of clasifyers to test
+        :param logname: Name of json file if none don't make a log
+        :return: AC matrix
         """
 
         if isinstance(folds, dict):
@@ -116,9 +129,12 @@ class classifier_validation():
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"],EXP_name=None):
         """
         Implement two layers cross validation as spesified in 02450book algoritme 6 page 175
-        :param type:
-        :return:
+        :param type: spetrograms of fetures
+        :param classifyers: list of classifyers to test defult ["SVM", "LDA", "DecisionTree", "RF"]
+        :param EXP_name: name of experiment, all experiment files will be saved with that name
+        :return: if EXP_name== None return experiment log and log of genneralisation erro. both pd.DF opjects
         """
+
         folddic = self.Kfold
         Nfold=folddic['N_folds']
         Best_log=pd.DataFrame(index=np.arange(0, Nfold), columns=["Best","Best_AC","N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
@@ -220,7 +236,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    CV=classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',logfile_path="ClassifierTestLogs")
+    CV=classifier_validation(Bc_path=r"/work3/s173934/Fagprojekt/dataEEG",feture_path=r'/work3/s173934/Fagprojekt/FeatureVectors',speck_path=r'/work3/s173934/Fagprojekt/Spektrograms',logfile_path="ClassifierTestLogs")
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
