@@ -1,10 +1,10 @@
 #!/bin/sh
-#BSUB -J torch_gpu
-#BSUB -o torch_gpu_%J.out
+#BSUB -J hpc_script2
+#BSUB -o hpc_script2_%J.out
 #BSUB -q gpuk40
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -n 1
-#BSUB -R "rusage[mem=16G]"
+#BSUB -R "rusage[mem=2G]"
 #BSUB -R "span[hosts=1]"
 #BSUB -W 5:00
 # end of BSUB options
