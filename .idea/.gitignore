@@ -7,4 +7,10 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 #virtualenv
-/classifier-env/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
