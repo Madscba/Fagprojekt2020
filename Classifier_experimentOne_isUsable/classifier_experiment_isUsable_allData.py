@@ -1,4 +1,5 @@
 ##Mads Christian
+#Old
 import numpy as np
 import pandas as pd
 from sklearn import model_selection
@@ -19,10 +20,11 @@ from sklearn.neural_network import MLPClassifier
 random.seed(42)
 
 class classifier_validation():
-    def __init__(self,Bc_path,feture_path,speck_path,inner_splits=5,outer_splits=5,max_files=None):
+    def __init__(self,Bc_path,feture_path,speck_path,inner_splits=5,outer_splits=5,max_files=None,logfile_path=None):
         self.innerK=inner_splits
         self.outerK=outer_splits
         self.max_files=max_files
+        self.logfile_path=logfile_path
         text_file = open("filenames.txt", "r")
         x = text_file.read().splitlines() #Read 126 files, first 100 is usable, the next 26 is not usable
         text_file.close()
@@ -54,8 +56,10 @@ class classifier_validation():
         return feature_vectors, feature_vectors_labels
 
     def outerloop(self,x,y):
+        i=0
         CV = model_selection.KFold(n_splits=self.outerK, shuffle=True)
-
+        Feture_AC=pd.DataFrame()
+        Speck_AC=pd.DataFrame()
         for (train_index, test_index) in CV.split(x,y):
             x_train = list(x[i] for i in train_index)
             x_test = list(x[i] for i in test_index)
@@ -63,8 +67,19 @@ class classifier_validation():
             y_test = list(y[i] for i in test_index)
 
 
-            self.inner_loop(x_train,y_train)
+            F_AC,S_AC=self.inner_loop(x_train,y_train)
 
+            F_AC["Outer_kfold"]=i
+            S_AC["Outer_kfold"] = i
+
+            Feture_AC.appen(F_AC)
+            Speck_AC.append(S_AC)
+
+            if self.logfile_path !=None:
+                Feture_AC.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,"FeturevektorlAC")))
+                Speck_AC.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,"SpectrogramAC")))
+
+            i+=1
     def inner_loop(self,x,y):
         """
         :param x:
@@ -194,4 +209,4 @@ pass
 
 ##Get accuracies
 if __name__ == '__main__':
-    classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',max_files=4)
+    classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',max_files=4,logfile_path="Classifier_experimentOne_isUsable\\Test_log")
