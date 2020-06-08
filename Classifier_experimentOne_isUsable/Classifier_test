@@ -32,7 +32,7 @@ class classifier_validation():
         spectrograms, spectrogram_labels, _, _ = self.prepros.make_label(make_from_filenames=x, quality=None,
                                                                         is_usable=None, max_files=self.max_files,
                                                                         path=self.speck_path)  # 18 files = 1926
-        feature_vectors_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
+        spectrogram_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
 
         return spectrograms,spectrogram_labels
 
@@ -45,7 +45,7 @@ class classifier_validation():
         return feature_vectors, feature_vectors_labels
 
 
-    def test(self,type,folds=None,classifyers=["SVM", "LDA", "DecisionTree", "RF"],logname="test.json"):
+    def test(self,type,folds=None,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],logname="test.json"):
         """
         :param x:
         :param y:
@@ -91,7 +91,7 @@ class classifier_validation():
                     AC_matrix.loc[n,C]=self.predict_LDA(x_train,y_train,x_test,y_test)
 
                 if C=="GNB":
-                    AC_matrix.loc[n,C]=self.predict_GNF(x_train,y_train,x_test,y_test)
+                    AC_matrix.loc[n,C]=self.predict_GNB(x_train,y_train,x_test,y_test)
 
                 if C=="DecisionTree":
                     AC_matrix.loc[n,C]=self.predict_DissionTree(x_train,y_train,x_test,y_test)
@@ -110,21 +110,54 @@ class classifier_validation():
             AC_matrix.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,logname)))
         return  AC_matrix
 
-    def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"]):
+    def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"],EXP_name=None):
         """
         Implement two layers cross validation as spesified in 02450book algoritme 6 page 175
         :param type:
         :return:
         """
         folddic = self.Kfold
+        Nfold=folddic['N_folds']
+        Best_log=pd.DataFrame(index=np.arange(0, Nfold), columns=["Best","Best_AC","N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
+        Gen_error=pd.DataFrame(index=np.arange(0, Nfold), columns=classifyers)
+        for n in range(Nfold):
 
-        for n in range(folddic['N_folds']):
+            if EXP_name !=None:
+                logname=f"{EXP_name}_Inderfold_{n}.json"
+            else:
+                logname=None
 
-            Innerresult=self.test(folds=[n], type=type, logname=None)
-            totalDatapoint=Innerresult.loc["N_TestWindows"].sum()
+            Innerresult=self.test(folds=[n],classifyers=classifyers, type=type, logname=logname)
+            totalDatapoint=Innerresult.N_TestWindows.sum()
 
-            Egen_s=[np.sum([(Innerresult.loc["N_TestWindows"].iloc[j]/totalDatapoint)*Innerresult.loc[s].iloc[j]
-                            for j in range(len(Innerresult.index))]) for s in Innerresult.columns()]
+            Egen_s=[np.sum([(Innerresult.N_TestWindows.iloc[j]/totalDatapoint)*Innerresult.loc[j,s]
+                            for j in range(len(Innerresult.index))]) for s in classifyers]
+            best = classifyers[np.argmax(Egen_s)]
+            print(f"Best classifyer {best}")
+            testdict={"train_0": folddic[f"train_{n}"], "test_0": folddic[f"test_{n}"],"N_folds": 1}
+            Outerresult=self.test(folds=testdict,classifyers=[best], type=type, logname=None)
+            Gen_error.iloc[n] = Egen_s
+
+            Best_log.loc[n,"Best"]=best
+            Best_log.loc[n,"Best_AC"]=Outerresult.iloc[0,0]  #Insert best value
+            Best_log.iloc[n, 2:5] = Outerresult.iloc[0, 1:4] #Update meta data
+
+        totalDatapoint = Best_log.N_TestWindows.sum()
+        Egen_s = np.sum([(Best_log.N_TestWindows.iloc[j] / totalDatapoint) * Best_log.loc[j,"Best_AC"]
+                          for j in range(len(Best_log.index))])
+        Best_log.loc["Final", "Best"] = "Combined"
+        Best_log.loc["Final","Best_AC"]=Egen_s
+        Best_log.loc["Final", "N_TestWindows"] = totalDatapoint
+        Best_log.loc["Final", "N_TestFiles"]= Best_log.N_TestFiles.sum()
+        if EXP_name != None:
+
+            Gen_error.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Genneralisation_errors.json")))
+            Best_log.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Outerloop.json")))
+        else:
+            return Best_log,Gen_error
+
+
+
 
 
 
@@ -150,7 +183,7 @@ class classifier_validation():
 
         return np.mean(y_test == svm_predict)
 
-    def predict_GNB(self,x,y,x_test,y_test):
+    def predict_GNB(self,x_train,y_train,x_test,y_test):
         GNB_predict = np.array([])
         m_gaus = GaussianNB()
         m_gaus.fit(x_train, y_train)
@@ -170,7 +203,7 @@ class classifier_validation():
     def predict_RF(self,x_train,y_train,x_test,y_test):
         RF_predict = np.array([])
 
-        ranFor = RandomForestClassifier(n_estimators=100, criterion='gini')
+        ranFor = RandomForestClassifier(n_estimators=100, criterion='gini',random_state=42)
         ranFor.fit(x_train, y_train)
         RF_predict = np.append(RF_predict, ranFor.predict(x_test))
         print("RF done", np.mean(y_test == RF_predict))
@@ -184,7 +217,8 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    CV=classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',logfile_path="ClassifierTestLogs",max_files=4)
+    CV=classifier_validation(Bc_path=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",feture_path=r'C:\Users\Andre\Desktop\Fagproject\feature_vectors',speck_path=r'C:\Users\Andre\Desktop\Fagproject\Spektrograms',logfile_path="ClassifierTestLogs")
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
-    CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
-    CV.two_layes(type="fetures")
+    #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
+    CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
+    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
