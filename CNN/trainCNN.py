@@ -11,7 +11,7 @@ import numpy as np
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 
 
-def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size):
+def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size,preprocessed=False):
     num_samples = X_train.shape[0]
     num_batches = int(np.ceil(num_samples / float(batch_size)))
     correct = 0
@@ -32,19 +32,25 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size):
             print("\n {}, still training...".format(i), end='')
         idx = range(i * batch_size, np.minimum((i + 1) * batch_size, num_samples))
         index = idx[-1]-idx[0]+1
-        batch_image = np.zeros((index,224,224))
-        for j in range(index):
-            image_resized = resize(X_train[idx[j]], (224, 224), anti_aliasing=True)
-            batch_image[j,:,:] = image_resized
-        X_batch_tr = Variable(torch.from_numpy(batch_image))
-        y_batch_tr = Variable(torch.from_numpy(t1[idx]).long())
+        if preprocessed==False:
+            batch_image = np.zeros((index,224,224))
+            for j in range(index):
+                image_resized = resize(X_train[idx[j]], (224, 224), anti_aliasing=True)
+                batch_image[j,:,:] = image_resized
+            X_batch_tr = Variable(torch.from_numpy(batch_image))
+            y_batch_tr = Variable(torch.from_numpy(t1[idx]).long())
+            optimizer.zero_grad()
+            output = model(X_batch_tr.unsqueeze(1).float())
+        else:
+            X_batch_tr = X_train[idx,:,:,:]
+            y_batch_tr = Variable(torch.from_numpy(t1[idx]).long())
+            optimizer.zero_grad()
+            output = model(X_batch_tr.float())
 
-        optimizer.zero_grad()
-        output = model(X_batch_tr.unsqueeze(1).float())
         batch_loss = criterion(output, y_batch_tr)
         train_loss.append(batch_loss.data.numpy())
 
-        batch_loss.backward()
+        batch_loss.backward(retain_graph=True)
         optimizer.step()
 
         preds = np.argmax(output.data.numpy(), axis=-1)
@@ -60,14 +66,19 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size):
             print("\n {}, now validation...".format(i), end='')
         idx = range(i * batch_size, np.minimum((i + 1) * batch_size, num_test_samples))
         index = idx[-1] - idx[0] + 1
-        batch_image = np.zeros((index,224,224))
-        for j in range(index):
-            image_resized = resize(X_valid[idx[j]], (224, 224), anti_aliasing=True)
-            batch_image[j,:,:] = image_resized
-        X_batch_v = Variable(torch.from_numpy(batch_image))
-        y_batch_v = Variable(torch.from_numpy(t2[idx]).long())
+        if preprocessed==False:
+            batch_image = np.zeros((index,224,224))
+            for j in range(index):
+                image_resized = resize(X_valid[idx[j]], (224, 224), anti_aliasing=True)
+                batch_image[j,:,:] = image_resized
+            X_batch_v = Variable(torch.from_numpy(batch_image))
+            y_batch_v = Variable(torch.from_numpy(t2[idx]).long())
+            output = model(X_batch_v.unsqueeze(1).float())
+        else:
+            X_batch_v = X_valid[idx,:,:,:]
+            y_batch_v = Variable(torch.from_numpy(t2[idx]).long())
+            output = model(X_batch_v.float())
 
-        output = model(X_batch_v.unsqueeze(1).float())
         batch_loss = criterion(output, y_batch_v)
 
         val_loss.append(batch_loss.data.numpy())
@@ -80,32 +91,23 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size):
     return train_acc,train_cost,val_acc,validation_cost
 
 C = preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
+path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
+N=40
 
-path_spec = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Spektrograms'
-N=100
-#spectrogram_is_usable,labels__is_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable="Yes",max_files=N,max_windows=20, path = path_spec) #18 files = 2074
-#spectrogram_not_usable,labels_not_usable_spec,_,_= C.make_label(make_from_filenames=False,quality=None,is_usable='No',max_files=N ,max_windows=20, path = path_spec) #18 files = 1926
-
-#x_train = np.vstack((spectrogram_is_usable[:1500,:],spectrogram_not_usable[:1500,:]))
-#y_train = np.hstack((labels__is_usable_spec[:1500],labels_not_usable_spec[:1500]))
-#X_train, Y_train = shuffle(x_train, y_train)
-#X_train = X_train[:1000,:]
-#Y_train = Y_train[:1000]
-
-#x_valid = np.vstack((spectrogram_is_usable[1500:,:],spectrogram_not_usable[1500:,:]))
-#y_valid = np.hstack((labels__is_usable_spec[1500:],labels_not_usable_spec[1500:]))
-#X_valid, Y_valid = shuffle(x_valid,y_valid)
-#X_valid = X_valid[250:,:]
-#Y_valid = Y_valid[250:]
-
-batch_size = 20
-num_epochs = 10
+batch_size = 10
+num_epochs = 2
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 
-specto = torch.load('sbs2data_2018_09_01_08_04_51_328.edf.pt')
+windows, labels, filenames, window_idx_full = C.make_label_cnn(make_from_filenames=None, quality=None, is_usable=None, max_files=N, max_windows = 5,
+                   path=path_s, seed=0, ch_to_include=range(14))
 
-#train_acc, train_loss, val_acc, val_loss = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size)
-#print("\n Training accuracy: ", train_acc)
-#print("\n Validation accuracy: ", val_acc)
+X_train = windows[:,:,:,:]
+Y_train = labels[:20]
+X_valid = windows[20:,:,:,:]
+Y_valid = labels[20:]
+
+train_acc, train_loss, val_acc, val_loss = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size,preprocessed=True)
+print("\n Training accuracy: ", train_acc)
+print("\n Validation accuracy: ", val_acc)
