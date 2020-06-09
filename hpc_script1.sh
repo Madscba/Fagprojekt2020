@@ -10,3 +10,7 @@
 #BSUB -u s173934@win.dtu.dk
 #BSUB -N
 # end of BSUB options
+
+echo "Running script..."
+source classifier-env/bin/activate
+python3 Classifier_experimentOne_isUsable/Classifier_test.py
