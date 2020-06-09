@@ -1,11 +1,12 @@
 #!/bin/sh
-#BSUB -J hpc_script2
-#BSUB -o hpc_script2_%J.out
+#BSUB -J gpuv_script2
+#BSUB -o gpuv_script2_%J.out
 #BSUB -q gpuv100
 #BSUB -n 1
+#BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -R "rusage[mem=64G]"
 #BSUB -R "span[hosts=1]"
-#BSUB -W 15:00
+#BSUB -W 24:00
 #BSUB -u s173934@win.dtu.dk
 #BSUB -N
 # end of BSUB options
