@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b210e67-592c-4500-a290-3563200f858e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/Fagprojekt2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Fagprojekt2020.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CNN/Make_spectograms_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/../CNN/Make_spectograms_new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Preprossering/PreprosseringPipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Preprossering/PreprosseringPipeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="7b210e67-592c-4500-a290-3563200f858e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -212,11 +207,11 @@
     </configuration>
     <list>
       <item itemvalue="Python.Unnamed" />
-      <item itemvalue="Python.PreprosseringPipeline" />
       <item itemvalue="Python.Load_spectograms" />
-      <item itemvalue="Python.loadPretrainedCNN" />
-      <item itemvalue="Python.classifier_experiment_isUsable_allData" />
+      <item itemvalue="Python.PreprosseringPipeline" />
       <item itemvalue="Python.Spectogram_plots_using_makelabel" />
+      <item itemvalue="Python.classifier_experiment_isUsable_allData" />
+      <item itemvalue="Python.loadPretrainedCNN" />
     </list>
     <recent_temporary>
       <list>
@@ -247,6 +242,9 @@
       <workItem from="1591257300351" duration="13497000" />
       <workItem from="1591276595279" duration="24703000" />
       <workItem from="1591636163620" duration="38000" />
+      <workItem from="1591650931685" duration="6000" />
+      <workItem from="1591650945719" duration="4000" />
+      <workItem from="1591687144370" duration="3000" />
     </task>
     <servers />
   </component>

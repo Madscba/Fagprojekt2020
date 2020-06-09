@@ -338,7 +338,7 @@ class preprossingPipeline:
                     filenames.append(filename)
                     i += 1
 
-        return windows, labels, filenames, window_idx_full
+        return windows.detach().requires_grad_(requires_grad=True), labels, filenames, window_idx_full
 
 def getFeatureVecWholeFile(filePath):
     spectrogramDict = C.get_spectrogram(filePath)
