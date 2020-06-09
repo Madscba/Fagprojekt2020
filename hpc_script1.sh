@@ -2,10 +2,10 @@
 #BSUB -J hpc_script2
 #BSUB -o hpc_script2_%J.out
 #BSUB -q hpc
-#BSUB -n 1
-#BSUB -R "rusage[mem=32G]"
+#BSUB -n 4
+#BSUB -R "rusage[mem=64G]"
 #BSUB -R "span[hosts=1]"
-#BSUB -W 8:00
+#BSUB -W 48:00
 # end of BSUB options
 
 echo "Running script..."

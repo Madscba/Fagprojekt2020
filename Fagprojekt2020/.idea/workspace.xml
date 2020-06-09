@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b210e67-592c-4500-a290-3563200f858e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/Fagprojekt2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Fagprojekt2020.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CNN/Make_spectograms_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/../CNN/Make_spectograms_new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Preprossering/PreprosseringPipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Preprossering/PreprosseringPipeline.py" afterDir="false" />
     </list>
@@ -80,6 +82,9 @@
       <module name="Fagprojekt2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/pythonw" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -99,6 +104,9 @@
       <module name="Fagprojekt2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/pythonw" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -237,7 +245,8 @@
       <workItem from="1588751187442" duration="15808000" />
       <workItem from="1589267768630" duration="607000" />
       <workItem from="1591257300351" duration="13497000" />
-      <workItem from="1591276595279" duration="24702000" />
+      <workItem from="1591276595279" duration="24703000" />
+      <workItem from="1591636163620" duration="38000" />
     </task>
     <servers />
   </component>
