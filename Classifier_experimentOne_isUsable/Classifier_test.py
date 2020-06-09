@@ -250,4 +250,4 @@ if __name__ == '__main__':
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
-    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
+    #CV.two_layes(type="fetures",EXP_name="Feture_twofold")

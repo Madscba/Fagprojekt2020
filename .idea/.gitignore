@@ -8,3 +8,4 @@
 /httpRequests/
 #virtualenv
 /classifier-env/
+Preprossering/__pycache__/__init__.cpython-38.pyc
