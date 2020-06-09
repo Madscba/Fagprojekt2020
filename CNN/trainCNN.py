@@ -14,7 +14,6 @@ from Preprossering.PreprosseringPipeline import preprossingPipeline
 def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size,num_epochs,preprocessed=False):
     num_samples = X_train.shape[0]
     num_batches = int(np.ceil(num_samples / float(batch_size)))
-    correct = 0
     l1 = preprocessing.LabelEncoder()
     t1 = l1.fit_transform(y_train)
     l2 = preprocessing.LabelEncoder()
@@ -29,7 +28,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size,num_epochs,preproc
     for epoch in range(num_epochs):
         # Forward -> Backprob -> Update params
         ## Train
-        cur_loss = 0
+        correct = 0
         model.train()
         for i in range(num_batches):
             if i % 10 == 0:
@@ -93,10 +92,10 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size,num_epochs,preproc
         validation_cost = np.mean(val_loss)
 
         if epoch % 10 == 0:
-            print("Epoch %2i : Train Loss %f , Train acc %f, Valid acc %f" % (
-                epoch + 1, train_cost[-1], train_acc, valid_acc))
+            print("\n Epoch %2i : Train Loss %f , Train acc %f, Valid acc %f" % (
+                epoch + 1, train_cost[-1], train_acc, val_acc))
 
-    return train_acc,train_cost,val_acc,validation_cost
+    return train_acc,train_cost,val_acc,validation_cost, model
 
 def split_dataset(C,path,N,train_split,max_windows,num_channels):
     """ Input: Data and training split (in %)
@@ -139,8 +138,18 @@ path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 
-X_train, X_valid, Y_train, Y_valid = split_dataset(C,path_s,N=60,train_split=75,max_windows=5,num_channels=14)
+X_train, X_valid, Y_train, Y_valid = split_dataset(C,path_s,N=100,train_split=75,max_windows=5,num_channels=7)
 
-train_acc, train_loss, val_acc, val_loss = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size=10,num_epochs=2,preprocessed=True)
-print("\n Final training accuracy: ", train_acc)
-print("\n Final validation accuracy: ", val_acc)
+train_acc, train_loss, val_acc, val_loss, model = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size=10,num_epochs=2,preprocessed=True)
+#print("\n Final training accuracy: ", train_acc)
+#print("\n Final validation accuracy: ", val_acc)
+train_acc_data = np.asarray(train_acc)
+np.save('train_acc.npy',train_acc_data)
+train_loss_data = np.asarray(train_loss)
+np.save('train_loss.npy',train_loss_data)
+valid_acc_data = np.asarray(val_acc)
+np.save('valid_acc.npy',valid_acc_data)
+valid_loss_data = np.asarray(val_loss)
+np.save('valid_loss.npy',valid_loss_data)
+PATH = '/zhome/87/9/127623/Fagprojekt/Fagprojekt2020'
+torch.save(model.state_dict(),PATH)
