@@ -90,6 +90,28 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,batch_size,preprocessed=False
 
     return train_acc,train_cost,val_acc,validation_cost
 
+def split_dataset(windows1, windows2, labels1, labels2, filenames1, filenames2, window_idx_full1, window_idx_full2,train_split):
+    """ Input: Data and training split (in %)
+        Output: Training and test set """
+    n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
+    n_train_files2 = int(len(filenames2) / 10 * (train_split/10))
+    a = np.array(window_idx_full1)
+    b = np.array(window_idx_full2)
+    j1 = np.unique(a[:, 0], return_counts=True)
+    j2 = np.unique(b[:,0],return_counts=True)
+    j1 = np.array(j1)
+    j2 = np.array(j2)
+    j1 = np.asarray(j1[1, :], dtype='int64')
+    j2 = np.asarray(j2[1,:],dtype='int64')
+    n1, n2 = 0, 0
+    for i in range(n_train_files1):
+        n1 += j1[i]
+    for i in range(n_train_files2):
+        n2 += j1[i]
+    w1 = windows1
+    for
+
+    return w1, w2, l1, l2, f1, f2, wi1, wi2
 C = preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
 path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
 N=40
@@ -100,12 +122,19 @@ num_epochs = 2
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 
-windows, labels, filenames, window_idx_full = C.make_label_cnn(make_from_filenames=None, quality=None, is_usable=None, max_files=N, max_windows = 5,
+windows1, labels1, filenames1, window_idx_full1 = C.make_label_cnn(make_from_filenames=None, quality=None, is_usable='Yes', max_files=N, max_windows = 5,
+                   path=path_s, seed=0, ch_to_include=range(14))
+windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None, is_usable='No', max_files=N, max_windows = 5,
                    path=path_s, seed=0, ch_to_include=range(14))
 
-X_train = windows[:,:,:,:]
+n_train_files1 =  int(len(filenames1)/10*7.5)
+n_train_files2 =  int(len(filenames2)/10*7.5)
+
+w1 = torch.cat((windows1,windows2))
+
+X_train = windows[:20,0,:,:,:]
 Y_train = labels[:20]
-X_valid = windows[20:,:,:,:]
+X_valid = windows[20:,0,:,:,:]
 Y_valid = labels[20:]
 
 train_acc, train_loss, val_acc, val_loss = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size,preprocessed=True)
