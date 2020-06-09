@@ -313,7 +313,7 @@ class preprossingPipeline:
                                            ch_to_include]
                         labels = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
                     filenames.append(filename)
-                    #window = window.reshape(-1, 3, 224, 224)
+                    window = window.reshape(-1, 3, 224, 224)
                     windows = window
                     i += 1
                 else:
@@ -333,7 +333,7 @@ class preprossingPipeline:
                         label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     window_idx_full=window_idx_full+window_idx
-                    #window = window.reshape(-1, 3, 224, 224)
+                    window = window.reshape(-1, 3, 224, 224)
                     windows = torch.cat((windows, window), dim=0)
                     filenames.append(filename)
                     i += 1
