@@ -247,8 +247,8 @@ if __name__ == '__main__':
         F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
 
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs", max_windows=50)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs")
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
-    CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
+    CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
     #CV.two_layes(type="fetures",EXP_name="Feture_twofold")
