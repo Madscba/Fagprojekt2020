@@ -123,7 +123,7 @@ class classifier_validation():
             print(f"fold {n} completet")
             #print(AC_matrix)
         if logname is not None:
-            AC_matrix.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,logname)))
+            AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,logname))
         return  AC_matrix
 
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"],EXP_name=None):
@@ -145,7 +145,7 @@ class classifier_validation():
                 logname=f"{EXP_name}_Inderfold_{n}.json"
             else:
                 logname=None
-
+            print(logname)
             Innerresult=self.test(folds=[n],classifyers=classifyers, type=type, logname=logname)
             totalDatapoint=Innerresult.N_TestWindows.sum()
 
@@ -170,10 +170,10 @@ class classifier_validation():
         Best_log.loc["Final", "N_TestFiles"]= Best_log.N_TestFiles.sum()
         if EXP_name != None:
 
-            Gen_error.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Genneralisation_errors.json")))
-            Best_log.to_csv(os.path.join(os.getcwd(), os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Outerloop.json")))
-        else:
-            return Best_log,Gen_error
+            Gen_error.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Genneralisation_errors.json"))
+            Best_log.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Outerloop.json"))
+
+        return Best_log,Gen_error
 
 
 
@@ -236,8 +236,18 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    CV=classifier_validation(Bc_path=r"/work3/s173934/Fagprojekt/dataEEG",feture_path=r'/work3/s173934/Fagprojekt/FeatureVectors',speck_path=r'/work3/s173934/Fagprojekt/Spektrograms',logfile_path="ClassifierTestLogs")
+    hpc=True
+    if hpc:
+        BC=r"/work3/s173934/Fagprojekt/dataEEG"
+        F=r'/work3/s173934/Fagprojekt/FeatureVectors'
+        S=r'/work3/s173934/Fagprojekt/Spektrograms'
+    else:
+        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
+        F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
+        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+
+    CV=classifier_validation(Bc_path=BC,feture_path=F,speck_path=S,logfile_path="ClassifierTestLogs",max_files=20)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
-    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
+    #CV.two_layes(type="fetures",EXP_name="Feture_twofold")
