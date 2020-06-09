@@ -132,8 +132,8 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
 
     return w1, w2, l1, l2
 
-C = preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
-path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
+C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
+path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
