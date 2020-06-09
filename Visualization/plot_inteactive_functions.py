@@ -15,7 +15,7 @@ Functions for interactive plots made by Andreas
 
 """
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca_interactiv(pca_vectors,labels,window_id,pca1,pca2):
+def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA"):
     #make data frame
     df=(pd.DataFrame(window_id,columns=["file","window"]))
     df[int(pca1)]=pca_vectors[:,int(pca1)]
@@ -23,9 +23,14 @@ def plot_pca_interactiv(pca_vectors,labels,window_id,pca1,pca2):
     df["label"]=labels
     df["index"]=df.index
     fig=px.scatter(df,x=int(pca1),y=int(pca2),color="label",hover_data=["file","window","index"])
+    fig.update_layout(
+        title=model,
+        xaxis_title=f"Component {pca1}",
+        yaxis_title=f"Component {pca2}"
+    )
     fig.show()
 
-def plot_comand(feature_path,path_pca,BC_datapath,newplot=False):
+def plot_comand(feature_path,path_pca,BC_datapath,newplot=True):
     pca = pickle.load(open(path_pca, 'rb'))
     get_data=preprossingPipeline(BC_datapath=BC_datapath)
     feature_vectors,labels,filenames,window_id= get_data.make_label( quality=None, is_usable=None, max_files=10,path = feature_path)
@@ -50,7 +55,7 @@ def plot_comand(feature_path,path_pca,BC_datapath,newplot=False):
             if newplot==False:
                 get_data.plot_window(window_id[idx][0],window_id[idx][1],type=command)
             else:
-                data,time,chanels=get_data.plot_window(window_id[idx][0],window_id[idx][1],type=command,plot=False)
+                data,time,chanels=get_data.plot_window(window_id[idx][0],window_id[idx][1],type=command,plot=True)
                 data=np.array(data).T
                 df=pd.DataFrame(data,columns=chanels,index=time)
                 fig = make_subplots(rows=len(chanels), cols=1)
@@ -58,11 +63,11 @@ def plot_comand(feature_path,path_pca,BC_datapath,newplot=False):
                     fig.add_trace(
                         px.line(df,y=ch,x=df.index),
                         row=(i+1),col=1)
-                #fig=px.line(df,y=chanels[0],x=df.index)
+                fig=px.line(df,y=chanels[0],x=df.index)
                 fig.show()
 
 if __name__ == "__main__":
     feature_path=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
     path_pca=r'C:\Users\Andre\Desktop\Fagproject\PCA_TSNE\PCA.sav'
 
-    plot_comand(feature_path,path_pca,newplot=True,BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
+    plot_comand(feature_path,path_pca,newplot=False,BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC")
