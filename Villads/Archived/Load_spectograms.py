@@ -10,8 +10,8 @@ wdir="/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt"
 
 
 for file in fileNames:
-    if os.path.exists(wdir+r'/feature_vectors/'+file+".npy")==True:
-        pass
+    if os.path.exists(wdir+r'/spectograms_allch/'+file+".npy")==True:
+        np.load(wdir+r'/feature_vectors/'+file+".npy)
     else:
         spec = C.get_spectrogram(file)
         break

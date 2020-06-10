@@ -42,7 +42,7 @@ class classifier_validation():
 
     def get_spectrogram(self,x):
         spectrograms, spectrogram_labels, _, _ = self.prepros.make_label(make_from_filenames=x, quality=None,
-                                                                        is_usable=None, max_windows=self.max_windows,
+                                                                        is_usable=None, max_files=150,max_windows=self.max_windows,
                                                                         path=self.speck_path)  # 18 files = 1926
         spectrogram_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
 
@@ -50,7 +50,7 @@ class classifier_validation():
 
     def get_feturevectors(self,x):
         feature_vectors, feature_vectors_labels, _, _ = self.prepros.make_label(make_from_filenames=x,
-                                                                                 quality=None, is_usable=None,
+                                                                                 quality=None, is_usable=None,max_files=150,
                                                                                  max_windows=self.max_windows,
                                                                                  path=self.feture_path)  # 18 files = 2144
         feature_vectors_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in feature_vectors_labels]
@@ -247,8 +247,8 @@ if __name__ == '__main__':
         F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
 
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs", max_windows=50)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs",max_windows=50)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
-    CV.two_layes(type="spectrograms", EXP_name="Spec_twofold")
-    #CV.two_layes(type="fetures",EXP_name="Feture_twofold")
+    # CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
+    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
