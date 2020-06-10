@@ -147,8 +147,11 @@ class preprossingPipeline:
             
             plt.show()
         elif type=="EEG":
-            fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
-            fig.show()
+            if plot:
+                fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
+                fig.show()
+            else:
+                EEGserie.getdata(start=win_idx*30,duration=4,scalings ="auto")
         else:
             raise ("type not specified, use Spec or EEG")
 
