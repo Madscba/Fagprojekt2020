@@ -54,8 +54,8 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
     """
     T = len(K_range)
 
-    BIC = np.zeros((T,))
-    AIC = np.zeros((T,))
+    #BIC = np.zeros((T,))
+    #AIC = np.zeros((T,))
     CVE = np.zeros((T,))
 
     # K-fold crossvalidation
@@ -73,9 +73,8 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
                               n_init=reps, init_params=init_procedure,
                               tol=1e-6, reg_covar=1e-6).fit(X)
         # Get BIC and AIC
-        BIC[t,] = gmm2.bic(X)
-        AIC[t,] = gmm2.aic(X)
-        gmm2.bic()
+        #BIC[t,] = gmm2.bic(X)
+        #AIC[t,] = gmm2.aic(X)
         #cds.append(gmm.means_)
         #cls.append(gmm.predict(X))
 
@@ -94,10 +93,11 @@ def cv_gmm(X,K_range,n_splits,covar_type,reps,init_procedure):
 
     # Plot results for all K's
     plt.figure(1)
-    plt.plot(K_range, BIC, '-*b')
-    plt.plot(K_range, AIC, '-xr')
+    #plt.plot(K_range, BIC, '-*b')
+    #plt.plot(K_range, AIC, '-xr')
     plt.plot(K_range, 2 * CVE, '-ok')
-    plt.legend(['BIC', 'AIC', 'Crossvalidation'])
+    #plt.legend(['BIC', 'AIC', 'Crossvalidation'])
+    plt.legend(['Crossvalidation'])
     plt.xlabel('K')
     plt.ylabel(['Loss'])
     #plt.savefig('GMMs.png')
