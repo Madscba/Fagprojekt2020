@@ -1,8 +1,8 @@
+import sys
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from CNN.modifyCNN import model
 import torch.optim as optim
 import torch
-import sys
-sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from skimage.transform import resize
 from sklearn import preprocessing
 from sklearn.utils import shuffle
