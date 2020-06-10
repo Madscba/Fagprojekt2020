@@ -138,7 +138,7 @@ path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 
-X_train, X_valid, Y_train, Y_valid = split_dataset(C,path_s,N=40,train_split=75,max_windows=4,num_channels=7)
+X_train, X_valid, Y_train, Y_valid = split_dataset(C,path_s,N=50,train_split=80,max_windows=10,num_channels=7)
 
 train_acc, train_loss, val_acc, val_loss, model = test_CNN(model,X_train,Y_train,X_valid,Y_valid,batch_size=10,num_epochs=2,preprocessed=True)
 #print("\n Final training accuracy: ", train_acc)
