@@ -250,5 +250,5 @@ if __name__ == '__main__':
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs",max_files=50)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
-    CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
-    #CV.two_layes(type="fetures",EXP_name="Feture_twofold")
+    # CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
+    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
