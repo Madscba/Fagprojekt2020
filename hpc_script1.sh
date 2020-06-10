@@ -1,7 +1,7 @@
 #!/bin/sh
 #BSUB -J feature_script1
 #BSUB -o feature_script1_%J.out
-#BSUB -q gpuv100
+#BSUB -q gpuv80
 #BSUB -n 1
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -R "rusage[mem=64G]"
