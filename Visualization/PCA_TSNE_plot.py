@@ -37,7 +37,7 @@ def plot_pca(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA',pl
 #plot_pca(data[0:100,:],['a','b','c','a','b','c','a','b','c','d']*10,np.arange(0,4))
 #plot_pca(data[0:100,:],[True,False]*50,np.arange(0,2))
 
-def plot_pca_interactiv(Xdata,ydata,considered_classes, model='PCA'):
+def plot_pca_interactiv(Xdata,ydata,considered_classes,pca_components=[0,1], model='PCA'):
     if type(ydata[0]) == str: #If ydata is an array of categorical strings, convert them into numerical categorical values
             le = LabelEncoder()
             ydata = le.fit_transform(ydata)
@@ -63,3 +63,9 @@ def plot_pca_interactiv(Xdata,ydata,considered_classes, model='PCA'):
         plt.legend(loc='best')
         plt.title(model)
         plt.show()
+        df["pca"] = Xdata[indices, 0]
+        df["pca2"] = Xdata[indices, 1]
+        df["label"] = ydata
+        df["index"] = df.index
+        fig = px.scatter(df, x=int(pca1), y=int(pca2), color="label", hover_data=["file", "window", "index"])
+        fig.show()

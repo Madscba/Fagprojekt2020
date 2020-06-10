@@ -1,5 +1,6 @@
 '''
 Class to make preprosseing easy
+
 test
 Responsble Andreas
 '''
@@ -8,18 +9,19 @@ import os
 import torch
 from collections import defaultdict
 from datetime import datetime,timedelta
-
+from flashtorch.utils import load_image
 import matplotlib.pyplot as plt
 import numpy as np
 from mne.io import read_raw_edf
 from scipy import signal
-from skimage.transform import resize
 from Villads.PCA_TSNE_classes import scale_data
+from torchvision import transforms
 import pickle
 
 # Import David functions
 from Preprossering.loadData import jsonLoad
 import re
+import io
 
 
 class preprossingPipeline:
@@ -100,9 +102,15 @@ class preprossingPipeline:
         ch_dict=defaultdict()
         for i,ch in enumerate(EEGseries.ch_names):
             if resized:
-                _, _, _, im = plt.specgram(chWindows[i], Fs = edfFs)
-                image_resized = resize(im.get_array(), (224, 224), anti_aliasing = True)
-                ch_dict[ch]=torch.tensor(image_resized)
+                fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
+                #ch_dict[ch]=torch.tensor(image_resized)
+                buf = io.BytesIO()
+                plt.imsave(buf, np.log(Sxx+np.finfo(float).eps)[0:90], format='png')
+                buf.seek(0)
+                image = load_image(buf)
+                img = apply_transforms_new(image)
+                buf.close()
+                ch_dict[ch] = img
             else:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
                 ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
@@ -139,8 +147,11 @@ class preprossingPipeline:
             
             plt.show()
         elif type=="EEG":
-            fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
-            fig.show()
+            if plot:
+                fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
+                fig.show()
+            else:
+                EEGserie.getdata(start=win_idx*30,duration=4,scalings ="auto")
         else:
             raise ("type not specified, use Spec or EEG")
 
@@ -381,6 +392,26 @@ def make_pca(windows,make_spectograms=False):
     windows = scale_data(windows)
     windows = pca.transform(windows)
     return windows
+
+def apply_transforms_new(image, size=(224,224)):
+
+
+    if not isinstance(image, Image.Image):
+        image = F.to_pil_image(image)
+    means = [0.485, 0.456, 0.406]
+    stds = [0.229, 0.224, 0.225]
+
+    transform = transforms.Compose([
+        transforms.Resize(size),
+        transforms.ToTensor(),
+        transforms.Normalize(means, stds)
+    ])
+
+    tensor = transform(image).unsqueeze(0)
+
+    tensor.requires_grad = True
+
+    return tensor
 
 
 if __name__ == "__main__":
