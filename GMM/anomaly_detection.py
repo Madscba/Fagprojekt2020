@@ -9,6 +9,7 @@ import pandas as pd
 from GMM.gmm import gaussian_mixture, plot_cluster, cv_gmm, potential_outliers
 from sklearn.preprocessing import StandardScaler
 from Preprossering.PreprosseringPipeline import preprossingPipeline
+from sklearn.neighbors import KNeighborsClassifier
 from Visualization.PCA_TSNE_plot import plot_pca
 from sklearn.decomposition import PCA
 from Visualization.plot_inteactive_functions import plot_pca_interactiv
@@ -40,7 +41,19 @@ pca.fit(scaled_feature_vector)
 pca_fv=pca.transform(scaled_feature_vector)
 pca_fv1 = pca.transform(scaled_new)
 
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(pca_fv, labels)
+
+J = []
+for i in range(126):
+    J.append(np.argmax(neigh.predict_proba(pca_fv1[i:i+1])))
+
+J2 = []
+for i in range(1185):
+    J2.append(np.argmax(neigh.predict_proba(pca_fv[i:i+1])))
+
 plot_pca(pca_fv,labels,np.unique(labels),model='PCA feature vectors')
+plot_pca(pca_fv,J2,np.unique(labels),model='PCA feature vectors')
 plot_pca_interactiv(pca_fv,labels,index,model='PCA feature vectors')
 
 cov_type = 'full'
@@ -49,6 +62,6 @@ cds, cls, covs, gmm = gaussian_mixture(pca_fv,3,covar_type=cov_type,reps=5,init_
 
 plot_cluster(X=pca_fv,cls=cls,cds=cds,y=labels,covs=covs,idx=[0,1])
 
-cv_gmm(pca_fv,K_range=range(1,11),n_splits=5,covar_type=cov_type,reps=5,init_procedure='kmeans')
+#cv_gmm(pca_fv,K_range=range(1,11),n_splits=5,covar_type=cov_type,reps=5,init_procedure='kmeans')
 
-outliers, probs = potential_outliers(cluster_model=gmm, data=pca_fv1, threshold=0.1)
+#outliers, probs = potential_outliers(cluster_model=gmm, data=pca_fv1, threshold=0.1)
