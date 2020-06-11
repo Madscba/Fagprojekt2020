@@ -136,7 +136,6 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
 
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
-
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 from OSS import test
