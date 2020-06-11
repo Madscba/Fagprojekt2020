@@ -8,7 +8,11 @@
 /httpRequests/
 #virtualenv
 /classifier-env/
+<<<<<<< HEAD
 
 
 __pycache__/
 *.py[cod]
+=======
+__pycache__/
+>>>>>>> 16e3340e9239d879c743a8e164ce649ee424995b

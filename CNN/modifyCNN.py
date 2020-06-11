@@ -4,9 +4,9 @@ import torch.nn as nn
 import torchvision
 from torchvision import models
 
-class VGG16_OneChannel(nn.Module):
+class VGG16(nn.Module):
     def __init__(self):
-        super(VGG16_OneChannel, self).__init__()
+        super(VGG16, self).__init__()
         vgg16 = models.vgg16(pretrained=True)
         self.features = nn.Sequential(*list(vgg16.features.children()))
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
@@ -49,10 +49,10 @@ def check_grad(model):
         if param.requires_grad == True:
             print("\t",name)
 
-model = VGG16_OneChannel()
+model = VGG16()
 freeze_parameters(model,feature_extracting=True)
 check_grad(model)
 list2 = np.array(list_of_features(model))
-activation_list = np.array([0,1,24,25,26,27,28,29,30,31])
+activation_list = np.array([24,25,26,27,28,29,30,31])
 grad_parameters(model, list(list2[activation_list]))
 
