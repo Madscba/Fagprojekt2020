@@ -121,7 +121,7 @@ class classifier_validation():
                     if confusion_matrix==True:
                         for lable2 in set(y_test):
                             base2=np.full(len(y_test),lable2)
-                            AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base2,y_test==base1))
+                            AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
                 AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
                 AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
@@ -265,8 +265,13 @@ if __name__ == '__main__':
         F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=5)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
+<<<<<<< HEAD
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
     CV.two_layes(type="spectrograms",EXP_name="spec_test")
+=======
+    # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
+    CV.two_layes(type="spectrograms",EXP_name="Spec_twofoldsrat_fulldataset")
+>>>>>>> c083c0fa0de32b1dac59ddc7b19ecd44cbc7c10c
