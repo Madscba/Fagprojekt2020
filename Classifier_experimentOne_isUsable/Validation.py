@@ -254,7 +254,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=False
+    hpc=True
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors'
@@ -269,4 +269,4 @@ if __name__ == '__main__':
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
-    CV.two_layes(type="spectrograms",EXP_name="test")
+    CV.two_layes(type="spectrograms",EXP_name="spec_test")
