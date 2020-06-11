@@ -66,11 +66,14 @@ def subfold(stucture,filenames,y,type):
             folds[f"train_len_{i}"]=len(train_id)
             folds[f"test_len_{i}"]=len(text_id)
             i+=1
+            for l in set(y):
+                print(f"lable balance {l} = {np.sum([y==l])/len(y)}")
 
         if len(set(np.append(folds["train_1"],folds["test_1"])))==len(np.append(folds["train_1"],folds["test_1"])):
             return folds
         else:
             raise Exception("Same index in train and test set")
+
 
 if __name__ == '__main__':
     make_fold([5,5],path_edf=os.path.join(os.getcwd(), r"Preprossering/edfFiles.json"),path_fold=r"Preprossering//K-stratified_is_useble_shuffle.json",lable="Is Eeg Usable For Clinical Purposes",type="statifiedshuffle")
