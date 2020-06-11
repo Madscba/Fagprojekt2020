@@ -231,6 +231,7 @@ class preprossingPipeline:
             if i == max_files:
                 break
             if not os.path.exists(fv_path):
+                print(f"Warning could't find {fv_path}")
                 pass
             else:
                 if i == 0:
