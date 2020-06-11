@@ -133,8 +133,9 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     l2 = labels1[n1:]+labels2[n2:]
 
     return w1, w2, l1, l2
-from OSS import test
+
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
+from OSS import test
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 
 criterion = nn.CrossEntropyLoss()
