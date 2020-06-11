@@ -329,7 +329,9 @@ class preprossingPipeline:
                     windows = window
                     i += 1
                 else:
+                    print("Reached:",fv_path)
                     window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
+                    # window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
                     if max_windows != -1:
                         if max_windows >= window.shape[0]:
                             window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
