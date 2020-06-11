@@ -270,3 +270,4 @@ if __name__ == '__main__':
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     CV.two_layes(type="spectrograms",EXP_name="Spec_twofoldsrat_fulldataset")
+
