@@ -165,3 +165,4 @@ wrong_guesses_data = np.asarray(wrong_guesses)
 #np.save('wrong_guesses.npy',wrong_guesses_data)
 PATH = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt'
 #torch.save(model.state_dict(),PATH)
+ççççççççç
