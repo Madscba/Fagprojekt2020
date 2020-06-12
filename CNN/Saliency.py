@@ -1,4 +1,4 @@
-from flashtorch.utils import apply_transforms, load_image
+from flashtorch.utils import apply_transforms, load_image, format_for_plotting, denormalize
 import torchvision.models as models
 from flashtorch.saliency import Backprop
 from CNN.loadPretrainedCNN2 import VGG16_NoSoftmax_OneChannel
@@ -14,7 +14,7 @@ windows, labels, filenames, window_idx_full = C.make_label_cnn(make_from_filenam
                    path=path1, seed=0, ch_to_include=range(1))
 img=windows[0].unsqueeze(0)
 img=load_image('Ricardo_rip.jpg')
-img= 3*apply_transforms(img,size=224)-200
+img= apply_transforms(img,size=224)
 img.detach().requires_grad_(requires_grad=True)
 
 #window = torch.load('/Volumes/B/spectograms_rgb/sbs2data_2018_08_30_19_39_35_288 part 2.edf.pt')

@@ -4,10 +4,22 @@ import torch.nn as nn
 import torchvision
 from torchvision import models
 
-class VGG16(nn.Module):
+class VGG16_modified(nn.Module):
     def __init__(self):
-        super(VGG16, self).__init__()
+        super(VGG16_modified, self).__init__()
+        vgg_firstlayer = models.vgg16(pretrained=True).features[0]  # load just the first conv layer
         vgg16 = models.vgg16(pretrained=True)
+        w1 = vgg_firstlayer.state_dict()['weight'][:, 0, :, :]
+        w2 = vgg_firstlayer.state_dict()['weight'][:, 1, :, :]
+        w3 = vgg_firstlayer.state_dict()['weight'][:, 2, :, :]
+        w4 = w1 + w2 + w3  # add the three weigths of the channels
+        w4 = w4.unsqueeze(1)
+        first_conv = nn.Conv2d(14*3, 64, 3, padding=(1, 1))  # create a new conv layer
+        first_conv.weigth = torch.nn.Parameter(w4, requires_grad=True)  # initialize  the conv layer's weigths with w4
+        first_conv.bias = torch.nn.Parameter(vgg_firstlayer.state_dict()['bias'],
+                                             requires_grad=True)  # initialize  the conv layer's weigths with vgg's first conv bias
+
+        self.first_convlayer = first_conv  # the first layer is 14*3 channel conv  layer
         self.features = nn.Sequential(*list(vgg16.features.children()))
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
         self.classifier = nn.Sequential(
@@ -49,10 +61,10 @@ def check_grad(model):
         if param.requires_grad == True:
             print("\t",name)
 
-model = VGG16()
+model = VGG16_modified()
 freeze_parameters(model,feature_extracting=True)
 check_grad(model)
 list2 = np.array(list_of_features(model))
-activation_list = np.array([24,25,26,27,28,29,30,31])
+activation_list = np.array([0,1,24,25,26,27,28,29,30,31])
 grad_parameters(model, list(list2[activation_list]))
 

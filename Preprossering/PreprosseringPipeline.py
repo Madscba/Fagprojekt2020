@@ -229,6 +229,7 @@ class preprossingPipeline:
             if i == max_files:
                 break
             if not os.path.exists(fv_path):
+                print(f"Warning could't find {fv_path}")
                 pass
             else:
                 if i == 0:
@@ -326,7 +327,9 @@ class preprossingPipeline:
                     windows = window
                     i += 1
                 else:
+                    print("Reached:",fv_path)
                     window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
+                    # window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
                     if max_windows != -1:
                         if max_windows >= window.shape[0]:
                             window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
