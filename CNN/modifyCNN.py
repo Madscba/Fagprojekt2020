@@ -53,6 +53,4 @@ model = VGG16()
 freeze_parameters(model,feature_extracting=True)
 check_grad(model)
 list2 = np.array(list_of_features(model))
-activation_list = np.array([24,25,26,27,28,29,30,31])
-grad_parameters(model, list(list2[activation_list]))
 
