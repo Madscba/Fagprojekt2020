@@ -3,6 +3,7 @@ sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from CNN.modifyCNN import model
 import torch.optim as optim
 import torch
+from sklearn.utils import shuffle
 from skimage.transform import resize
 from sklearn import preprocessing
 from sklearn.utils import shuffle
@@ -139,26 +140,28 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     l1 = labels1[:n1]+labels2[:n2]
     l2 = labels1[n1:]+labels2[n2:]
     wid = window_idx_full1[n1:]+window_idx_full2[n2:]
-    return w1, w2, l1, l2, wid
+    train_windows, train_labels = shuffle(w1,l1)
+    test_windows, test_labels = shuffle(w2,l2)
+    return train_windows, test_windows, train_labels, test_labels, wid
 
 C=preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
 path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.005)
-X_train, X_valid, Y_train, Y_valid, windowsid = split_dataset(C,path_s,N=10,train_split=80,max_windows=8,num_channels=7)
+optimizer = optim.Adam(model.parameters(), lr=0.008)
+X_train, X_valid, Y_train, Y_valid, windowsid = split_dataset(C,path_s,N=49,train_split=80,max_windows=10,num_channels=10)
 #from OSS import test
 train_acc, train_loss, val_acc, val_loss, wrong_guesses, model = test_CNN(model,X_train,Y_train,X_valid,Y_valid,windowsid,batch_size=10,num_epochs=1,preprocessed=True)
-#print("\n Final training accuracy: ", train_acc)
-#print("\n Final validation accuracy: ", val_acc)
+print("\n Final training accuracy: ", train_acc)
+print("\n Final validation accuracy: ", val_acc)
 train_acc_data = np.asarray(train_acc)
-np.save('train_acc.npy',train_acc_data)
+#np.save('train_acc.npy',train_acc_data)
 train_loss_data = np.asarray(train_loss)
-np.save('train_loss.npy',train_loss_data)
+#np.save('train_loss.npy',train_loss_data)
 valid_acc_data = np.asarray(val_acc)
-np.save('valid_acc.npy',valid_acc_data)
+#np.save('valid_acc.npy',valid_acc_data)
 valid_loss_data = np.asarray(val_loss)
-np.save('valid_loss.npy',valid_loss_data)
+#np.save('valid_loss.npy',valid_loss_data)
 wrong_guesses_data = np.asarray(wrong_guesses)
-np.save('wrong_guesses.npy',wrong_guesses_data)
+#np.save('wrong_guesses.npy',wrong_guesses_data)
 PATH = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt'
 #torch.save(model.state_dict(),PATH)

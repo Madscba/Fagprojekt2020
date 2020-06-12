@@ -1,4 +1,4 @@
-from flashtorch.utils import apply_transforms, load_image
+from flashtorch.utils import apply_transforms, load_image, format_for_plotting, denormalize
 import torchvision.models as models
 from flashtorch.saliency import Backprop
 from CNN.loadPretrainedCNN2 import VGG16_NoSoftmax_OneChannel
