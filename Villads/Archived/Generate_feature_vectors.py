@@ -1,39 +1,59 @@
-from loadPretrainedCNN import VGG16_NoSoftmax_OneChannel,VGG16_NoSoftmax_RGB, fetchImage
-from Preprossering.PreprosseringPipeline import preprossingPipeline, getFeatureVec
+from loadPretrainedCNN import VGG16_NoSoftmax_RGB, fetchImage
+from Preprossering.PreprosseringPipeline import preprossingPipeline
 import numpy as np
+import torch
 import os
+import gc
+
+def feature_vector_loop_inner(tensor_window):
+    for i in range(14):
+        if i==0:
+            tempFeatureVec = model(tensor_window[i].unsqueeze(0))
+            featureVec = tempFeatureVec
+            i += 1
+            print(i)
+        else:
+            tempFeatureVec = model(tensor_window[i].unsqueeze(0))
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+            print(i)
+    return featureVec
+
+def window_vector_loop(windowVec, featureVec):
+    if windowVec is 0:
+        windowVec = featureVec
+        featureVec = 0
+    else:
+        windowVec = torch.cat((windowVec, featureVec), 0)
+        featureVec = 0
+    return windowVec
 
 
-
-model = VGG16_NoSoftmax_OneChannel()
+model = VGG16_NoSoftmax_RGB()
 model.eval()
 C=preprossingPipeline(BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG",mac=True)
 fileNames=C.edfDict.keys()
 wdir="/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt"
+path_new='/Volumes/B/spectograms_rgb/'
+i=0
+gc.disable()
 for file in fileNames:
-    if os.path.exists(wdir+r'/feature_vectors/'+file+".npy")==True:
+    if os.path.exists(wdir+r'/spectograms/'+file)==True:
         pass
     else:
-        spec = C.get_spectrogram(file)
-        i = 0
-        for window_value in spec.keys():
-            if window_value=='annotations':
-                break
-            if i == 0:
-                featureVec = getFeatureVec(spec[window_value], model).detach().numpy()
-                featureVectors = featureVec
-            else:
-                featureVec = getFeatureVec(spec[window_value],model).detach().numpy()
-                featureVectors=np.vstack((featureVectors,featureVec))
-            i+=1
+        try:
+            windowVec = 0
+            tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path='/Volumes/B/spectograms_rgb')
+            for i in range(int(len(tensor) / 14)):
+                feature_vector = feature_vector_loop_inner(tensor[0 + i * 14: 14 + i * 14])
+                windowVec = window_vector_loop(windowVec, feature_vector)
+                print(i)
+                gc.collect()
+            i += 1
             print(i)
-        filename=r'/feature_vectors/'+file
-        np.save(wdir+filename,featureVectors)
-
-
-
-
-
+            filename = r'/feature_vectors/' + file
+            np.save(wdir + filename, windowVec)
+        except:
+            print(file)
 
 
 
