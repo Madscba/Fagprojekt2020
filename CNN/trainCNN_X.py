@@ -1,6 +1,6 @@
 import sys
-sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
-from CNN.modifyCNN import model
+#sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
+from CNN.modifyCNN2 import model
 import torch.optim as optim
 import torch
 from sklearn.utils import shuffle
@@ -115,31 +115,32 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='No', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
-    n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
-    n_train_files2 = int(len(filenames2) / 10 * (train_split/10))
-    a = np.array(window_idx_full1)
-    b = np.array(window_idx_full2)
-    windows_id = window_idx_full1+window_idx_full2
-    j1 = np.unique(a[:, 0], return_counts=True)
-    j2 = np.unique(b[:,0], return_counts=True)
-    j1 = np.array(j1)
-    j2 = np.array(j2)
-    j1 = np.asarray(j1[1, :], dtype='int64')
-    j2 = np.asarray(j2[1,:], dtype='int64')
-    n1, n2 = 0, 0
-    for i in range(n_train_files1):
-        n1 += j1[i]
-    for i in range(n_train_files2):
-        n2 += j1[i]
-    wt1 = windows1[:n1,:,:,:]
-    wt2 = windows2[:n2,:,:,:]
+    new_size = len(filenames1+filenames2)
+    wi1 = np.asarray(window_idx_full1)
+    wi2 = np.asarray(window_idx_full2)
+    w_index1 = []
+    for i in range(np.shape(wi1)[0]):
+        w_index1.append(wi1[i][1])
+    w_index2 = []
+    for i in range(np.shape(wi2)[0]):
+        w_index2.append(wi2[i][1])
+    num_windows1 = len(np.unique(w_index1))
+    num_windows2 = len(np.unique(w_index2))
+    num_c1 = int(len(w_index1)/len(filenames1))
+    num_c2 = int(len(w_index2)/len(filenames2))
+    new_windows1 = torch.reshape(windows1,(num_windows1*len(filenames1),num_c1*3,224,224))
+    new_windows2 = torch.reshape(windows2,(num_windows2*len(filenames2),num_c2*3,224,224))
+    n1 = int(len(filenames1) / 10 * (train_split/10))
+    n2 = int(len(filenames2) / 10 * (train_split/10))
+    wt1 = new_windows1[:n1,:,:,:]
+    wt2 = new_windows2[:n2,:,:,:]
     w1 = torch.cat((wt1,wt2))
-    ww1 = windows1[n1:,:,:,:]
-    ww2 = windows2[n2:,:,:,:]
+    ww1 = new_windows1[n1:,:,:,:]
+    ww2 = new_windows2[n2:,:,:,:]
     w2 = torch.cat((ww1,ww2))
     l1 = labels1[:n1]+labels2[:n2]
     l2 = labels1[n1:]+labels2[n2:]
-    wid = window_idx_full1[n1:]+window_idx_full2[n2:]
+    wid = filenames1[n1:]+filenames2[n2:]
     train_windows, train_labels = shuffle(w1,l1)
     test_windows, test_labels = shuffle(w2,l2)
     return train_windows, test_windows, train_labels, test_labels, wid
@@ -148,21 +149,20 @@ C=preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semest
 path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.008)
-X_train, X_valid, Y_train, Y_valid, windowsid = split_dataset(C,path_s,N=29,train_split=80,max_windows=10,num_channels=10)
+X_train, X_valid, Y_train, Y_valid, windowsid = split_dataset(C,path_s,N=40,train_split=80,max_windows=10,num_channels=10)
 #from OSS import test
 train_acc, train_loss, val_acc, val_loss, wrong_guesses, model = test_CNN(model,X_train,Y_train,X_valid,Y_valid,windowsid,batch_size=10,num_epochs=1,preprocessed=True)
-print("\n Final training accuracy: ", train_acc)
-print("\n Final validation accuracy: ", val_acc)
-train_acc_data = np.asarray(train_acc)
+#print("\n Final training accuracy: ", train_acc)
+#print("\n Final validation accuracy: ", val_acc)
+#train_acc_data = np.asarray(train_acc)
 #np.save('train_acc.npy',train_acc_data)
-train_loss_data = np.asarray(train_loss)
+#train_loss_data = np.asarray(train_loss)
 #np.save('train_loss.npy',train_loss_data)
-valid_acc_data = np.asarray(val_acc)
+#valid_acc_data = np.asarray(val_acc)
 #np.save('valid_acc.npy',valid_acc_data)
-valid_loss_data = np.asarray(val_loss)
+#valid_loss_data = np.asarray(val_loss)
 #np.save('valid_loss.npy',valid_loss_data)
-wrong_guesses_data = np.asarray(wrong_guesses)
+#wrong_guesses_data = np.asarray(wrong_guesses)
 #np.save('wrong_guesses.npy',wrong_guesses_data)
-PATH = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt'
+#PATH = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt'
 #torch.save(model.state_dict(),PATH)
-ççççççççç

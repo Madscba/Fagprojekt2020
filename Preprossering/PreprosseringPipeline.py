@@ -8,6 +8,7 @@ import mne
 import os
 import torch
 from collections import defaultdict
+from datetime import datetime,timedelta
 from flashtorch.utils import load_image
 import matplotlib.pyplot as plt
 import numpy as np
@@ -102,6 +103,7 @@ class preprossingPipeline:
         for i,ch in enumerate(EEGseries.ch_names):
             if resized:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
+                #ch_dict[ch]=torch.tensor(image_resized)
                 buf = io.BytesIO()
                 plt.imsave(buf, np.log(Sxx+np.finfo(float).eps)[0:90], format='png')
                 buf.seek(0)
@@ -383,6 +385,18 @@ def getFeatureVec(windowValues,model):
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
 
+def getNewFeatureVec(windowValues,model):
+    featureVec = []
+    for channelSpectrogram in windowValues.values():
+        x = model.features(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+        x = model.avgpool(x)
+        x = torch.flatten(x,1)
+        tempFeatureVec = model.classifer[0:4](x)
+        if len(featureVec)==0:
+            featureVec = tempFeatureVec
+        else:
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+    return featureVec
 
 def make_pca(windows,make_spectograms=False):
     if make_spectograms:
@@ -397,6 +411,8 @@ def make_pca(windows,make_spectograms=False):
 def apply_transforms_new(image, size=(224,224)):
 
 
+    if not isinstance(image, Image.Image):
+        image = F.to_pil_image(image)
     means = [0.485, 0.456, 0.406]
     stds = [0.229, 0.224, 0.225]
 
