@@ -385,6 +385,18 @@ def getFeatureVec(windowValues,model):
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
     return featureVec
 
+def getNewFeatureVec(windowValues,model):
+    featureVec = []
+    for channelSpectrogram in windowValues.values():
+        x = model.features(channelSpectrogram.unsqueeze(0).unsqueeze(0).float())
+        x = model.avgpool(x)
+        x = torch.flatten(x,1)
+        tempFeatureVec = model.classifer[0:4](x)
+        if len(featureVec)==0:
+            featureVec = tempFeatureVec
+        else:
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+    return featureVec
 
 def make_pca(windows,make_spectograms=False):
     if make_spectograms:
