@@ -396,7 +396,7 @@ def getNewFeatureVec(windowValues,model):
             featureVec = tempFeatureVec
         else:
             featureVec = torch.cat((featureVec, tempFeatureVec), 1)
-    return featureVec
+    return featureVec.detach()
 
 def make_pca(windows,make_spectograms=False):
     if make_spectograms:
