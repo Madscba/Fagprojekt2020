@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
-from CNN.modifyCNN import model,grad_parameters, list2
+from CNN.modifyCNN import model
 import torch.optim as optim
 import torch
 from skimage.transform import resize
@@ -89,7 +89,6 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
 
             val_loss.append(batch_loss.data.numpy())
             preds = np.argmax(output.data.numpy(), axis=-1)
-            eval_preds = y_batch_v.data.numpy() == preds
             for k in range(index):
                 if eval_preds[k] == False:
                     wrong_guesses.append(w_id[idx[k]])
@@ -138,42 +137,27 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     l1 = labels1[:n1]+labels2[:n2]
     l2 = labels1[n1:]+labels2[n2:]
     wid = window_idx_full1[n1:]+window_idx_full2[n2:]
-    train_windows, train_labels = shuffle(w1,l1)
-    test_windows, test_labels = shuffle(w2,l2)
-    return train_windows, test_windows, train_labels, test_labels, wid
+    return w1, w2, l1, l2, wid
 
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.005)
-X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=100,train_split=80,max_windows=10,num_channels=7)
-modelA = model
-modelB = model
-for i in range(2):
-    PATH = '/zhome/87/9/127623/Fagprojekt'
-    if i == 0:
-        activation_list = np.array([26, 27, 28, 29, 30, 31])
-        grad_parameters(modelA, list(list2[activation_list]))
-        train_acc, train_loss, val_acc, val_loss, wrong_guesses, modelA = test_CNN(modelA, X_train, Y_train, X_valid,
-                                                                                  Y_valid, windows_id, batch_size=100,
-                                                                                  num_epochs=2, preprocessed=True)
-        torch.save(modelA.state_dict(), 'modelA')
-    else:
-        activation_list = np.array([20,21,22,23,24,25,26, 27, 28, 29, 30, 31])
-        grad_parameters(model[i], list(list2[activation_list]))
-        train_acc, train_loss, val_acc, val_loss, wrong_guesses, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
-                                                                                  Y_valid, windows_id, batch_size=100,
-                                                                                  num_epochs=2, preprocessed=True)
-        torch.save(modelB.state_dict(), 'modelB')
-
+X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=30,train_split=80,max_windows=10,num_channels=7)
+from OSS import test
+learning_rate = [0.001, 0.005, 0.009, 0.013, 0.017]
+models = [model, model, model, model, model]
+for i in range(len(learning_rate)):
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate[i])
+    train_acc, train_loss, val_acc, val_loss, wrong_guesses, models[i] = test_CNN(model[i],X_train,Y_train,X_valid,Y_valid,windows_id,batch_size=10,num_epochs=2,preprocessed=True)
     train_acc_data = np.asarray(train_acc)
-    np.save((f'train_acc_%{i}.npy'), train_acc_data)
-    print("reached:")
+    np.save(('train_acc_%i.npy'%i),train_acc_data)
     train_loss_data = np.asarray(train_loss)
-    np.save((f'train_loss_%{i}.npy'), train_loss_data)
+    np.save(('train_loss_%i.npy'%),train_loss_data)
     valid_acc_data = np.asarray(val_acc)
-    np.save((f'valid_acc_%{i}.npy'), valid_acc_data)
+    np.save(('valid_acc_%i.npy'%i),valid_acc_data)
     valid_loss_data = np.asarray(val_loss)
-    np.save((f'valid_loss_%{i}.npy'), valid_loss_data)
+    np.save(('valid_loss_%i.npy'%i),valid_loss_data)
     wrong_guesses_data = np.asarray(wrong_guesses)
-    np.save((f'wrong_guesses_%{i}.npy'), wrong_guesses_data)
+    np.save(('wrong_guesses_%i.npy'%i),wrong_guesses_data)
+    PATH = '/zhome/87/9/127623/Fagprojekt/Fagprojekt2020'
+    torch.save(models[i].state_dict(),PATH)

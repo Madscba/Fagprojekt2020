@@ -1,52 +1,65 @@
 from CNN.loadTrainedCNN import trained_model_RGB
-from Preprossering.PreprosseringPipeline import preprossingPipeline, getNewFeatureVec
+from Preprossering.PreprosseringPipeline import preprossingPipeline,getNewFeatureVec
 import numpy as np
+import torch
 import os
+import gc
 
 
+def window_vector_loop(windowVec, featureVec):
+    if windowVec is 0:
+        windowVec = featureVec
+        print(i)
+    else:
+        windowVec = torch.cat((windowVec, featureVec), 0)
+        print(i)
+    return windowVec.detach()
 
+def feature_vector_loop_inner(tensor_window,model):
+    for i in range(14):
+        if i==0:
+            x = model.features(tensor_window[i].unsqueeze(0).float())
+            x = model.avgpool(x)
+            x = torch.flatten(x, 1)
+            tempFeatureVec = model.classifer[0:4](x)
+            #tempFeatureVec=tensor_window[i].reshape(1,-1)
+            featureVec = tempFeatureVec
+        else:
+            x = model.features(tensor_window[i].unsqueeze(0).float())
+            x = model.avgpool(x)
+            x = torch.flatten(x, 1)
+            tempFeatureVec = model.classifer[0:4](x)
+            #tempFeatureVec = tensor_window[i].reshape(1,-1)
+            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
+    return featureVec.detach()
+
+
+C=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",mac=False)
+fileNames=C.edfDict.keys()
+wdir=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+path_new=r'D:\spectograms_rgb'
+i=0
 model = trained_model_RGB
 model.eval()
-C=preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
-fileNames=C.edfDict.keys()
-wdir="/Users/johan/iCloudDrive/DTU/KID/4. semester/Fagprojekt"
 for file in fileNames:
-    if os.path.exists(wdir+r'/feature_vectors/'+file+".npy")==True:
+    if os.path.exists(wdir+r'/spectograms/'+file)==True:
         pass
     else:
-        spec = C.get_spectrogram(file)
-        i = 0
-        for window_value in spec.keys():
-            if window_value=='annotations':
-                break
-            if i == 0:
-                featureVec = getNewFeatureVec(spec[window_value], model).detach().numpy()
-                featureVectors = featureVec
-            else:
-                featureVec = getNewFeatureVec(spec[window_value],model).detach().numpy()
-                featureVectors=np.vstack((featureVectors,featureVec))
-            i+=1
+        #try:
+            windowVec = 0
+            tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path='/Volumes/B/spectograms_rgb')
+            tensor.requires_grad_(requires_grad=False)
+            print(file)
+            for i in range(int(len(tensor) / 14)):
+                feature_vector = feature_vector_loop_inner(tensor[0 + i * 14: 14 + i * 14],model=model)
+                windowVec = window_vector_loop(windowVec, feature_vector)
+                windowVec=windowVec.detach()
+                print(i)
+                del feature_vector
+                gc.collect()
+            i += 1
             print(i)
-        filename=r'/feature_vectors/'+file
-        np.save(wdir+filename,featureVectors)
-
-
-
-
-
-
-
-
-    #Generate a pretrained VGG model
-    # model = VGG16_NoSoftmax_OneChannel()
-    # model_rgb = VGG16_NoSoftmax_RGB()
-    # path = r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG'
-    # img = fetchImage(path) #Spectrograms should have dim: [3,224,224] for VGG_NoSoftmax_RGB
-    # img2 = img[1,:,:] #Spectrograms should have dim: [224,224] for VGG_NoSoftmax_OneChannel
-    #
-    # model.eval()
-    # model_rgb.eval()
-    #
-    # out1 = model(img2.unsqueeze(0).unsqueeze(0).float()) #input should be tensor with dim: [1,1,224,224] corresponding to [batchsize, channels, breadth, width], [output 1x4096]
-    # out2 = model_rgb(img.unsqueeze(0).float()) #input should be tensor with dim: [1,3,224,224] corresponding to [batchsize, channels, breadth, width], output [1x4096]
-
+            filename = r'/feature_vectors/' + file
+            np.save(wdir + filename, windowVec)
+        #except:
+            #print(file)
