@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="560c0964-56cb-4ae8-8f83-31e1c8699d75" name="Default Changelist" comment="" />
+    <list default="true" id="560c0964-56cb-4ae8-8f83-31e1c8699d75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN/trainCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN/trainCNN.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.Generate_feature_vectors">
@@ -55,7 +58,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Villads/Archived" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -174,12 +177,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.loadPretrainedCNN" />
       <item itemvalue="Python.Generate_feature_vectors" />
       <item itemvalue="Python.classifier_experiment_isUsable0" />
       <item itemvalue="Python.classifier_experiment_isUsable" />
       <item itemvalue="Python.classifier_experiment_isUsable_allData" />
       <item itemvalue="Python.hpc_test" />
-      <item itemvalue="Python.loadPretrainedCNN" />
     </list>
     <recent_temporary>
       <list>
@@ -224,10 +227,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="669" y="115" key="#classifier_experiment_isUsable0/0.0.1920.1040@0.0.1920.1040" timestamp="1591706178938" />
-    <state x="279" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591973850435">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592085585087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591271895540" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1592085585087" />
     <state x="279" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591973850435" />
     <state x="669" y="115" key="#loadPretrainedCNN" timestamp="1591904741227">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -237,29 +240,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="386" y="231" width="806" height="593" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1591272328935" />
-    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1591907943381">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="591" y="217" key="FileChooserDialogImpl" timestamp="1592085576147">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="591" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592085576147" />
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591907943381" />
-    <state width="1515" height="387" key="GridCell.Tab.0.bottom" timestamp="1592033511475">
+    <state width="1515" height="256" key="GridCell.Tab.0.bottom" timestamp="1592085418153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="387" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1515" height="256" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592085418153" />
     <state width="1899" height="387" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
-    <state width="1515" height="387" key="GridCell.Tab.0.center" timestamp="1592033511475">
+    <state width="1515" height="256" key="GridCell.Tab.0.center" timestamp="1592085418153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="387" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1515" height="256" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592085418153" />
     <state width="1899" height="387" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
-    <state width="1515" height="387" key="GridCell.Tab.0.left" timestamp="1592033511475">
+    <state width="1515" height="256" key="GridCell.Tab.0.left" timestamp="1592085418153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="387" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1515" height="256" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592085418153" />
     <state width="1899" height="387" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
-    <state width="1515" height="387" key="GridCell.Tab.0.right" timestamp="1592033511475">
+    <state width="1515" height="256" key="GridCell.Tab.0.right" timestamp="1592085418153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="387" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1515" height="256" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592085418153" />
     <state width="1899" height="387" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
     <state width="1515" height="387" key="GridCell.Tab.1.bottom" timestamp="1592033511476">
       <screen x="0" y="0" width="1536" height="824" />
@@ -334,12 +338,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py</url>
-          <line>50</line>
+          <line>37</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/CNN/trainCNN.py</url>
-          <line>153</line>
+          <line>160</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
