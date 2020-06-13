@@ -138,7 +138,9 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     l1 = labels1[:n1]+labels2[:n2]
     l2 = labels1[n1:]+labels2[n2:]
     wid = window_idx_full1[n1:]+window_idx_full2[n2:]
-    return w1, w2, l1, l2, wid
+    train_windows, train_labels = shuffle(w1,l1)
+    test_windows, test_labels = shuffle(w2,l2)
+    return train_windows, test_windows, train_labels, test_labels, wid
 
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
