@@ -148,26 +148,26 @@ from OSS import test
 modelA = model
 modelB = model
 for i in range(2):
-    PATH = '/zhome/87/9/127623/Fagprojekt/Fagprojekt2020'
+    PATH = '/zhome/87/9/127623/Fagprojekt'
     if i == 0:
         activation_list = np.array([26, 27, 28, 29, 30, 31])
         grad_parameters(modelA, list(list2[activation_list]))
         train_acc, train_loss, val_acc, val_loss, wrong_guesses, modelA = test_CNN(modelA, X_train, Y_train, X_valid,
                                                                                   Y_valid, windows_id, batch_size=100,
                                                                                   num_epochs=2, preprocessed=True)
-        torch.save(modelA.state_dict(), PATH)
+        torch.save(modelA.state_dict(), 'modelA')
     else:
         activation_list = np.array([20,21,22,23,24,25,26, 27, 28, 29, 30, 31])
         grad_parameters(model[i], list(list2[activation_list]))
         train_acc, train_loss, val_acc, val_loss, wrong_guesses, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
                                                                                   Y_valid, windows_id, batch_size=100,
                                                                                   num_epochs=2, preprocessed=True)
-        torch.save(modelB.state_dict(), PATH)
+        torch.save(modelB.state_dict(), 'modelB')
 
     train_acc_data = np.asarray(train_acc)
     np.save(('train_acc_%i.npy' % i), train_acc_data)
     train_loss_data = np.asarray(train_loss)
-    np.save(('train_loss_%i.npy' %), train_loss_data)
+    np.save(('train_loss_%i.npy' %i), train_loss_data)
     valid_acc_data = np.asarray(val_acc)
     np.save(('valid_acc_%i.npy' % i), valid_acc_data)
     valid_loss_data = np.asarray(val_loss)
