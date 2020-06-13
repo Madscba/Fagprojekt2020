@@ -44,9 +44,9 @@ def feature_vector_loop_inner(tensor_window,model):
     return featureVec.detach()
 
 
-C=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC",mac=False)
+C=preprossingPipeline(BC_datapath=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG",mac=False)
 fileNames=C.edfDict.keys()
-wdir=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+wdir=r"C:\Users\Mads-\OneDrive\Skrivebord\FeatureVec"
 path_new=r'D:\spectograms_rgb'
 i=0
 for file in fileNames:
@@ -67,7 +67,7 @@ for file in fileNames:
                 gc.collect()
             i += 1
             print(i)
-            filename = r'/feature_vectors/' + file
+            filename = file
             np.save(wdir + filename, windowVec)
         #except:
             #print(file)
