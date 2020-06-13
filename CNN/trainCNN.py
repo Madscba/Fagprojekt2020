@@ -168,7 +168,6 @@ for i in range(2):
     np.save((f'train_acc_%{i}.npy'), train_acc_data)
     print("reached:")
     train_loss_data = np.asarray(train_loss)
-    np.save(('train_loss_%{i}.npy'), train_loss_data)
     np.save((f'train_loss_%{i}.npy'), train_loss_data)
     valid_acc_data = np.asarray(val_acc)
     np.save((f'valid_acc_%{i}.npy'), valid_acc_data)
