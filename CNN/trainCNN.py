@@ -145,7 +145,6 @@ path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.005)
 X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=100,train_split=80,max_windows=10,num_channels=7)
-from OSS import test
 modelA = model
 modelB = model
 for i in range(2):
