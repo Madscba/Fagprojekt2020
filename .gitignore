@@ -10,7 +10,7 @@
 /classifier-env/
 /__pycache__/
 <<<<<<< HEAD
-
+*.pyc
 
 __pycache__/
 *.py[cod]

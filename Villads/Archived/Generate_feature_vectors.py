@@ -6,20 +6,7 @@ import os
 import gc
 
 
-def feature_vector_loop_inner(tensor_window):
-    model = VGG16_NoSoftmax_RGB()
-    model.eval()
-    for i in range(14):
-        if i==0:
-            tempFeatureVec = model(tensor_window[i].unsqueeze(0))
-            featureVec = tempFeatureVec
-            i += 1
-            print(i)
-        else:
-            tempFeatureVec = model(tensor_window[i].unsqueeze(0))
-            featureVec = torch.cat((featureVec, tempFeatureVec), 1)
-            print(i)
-    return featureVec
+
 
 
 def window_vector_loop(windowVec, featureVec):
@@ -49,13 +36,15 @@ fileNames=C.edfDict.keys()
 wdir=r"C:\Users\Mads-\OneDrive\Skrivebord\FeatureVec"
 path_new=r'D:\spectograms_rgb'
 i=0
+model=VGG16_NoSoftmax_RGB()
+model.eval()
 for file in fileNames:
     if os.path.exists(wdir+r'/spectograms/'+file)==True:
         pass
     else:
         #try:
             windowVec = 0
-            tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path='/Volumes/B/spectograms_rgb')
+            tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path=path_new)
             tensor.requires_grad_(requires_grad=False)
             print(file)
             for i in range(int(len(tensor) / 14)):
@@ -68,7 +57,7 @@ for file in fileNames:
             i += 1
             print(i)
             filename = file
-            np.save(wdir + filename, windowVec)
+            np.save(os.path.join(wdir,filename), windowVec)
         #except:
             #print(file)
 
