@@ -89,6 +89,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
 
             val_loss.append(batch_loss.data.numpy())
             preds = np.argmax(output.data.numpy(), axis=-1)
+            eval_preds = y_batch_v.data.numpy() == preds
             for k in range(index):
                 if eval_preds[k] == False:
                     wrong_guesses.append(w_id[idx[k]])
