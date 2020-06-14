@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
-from CNN.modifyCNN import model
+from CNN.modifyCNN import VGG16, freeze_parameters, grad_parameters, list_of_features, check_grad
 import torch.optim as optim
 import torch
 from sklearn.utils import shuffle
@@ -12,6 +12,7 @@ from torch.autograd import Variable
 import torch.nn as nn
 import numpy as np
 from Preprossering.PreprosseringPipeline import preprossingPipeline
+np.random.seed(42)
 
 
 def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,preprocessed=False):
@@ -51,23 +52,23 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
                 X_batch_tr = X_train[idx,:,:,:]
                 y_batch_tr = Variable(torch.from_numpy(t1[idx]).long())
                 optimizer.zero_grad()
-                output = model(X_batch_tr.float())
+                output = model(X_batch_tr.float().detach())
 
-            batch_loss = criterion(output, y_batch_tr)
+            batch_loss = criterion(output, y_batch_tr.detach())
             train_loss.append(batch_loss.data.numpy())
 
-            batch_loss.backward(retain_graph=True)
+            batch_loss.backward()
             optimizer.step()
 
             preds = np.argmax(output.data.numpy(), axis=-1)
             correct += np.sum(y_batch_tr.data.numpy() == preds)
-
         train_acc = correct / float(num_samples)
         train_cost.append(np.mean(train_loss))
 
         correct2 = 0
         model.eval()
         wrong_guesses = []
+        wrong_predictions = []
         for i in range(num_test_batches):
             if i % 10 == 0:
                 print("\n {}, now validation...".format(i), end='')
@@ -94,6 +95,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
             for k in range(index):
                 if eval_preds[k] == False:
                     wrong_guesses.append(w_id[idx[k]])
+                    wrong_predictions.append(preds[k])
                 else:
                     correct2 += 1
 
@@ -104,7 +106,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
             print("\n Epoch %2i : Train Loss %f , Train acc %f, Valid acc %f" % (
                 epoch + 1, train_cost[-1], train_acc, val_acc))
 
-    return train_acc,train_cost,val_acc,validation_cost, wrong_guesses, model
+    return train_acc,train_cost,val_acc,validation_cost, wrong_guesses, wrong_predictions, model
 
 def split_dataset(C,path,N,train_split,max_windows,num_channels):
     """ Input: Data and training split (in %)
@@ -147,22 +149,40 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
 C=preprossingPipeline(BC_datapath=r"C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Data\dataEEG")
 path_s = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.008)
-X_train, X_valid, Y_train, Y_valid, windowsid = split_dataset(C,path_s,N=29,train_split=80,max_windows=10,num_channels=10)
-#from OSS import test
-train_acc, train_loss, val_acc, val_loss, wrong_guesses, model = test_CNN(model,X_train,Y_train,X_valid,Y_valid,windowsid,batch_size=10,num_epochs=1,preprocessed=True)
-print("\n Final training accuracy: ", train_acc)
-print("\n Final validation accuracy: ", val_acc)
-train_acc_data = np.asarray(train_acc)
-#np.save('train_acc.npy',train_acc_data)
-train_loss_data = np.asarray(train_loss)
-#np.save('train_loss.npy',train_loss_data)
-valid_acc_data = np.asarray(val_acc)
-#np.save('valid_acc.npy',valid_acc_data)
-valid_loss_data = np.asarray(val_loss)
-#np.save('valid_loss.npy',valid_loss_data)
-wrong_guesses_data = np.asarray(wrong_guesses)
-#np.save('wrong_guesses.npy',wrong_guesses_data)
-PATH = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt'
-#torch.save(model.state_dict(),PATH)
-ççççççççç
+optimizer = optim.Adam(model.parameters(), lr=0.005)
+X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=50,train_split=80,max_windows=10,num_channels=5)
+modelA = VGG16()
+freeze_parameters(modelA,feature_extracting=True)
+list2 = np.array(list_of_features(model))
+modelB = VGG16()
+freeze_parameters(modelB,feature_extracting=True)
+for i in range(2):
+    #PATH = '/zhome/87/9/127623/Fagprojekt'
+    if i == 0:
+        activation_list = np.array([26, 27, 28, 29, 30, 31])
+        grad_parameters(modelA, list(list2[activation_list]))
+        train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, modelA = test_CNN(modelA, X_train, Y_train, X_valid,
+                                                                                  Y_valid, windows_id, batch_size=64,
+                                                                                  num_epochs=5, preprocessed=True)
+        torch.save(modelA.state_dict(), 'modelA_pc')
+        print("Model A accuracy: ", val_acc)
+    else:
+        activation_list = np.array([20,21,22,23,24,25,26, 27, 28, 29, 30, 31])
+        grad_parameters(modelB, list(list2[activation_list]))
+        train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
+                                                                                  Y_valid, windows_id, batch_size=10,
+                                                                                  num_epochs=2, preprocessed=True)
+        torch.save(modelB.state_dict(), 'modelB_pc')
+        print("Model B accuracy: ", val_acc)
+
+    train_acc_data = np.asarray(train_acc)
+    #np.save((f'train_acc_pc_{i}.npy'), train_acc_data)
+    print("reached:")
+    train_loss_data = np.asarray(train_loss)
+    #np.save((f'train_loss_pc_{i}.npy'), train_loss_data)
+    valid_acc_data = np.asarray(val_acc)
+    #np.save((f'valid_acc_pc_{i}.npy'), valid_acc_data)
+    valid_loss_data = np.asarray(val_loss)
+    #np.save((f'valid_loss_pc_{i}.npy'), valid_loss_data)
+    wrong_guesses_data = np.asarray(wrong_guesses)
+    #np.save((f'wrong_guesses_pc_{i}.npy'), wrong_guesses_data)

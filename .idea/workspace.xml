@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <component name="ChangeListManager">
+    <list default="true" id="f5e1f83f-94e4-4f2b-9f47-88ad020c9fba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Fagprojekt2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fagprojekt2020.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN/trainCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN/trainCNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN/trainCNN2.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN/trainCNN2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Genneralisation_errors.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Genneralisation_errors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Inderfold_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Inderfold_0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Inderfold_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Inderfold_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Inderfold_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Inderfold_2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Inderfold_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Inderfold_3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Inderfold_4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Inderfold_4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Outerloop.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Outerloop.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classifier_experimentOne_isUsable/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classifier_experimentOne_isUsable/Validation.py" afterDir="false" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="560c0964-56cb-4ae8-8f83-31e1c8699d75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN/trainCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN/trainCNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hpc_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/hpc_test.py" afterDir="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <component name="JupyterTrust" id="1523849e-9308-49d7-a152-8c65b492e71f" />
+  <component name="ProjectId" id="1crA0pigN34bRhWlmNng9BaAq0K" />
+=======
+  <component name="ProjectId" id="1citEgSPJgi3Mh93FEAOBHJ2jfy" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+  <component name="ProjectId" id="1citEgSPJgi3Mh93FEAOBHJ2jfy" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CNN/tRoas.py" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Kode\Gruppen\Fagprojekt2020\GMM" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.tRoas">
+    <configuration name="Generate_spectograms" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.hpc_test">
+    <configuration name="Generate_feature_vectors" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+=======
+      <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python36\python.exe" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+      <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python36\python.exe" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/Generate_spectograms.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+    <configuration name="LDA" type="PythonConfigurationType" factoryName="Python" folderName="LDA" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GMM/LDA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+    <configuration name="Saliency" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+    <configuration name="classifier_experiment_isUsable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CNN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/Saliency.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="anomaly_detection" type="PythonConfigurationType" factoryName="Python" folderName="GMM" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GMM/anomaly_detection.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier_experiment_isUsable.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <configuration name="loadPretrainedCNN2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable0" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+    <configuration name="classifier_experiment_isUsable0" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CNN" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/loadPretrainedCNN2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <configuration name="modifyCNN" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable_allData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+    <configuration name="classifier_experiment_isUsable_allData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/modifyCNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="modifyCNN2" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CNN" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/modifyCNN2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <configuration name="pass_spectogram" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="hpc_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+    <configuration name="hpc_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/pass_spectogram.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hpc_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <configuration name="saliencyCNN" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="loadPretrainedCNN" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+    <configuration name="loadPretrainedCNN" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/saliencyCNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tRoas" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/tRoas.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trainCNN" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/trainCNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trainCNN2" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/trainCNN2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trainCNN_X" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+      <module name="Fagprojekt2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/trainCNN_X.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loadPretrainedCNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <item itemvalue="Python.tRoas" />
+      <item itemvalue="Python.trainCNN_X" />
+      <item itemvalue="Python.modifyCNN2" />
+      <item itemvalue="Python.Saliency" />
+      <item itemvalue="Python.modifyCNN" />
+      <item itemvalue="Python.trainCNN2" />
+      <item itemvalue="Python.pass_spectogram" />
+      <item itemvalue="Python.saliencyCNN" />
+      <item itemvalue="Python.trainCNN" />
+      <item itemvalue="Python.Generate_spectograms" />
+      <item itemvalue="Python.anomaly_detection" />
+      <item itemvalue="Python.LDA" />
+      <item itemvalue="Python.loadPretrainedCNN2" />
+    </list>
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <item itemvalue="Python.loadPretrainedCNN" />
+      <item itemvalue="Python.Generate_feature_vectors" />
+      <item itemvalue="Python.classifier_experiment_isUsable0" />
+      <item itemvalue="Python.classifier_experiment_isUsable" />
+      <item itemvalue="Python.classifier_experiment_isUsable_allData" />
+      <item itemvalue="Python.hpc_test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.hpc_test" />
+        <item itemvalue="Python.Generate_feature_vectors" />
+        <item itemvalue="Python.classifier_experiment_isUsable0" />
+        <item itemvalue="Python.classifier_experiment_isUsable_allData" />
+        <item itemvalue="Python.classifier_experiment_isUsable" />
+      </list>
+    </recent_temporary>
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <changelist id="f5e1f83f-94e4-4f2b-9f47-88ad020c9fba" name="Default Changelist" comment="" />
+      <created>1591276117930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591276117930</updated>
+      <workItem from="1591276206939" duration="74868000" />
+      <workItem from="1591807356376" duration="3754000" />
+      <workItem from="1591859372963" duration="12944000" />
+      <workItem from="1591947019650" duration="52497000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592053892094">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1592053892094" />
+    <state x="508" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592056149830">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="508" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1592056149830" />
+    <state x="484" y="8" key="#modifyCNN2" timestamp="1591946902144">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="8" key="#modifyCNN2/0.0.1536.824@0.0.1536.824" timestamp="1591946902144" />
+    <state x="484" y="8" key="#trainCNN2" timestamp="1591644007056">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="8" key="#trainCNN2/0.0.1536.824@0.0.1536.824" timestamp="1591644007056" />
+    <state x="251" y="331" key="#xdebugger.XInspectDialog" timestamp="1591345601777">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="251" y="331" key="#xdebugger.XInspectDialog/0.0.1536.824@0.0.1536.824" timestamp="1591345601777" />
+    <state x="193" y="198" width="998" height="626" key="#xdebugger.evaluate" timestamp="1592061499541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="193" y="198" width="998" height="626" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1592061499541" />
+    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1592053881926">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592053881926" />
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.0.center" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.0.left" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.0.right" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.1.bottom" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.1.center" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.1.left" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="1493" height="228" key="GridCell.Tab.1.right" timestamp="1592063469121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="228" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1592063469121" />
+    <state width="641" height="419" key="XDebugger.FullValuePopup" timestamp="1592055903052">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="641" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1592055903052" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1591773920799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591773920799" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1592070006542">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1592070006542" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+      <changelist id="560c0964-56cb-4ae8-8f83-31e1c8699d75" name="Default Changelist" comment="" />
+      <created>1591023131499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591023131499</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="669" y="115" key="#classifier_experiment_isUsable0" timestamp="1591706178938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="115" key="#classifier_experiment_isUsable0/0.0.1920.1040@0.0.1920.1040" timestamp="1591706178938" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592086218749">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1592086218749" />
+    <state x="279" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591973850435" />
+    <state x="669" y="115" key="#loadPretrainedCNN" timestamp="1591904741227">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="115" key="#loadPretrainedCNN/0.0.1920.1040@0.0.1920.1040" timestamp="1591904741226" />
+    <state x="386" y="231" width="806" height="593" key="#xdebugger.evaluate" timestamp="1591272328935">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="386" y="231" width="806" height="593" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1591272328935" />
+    <state x="591" y="217" key="FileChooserDialogImpl" timestamp="1592085576147">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="591" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592085576147" />
+    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591907943381" />
+    <state width="1515" height="390" key="GridCell.Tab.0.bottom" timestamp="1592120349455">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="390" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592120349455" />
+    <state width="1899" height="387" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
+    <state width="1515" height="390" key="GridCell.Tab.0.center" timestamp="1592120349455">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="390" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592120349455" />
+    <state width="1899" height="387" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
+    <state width="1515" height="390" key="GridCell.Tab.0.left" timestamp="1592120349454">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="390" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592120349454" />
+    <state width="1899" height="387" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
+    <state width="1515" height="390" key="GridCell.Tab.0.right" timestamp="1592120349455">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="390" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592120349455" />
+    <state width="1899" height="387" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591973866596" />
+    <state width="1515" height="387" key="GridCell.Tab.1.bottom" timestamp="1592033511476">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="387" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592033511476" />
+    <state width="1899" height="387" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591973856313" />
+    <state width="1515" height="387" key="GridCell.Tab.1.center" timestamp="1592033511475">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="387" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1899" height="387" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591973856313" />
+    <state width="1515" height="387" key="GridCell.Tab.1.left" timestamp="1592033511475">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="387" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1592033511475" />
+    <state width="1899" height="387" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591973856313" />
+    <state width="1515" height="387" key="GridCell.Tab.1.right" timestamp="1592033511476">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="387" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1592033511476" />
+    <state width="1899" height="387" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591973856313" />
+    <state x="346" y="72" key="SettingsEditor" timestamp="1591907760221">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591260909961" />
+    <state x="346" y="72" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591907760221" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1591272037910">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1591272037910" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1591617556001">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591617556001" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <url>file://$PROJECT_DIR$/loadPretrainedCNN.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GMM/fun.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CNN/trainCNN_X.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CNN/trainCNN_X.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CNN/trainCNN2.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="x_valid" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Fagprojekt2020$trainCNN_X.coverage" NAME="trainCNN_X Coverage Results" MODIFIED="1591952063404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fagprojekt2020$tRoas.coverage" NAME="tRoas Coverage Results" MODIFIED="1592062896754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fagprojekt2020$trainCNN2.coverage" NAME="trainCNN2 Coverage Results" MODIFIED="1592052015706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+=======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+          <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loadPretrainedCNN.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loadPretrainedCNN.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/loadPretrainedCNN.py</url>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CNN/trainCNN.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+  </component>
+</project>
