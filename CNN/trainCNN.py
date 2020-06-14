@@ -162,6 +162,7 @@ for i in range(2):
         train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, modelA = test_CNN(modelA, X_train, Y_train, X_valid,
                                                                                   Y_valid, windows_id, batch_size=64,
                                                                                   num_epochs=10, preprocessed=True)
+        print("Finished first run, modelA is now saved:")
         torch.save(modelA.state_dict(), 'modelA')
     else:
         activation_list = np.array([20,21,22,23,24,25,26, 27, 28, 29, 30, 31])
@@ -173,15 +174,15 @@ for i in range(2):
         torch.save(modelB.state_dict(), 'modelB')
 
     train_acc_data = np.asarray(train_acc)
-    np.save(('train_acc_%i.npy'%i), train_acc_data)
-    print("\n reached:")
+    np.save((f'train_acc_{i}.npy'), train_acc_data)
+    print("\n reached: second saving place")
     train_loss_data = np.asarray(train_loss)
-    np.save(('train_loss_%i.npy'%i), train_loss_data)
+    np.save((f'train_loss_{i}.npy'), train_loss_data)
     valid_acc_data = np.asarray(val_acc)
-    np.save(('valid_acc_%i.npy'%i), valid_acc_data)
+    np.save((f'valid_acc_{i}.npy'), valid_acc_data)
     valid_loss_data = np.asarray(val_loss)
-    np.save(('valid_loss_%i.npy'%i), valid_loss_data)
+    np.save((f'valid_loss_{i}.npy'), valid_loss_data)
     wrong_guesses_data = np.asarray(wrong_guesses)
-    np.save(('wrong_guesses_%i.npy'%i), wrong_guesses_data)
+    np.save((f'wrong_guesses_{i}.npy'), wrong_guesses_data)
     wrong_pred_data = np.asarray(wrong_predictions)
-    np.save(('wrong_guesses_class_%i.npy'%i), wrong_pred_data)
+    np.save((f'wrong_guesses_class_{i}.npy'), wrong_pred_data)

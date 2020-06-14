@@ -10,7 +10,7 @@ import gc
 
 
 def window_vector_loop(windowVec, featureVec):
-    if windowVec is 0:
+    if windowVec == 0:
         windowVec = featureVec
         print(i)
     else:
