@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="f5e1f83f-94e4-4f2b-9f47-88ad020c9fba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/Fagprojekt2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fagprojekt2020.iml" afterDir="false" />
@@ -16,6 +17,8 @@
       <change beforePath="$PROJECT_DIR$/ClassifierTestLogs/Spec_twofold_Outerloop.json" beforeDir="false" afterPath="$PROJECT_DIR$/Old/classifier_results_not_stratified/Spec_twofold_Outerloop.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classifier_experimentOne_isUsable/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classifier_experimentOne_isUsable/Validation.py" afterDir="false" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -40,6 +43,9 @@
       <change beforePath="$PROJECT_DIR$/CNN/trainCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN/trainCNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hpc_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/hpc_test.py" afterDir="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +64,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="JupyterTrust" id="1523849e-9308-49d7-a152-8c65b492e71f" />
   <component name="ProjectId" id="1crA0pigN34bRhWlmNng9BaAq0K" />
+=======
+  <component name="ProjectId" id="1citEgSPJgi3Mh93FEAOBHJ2jfy" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
   <component name="ProjectId" id="1citEgSPJgi3Mh93FEAOBHJ2jfy" />
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -70,6 +80,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CNN/tRoas.py" />
@@ -82,11 +93,16 @@
   <component name="RunManager" selected="Python.tRoas">
     <configuration name="Generate_spectograms" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.hpc_test">
     <configuration name="Generate_feature_vectors" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <module name="Fagprojekt2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,7 +111,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
+=======
+      <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python36\python.exe" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
       <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python36\python.exe" />
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -103,6 +123,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN/Generate_spectograms.py" />
@@ -136,13 +157,22 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GMM/LDA.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Villads/Archived/Generate_feature_vectors.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="Saliency" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
     <configuration name="classifier_experiment_isUsable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -153,6 +183,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CNN" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -182,6 +213,8 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -189,6 +222,9 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier_experiment_isUsable.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -197,7 +233,11 @@
       <method v="2" />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="loadPretrainedCNN2" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable0" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
     <configuration name="classifier_experiment_isUsable0" type="PythonConfigurationType" factoryName="Python" temporary="true">
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -207,6 +247,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CNN" />
@@ -218,6 +259,8 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="SDK_HOME" value="C:\Users\Mads-\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -226,6 +269,9 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -234,7 +280,11 @@
       <method v="2" />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="modifyCNN" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="classifier_experiment_isUsable_allData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
     <configuration name="classifier_experiment_isUsable_allData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -244,6 +294,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -274,6 +325,8 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -282,6 +335,9 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -290,7 +346,11 @@
       <method v="2" />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="pass_spectogram" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="hpc_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
     <configuration name="hpc_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -300,6 +360,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -311,6 +372,8 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -319,6 +382,9 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hpc_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -327,7 +393,11 @@
       <method v="2" />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration name="saliencyCNN" type="PythonConfigurationType" factoryName="Python" folderName="CNN" nameIsGenerated="true">
+=======
+    <configuration name="loadPretrainedCNN" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
 =======
     <configuration name="loadPretrainedCNN" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
@@ -337,6 +407,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\johan\AppData\Local\Programs\Python\Python38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -424,6 +495,8 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -432,6 +505,9 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loadPretrainedCNN.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -440,6 +516,7 @@
       <method v="2" />
     </configuration>
     <list>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <item itemvalue="Python.tRoas" />
       <item itemvalue="Python.trainCNN_X" />
@@ -456,6 +533,8 @@
       <item itemvalue="Python.loadPretrainedCNN2" />
     </list>
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <item itemvalue="Python.loadPretrainedCNN" />
       <item itemvalue="Python.Generate_feature_vectors" />
       <item itemvalue="Python.classifier_experiment_isUsable0" />
@@ -472,6 +551,9 @@
         <item itemvalue="Python.classifier_experiment_isUsable" />
       </list>
     </recent_temporary>
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
   </component>
   <component name="SvnConfiguration">
@@ -479,6 +561,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <changelist id="f5e1f83f-94e4-4f2b-9f47-88ad020c9fba" name="Default Changelist" comment="" />
       <created>1591276117930</created>
@@ -569,6 +652,8 @@
     </state>
     <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1592070006542" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
       <changelist id="560c0964-56cb-4ae8-8f83-31e1c8699d75" name="Default Changelist" comment="" />
       <created>1591023131499</created>
       <option name="number" value="Default" />
@@ -668,12 +753,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591617556001" />
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <url>file://$PROJECT_DIR$/loadPretrainedCNN.py</url>
           <line>86</line>
@@ -724,6 +813,8 @@
     <SUITE FILE_PATH="coverage/Fagprojekt2020$tRoas.coverage" NAME="tRoas Coverage Results" MODIFIED="1592062896754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fagprojekt2020$trainCNN2.coverage" NAME="trainCNN2 Coverage Results" MODIFIED="1592052015706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
 =======
+=======
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
           <url>file://$PROJECT_DIR$/Classifier_experimentOne_isUsable/classifier_experiment_isUsable_allData.py</url>
           <line>35</line>
           <option name="timeStamp" value="12" />
@@ -769,6 +860,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+<<<<<<< HEAD
+>>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
+=======
 >>>>>>> 3424b6455e5bea65624102150b095c6db77eefb5
   </component>
 </project>
