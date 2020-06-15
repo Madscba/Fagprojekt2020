@@ -40,24 +40,32 @@ class classifier_validation():
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
 
-    def get_spectrogram(self,x):
+    def get_spectrogram(self,x,test):
+        if test:
+            max=self.max_windows*5
+        else:
+            max=self.max_windows
         spectrograms, spectrogram_labels, _, _ = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows,
+                                                                        is_usable=None,max_windows=max,
                                                                         path=self.speck_path)  # 18 files = 1926
         spectrogram_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
 
         return spectrograms,spectrogram_labels
 
-    def get_feturevectors(self,x):
+    def get_feturevectors(self,x,test):
+        if test:
+            max=self.max_windows*5
+        else:
+            max=self.max_windows
         feature_vectors, feature_vectors_labels, _, _ = self.prepros.make_label(make_from_filenames=x,max_files=None,
                                                                                  quality=None, is_usable=None,
-                                                                                 max_windows=self.max_windows,
+                                                                                 max_windows=max,
                                                                                  path=self.feture_path)  # 18 files = 2144
         feature_vectors_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in feature_vectors_labels]
         return feature_vectors, feature_vectors_labels
 
 
-    def test(self,type,folds=None,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],logname="test.json",confusion_matrix=False):
+    def test(self,type,folds=None,classifyers=["GNB","SVM", "LDA", "DecisionTree", "RF"],logname="test.json",confusion_matrix=False):
         """
 
         :param type: fetures or spectrograms
@@ -89,13 +97,13 @@ class classifier_validation():
 
             if type=="fetures":
                 #Test feturevectors
-                x_train,y_train=self.get_feturevectors(trainNames)
-                x_test, y_test = self.get_feturevectors(testNames)
+                x_train,y_train=self.get_feturevectors(trainNames,test=False)
+                x_test, y_test = self.get_feturevectors(testNames,test=True)
 
             elif type=="spectrograms":
                 #Test spectrograms
-                x_train,y_train=self.get_spectrogram(trainNames)
-                x_test, y_test = self.get_spectrogram(testNames)
+                x_train,y_train=self.get_spectrogram(trainNames,test=False)
+                x_test, y_test = self.get_spectrogram(testNames,test=True)
             else:
                 raise Exeption("wrong type try fetures or spectrograms")
 
@@ -143,7 +151,7 @@ class classifier_validation():
             AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,logname))
         return  AC_matrix
 
-    def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree", "RF"],EXP_name=None):
+    def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],EXP_name=None):
         """
         Implement two layers cross validation as spesified in 02450book algoritme 6 page 175
         :param type: spetrograms of fetures
@@ -257,17 +265,17 @@ if __name__ == '__main__':
     hpc=True
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
-        F=r'/work3/s173934/Fagprojekt/FeatureVectors'
+        F=r'/work3/s173934/Fagprojekt/FeatureVectors"'
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
         BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
+        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=10)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
-    CV.two_layes(type="fetures",EXP_name="Feat_twofoldsrat_fulldataset")
+    CV.two_layes(type="spectrograms",EXP_name="spec_balanced")
 
