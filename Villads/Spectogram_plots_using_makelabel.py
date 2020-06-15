@@ -10,8 +10,8 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 path='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/spectograms_all_ch/'
 C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
 
-feature_vectors_1,labels_1,filenames,idx= C.make_label(max_files=5,quality=[1],is_usable=None,make_spectograms=True,path = path)
-feature_vectors_9_10,labels_9_10,filenames_1,idx_1= C.make_label(max_files=5,quality=[9,10],is_usable=None,make_spectograms=True,path = path)
+feature_vectors_1,labels_1,filenames,idx= C.make_label(max_files=5,quality=None,is_usable='No',path = path)
+feature_vectors_9_10,labels_9_10,filenames_1,idx_1= C.make_label(max_files=5,quality=None,is_usable='Yes',path = path)
 
 feature_vectors=np.vstack((feature_vectors_1,feature_vectors_9_10))
 filenames=filenames+filenames_1

@@ -60,10 +60,25 @@ for file in fileNames:
             np.save(os.path.join(wdir,filename), windowVec)
         #except:
             #print(file)
-
-
-
-
+C = preprossingPipeline(
+    BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG", mac=True)
+fileNames = C.edfDict.keys()
+i=0
+list(fileNames).sort()
+for file in fileNames:
+        if i<27:
+            pass
+        else:
+            try:
+                tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path='/Volumes/Elements SE/spectograms_rgb')
+                tensor.detach()
+                print(i)
+                del tensor
+            except Exception as e:
+                print(str(e))
+                print(file)
+        i+=1
+/Volumes/B/spectograms_rgb
 
     #Generate a pretrained VGG model
     # model = VGG16_NoSoftmax_OneChannel()
