@@ -135,15 +135,18 @@ class preprossingPipeline:
         if type=="spec":
             sampleWindow = dataDict["tWindow"]*dataDict["fS"]
             t0=win_idx*int(tStep)
-            spectrograms=self.spectrogramMake(EEGserie, t0=t0, tWindow=sampleWindow,resized=True)
+            spectrograms=self.spectrogramMake(EEGserie, t0=t0, tWindow=sampleWindow,resized=False)
             col=5 #Images per row
             row=np.ceil(len(spectrograms.keys())/col)
             for i,key in enumerate(spectrograms.keys()):
-                plt.subplot(row,col,i+1)
-                plt.imshow(spectrograms[key])
-                plt.xticks([])
-                plt.yticks([])
-                plt.title(key)
+                if plot:
+                    plt.subplot(row,col,i+1)
+                    plt.imshow(spectrograms[key])
+                    plt.xticks([])
+                    plt.yticks([])
+                    plt.title(key)
+                else:
+                    return spectrograms
             
             plt.show()
         elif type=="EEG":
@@ -151,7 +154,11 @@ class preprossingPipeline:
                 fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
                 fig.show()
             else:
-                EEGserie.getdata(start=win_idx*30,duration=4,scalings ="auto")
+                EEGserie.crop(win_idx * 30, win_idx * 30 + 60)
+                DF = EEGserie.to_data_frame()
+                return DF
+
+
         else:
             raise ("type not specified, use Spec or EEG")
 
