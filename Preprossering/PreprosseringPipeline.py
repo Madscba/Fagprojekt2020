@@ -236,49 +236,34 @@ class preprossingPipeline:
             else:
                 if i == 0:
                     window = np.load(fv_path)
-                    window = window.squeeze()
-
-                    if max_windows != 0:
-                        if max_windows > window.shape[0]:
-                            window_idx_full=[(filename,idx) for idx in range(window.shape[0])]
-                            labels = window.shape[0] * [label_dict[filename]]
-                            windows = window
-                        else:
-                            window_idx_full = [(filename, idx) for idx in range(max_windows)]
-                            labels = max_windows * [label_dict[filename]]
-                            windows = window[:max_windows,:]
+                    if max_windows > window.shape[0]:
+                        integer = 1
                     else:
-                        window_idx_full = [(filename, idx) for idx in range(window.shape[0])]
-                        labels = window.shape[0] * [label_dict[filename]]
-                        windows = window
+                        integer = int(round(window.shape[0]/max_windows))
+                    window = window.squeeze()
+                    window_new=window[::integer]
+                    window_idx_full=[(filename,idx) for idx in range(0,window.shape[0],integer)]
+                    labels = window_new.shape[0] * [label_dict[filename]]
+                    windows = window_new
                     filenames.append(filename)
                     i += 1
                 else:
-                    window = np.load(fv_path)
-                    window = window.squeeze()
-
-                    if max_windows != 0:
-                        if max_windows > window.shape[0]:
-                            window_idx=[(filename,idx) for idx in range(window.shape[0])]
-                            window_idx_full = window_idx_full + window_idx
-                            label = window.shape[0] * [label_dict[filename]]
-                            windows = np.vstack((windows, window))
-                        else:
-                            window_idx= [(filename, idx) for idx in range(max_windows)]
-                            window_idx_full = window_idx_full + window_idx
-                            label = max_windows * [label_dict[filename]]
-                            windows = np.vstack((windows, window[:max_windows,:]))
+                    window = np.load(fv_path).squeeze()
+                    if max_windows > window.shape[0]:
+                        integer = 1
                     else:
-                        window_idx = [(filename, idx) for idx in range(window.shape[0])]
-                        window_idx_full = window_idx_full + window_idx
-                        label = window.shape[0] * [label_dict[filename]]
-                        windows = np.vstack((windows, window))
+                        integer = int(round(window.shape[0] / max_windows))
+                    window_new = window[::integer]
+                    window_idx = [(filename, idx) for idx in range(0, window.shape[0], integer)]
+                    window_idx_full = window_idx_full + window_idx
+                    label = window_new.shape[0] * [label_dict[filename]]
                     labels = labels + label
+                    windows = np.vstack((windows, window_new))
                     filenames.append(filename)
                     i += 1
         return windows, labels, filenames, window_idx_full
 
-    def make_label_cnn(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10, max_windows = -1,
+    def make_label_cnn(self, make_from_filenames=None, quality=None, is_usable=None, max_files=10, max_windows = 1000,
                    path=None, seed=0, ch_to_include=range(14)):
 
         edfDict_keys=list(self.edfDict.keys())
@@ -311,44 +296,36 @@ class preprossingPipeline:
                 pass
             else:
                 if i == 0:
-                    window = torch.load(fv_path)[:max_windows,ch_to_include,:,:]
-                    if max_windows != -1 :
-                        if max_windows >= window.shape[0]:
-                            window_idx_full=[[filename,idx,ch] for idx in range(window.shape[0]) for ch in ch_to_include]
-                            labels = len(ch_to_include)*window.shape[0] * [label_dict[filename]]
-                        else:
-                            window_idx_full = [[filename, idx, ch] for idx in range(max_windows) for ch in
-                                               ch_to_include]
-                            labels = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    window = torch.load(fv_path)[:,ch_to_include,:,:]
+                    if max_windows > window.shape[0]:
+                        integer = 1
                     else:
-                        window_idx_full = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
-                                           ch_to_include]
-                        labels = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                        integer = int(round(window.shape[0]/max_windows))
+
+                    window_new=window[::integer,ch_to_include,:,:]
+                    window_idx_full=[[filename,idx,ch] for idx in range(0,window.shape[0],integer) for ch in ch_to_include]
+                    labels = len(ch_to_include)*window_new.shape[0] * [label_dict[filename]]
+
                     filenames.append(filename)
-                    window = window.reshape(-1, 3, 224, 224)
-                    windows = window
+                    window_new = window_new.reshape(-1, 3, 224, 224)
+                    windows = window_new
                     i += 1
                 else:
                     print("Reached:",fv_path)
-                    window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
-                    # window = torch.load(fv_path)[:max_windows, ch_to_include, :, :]
-                    if max_windows != -1:
-                        if max_windows >= window.shape[0]:
-                            window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
-                                               ch_to_include]
-                            label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
-                        else:
-                            window_idx = [[filename, idx, ch] for idx in range(max_windows) for ch in
-                                               ch_to_include]
-                            label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                    window = torch.load(fv_path)[:, ch_to_include, :, :]
+                    if max_windows>window.shape[0]:
+                        integer=1
                     else:
-                        window_idx = [[filename, idx, ch] for idx in range(window.shape[0]) for ch in
-                                           ch_to_include]
-                        label = len(ch_to_include) * window.shape[0] * [label_dict[filename]]
+                        integer = int(round(window.shape[0]/max_windows))
+                    window_new = window[::integer, ch_to_include, :, :]
+                    window_idx = [[filename, idx, ch] for idx in range(0,window.shape[0], integer) for ch in
+                                       ch_to_include]
+                    print(window_idx)
+                    label = len(ch_to_include) * window_new.shape[0] * [label_dict[filename]]
                     labels = labels + label
                     window_idx_full=window_idx_full+window_idx
-                    window = window.reshape(-1, 3, 224, 224)
-                    windows = torch.cat((windows, window), dim=0)
+                    window_new = window_new.reshape(-1, 3, 224, 224)
+                    windows = torch.cat((windows, window_new), dim=0)
                     filenames.append(filename)
                     i += 1
 
