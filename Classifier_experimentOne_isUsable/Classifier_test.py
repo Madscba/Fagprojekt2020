@@ -20,7 +20,7 @@ from sklearn.neural_network import MLPClassifier
 random.seed(42)
 
 class classifier_validation():
-    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path=r"Preprossering//K-fold.json", max_windows=None, logfile_path=None):
+    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None):
         """
 
         :param Bc_path:
@@ -101,19 +101,23 @@ class classifier_validation():
 
             for C in classifyers:
                 if C=="SVM":
-                    AC_matrix.loc[n,C]=self.predict_svm(x_train,y_train,x_test,y_test)
-
+                    predict=self.predict_svm(x_train,y_train,x_test,y_test)
                 if C=="LDA":
-                    AC_matrix.loc[n,C]=self.predict_LDA(x_train,y_train,x_test,y_test)
+                    predict.loc[n,C]=self.predict_LDA(x_train,y_train,x_test,y_test)
 
                 if C=="GNB":
-                    AC_matrix.loc[n,C]=self.predict_GNB(x_train,y_train,x_test,y_test)
+                    predict.loc[n,C]=self.predict_GNB(x_train,y_train,x_test,y_test)
 
                 if C=="DecisionTree":
-                    AC_matrix.loc[n,C]=self.predict_DissionTree(x_train,y_train,x_test,y_test)
+                    predict.loc[n,C]=self.predict_DissionTree(x_train,y_train,x_test,y_test)
 
                 if C=="RF":
-                    AC_matrix.loc[n, C] = self.predict_RF(x_train, y_train, x_test, y_test)
+                    predict.loc[n, C] = self.predict_RF(x_train, y_train, x_test, y_test)
+
+                AC_matrix.loc[n,C]=np.mean(y_test == predict)
+                for lable in y_test.unique:
+                    AC_matrix.loc[n,f"True {lable}"]=y_test[y_test==lable]
+                    AC_matrix.loc[n,f"Predicted {lable}"]=y_test[y_test==lable]
 
                 AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
                 AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
@@ -190,7 +194,7 @@ class classifier_validation():
         LDA.fit(x, y)
         LDA_predict = np.append(LDA_predict, LDA.predict(x_test))
         print("Lda done", np.mean(y_test == LDA_predict))
-        return np.mean(y_test == LDA_predict)
+        return LDA_predict
 
     def predict_svm(self,x,y,x_test,y_test):
         svm_predict = np.array([])
@@ -200,7 +204,7 @@ class classifier_validation():
         svm_predict = np.append(svm_predict, m_svm.predict(x_test))
         print("SVM done", np.mean(y_test == svm_predict))
 
-        return np.mean(y_test == svm_predict)
+        return svm_predict
 
     def predict_GNB(self,x_train,y_train,x_test,y_test):
         GNB_predict = np.array([])
@@ -208,7 +212,7 @@ class classifier_validation():
         m_gaus.fit(x_train, y_train)
         GNB_predict = np.append(GNB_predict, m_gaus.predict(x_test))
         print("gaus done", np.mean(y_test == GNB_predict))
-        return  np.mean(y_test == GNB_predict)
+        return  GNB_predict
 
 
     def predict_DissionTree(self,x_train,y_train,x_test,y_test):
@@ -217,7 +221,7 @@ class classifier_validation():
         m_DecisionTree.fit(x_train, y_train)
         DecisionTree_predict = np.append(DecisionTree_predict, m_DecisionTree.predict(x_test))
         print("DT done", np.mean(y_test == DecisionTree_predict))
-        return np.mean(y_test == DecisionTree_predict)
+        return DecisionTree_predict
 
     def predict_RF(self,x_train,y_train,x_test,y_test):
         RF_predict = np.array([])
@@ -226,7 +230,7 @@ class classifier_validation():
         ranFor.fit(x_train, y_train)
         RF_predict = np.append(RF_predict, ranFor.predict(x_test))
         print("RF done", np.mean(y_test == RF_predict))
-        return np.mean(y_test == RF_predict)
+        return RF_predict
 
     def predict_clf(self,x,y,x_test,y_test):
         pass
@@ -236,7 +240,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors'
@@ -246,9 +250,9 @@ if __name__ == '__main__':
         BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
         F=r"C:\Users\Andre\Desktop\Fagproject\feature_vectors"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
-
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S, logfile_path="ClassifierTestLogs",max_windows=50)
+    Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=5)
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofold_fulldataset")
-    CV.two_layes(type="fetures",EXP_name="Feture_twofold")
+    CV.two_layes(type="fetures",EXP_name="test")

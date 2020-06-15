@@ -9,11 +9,11 @@
 #virtualenv
 /classifier-env/
 /__pycache__/
-<<<<<<< HEAD
-
-
+*.pyc
 __pycache__/
 *.py[cod]
-=======
-__pycache__/
->>>>>>> 16e3340e9239d879c743a8e164ce649ee424995b
+/Preprossering/__pycache__/__init__.cpython-37.pyc/
+/Preprossering/__pycache__/__init__.cpython-38.pyc/
+/Preprossering/__pycache__/loadData.cpython-37.pyc/
+/Preprossering/__pycache__/loadData.cpython-38.pyc/
+
