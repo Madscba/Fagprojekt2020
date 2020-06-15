@@ -114,7 +114,7 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
                                                                        is_usable='Yes', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
-                                                                       is_usable='No', max_files=N, max_windows=int(3.9*max_windows),
+                                                                       is_usable='No', max_files=N, max_windows=np.maximum(int(round(len(filenames1)/26*max_windows)),1),
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
     n_train_files2 = int(len(filenames2) / 10 * (train_split/10))
