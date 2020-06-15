@@ -418,8 +418,6 @@ def make_pca(windows,make_spectograms=False):
 def apply_transforms_new(image, size=(224,224)):
 
 
-    if not isinstance(image, Image.Image):
-        image = F.to_pil_image(image)
     means = [0.485, 0.456, 0.406]
     stds = [0.229, 0.224, 0.225]
 
