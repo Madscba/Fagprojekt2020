@@ -19,7 +19,11 @@ def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA"):
     #make data frame
     df=(pd.DataFrame(window_id,columns=["file","window"]))
     df[int(pca1)]=pca_vectors[:,int(pca1)]
-    df[int(pca2)]=pca_vectors[:,int(pca2)]
+    try:
+        df[int(pca2)]=pca_vectors[:,int(pca2)]
+    except:
+        print("second component not found insert 0")
+        df[int(pca2)]=0
     df["label"]=labels
     df["index"]=df.index
     fig=px.scatter(df,x=int(pca1),y=int(pca2),color="label",hover_data=["file","window","index"])

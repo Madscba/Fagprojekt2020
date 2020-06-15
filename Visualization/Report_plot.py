@@ -34,6 +34,7 @@ ln =[a[0] for a in i1+i2+i3]
 ssp = scale_data(sp)
 pca2=PCA()
 tsne2=TSNE()
+
 clf2 = LinearDiscriminantAnalysis()
 pca2.fit(ssp)
 pca_v = pca2.transform(ssp)
