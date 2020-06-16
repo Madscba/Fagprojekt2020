@@ -155,7 +155,7 @@ grad_parameters(modelB, list(list2[activation_list]))
 optimizer = optim.Adam(modelB.parameters(), lr=0.001)
 train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
                                                                           Y_valid, windows_id, batch_size=128,
-                                                                          num_epochs=4, preprocessed=True)
+                                                                          num_epochs=2, preprocessed=True)
 torch.save(modelB.state_dict(), 'model1_l1.pt')
 
 train_acc_data = np.asarray(train_acc)
