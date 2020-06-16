@@ -41,16 +41,12 @@ class classifier_validation():
             self.Kfold = json.load(read_file)
 
     def get_spectrogram(self,x,test):
-        if test:
-            max=self.max_windows*5
-        else:
-            max=self.max_windows
-        spectrograms, spectrogram_labels, _, _ = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=max,
+        spectrograms, spectrogram_labels, _, idx = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
+                                                                        is_usable=None,max_windows=self.max_windows,
                                                                         path=self.speck_path)  # 18 files = 1926
         spectrogram_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
 
-        return spectrograms,spectrogram_labels
+        return spectrograms,spectrogram_labels,idx
 
     def get_balanced(self,x,path_s):
         is_useble=[]
@@ -63,31 +59,29 @@ class classifier_validation():
                 Not_useble.append(name)
 
         windows1, labels1, filenames1, window_idx_full1 = self.prepros.make_label(make_from_filenames=is_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows,
-                                                                        path=self.speck_path)
+                                                                        is_usable=None,max_windows=int(self.max_windows/4),
+                                                                        path=path_s)
         windows2, labels2, filenames2, window_idx_full2 = self.prepros.make_label(make_from_filenames=Not_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows*5,
-                                                                        path=self.speck_path)
+                                                                        is_usable=None,max_windows=self.max_windows,
+                                                                        path=path_s)
         labels=labels1+labels2
+        idx=window_idx_full1+window_idx_full2
         windows=np.vstack([windows1,windows2])
         labels = [self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable
                               in labels]
-        return windows,labels
+        return windows,labels, idx
 
     def get_feturevectors(self,x,test):
-        if test:
-            max=self.max_windows*5
-        else:
-            max=self.max_windows
-        feature_vectors, feature_vectors_labels, _, _ = self.prepros.make_label(make_from_filenames=x,max_files=None,
+
+        feature_vectors, feature_vectors_labels, _, idx = self.prepros.make_label(make_from_filenames=x,max_files=None,
                                                                                  quality=None, is_usable=None,
-                                                                                 max_windows=max,
+                                                                                 max_windows=self.max_windows,
                                                                                  path=self.feture_path)  # 18 files = 2144
         feature_vectors_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in feature_vectors_labels]
-        return feature_vectors, feature_vectors_labels
+        return feature_vectors, feature_vectors_labels,idx
 
 
-    def test(self,type,folds=None,classifyers=["GNB","SVM", "LDA", "DecisionTree", "RF"],logname="test.json",confusion_matrix=False):
+    def test(self,type,folds=None,classifyers=["GNB","SVM", "LDA", "DecisionTree", "RF","Random"],logname="test.json",confusion_matrix=False):
         """
 
         :param type: fetures or spectrograms
@@ -113,6 +107,7 @@ class classifier_validation():
         Nfold=folddic['N_folds']
         AC_collumns=np.append(classifyers,["N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
         AC_matrix = pd.DataFrame(index=np.arange(0, Nfold), columns=AC_collumns)
+        resultDict={}
         for n in range(Nfold):
             trainNames=folddic[f"train_{n}"]
             testNames=folddic[f"test_{n}"]
@@ -120,16 +115,16 @@ class classifier_validation():
             if type=="fetures":
                 #Test feturevectors
                 #x_train,y_train=self.get_feturevectors(trainNames,test=False)
-                #x_test, y_test = self.get_feturevectors(testNames,test=True)
-                x_train, y_train = self.get_balanced(trainNames, path_s=self.feture_path)
-                x_test, y_test = self.get_balanced(testNames, path_s=self.feture_path)
+                x_test, y_test ,idx_test= self.get_feturevectors(testNames,test=True)
+                x_train, y_train ,idx_train= self.get_balanced(trainNames, path_s=self.feture_path)
+                #x_test, y_test = self.get_balanced(testNames, path_s=self.feture_path)
 
             elif type=="spectrograms":
                 #Test spectrograms
                 #x_train,y_train=self.get_spectrogram(trainNames,test=False)
-                #x_test, y_test = self.get_spectrogram(testNames,test=True)
-                x_train, y_train = self.get_balanced(trainNames, path_s=self.speck_path)
-                x_test, y_test = self.get_balanced(testNames, path_s=self.speck_path)
+                x_test, y_test ,idx_test = self.get_spectrogram(testNames,test=True)
+                x_train, y_train, idx_train = self.get_balanced(trainNames, path_s=self.speck_path)
+                #x_test, y_test = self.get_balanced(testNames, path_s=self.speck_path)
             else:
                 raise Exeption("wrong type try fetures or spectrograms")
 
@@ -148,6 +143,9 @@ class classifier_validation():
                 if C=="RF":
                     predict= self.predict_RF(x_train, y_train, x_test, y_test)
 
+                if C=="Random":
+                    predict=self.predict_random(x_train, y_train, x_test, y_test)
+
                 AC_matrix.loc[n,C]=np.mean(y_test == predict)
                 for lable1 in set(y_test):
                     base1=np.full(len(y_test),lable1)
@@ -157,11 +155,13 @@ class classifier_validation():
                             base2=np.full(len(y_test),lable2)
                             AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
-                AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
-                AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
-                AC_matrix.loc[n, "N_TrainFiles"] = len(trainNames)
-                AC_matrix.loc[n, "N_TrainWindows"] = len(x_train)
+                resultDict[f"fold_{n}"]={C: list(predict)}
 
+            AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
+            AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
+            AC_matrix.loc[n, "N_TrainFiles"] = len(trainNames)
+            AC_matrix.loc[n, "N_TrainWindows"] = len(x_train)
+            resultDict[f"fold_{n}"]["meta"] = {"idx":idx_test,"True":list(y_test)}
             # clear data
             del x_test
             del y_test
@@ -175,6 +175,8 @@ class classifier_validation():
             #print(AC_matrix)
         if logname is not None:
             AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,logname))
+            with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
+                json.dump(resultDict, fp, indent=4)
         return  AC_matrix
 
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],EXP_name=None):
@@ -280,6 +282,15 @@ class classifier_validation():
         print("RF done", np.mean(y_test == RF_predict))
         return RF_predict
 
+    def predict_random(self,x_train,y_train,x_test,y_test):
+        classes=["Yes","No"]
+        prob=[0.8,0.2]
+        predict=np.random.choice(classes, size=len(x_test), p=prob)
+        print("Random predict", np.mean(y_test == predict))
+        return predict
+
+
+
     def predict_clf(self,x,y,x_test,y_test):
         pass
         #TODO denne function var ikke skævet færdigt.
@@ -288,7 +299,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=False
+    hpc=True
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors"'
@@ -299,9 +310,9 @@ if __name__ == '__main__':
         F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=10)
-    #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
-    #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
+    CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="Feture_onefold_test",confusion_matrix=True)
+    CV.test(classifyers=["SVM","Random"],folds=None,type="spectrograms",logname="Feture_onefold_test",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
-    CV.two_layes(type="spectrograms",EXP_name="test")
+    #CV.two_layes(type="spectrograms",EXP_name="test")
 

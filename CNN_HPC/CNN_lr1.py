@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
+sys.path.append('/zhome/87/9/127623/FagprojektBALANCEDTESTS/Fagprojekt2020')
 from CNN.modifyCNN import VGG16, freeze_parameters, grad_parameters, list_of_features, check_grad
 import torch.optim as optim
 import torch
@@ -162,7 +162,7 @@ list2 = np.array(list_of_features(modelA))
 modelB = VGG16()
 freeze_parameters(modelB,feature_extracting=True)
 for i in range(2):
-    PATH = '/zhome/87/9/127623/Fagprojekt'
+    PATH = '/zhome/87/9/127623/FagprojektBALANCEDTESTS'
     if i == 0:
         activation_list = np.array([28, 29, 30, 31])
         grad_parameters(modelA, list(list2[activation_list]))

@@ -37,21 +37,40 @@ class plot_auto():
         testNames = Kfold[f"test_0"]
 
         self.type=type
-        self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_vectors(trainNames,
-                                                                                           spectrograms_path,
-                                                                                           annotation)
-        if type=="Feture":
+
+        if type=="Feture_test":
             self.X_train,self.Y_train,self.filenames_train, self.train_id=self.get_vectors(trainNames,feature_path,annotation)
             self.X_test, self.Y_test, self.filenames_test, self.test_id = self.get_vectors(testNames, feature_path,annotation)
+            self.le.fit(np.append(self.filenames_train,self.filenames_test))
+            self.X_train = scale_data(self.X_train)
+            self.X_test = scale_data(self.X_test)
 
-        if type=="Spectrograms":
+        if type=="Spectrograms_test":
             self.X_train,self.Y_train,self.filenames_train,self.train_id=self.get_vectors(trainNames,spectrograms_path,annotation)
             self.X_test, self.Y_test, self.filenames_test,self.test_id = self.get_vectors(testNames, spectrograms_path,annotation)
-        self.le.fit(np.append(self.filenames_train,self.filenames_test))
+            self.le.fit(np.append(self.filenames_train,self.filenames_test))
+            self.X_train = scale_data(self.X_train)
+            self.X_test = scale_data(self.X_test)
 
-        self.X_train = scale_data(self.X_train)
-        self.X_test = scale_data(self.X_test)
+        if type=="Spectrograms_balance":
+            self.X_train,self.Y_train,self.filenames_train,self.train_id=self.get_balance(5,spectrograms_path,annotation)
+            self.le.fit(self.filenames_train)
+        if type=="Feature_balance":
+            self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_balance(5,feature_path,annotation)
+            self.le.fit(self.filenames_train)
+    def get_balance(self,n,path,annotation):
+        windows1, labels1, filenames1, window_idx_full1 = self.get_data.make_label(quality=None,max_files=n,
+                                                                        is_usable="Yes",max_windows=30,
+                                                                        path=path)
+        windows2, labels2, filenames2, window_idx_full2 = self.get_data.make_label(quality=None,max_files=n,
+                                                                        is_usable="No",max_windows=30,
+                                                                        path=path)
+        idx=window_idx_full1+window_idx_full2
+        filenames = filenames1 + filenames2
+        feature_vectors_labels=labels1+labels2
+        feature_vectors = np.vstack((windows1, windows2))
 
+        return feature_vectors, feature_vectors_labels, filenames, idx
 
     def get_vectors(self, x, path,annotation):
         feature_vectors, feature_vectors_labels, filenames, idx = self.get_data.make_label(make_from_filenames=x, max_files=self.max_files,
@@ -103,15 +122,34 @@ class plot_auto():
         else:
             self.window_id = self.train_id
         EEG = self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="EEG", plot=False)
+        EEG.time = EEG.time / 1000
         if N_chanel==None:
             N_chanel=len(EEG.columns)-1
-        fig = make_subplots(rows=int(np.ceil(N_chanel/2)), cols=2,subplot_titles=EEG.columns[1:N_chanel+1])
+        fig = make_subplots(rows=int(np.ceil(N_chanel/3)), cols=3,subplot_titles=EEG.columns[1:N_chanel+1])
         for i,ch in enumerate(EEG.columns[1:N_chanel+1]):
 
             fig.add_trace(
                 go.Scatter(x=EEG.time, y=EEG[ch], mode="lines"),
-                row=int(i/2)+1, col=i%2+1,
-            )
+                row=int(i/3)+1, col=i%3+1)
+        fig.update_layout(title=f"File: {self.window_id[idx][0]} window {self.window_id[idx][1]}")
+        fig.show()
+
+    def plot_Spec(self,idx,N_chanel=None,test=False):
+        if test:
+            self.window_id=self.test_id
+        else:
+            self.window_id = self.train_id
+        spectrogram=self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="spec",plot=False)
+        if N_chanel==None:
+            N_chanel=len(list(spectrogram.keys()))
+        fig = make_subplots(rows=int(np.ceil(N_chanel/4)), cols=4,subplot_titles=list(spectrogram.keys())[:N_chanel])
+        for i,ch in enumerate(list(spectrogram.keys())[:N_chanel]):
+            pix = px.imshow(spectrogram[ch])
+            trace1 = pix['data'][0]
+            fig.add_trace(
+                trace1,
+                row=int(i/4)+1, col=i%4+1)
+        #fig.update_layout(title=f"File: {self.window_id[idx][0]} window {self.window_id[idx][1]}",showlegend: False)
         fig.show()
 
     def plot_space(self,space,test=False):
@@ -177,10 +215,11 @@ if __name__ == '__main__':
     spectrograms_path=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
 
     ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
-                         Kfold_path=K_path,type="Feture")
+                         Kfold_path=K_path,type="Feature_balance")
     ploterfature.plot_space("PCA",test=False)
     #ploterfature.plot_space("PCA", test=True)
-    #ploterfature.plot_EEG(72,test=False)
+    #ploterfature.plot_EEG(224,test=False)
+    #ploterfature.plot_Spec(224, test=False)
     #ploterfature.plot_all(72,test=False,N_chanel=2)
     #ploterfature.plot_space("LDA",test=False)
     #ploterfature.plot_space("LDA", test=True)
@@ -188,10 +227,10 @@ if __name__ == '__main__':
     #ploterfature.plot_space("TSNE", test=True)
 
     ploterspec = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
-                             Kfold_path=K_path, type="Spectrograms")
+                             Kfold_path=K_path, type="Spectrograms_balance")
     ploterspec.plot_space("PCA",test=False)
     #ploterspec.plot_space("LDA",test=False)
-    #ploterspec.plot_space("LDA", test=True)
+    #loterspec.plot_space("LDA", test=True)
     ploterspec.plot_space("TSNE",test=False)
 
 
