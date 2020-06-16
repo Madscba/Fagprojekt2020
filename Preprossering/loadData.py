@@ -69,7 +69,7 @@ class json_maker:
             self.edfDefDict[file]["Files named %s" % file] = len(self.edfDefDict[file]["path"])
 
 
-    def add_annotations(self,path_xlsx_file,file_name_xlsx='MGH_File_Annotations.xlsx',sheet_names=[2,3,4],atributes=["Quality Of Eeg","Is Eeg Usable For Clinical Purposes"],sort=False):
+    def add_annotations(self,path_xlsx_file,file_name_xlsx='MGH_File_Annotations.xlsx',sheet_names=[2,3,4],atributes=["Quality Of Eeg","Is Eeg Usable For Clinical Purposes","Reader"],sort=False):
         """
         Args: path_xlsx_file:
         file_name_xlsx:
@@ -102,12 +102,32 @@ class json_maker:
                     self.edfDefDict[id]["deathFlag"]=True
                     self.edfDefDict[id]["reson"]="annotaiton missing"
 
+def getNumberOfAnnotators():
+    datadir=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
+    loader=loadData.json_maker()
+    loader.find_edf(datadir)
+    loader.add_annotations(datadir,sheet_names=[2,3,4],sort=True)
+    pass
+    flist = []
+    with open("filenames.txt", "r") as fh:
+        filenames = fh.read().splitlines()
 
+    for i in filenames:
+        if i in loader.no_file:
+            flist.append(loader.no_file[i]['annotation']['Reader'])
 #Debugging
-#import loadData
-#import os
-#datadir=r"C:\\Users\\Andreas\Desktop\\KID\\Fagproject\\Data\\BC\\data_farrahtue_EEG\\"
-#loader=loadData.json_maker()
-#loader.find_edf(datadir)
-#loader.add_annotations(datadir,sheet_names=[2,3,4],sort=True)
+# import loadData
+# import os
+# datadir=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
+# loader=loadData.json_maker()
+# loader.find_edf(datadir)
+# loader.add_annotations(datadir,sheet_names=[2,3,4],sort=True)
+pass
+flist = []
+with open("filenames.txt", "r") as fh:
+    filenames = fh.read().splitlines()
+
+for i in filenames:
+    if i in loader.no_file:
+        flist.append(loader.no_file[i]['annotation']['Reader'])
 
