@@ -114,7 +114,7 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
                                                                        is_usable='Yes', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
-                                                                       is_usable='No', max_files=N, max_windows=max_windows,
+                                                                       is_usable='No', max_files=N, max_windows=4*max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
     n_train_files2 = int(len(filenames2) / 10 * (train_split/10))
@@ -130,7 +130,7 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
     for i in range(n_train_files1):
         n1 += j1[i]
     for i in range(n_train_files2):
-        n2 += j1[i]
+        n2 += j2[i]
     wt1 = windows1[:n1,:,:,:]
     wt2 = windows2[:n2,:,:,:]
     w1 = torch.cat((wt1,wt2))
