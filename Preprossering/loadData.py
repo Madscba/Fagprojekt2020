@@ -116,18 +116,18 @@ def getNumberOfAnnotators():
         if i in loader.no_file:
             flist.append(loader.no_file[i]['annotation']['Reader'])
 #Debugging
-import loadData
-import os
-datadir=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
-loader=loadData.json_maker()
-loader.find_edf(datadir)
-loader.add_annotations(datadir,sheet_names=[2,3,4],sort=True)
-pass
-flist = []
-with open("filenames.txt", "r") as fh:
-    filenames = fh.read().splitlines()
-
-for i in filenames:
-    if i in loader.no_file:
-        flist.append(loader.no_file[i]['annotation']['Recording Length [seconds]'])
-pass
+# import loadData
+# import os
+# datadir=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
+# loader=loadData.json_maker()
+# loader.find_edf(datadir)
+# loader.add_annotations(datadir,sheet_names=[2,3,4],sort=True)
+# pass
+# flist = []
+# with open("filenames.txt", "r") as fh:
+#     filenames = fh.read().splitlines()
+#
+# for i in filenames:
+#     if i in loader.no_file:
+#         flist.append(loader.no_file[i]['annotation']['Recording Length [seconds]'])
+# pass

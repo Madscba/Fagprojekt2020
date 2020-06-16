@@ -1,5 +1,4 @@
 import sys
-
 sys.path.append('/zhome/87/9/127623/FagprojektBALANCEDTESTS/Fagprojekt2020')
 from CNN.modifyCNN import VGG16, freeze_parameters, grad_parameters, list_of_features, check_grad
 import torch.optim as optim
