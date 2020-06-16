@@ -13,7 +13,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from Visualization.plot_inteactive_functions import plot_pca_interactiv
-
+from sklearn import preprocessing
 
 class plot_auto():
     def __init__(self,feature_path,spectrograms_path,BC_datapath,Kfold_path,type,annotation="Is Eeg Usable For Clinical Purposes"):
@@ -29,6 +29,7 @@ class plot_auto():
         self.TSNE=None #TSNE model
         self.max_windows=30
         self.max_files=10
+        self.le = preprocessing.LabelEncoder()
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             Kfold = json.load(read_file)
 
@@ -36,6 +37,9 @@ class plot_auto():
         testNames = Kfold[f"test_0"]
 
         self.type=type
+        self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_vectors(trainNames,
+                                                                                           spectrograms_path,
+                                                                                           annotation)
         if type=="Feture":
             self.X_train,self.Y_train,self.filenames_train, self.train_id=self.get_vectors(trainNames,feature_path,annotation)
             self.X_test, self.Y_test, self.filenames_test, self.test_id = self.get_vectors(testNames, feature_path,annotation)
@@ -43,6 +47,10 @@ class plot_auto():
         if type=="Spectrograms":
             self.X_train,self.Y_train,self.filenames_train,self.train_id=self.get_vectors(trainNames,spectrograms_path,annotation)
             self.X_test, self.Y_test, self.filenames_test,self.test_id = self.get_vectors(testNames, spectrograms_path,annotation)
+        self.le.fit(np.append(self.filenames_train,self.filenames_test))
+
+        self.X_train = scale_data(self.X_train)
+        self.X_test = scale_data(self.X_test)
 
 
     def get_vectors(self, x, path,annotation):
@@ -57,26 +65,53 @@ class plot_auto():
 
 
 
-    def plot_all(self,idx):
+    def plot_all(self,idx,N_chanel=None,test=False):
+        if test:
+            self.window_id=self.test_id
+        else:
+            self.window_id = self.train_id
+
         spectrogram=self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="spec",plot=False)
         EEG=self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="EEG",plot=False)
         ch="TP10"
         fig = make_subplots(rows=1, cols=2)
         EEG.time=EEG.time / 1000
-        fig1 = px.imshow(spectrogram[ch])
-        fig2 = px.line(x=EEG.time, y=EEG[ch])
-        trace1 = fig1['data'][0]
-        trace2 = fig2['data'][0]
+        if N_chanel==None:
+            N_chanel=len(EEG.columns)-1
+        fig = make_subplots(rows=N_chanel, cols=2)
+        for i,ch in enumerate(EEG.columns[1:N_chanel+1]):
 
-        fig.add_trace(
-            trace1,
-            row=1, col=1
-        )
+            fig1 = px.imshow(spectrogram[ch])
 
-        fig.add_trace(
-            trace2,
-            row=1, col=2
-        )
+            fig2 = px.line(x=EEG.time, y=EEG[ch])
+            trace1 = fig1['data'][0]
+            trace2 = fig2['data'][0]
+
+            fig.add_trace(
+                trace1,
+                row=i+1, col=1
+            )
+
+            fig.add_trace(
+                go.Scatter(x=EEG.time, y=EEG[ch], mode="lines"),
+                row=i+1, col=2,
+            )
+        fig.show()
+    def plot_EEG(self,idx,N_chanel=None,test=False):
+        if test:
+            self.window_id=self.test_id
+        else:
+            self.window_id = self.train_id
+        EEG = self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="EEG", plot=False)
+        if N_chanel==None:
+            N_chanel=len(EEG.columns)-1
+        fig = make_subplots(rows=int(np.ceil(N_chanel/2)), cols=2,subplot_titles=EEG.columns[1:N_chanel+1])
+        for i,ch in enumerate(EEG.columns[1:N_chanel+1]):
+
+            fig.add_trace(
+                go.Scatter(x=EEG.time, y=EEG[ch], mode="lines"),
+                row=int(i/2)+1, col=i%2+1,
+            )
         fig.show()
 
     def plot_space(self,space,test=False):
@@ -112,8 +147,8 @@ class plot_auto():
         else:
             testssting = "train set"
 
-        plot_pca_interactiv(vectors, l, i, model=f"{space} {testssting} {self.type}")
-        plot_pca_interactiv(vectors, ln, i, model=f"{space} {testssting} {self.type}")
+        plot_pca_interactiv(vectors, l, i, model=None)
+        plot_pca_interactiv(vectors, self.le.transform(ln).astype(str), i, model=None)
 
     def LDA_trian(self):
         print("Fitting LDA")
@@ -140,22 +175,23 @@ if __name__ == '__main__':
     BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
     K_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     spectrograms_path=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
-    ploterfature=plot_auto(feature_path=feature_path,spectrograms_path=spectrograms_path,BC_datapath=BC_datapath,Kfold_path=K_path,type="Feture")
-    #ploter.plot_all(3)
 
+    ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
+                         Kfold_path=K_path,type="Feture")
     ploterfature.plot_space("PCA",test=False)
     #ploterfature.plot_space("PCA", test=True)
-    ploterfature.plot_space("LDA",test=False)
-    ploterfature.plot_space("LDA", test=True)
+    #ploterfature.plot_EEG(72,test=False)
+    #ploterfature.plot_all(72,test=False,N_chanel=2)
+    #ploterfature.plot_space("LDA",test=False)
+    #ploterfature.plot_space("LDA", test=True)
     ploterfature.plot_space("TSNE",test=False)
     #ploterfature.plot_space("TSNE", test=True)
 
     ploterspec = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
                              Kfold_path=K_path, type="Spectrograms")
     ploterspec.plot_space("PCA",test=False)
-    #ploterfature.plot_space("PCA", test=True)
-    ploterspec.plot_space("LDA",test=False)
-    ploterspec.plot_space("LDA", test=True)
+    #ploterspec.plot_space("LDA",test=False)
+    #ploterspec.plot_space("LDA", test=True)
     ploterspec.plot_space("TSNE",test=False)
 
 

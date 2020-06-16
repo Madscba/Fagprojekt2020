@@ -15,7 +15,18 @@ Functions for interactive plots made by Andreas
 
 """
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA"):
+def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA",plot=True):
+    """
+
+    :param pca_vectors:
+    :param labels:
+    :param window_id:
+    :param pca1:
+    :param pca2:
+    :param model:
+    :param plot: if true plot else returns trace
+    :return:
+    """
     #make data frame
     df=(pd.DataFrame(window_id,columns=["file","window"]))
     df[int(pca1)]=pca_vectors[:,int(pca1)]
@@ -32,7 +43,10 @@ def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA"):
         xaxis_title=f"Component {pca1}",
         yaxis_title=f"Component {pca2}"
     )
-    fig.show()
+    if plot:
+        fig.show()
+    else:
+        return fig['data'][0]
 
 def plot_comand(feature_path,path_pca,BC_datapath,newplot=True):
     pca = pickle.load(open(path_pca, 'rb'))
