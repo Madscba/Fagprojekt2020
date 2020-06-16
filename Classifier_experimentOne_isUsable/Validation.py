@@ -311,8 +311,8 @@ if __name__ == '__main__':
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
-    CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="Feture_onefold_test",confusion_matrix=True)
-    CV.test(classifyers=["SVM","Random"],folds=None,type="spectrograms",logname="Feture_onefold_test",confusion_matrix=True)
+    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname="Feture_onefold_test",confusion_matrix=True)
+    CV.test(classifyers=["Random"],folds=None,type="spectrograms",logname="Feture_onefold_test",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 
