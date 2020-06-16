@@ -52,6 +52,28 @@ class classifier_validation():
 
         return spectrograms,spectrogram_labels
 
+    def get_balanced(self,x,path_s):
+        is_useble=[]
+        Not_useble=[]
+        for name in x:
+            lable=self.prepros.edfDict[name]["annotation"]["Is Eeg Usable For Clinical Purposes"]
+            if lable=="Yes":
+                is_useble.append(name)
+            else:
+                Not_useble.append(name)
+
+        windows1, labels1, filenames1, window_idx_full1 = self.prepros.make_label(make_from_filenames=is_useble, quality=None,max_files=None,
+                                                                        is_usable=None,max_windows=self.max_windows,
+                                                                        path=self.speck_path)
+        windows2, labels2, filenames2, window_idx_full2 = self.prepros.make_label(make_from_filenames=Not_useble, quality=None,max_files=None,
+                                                                        is_usable=None,max_windows=self.max_windows*5,
+                                                                        path=self.speck_path)
+        labels=labels1+labels2
+        windows=np.vstack([windows1,windows2])
+        labels = [self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable
+                              in labels]
+        return windows,labels
+
     def get_feturevectors(self,x,test):
         if test:
             max=self.max_windows*5
@@ -97,13 +119,17 @@ class classifier_validation():
 
             if type=="fetures":
                 #Test feturevectors
-                x_train,y_train=self.get_feturevectors(trainNames,test=False)
-                x_test, y_test = self.get_feturevectors(testNames,test=True)
+                #x_train,y_train=self.get_feturevectors(trainNames,test=False)
+                #x_test, y_test = self.get_feturevectors(testNames,test=True)
+                x_train, y_train = self.get_balanced(trainNames, path_s=self.feture_path)
+                x_test, y_test = self.get_balanced(testNames, path_s=self.feture_path)
 
             elif type=="spectrograms":
                 #Test spectrograms
-                x_train,y_train=self.get_spectrogram(trainNames,test=False)
-                x_test, y_test = self.get_spectrogram(testNames,test=True)
+                #x_train,y_train=self.get_spectrogram(trainNames,test=False)
+                #x_test, y_test = self.get_spectrogram(testNames,test=True)
+                x_train, y_train = self.get_balanced(trainNames, path_s=self.speck_path)
+                x_test, y_test = self.get_balanced(testNames, path_s=self.speck_path)
             else:
                 raise Exeption("wrong type try fetures or spectrograms")
 
@@ -262,7 +288,7 @@ class classifier_validation():
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors"'
@@ -277,5 +303,5 @@ if __name__ == '__main__':
     #CV.test(folds=None, type="fetures", logname="OuterloopFeturer.json")
     #CV.test(folds=None,type="spectrograms",logname="OuterloopSpectrograms.json")
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
-    CV.two_layes(type="spectrograms",EXP_name="spec_balanced")
+    CV.two_layes(type="spectrograms",EXP_name="test")
 
