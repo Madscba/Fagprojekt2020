@@ -154,7 +154,7 @@ class preprossingPipeline:
                 fig=EEGserie.plot(start=win_idx*30,duration=4,scalings ="auto")
                 fig.show()
             else:
-                EEGserie.crop(win_idx * 30, win_idx * 30 + 60)
+                EEGserie.crop(win_idx * 30, win_idx * 30 + 120)
                 DF = EEGserie.to_data_frame()
                 return DF
 
