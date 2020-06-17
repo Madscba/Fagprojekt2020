@@ -19,5 +19,5 @@ n=10
 for i in range(n):
     Kfold_path = f"Preprossering//K-stratified_is_useble_shuffle{i}.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40,Balance_train=True)
-    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname=f"ex_balanced_train_fea{i}",confusion_matrix=True)
-    CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname=f"ex_balanced_train_spec{i}",confusion_matrix=True)
+    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname=f"ex_bal_proba_fea{i}",confusion_matrix=True)
+    CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname=f"ex_bal_proba_spec{i}",confusion_matrix=True)
