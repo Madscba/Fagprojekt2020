@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
+sys.path.append('/zhome/87/9/127623/FagprojektBALANCEDTESTS/Fagprojekt2020')
 from CNN.modifyCNN import VGG16, freeze_parameters, grad_parameters, list_of_features, check_grad
 import torch.optim as optim
 import torch
@@ -12,6 +12,7 @@ import torch.nn as nn
 import numpy as np
 from Preprossering.PreprosseringPipeline import preprossingPipeline
 np.random.seed(42)
+
 
 def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,preprocessed=False):
     num_samples = X_train.shape[0]
@@ -68,6 +69,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
         model.eval()
         wrong_guesses = []
         wrong_predictions = []
+        all_predictions = []
         for i in range(num_test_batches):
             if i % 10 == 0:
                 print("\n {}, now validation...".format(i), end='')
@@ -97,6 +99,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
                     wrong_predictions.append(preds[k])
                 else:
                     correct2 += 1
+                all_predictions.append(preds[k])
 
         val_acc = correct2 / float(num_test_samples)
         val_cost.append(np.mean(val_loss))
@@ -105,7 +108,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
             print("\n Epoch %2i : Train Loss %f , Train acc %f, Valid acc %f" % (
                 epoch + 1, train_cost[-1], train_acc, val_acc))
 
-    return train_acc,train_cost,val_acc,val_cost, wrong_guesses, wrong_predictions, model
+    return train_acc,train_cost,val_acc,val_cost, wrong_guesses, wrong_predictions, all_predictions, model
 
 def split_dataset(C,path,N,train_split,max_windows,num_channels):
     """ Input: Data and training split (in %)
@@ -114,7 +117,7 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
                                                                        is_usable='Yes', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
-                                                                       is_usable='No', max_files=N, max_windows=np.maximum(int(round(len(filenames1)/26*max_windows)),1),
+                                                                       is_usable='No', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
     n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
     n_train_files2 = int(len(filenames2) / 10 * (train_split/10))
@@ -144,34 +147,43 @@ def split_dataset(C,path,N,train_split,max_windows,num_channels):
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
-X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=120,train_split=80,max_windows=10,num_channels=14)
+X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=120,train_split=80,max_windows=20,num_channels=14)
+modelA = VGG16()
+freeze_parameters(modelA,feature_extracting=True)
+list2 = np.array(list_of_features(modelA))
 modelB = VGG16()
-list2 = np.array(list_of_features(modelB))
 freeze_parameters(modelB,feature_extracting=True)
+for i in range(2):
+    PATH = '/zhome/87/9/127623/FagprojektBALANCEDTESTS'
+    if i == 0:
+        activation_list = np.array([28, 29, 30, 31])
+        grad_parameters(modelA, list(list2[activation_list]))
+        optimizer = optim.Adam(modelA.parameters(), lr=0.01)
+        train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, all_pred, modelA = test_CNN(modelA, X_train, Y_train, X_valid,
+                                                                                  Y_valid, windows_id, batch_size=256,
+                                                                                  num_epochs=2, preprocessed=True)
+        torch.save(modelA.state_dict(), 'model0_l2_ub.pt')
+    else:
+        activation_list = np.array([24, 25, 26, 27, 28, 29, 30, 31])
+        grad_parameters(modelB, list(list2[activation_list]))
+        optimizer = optim.Adam(modelB.parameters(), lr=0.01)
+        train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, all_pred, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
+                                                                                  Y_valid, windows_id, batch_size=256,
+                                                                                  num_epochs=2, preprocessed=True)
+        torch.save(modelB.state_dict(), 'model1_l2_ub.pt')
 
-
-activation_list = np.array([20,21,22,23,24,25,26, 27, 28, 29, 30, 31])
-grad_parameters(modelB, list(list2[activation_list]))
-optimizer = optim.Adam(modelB.parameters(), lr=0.001)
-train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, modelB = test_CNN(modelB, X_train, Y_train, X_valid,
-                                                                          Y_valid, windows_id, batch_size=128,
-                                                                          num_epochs=2, preprocessed=True)
-torch.save(modelB.state_dict(), 'model1_l1.pt')
-
-train_acc_data = np.asarray(train_acc)
-np.save(('train_acc_l1_1.npy'), train_acc_data)
-print("\n reached: second saving place")
-train_loss_data = np.asarray(train_loss)
-np.save(('train_loss_l1_1.npy'), train_loss_data)
-valid_acc_data = np.asarray(val_acc)
-np.save(('valid_acc_l1_1.npy'), valid_acc_data)
-valid_loss_data = np.asarray(val_loss)
-np.save(('valid_loss_l1_1.npy'), valid_loss_data)
-wrong_guesses_data = np.asarray(wrong_guesses)
-np.save(('wrong_guesses_l1_1.npy'), wrong_guesses_data)
-wrong_pred_data = np.asarray(wrong_predictions)
-np.save(('wrong_guesses_class_l1_1.npy'), wrong_pred_data)
-
-torch.save(X_valid,'test_set.pt')
-np.save('test_labels.npy',np.asarray(Y_valid))
-np.save('test_winods.npy',np.asarray(windows_id))
+    train_acc_data = np.asarray(train_acc)
+    np.save((f'train_acc_l2_{i}_ub.npy'), train_acc_data)
+    print("\n reached: second saving place")
+    train_loss_data = np.asarray(train_loss)
+    np.save((f'train_loss_l2_{i}_ub.npy'), train_loss_data)
+    valid_acc_data = np.asarray(val_acc)
+    np.save((f'valid_acc_l2_{i}_ub.npy'), valid_acc_data)
+    valid_loss_data = np.asarray(val_loss)
+    np.save((f'valid_loss_l2_{i}_ub.npy'), valid_loss_data)
+    wrong_guesses_data = np.asarray(wrong_guesses)
+    np.save((f'wrong_guesses_l2_{i}_ub.npy'), wrong_guesses_data)
+    wrong_pred_data = np.asarray(wrong_predictions)
+    np.save((f'wrong_guesses_class_l2_{i}_ub.npy'), wrong_pred_data)
+    all_pred_data = np.asarray(all_pred)
+    np.save((f'all_guesses_l2_{i}_ub.npy'), all_pred_data)
