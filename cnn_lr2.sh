@@ -13,5 +13,5 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 NEW_CNN_HPC/CNN_lr2_new.py
+python3 New_CNN_HPC/CNN_lr2_new.py
 echo "Done"
