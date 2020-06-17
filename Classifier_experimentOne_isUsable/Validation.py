@@ -293,13 +293,13 @@ class classifier_validation():
 
     def predict_clf(self,x,y,x_test,y_test):
         pass
-        #TODO denne function var ikke skævet færdigt.
+        #Denne function var ikke skævet færdigt.
     # clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20, 20, 20, 10), random_state=1)
     # clf.fit(x_train, y_train)
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors"'
@@ -310,9 +310,9 @@ if __name__ == '__main__':
         F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
-    CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="Feture_onefold_test",confusion_matrix=True)
-    CV.test(classifyers=["SVM","Random"],folds=None,type="spectrograms",logname="Feture_onefold_test",confusion_matrix=True)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=4)
+    CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="test2",confusion_matrix=True)
+    CV.test(classifyers=["SVM","Random"],folds=None,type="spectrograms",logname="test1",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 
