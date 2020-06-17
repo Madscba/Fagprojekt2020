@@ -41,7 +41,7 @@ def subfold(stucture,filenames,y,type):
     :param edfdict:
     :return: dictionary of subfold
     """
-    randstate=42
+    randstate=0
     if len(stucture) !=0:
         folds={}
         k=stucture[0]
@@ -76,4 +76,4 @@ def subfold(stucture,filenames,y,type):
 
 
 if __name__ == '__main__':
-    make_fold([5,5],path_edf=os.path.join(os.getcwd(), r"Preprossering/edfFiles.json"),path_fold=r"Preprossering//K-stratified_is_useble_shuffle.json",lable="Is Eeg Usable For Clinical Purposes",type="statifiedshuffle")
+    make_fold([5],path_edf=os.path.join(os.getcwd(), r"Preprossering/edfFiles.json"),path_fold=r"Preprossering//K-stratified_is_useble_shuffle9.json",lable="Is Eeg Usable For Clinical Purposes",type="statifiedshuffle")

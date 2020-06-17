@@ -20,7 +20,7 @@ from sklearn.neural_network import MLPClassifier
 random.seed(42)
 
 class classifier_validation():
-    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None):
+    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None,Balance_test=False,Balance_train=False):
         """
 
         :param Bc_path:
@@ -36,6 +36,8 @@ class classifier_validation():
         self.prepros = preprossingPipeline(mac=False, BC_datapath=Bc_path)
         self.feture_path=feture_path
         self.speck_path=speck_path
+        self.Balance_test=Balance_test
+        self.Balance_train = Balance_train
 
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
@@ -114,19 +116,31 @@ class classifier_validation():
             resultDict[f"fold_{n}"]={}
             if type=="fetures":
                 #Test feturevectors
-                #x_train,y_train=self.get_feturevectors(trainNames,test=False)
-                x_test, y_test ,idx_test= self.get_feturevectors(testNames,test=True)
-                x_train, y_train ,idx_train= self.get_balanced(trainNames, path_s=self.feture_path)
-                #x_test, y_test = self.get_balanced(testNames, path_s=self.feture_path)
+                if self.Balance_train:
+                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.feture_path)
+                else:
+                    x_train, y_train, idx_train = self.get_feturevectors(trainNames,test=True)
+
+                if self.Balance_test:
+                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.feture_path)
+                else:
+                    x_test, y_test, idx_test = self.get_feturevectors(testNames,test=True)
+
 
             elif type=="spectrograms":
                 #Test spectrograms
-                #x_train,y_train=self.get_spectrogram(trainNames,test=False)
-                x_test, y_test ,idx_test = self.get_spectrogram(testNames,test=True)
-                x_train, y_train, idx_train = self.get_balanced(trainNames, path_s=self.speck_path)
-                #x_test, y_test = self.get_balanced(testNames, path_s=self.speck_path)
+                if self.Balance_train:
+                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.speck_path)
+                else:
+                    x_train, y_train, idx_train = self.get_spectrogram(trainNames,test=True)
+
+                if self.Balance_test:
+                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.speck_path)
+                else:
+                    x_test, y_test, idx_test = self.get_spectrogram(testNames,test=True)
+
             else:
-                raise Exeption("wrong type try fetures or spectrograms")
+                raise Exception("wrong type try fetures or spectrograms")
 
             for C in classifyers:
                 if C=="SVM":
