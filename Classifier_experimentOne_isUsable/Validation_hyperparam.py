@@ -20,7 +20,7 @@ from sklearn.neural_network import MLPClassifier
 random.seed(42)
 
 class classifier_validation():
-    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None,Balance_test=False,Balance_train=False):
+    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None):
         """
 
         :param Bc_path:
@@ -36,8 +36,6 @@ class classifier_validation():
         self.prepros = preprossingPipeline(mac=False, BC_datapath=Bc_path)
         self.feture_path=feture_path
         self.speck_path=speck_path
-        self.Balance_test=Balance_test
-        self.Balance_train = Balance_train
 
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
@@ -106,7 +104,8 @@ class classifier_validation():
                     except:
                         print(f"Invalid fold index {i} max fold is {folddic['N_folds']}")
 
-        Nfold=folddic['N_folds']
+        Nfold=1
+        results = np.array([])
         AC_collumns=np.append(classifyers,["N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
         AC_matrix = pd.DataFrame(index=np.arange(0, Nfold), columns=AC_collumns)
         resultDict={}
@@ -116,37 +115,26 @@ class classifier_validation():
             resultDict[f"fold_{n}"]={}
             if type=="fetures":
                 #Test feturevectors
-                if self.Balance_train:
-                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.feture_path)
-                else:
-                    x_train, y_train, idx_train = self.get_feturevectors(trainNames,test=True)
-
-                if self.Balance_test:
-                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.feture_path)
-                else:
-                    x_test, y_test, idx_test = self.get_feturevectors(testNames,test=True)
-
+                #x_train,y_train=self.get_feturevectors(trainNames,test=False)
+                x_test, y_test ,idx_test= self.get_feturevectors(testNames,test=True)
+                x_train, y_train ,idx_train= self.get_balanced(trainNames, path_s=self.feture_path)
+                #x_test, y_test = self.get_balanced(testNames, path_s=self.feture_path)
 
             elif type=="spectrograms":
                 #Test spectrograms
-                if self.Balance_train:
-                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.speck_path)
-                else:
-                    x_train, y_train, idx_train = self.get_spectrogram(trainNames,test=True)
-
-                if self.Balance_test:
-                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.speck_path)
-                else:
-                    x_test, y_test, idx_test = self.get_spectrogram(testNames,test=True)
-
+                #x_train,y_train=self.get_spectrogram(trainNames,test=False)
+                x_test, y_test ,idx_test = self.get_spectrogram(testNames,test=True)
+                x_train, y_train, idx_train = self.get_balanced(trainNames, path_s=self.speck_path)
+                #x_test, y_test = self.get_balanced(testNames, path_s=self.speck_path)
             else:
-                raise Exception("wrong type try fetures or spectrograms")
+                raise Exeption("wrong type try fetures or spectrograms")
 
             for C in classifyers:
                 if C=="SVM":
                     predict=self.predict_svm(x_train,y_train,x_test,y_test)
                 if C=="LDA":
                     predict=self.predict_LDA(x_train,y_train,x_test,y_test)
+
 
                 if C=="GNB":
                     predict=self.predict_GNB(x_train,y_train,x_test,y_test)
@@ -156,6 +144,7 @@ class classifier_validation():
 
                 if C=="RF":
                     predict= self.predict_RF(x_train, y_train, x_test, y_test)
+
 
                 if C=="Random":
                     predict=self.predict_random(x_train, y_train, x_test, y_test)
@@ -203,7 +192,7 @@ class classifier_validation():
         """
 
         folddic = self.Kfold
-        Nfold=folddic['N_folds']
+        Nfold= 1
         Best_log=pd.DataFrame(index=np.arange(0, Nfold), columns=["Best","Best_AC","N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
         Gen_error=pd.DataFrame(index=np.arange(0, Nfold), columns=classifyers)
         for n in range(Nfold):
@@ -254,19 +243,28 @@ class classifier_validation():
 
     def predict_LDA(self,x,y,x_test,y_test):
         LDA_predict = np.array([])
-        LDA = LinearDiscriminantAnalysis()
-        LDA.fit(x, y)
+        param1 = ["svd","lsqr","eigen"] #solver
+        for i in param1:
+            LDA = LinearDiscriminantAnalysis(solver=i)
+            LDA.fit(x, y)
+            print("LDA. solver: ",i, np.mean(y_test == LDA.predict(x_test)))
+
         LDA_predict = np.append(LDA_predict, LDA.predict(x_test))
         print("Lda done", np.mean(y_test == LDA_predict))
         return LDA_predict
 
     def predict_svm(self,x,y,x_test,y_test):
         svm_predict = np.array([])
-        # support vector machine
-        m_svm = SVC(gamma="auto", kernel="linear")
-        m_svm.fit(x, y)
+        param1 = [0.5,1,1.5] #Reg
+        param2 = ["linear", "poly", "rbf", "sigmoid"] #kernel function
+        for i in param1:
+            for j in param2:
+            # support vector machine
+                m_svm = SVC(C=i,gamma="auto", kernel=j)
+                m_svm.fit(x, y)
+                print("SVM. C (reg): ",i,"kernel func: ",j, np.mean(y_test == m_svm.predict(x_test)))
         svm_predict = np.append(svm_predict, m_svm.predict(x_test))
-        print("SVM done", np.mean(y_test == svm_predict))
+
 
         return svm_predict
 
@@ -289,11 +287,14 @@ class classifier_validation():
 
     def predict_RF(self,x_train,y_train,x_test,y_test):
         RF_predict = np.array([])
-
-        ranFor = RandomForestClassifier(n_estimators=100, criterion='gini',random_state=42)
-        ranFor.fit(x_train, y_train)
+        param1 = [50,100,150,200] #NO trees
+        param2 = ["gini", "entropy"] #criterion
+        for i in param1:
+            for j in param2:
+                ranFor = RandomForestClassifier(n_estimators=i, criterion=j,random_state=42)
+                ranFor.fit(x_train, y_train)
+                print("RF. No of trees: ",i,"criterion: ",j, np.mean(y_test == ranFor.predict(x_test)))
         RF_predict = np.append(RF_predict, ranFor.predict(x_test))
-        print("RF done", np.mean(y_test == RF_predict))
         return RF_predict
 
     def predict_random(self,x_train,y_train,x_test,y_test):
@@ -304,29 +305,21 @@ class classifier_validation():
         return predict
 
 
-
-    def predict_clf(self,x,y,x_test,y_test):
-        pass
-        #Denne function var ikke skævet færdigt.
-    # clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20, 20, 20, 10), random_state=1)
-    # clf.fit(x_train, y_train)
-    # clf_predict = np.append(clf_predict, clf.predict(x_test))
-    # print("neural done",np.mean(y_true == clf_predict))
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors'
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
-        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
-        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        BC=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
+        F=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\FeatureVectors"
+        S=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
-    CV.test(classifyers=["SVM","LDA","Random"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
-    CV.test(classifyers=["RF","Random"],folds=None,type="spectrograms",logname="spec_final",confusion_matrix=True)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=50)
+    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
+    CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname="spec_final",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 

@@ -1,6 +1,6 @@
 #!/bin/sh
-#BSUB -J gpuv_script2
-#BSUB -o gpuv_script2_%J.out
+#BSUB -J ex_balanced_train
+#BSUB -o ex_balanced_train_%J.out
 #BSUB -q gpuv100
 #BSUB -n 1
 #BSUB -gpu "num=1:mode=exclusive_process"
@@ -13,4 +13,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 Classifier_experimentOne_isUsable/Classifier_test.py
+python3 Classifier_experimentOne_isUsable/experiment_balanced_train.py
