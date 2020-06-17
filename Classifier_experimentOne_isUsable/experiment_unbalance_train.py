@@ -1,7 +1,7 @@
 
 from Classifier_experimentOne_isUsable.Validation import *
 
-hpc = False
+hpc = True
 if hpc:
     BC = r"/work3/s173934/Fagprojekt/dataEEG"
     F = r'/work3/s173934/Fagprojekt/FeatureVectors'
@@ -17,8 +17,8 @@ n=10
 
 for i in range(n):
     Kfold_path = f"Preprossering//K-stratified_is_useble_shuffle{i}.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=4)
-    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname=f"test_feture{i}",confusion_matrix=True)
-    CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname=f"test_spec{i}",confusion_matrix=True)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
+    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname=f"ex_unbalanced_train_fea{i}",confusion_matrix=True)
+    CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname=f"ex_unbalanced_train_spec{i}",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
