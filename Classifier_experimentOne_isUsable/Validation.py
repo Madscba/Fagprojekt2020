@@ -61,10 +61,10 @@ class classifier_validation():
                 Not_useble.append(name)
 
         windows1, labels1, filenames1, window_idx_full1 = self.prepros.make_label(make_from_filenames=is_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=int(self.max_windows/4),
+                                                                        is_usable=None,max_windows=int(self.max_windows*(5/8)),
                                                                         path=path_s)
         windows2, labels2, filenames2, window_idx_full2 = self.prepros.make_label(make_from_filenames=Not_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows,
+                                                                        is_usable=None,max_windows=self.max_windows*2.5,
                                                                         path=path_s)
         labels=labels1+labels2
         idx=window_idx_full1+window_idx_full2
