@@ -111,7 +111,7 @@ class classifier_validation():
         for n in range(Nfold):
             trainNames=folddic[f"train_{n}"]
             testNames=folddic[f"test_{n}"]
-
+            resultDict[f"fold_{n}"]={}
             if type=="fetures":
                 #Test feturevectors
                 #x_train,y_train=self.get_feturevectors(trainNames,test=False)
@@ -155,7 +155,7 @@ class classifier_validation():
                             base2=np.full(len(y_test),lable2)
                             AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
-                resultDict[f"fold_{n}"]={C: list(predict)}
+                resultDict[f"fold_{n}"][C]=list(predict)
 
             AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
             AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
@@ -311,7 +311,7 @@ if __name__ == '__main__':
         S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=4)
-    CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="test2",confusion_matrix=True)
+    #CV.test(classifyers=["SVM","Random"],folds=None, type="fetures", logname="test2",confusion_matrix=True)
     CV.test(classifyers=["SVM","Random"],folds=None,type="spectrograms",logname="test1",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
