@@ -144,21 +144,21 @@ class classifier_validation():
 
             for C in classifyers:
                 if C=="SVM":
-                    predict=self.predict_svm(x_train,y_train,x_test,y_test)
+                    predict,prob=self.predict_svm(x_train,y_train,x_test,y_test)
                 if C=="LDA":
-                    predict=self.predict_LDA(x_train,y_train,x_test,y_test)
+                    predict,prob=self.predict_LDA(x_train,y_train,x_test,y_test)
 
                 if C=="GNB":
-                    predict=self.predict_GNB(x_train,y_train,x_test,y_test)
+                    predict,prob=self.predict_GNB(x_train,y_train,x_test,y_test)
 
                 if C=="DecisionTree":
-                    predict=self.predict_DissionTree(x_train,y_train,x_test,y_test)
+                    predict,prob=self.predict_DissionTree(x_train,y_train,x_test,y_test)
 
                 if C=="RF":
-                    predict= self.predict_RF(x_train, y_train, x_test, y_test)
+                    predict,prob= self.predict_RF(x_train, y_train, x_test, y_test)
 
                 if C=="Random":
-                    predict=self.predict_random(x_train, y_train, x_test, y_test)
+                    predict,prob=self.predict_random(x_train, y_train, x_test, y_test)
 
                 AC_matrix.loc[n,C]=np.mean(y_test == predict)
                 for lable1 in set(y_test):
@@ -169,13 +169,15 @@ class classifier_validation():
                             base2=np.full(len(y_test),lable2)
                             AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
-                resultDict[f"fold_{n}"][C]=list(predict)
+                resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
+                resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
 
             AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
             AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
             AC_matrix.loc[n, "N_TrainFiles"] = len(trainNames)
             AC_matrix.loc[n, "N_TrainWindows"] = len(x_train)
-            resultDict[f"fold_{n}"]["meta"] = {"idx":idx_test,"True":list(y_test)}
+            resultDict[f"fold_{n}"]["index"] = list(idx_test)
+            resultDict[f"fold_{n}"]["True"]=list(y_test)
             # clear data
             del x_test
             del y_test
@@ -188,9 +190,9 @@ class classifier_validation():
 
             #print(AC_matrix)
         if logname is not None:
-            AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,logname))
+            AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
             with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
-                json.dump(resultDict, fp, indent=4)
+                json.dump(resultDict, fp, indent=6)
         return  AC_matrix
 
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],EXP_name=None):
@@ -257,18 +259,20 @@ class classifier_validation():
         LDA = LinearDiscriminantAnalysis()
         LDA.fit(x, y)
         LDA_predict = np.append(LDA_predict, LDA.predict(x_test))
+        p=LDA.predict_proba(x_test)
         print("Lda done", np.mean(y_test == LDA_predict))
-        return LDA_predict
+        return LDA_predict,p
 
     def predict_svm(self,x,y,x_test,y_test):
         svm_predict = np.array([])
         # support vector machine
-        m_svm = SVC(gamma="auto", kernel="linear")
+        m_svm = SVC(gamma="auto", kernel="linear",probability=True)
         m_svm.fit(x, y)
         svm_predict = np.append(svm_predict, m_svm.predict(x_test))
+        p=m_svm.predict_proba(x_test)
         print("SVM done", np.mean(y_test == svm_predict))
 
-        return svm_predict
+        return svm_predict,p
 
     def predict_GNB(self,x_train,y_train,x_test,y_test):
         GNB_predict = np.array([])
@@ -288,13 +292,15 @@ class classifier_validation():
         return DecisionTree_predict
 
     def predict_RF(self,x_train,y_train,x_test,y_test):
+        p = np.array([])
         RF_predict = np.array([])
 
         ranFor = RandomForestClassifier(n_estimators=100, criterion='gini',random_state=42)
         ranFor.fit(x_train, y_train)
         RF_predict = np.append(RF_predict, ranFor.predict(x_test))
+        p=ranFor.predict_proba(x_test)
         print("RF done", np.mean(y_test == RF_predict))
-        return RF_predict
+        return RF_predict,p
 
     def predict_random(self,x_train,y_train,x_test,y_test):
         classes=["Yes","No"]
@@ -312,6 +318,10 @@ class classifier_validation():
     # clf.fit(x_train, y_train)
     # clf_predict = np.append(clf_predict, clf.predict(x_test))
     # print("neural done",np.mean(y_true == clf_predict))
+
+def dict_to_pd(predict_dict):
+    print(predict_dict)
+
 if __name__ == '__main__':
     hpc=True
     if hpc:

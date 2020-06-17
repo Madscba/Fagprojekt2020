@@ -152,7 +152,7 @@ class plot_auto():
         #fig.update_layout(title=f"File: {self.window_id[idx][0]} window {self.window_id[idx][1]}",showlegend: False)
         fig.show()
 
-    def plot_space(self,space,test=False):
+    def plot_space(self,space,test=False,point=None):
         if test:
             data=self.X_test
             l=self.Y_test
@@ -185,8 +185,8 @@ class plot_auto():
         else:
             testssting = "train set"
 
-        plot_pca_interactiv(vectors, l, i, model=None)
-        plot_pca_interactiv(vectors, self.le.transform(ln).astype(str), i, model=None)
+        plot_pca_interactiv(vectors, l, i, model=None,index=point)
+        #plot_pca_interactiv(vectors, self.le.transform(ln).astype(str), i, model=None)
 
     def LDA_trian(self):
         print("Fitting LDA")
@@ -216,7 +216,7 @@ if __name__ == '__main__':
 
     ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
                          Kfold_path=K_path,type="Feature_balance")
-    ploterfature.plot_space("PCA",test=False)
+    ploterfature.plot_space("PCA",test=False,point=211)
     #ploterfature.plot_space("PCA", test=True)
     #ploterfature.plot_EEG(224,test=False)
     #ploterfature.plot_Spec(224, test=False)

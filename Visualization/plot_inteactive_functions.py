@@ -15,7 +15,7 @@ Functions for interactive plots made by Andreas
 
 """
 #data = np.load(r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\wetransfer-2bf20e\PCA_TSNE\pca_features.npy')
-def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA",plot=True):
+def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA",plot=True,index=None):
     """
 
     :param pca_vectors:
@@ -38,6 +38,13 @@ def plot_pca_interactiv(pca_vectors,labels,window_id,pca1=0,pca2=1,model="PCA",p
     df["label"]=labels
     df["index"]=df.index
     fig=px.scatter(df,x=int(pca1),y=int(pca2),color="label",hover_data=["file","window","index"])
+
+    if index != None:
+        fig.add_trace(go.Scatter(
+            x=[df.loc[index,int(pca1)]],y=[df.loc[index,int(pca2)]],
+            name=f'{df.loc[index,"file"]} window: {df.loc[index,"window"]}'
+            ,line=dict(color='green', width=10, dash='dot')))
+
     fig.update_layout(
         title=model,
         xaxis_title=f"Component {pca1}",
