@@ -318,7 +318,7 @@ if __name__ == '__main__':
         S=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\Spektrograms"
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=50)
-    CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
+    # CV.test(classifyers=["SVM","LDA"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
     CV.test(classifyers=["RF"],folds=None,type="spectrograms",logname="spec_final",confusion_matrix=True)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
