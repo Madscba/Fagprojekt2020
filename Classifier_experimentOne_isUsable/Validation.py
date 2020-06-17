@@ -302,7 +302,7 @@ if __name__ == '__main__':
     hpc=True
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
-        F=r'/work3/s173934/Fagprojekt/FeatureVectors"'
+        F=r'/work3/s173934/Fagprojekt/FeatureVectors'
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
