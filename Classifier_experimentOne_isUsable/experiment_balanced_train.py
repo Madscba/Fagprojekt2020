@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from Classifier_experimentOne_isUsable.Validation import *
 
 hpc = True

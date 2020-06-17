@@ -13,4 +13,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 Classifier_experimentOne_isUsable/experiment_balance_train.py
+python3 Classifier_experimentOne_isUsable/experiment_unbalance_train.py
