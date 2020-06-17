@@ -1,0 +1,2 @@
+,RF,N_TestFiles,N_TestWindows,N_TrainFiles,N_TrainWindows,Baseline No,Predicted No True No,Predicted No True Yes,Baseline Yes,Predicted Yes True No,Predicted Yes True Yes
+0,0.9253424657534246,26,1460,100,2182,0.23013698630136986,286.0,59.0,0.7698630136986301,50.0,1065.0
