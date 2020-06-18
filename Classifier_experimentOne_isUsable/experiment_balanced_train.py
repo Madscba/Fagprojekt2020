@@ -15,7 +15,7 @@ else:
     # BC = r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
     # F = r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
     # S = r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
-
+n = 10
 for i in range(n):
     Kfold_path = f"Preprossering//K-stratified_is_useble_shuffle{i}.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows_test=40,max_windows_train=20,Balance_train=True)
