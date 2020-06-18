@@ -1,6 +1,6 @@
 #!/bin/sh
-#BSUB -J lr1_new
-#BSUB -o lr1_new%J.out
+#BSUB -J lr1
+#BSUB -o lr1%J.out
 #BSUB -q gpuv100
 #BSUB -n 1
 #BSUB -gpu "num=1:mode=exclusive_process"
@@ -13,5 +13,5 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 New_CNN_HPC/CNN_lr1_new.py
+python3 CNN_HPC/CNN_lr1.py
 echo "Done"
