@@ -1,7 +1,7 @@
 #!/bin/sh
 #BSUB -J lr4_new
 #BSUB -o lr4_new%J.out
-#BSUB -q gpuk80
+#BSUB -q gpuv100
 #BSUB -n 1
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -R "rusage[mem=128G]"

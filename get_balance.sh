@@ -1,7 +1,7 @@
 #!/bin/sh
 #BSUB -J balance
 #BSUB -o balance%J.out
-#BSUB -q gpuk80
+#BSUB -q gpuv100
 #BSUB -n 1
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -R "rusage[mem=30G]"
