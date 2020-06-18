@@ -73,20 +73,27 @@ def extractInformationFromFile():
     pass
     return
 
-def computeJeffreyIntervals(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\downloads from hpc\ClassifierTestLogs. Ex_10_split_bal_unbal",classifiers=['SVM'],files=""):
+def computeJeffreyIntervals(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\downloads from hpc\ClassifierTestLogs. Ex_10_split_bal_unbal",classifiers=['SVM'],files="",n_splits=10):
     if files == "":
         raise Exception("No files given")
     n = 10
+    for idx, file in enumerate(files):
+        computeJeffreyInveralFromFile(file,path=path,classifiers=classifiers[idx],n_splits=n_splits)
+def computeJeffreyInveralFromFile(file,path="",classifiers=[],n_splits=10):
     alpha = 0.05
-    for i in files:
-        computeJeffreyInveralFromFile()
-def computeJeffreyInveralFromFile(file):
-    y_true,y_hat = extractLabelsAndModelPredictions(path, f'ex_balanced_train_fea{i}_predict.json',classifiers=classifiers)
-    for i in range(len(classifiers)):
-        [thetahatA, CIA] = jeffrey_interval(y_true, y_hat[0+len(y_true)*i:len(y_true)*(1+i)], alpha=alpha)
-        print("Model ",classifiers[i],"in file ",i,"Theta point estimate", thetahatA, " CI: ", CIA)
+    for k in range(n_splits):
+        file_path =file.replace('{i}',f'{k}')
+        y_true,y_hat = extractLabelsAndModelPredictions(path, file_path,classifiers=classifiers)
+        for i in range(len(classifiers)):
+            [thetahatA, CIA] = jeffrey_interval(y_true, y_hat[0+len(y_true)*i:len(y_true)*(1+i)], alpha=alpha)
+            print(classifiers[i],"|",file_path,"| Theta point estimate", thetahatA, "| CI: ", CIA)
 
 
 if __name__ == '__main__':
-    files = [f'ex_balanced_train_fea{i}_predict.json',f'ex_balanced_train_spec{i}_predict.json']
-    computeJeffreyIntervals(classifiers = ['SVM', 'LDA'],files=files)
+    files_bal = ['ex_balanced_train_fea{i}_predict.json','ex_balanced_train_spec{i}_predict.json']
+    classifiers_bal = [['SVM', 'LDA'],['RF']]
+    computeJeffreyIntervals(classifiers = classifiers_bal,files=files_bal)
+
+    files_unbal = ['ex_unbalanced_train_fea{i}_predict.json','ex_unbalanced_train_spec{i}_predict.json']
+    classifiers_unbal = [['SVM', 'LDA'],['RF']]
+    computeJeffreyIntervals(classifiers=classifiers_unbal, files=files_unbal)
