@@ -110,7 +110,7 @@ def test_CNN(model,X_train,y_train,X_valid,y_valid,w_id,batch_size,num_epochs,pr
     return train_acc,train_cost,val_acc,val_cost, wrong_guesses, wrong_predictions, all_predictions, model
 
 def split_dataset_balanced(C,path,N,train_split,max_windows,num_channels):
-    """ Input: Data and training split (in %)
+    """ Input: Data and training split
         Output: Training and test set """
     windows1, labels1, filenames1, window_idx_full1 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='Yes', max_files=N, max_windows=max_windows,

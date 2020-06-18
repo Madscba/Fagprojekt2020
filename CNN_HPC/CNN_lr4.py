@@ -116,37 +116,45 @@ def split_dataset_balanced(C,path,N,train_split,max_windows,num_channels):
     windows1, labels1, filenames1, window_idx_full1 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='Yes', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
+    windows4, labels4, filenames4, window_idx_full4 = C.make_label_cnn(make_from_filenames=None, quality=None,
+                                                                       is_usable='Yes', max_files=N, max_windows=int(round(max_windows*5/8)),
+                                                                       path=path_s, seed=0, ch_to_include=range(num_channels))
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='No', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
-    key = np.maximum(int(round(len(filenames1) / len(filenames2))),1)
+    key = 2.5
     windows3, labels3, filenames3, window_idx_full3 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='No', max_files=N, max_windows=int(round(max_windows*key)),
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
-    n_train_files1 = int(len(filenames1) / 10 * (train_split/10))
+    n_train_files1 = int(len(filenames4) / 10 * (train_split/10))
     n_train_files2 = int(len(filenames3) / 10 * (train_split/10))
     a = np.array(window_idx_full1)
     b = np.array(window_idx_full2)
     c = np.array(window_idx_full3)
+    d = np.array(window_idx_full4)
     j1 = np.unique(a[:, 0], return_counts=True)
-    j2 = np.unique(b[:,0], return_counts=True)
+    j2 = np.unique(b[:, 0], return_counts=True)
     j3 = np.unique(c[:, 0], return_counts=True)
+    j4 = np.unique(d[:, 0], return_counts=True)
     j1 = np.array(j1)
     j2 = np.array(j2)
     j3 = np.array(j3)
+    j4 = np.array(j4)
     j1 = np.asarray(j1[1, :], dtype='int64')
-    j2 = np.asarray(j2[1,:], dtype='int64')
+    j2 = np.asarray(j2[1, :], dtype='int64')
     j3 = np.asarray(j3[1, :], dtype='int64')
+    j4 = np.asarray(j4[1, :], dtype='int64')
     n1 = np.sum(j1[:n_train_files1])
     n2 = np.sum(j2[:n_train_files2])
     n3 = np.sum(j3[:n_train_files2])
-    wt1 = windows1[:n1,:,:,:]
+    n4 = np.sum(j4[:n_train_files1])
+    wt1 = windows1[:n4,:,:,:]
     wt2 = windows3[:n3,:,:,:]
     w1 = torch.cat((wt1,wt2))
     ww1 = windows1[n1:,:,:,:]
     ww2 = windows2[n2:,:,:,:]
     w2 = torch.cat((ww1,ww2))
-    l1 = labels1[:n1]+labels3[:n2]
+    l1 = labels4[:n4]+labels3[:n3]
     l2 = labels1[n1:]+labels2[n2:]
     wid = window_idx_full1[n1:]+window_idx_full2[n2:]
     train_windows, train_labels = shuffle(w1,l1)
