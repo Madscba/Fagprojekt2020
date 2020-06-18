@@ -20,7 +20,7 @@ from sklearn.neural_network import MLPClassifier
 random.seed(42)
 
 class classifier_validation():
-    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows=None, logfile_path=None,Balance_test=False,Balance_train=False):
+    def __init__(self, Bc_path, feture_path, speck_path, Kfold_path, max_windows_test=None,max_windows_train=None , logfile_path=None,Balance_test=False,Balance_train=False):
         """
 
         :param Bc_path:
@@ -30,7 +30,8 @@ class classifier_validation():
         :param max_windows:  limet numbers of files for debugging purpes. WARNING the program would still show to numbers of files in your fold
         :param logfile_path: path to folder where log files is to be saved
         """
-        self.max_windows=max_windows
+        self.max_windows_test=max_windows_test
+        self.max_windows_train=max_windows_train
         self.logfile_path=logfile_path
 
         self.prepros = preprossingPipeline(mac=False, BC_datapath=Bc_path)
@@ -42,15 +43,15 @@ class classifier_validation():
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
 
-    def get_spectrogram(self,x,test):
+    def get_spectrogram(self,x,max_windows):
         spectrograms, spectrogram_labels, _, idx = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows,
+                                                                        is_usable=None,max_windows=max_windows,
                                                                         path=self.speck_path)  # 18 files = 1926
         spectrogram_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in spectrogram_labels]
 
         return spectrograms,spectrogram_labels,idx
 
-    def get_balanced(self,x,path_s):
+    def get_balanced(self,x,path_s,max_windows):
         is_useble=[]
         Not_useble=[]
         for name in x:
@@ -61,10 +62,10 @@ class classifier_validation():
                 Not_useble.append(name)
 
         windows1, labels1, filenames1, window_idx_full1 = self.prepros.make_label(make_from_filenames=is_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=int(self.max_windows*(5/8)),
+                                                                        is_usable=None,max_windows=int(max_windows*(5/8)),
                                                                         path=path_s)
         windows2, labels2, filenames2, window_idx_full2 = self.prepros.make_label(make_from_filenames=Not_useble, quality=None,max_files=None,
-                                                                        is_usable=None,max_windows=self.max_windows*2.5,
+                                                                        is_usable=None,max_windows=max_windows*2.5,
                                                                         path=path_s)
         labels=labels1+labels2
         idx=window_idx_full1+window_idx_full2
@@ -73,11 +74,11 @@ class classifier_validation():
                               in labels]
         return windows,labels, idx
 
-    def get_feturevectors(self,x,test):
+    def get_feturevectors(self,x,max_windows):
 
         feature_vectors, feature_vectors_labels, _, idx = self.prepros.make_label(make_from_filenames=x,max_files=None,
                                                                                  quality=None, is_usable=None,
-                                                                                 max_windows=self.max_windows,
+                                                                                 max_windows=max_windows,
                                                                                  path=self.feture_path)  # 18 files = 2144
         feature_vectors_labels=[self.prepros.edfDict[lable]["annotation"]["Is Eeg Usable For Clinical Purposes"] for lable in feature_vectors_labels]
         return feature_vectors, feature_vectors_labels,idx
@@ -117,27 +118,27 @@ class classifier_validation():
             if type=="fetures":
                 #Test feturevectors
                 if self.Balance_train:
-                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.feture_path)
+                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.feture_path,max_windows=self.max_windows_train)
                 else:
-                    x_train, y_train, idx_train = self.get_feturevectors(trainNames,test=True)
+                    x_train, y_train, idx_train = self.get_feturevectors(trainNames,max_windows=self.max_windows_train)
 
                 if self.Balance_test:
-                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.feture_path)
+                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.feture_path,max_windows=self.max_windows_test)
                 else:
-                    x_test, y_test, idx_test = self.get_feturevectors(testNames,test=True)
+                    x_test, y_test, idx_test = self.get_feturevectors(testNames,max_windows=self.max_windows_test)
 
 
             elif type=="spectrograms":
                 #Test spectrograms
                 if self.Balance_train:
-                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.speck_path)
+                    x_train,y_train, idx_train=self.get_balanced(trainNames,path_s=self.speck_path,max_windows=self.max_windows_train)
                 else:
-                    x_train, y_train, idx_train = self.get_spectrogram(trainNames,test=True)
+                    x_train, y_train, idx_train = self.get_spectrogram(trainNames,max_windows=self.max_windows_train)
 
                 if self.Balance_test:
-                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.speck_path)
+                    x_test, y_test, idx_test = self.get_balanced(testNames, path_s=self.speck_path,max_windows=self.max_windows_test)
                 else:
-                    x_test, y_test, idx_test = self.get_spectrogram(testNames,test=True)
+                    x_test, y_test, idx_test = self.get_spectrogram(testNames,max_windows=self.max_windows_test)
 
             else:
                 raise Exception("wrong type try fetures or spectrograms")
