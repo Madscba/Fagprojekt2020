@@ -122,7 +122,7 @@ def split_dataset_balanced(C,path,N,train_split,max_windows,num_channels):
     windows2, labels2, filenames2, window_idx_full2 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='No', max_files=N, max_windows=max_windows,
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
-    key = 2.5
+    key = 3
     windows3, labels3, filenames3, window_idx_full3 = C.make_label_cnn(make_from_filenames=None, quality=None,
                                                                        is_usable='No', max_files=N, max_windows=int(round(max_windows*key)),
                                                                        path=path_s, seed=0, ch_to_include=range(num_channels))
