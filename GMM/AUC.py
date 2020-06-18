@@ -1,6 +1,8 @@
 import numpy as np
 from sklearn.metrics import roc_auc_score
 import matplotlib.pyplot as plt
+import os
+import json
 
 
 def roc_plot(p, y):
@@ -30,3 +32,6 @@ def roc_plot(p, y):
 
     return AUC, tpr, fpr
 
+with open(filepath) as json_file:
+    tempData = json.load(json_file)
+    for c in classifiers:
