@@ -199,4 +199,5 @@ for i in range(2):
 
 torch.save(X_valid,'test_set.pt')
 np.save('test_labels.npy',np.asarray(Y_valid))
+np.save('train_labels_b.npy',np.asarray(Y_train))
 np.save('test_winods.npy',np.asarray(windows_id))
