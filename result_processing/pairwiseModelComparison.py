@@ -109,4 +109,5 @@ if __name__ == '__main__':
     pass
 
     # baseline,SVM, LDA, RF
+    #10 runs, 5 splits pr. run. Each run has spec and feature
     # computeMcNemarComparisons()
