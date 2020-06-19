@@ -1,0 +1,2389 @@
+{
+    "sbs2data_2018_08_31_15_29_53_324.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_15_29_53_324.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_15_29_53_324.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_15_13_15_3.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_15_13_15_3.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_15_13_15_3.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_16_18_51_66.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_18_51_66.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_18_51_66.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_12_07_35_88.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_12_07_35_88.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_12_07_35_88.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_11_18_16_310.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_11_18_16_310.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_11_18_16_310.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_13_26_06_82.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_13_26_06_82.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_13_26_06_82.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_31_13_20_34_316.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_13_20_34_316.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_13_20_34_316.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_31_16_43_30_321 part2.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_43_30_321 part2.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_43_30_321 part2.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_13_12_34_311.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_13_12_34_311.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_13_12_34_311.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_15_16_15_92.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_15_16_15_92.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_15_16_15_92.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_15_44_42_320.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_15_44_42_320.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_15_44_42_320.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_17_23_47_323.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_17_23_47_323.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_17_23_47_323.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_31_17_38_11_327.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_17_38_11_327.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_17_38_11_327.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_16_12_48_69.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_12_48_69.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_12_48_69.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_16_54_37_326.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_54_37_326.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_54_37_326.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_16_31_03_325.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_31_03_325.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_31_03_325.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_31_13_41_13_317.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_13_41_13_317.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_13_41_13_317.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_12_31_47_314.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_12_31_47_314.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_12_31_47_314.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_14_05_47_315.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_14_05_47_315.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_14_05_47_315.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_10_56_30_312.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_10_56_30_312.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_10_56_30_312.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_12_58_31_313.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_12_58_31_313.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_12_58_31_313.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_15_11_00_68.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_15_11_00_68.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_15_11_00_68.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_12_17_49_83.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_12_17_49_83.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_12_17_49_83.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_17_17_08_322.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_17_17_08_322.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_17_17_08_322.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_11_01_25_67.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_11_01_25_67.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_11_01_25_67.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_14_33_13_318.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_14_33_13_318.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_14_33_13_318.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_14_53_21_72.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_14_53_21_72.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_14_53_21_72.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_14_20_04_112.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_14_20_04_112.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_14_20_04_112.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_31_16_15_42_321.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/31Aug_new_channel_layout/sbs2data_2018_08_31_16_15_42_321.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_31_16_15_42_321.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_10_09_30_390.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_10_09_30_390.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_10_09_30_390.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_14_31_44_202.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_14_31_44_202.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_14_31_44_202.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_11_19_05_391.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_11_19_05_391.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_11_19_05_391.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_05_13_42_22_394.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_13_42_22_394.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_13_42_22_394.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_12_35_49_208.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_12_35_49_208.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_12_35_49_208.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_12_33_01_392.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_12_33_01_392.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_12_33_01_392.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_09_31_51_214.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_09_31_51_214.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_09_31_51_214.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_15_20_03_403.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_15_20_03_403.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_15_20_03_403.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_11_22_08_204.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_11_22_08_204.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_11_22_08_204.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_14_13_36_400.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_14_13_36_400.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_14_13_36_400.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_08_30_23_388.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_08_30_23_388.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_08_30_23_388.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_05_14_48_03_191.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_14_48_03_191.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_14_48_03_191.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_13_22_06_398.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_13_22_06_398.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_13_22_06_398.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_12_07_57_395.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_12_07_57_395.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_12_07_57_395.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_15_01_13_401.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_15_01_13_401.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_15_01_13_401.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_15_40_56_402.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept_corrected files/sbs2data_2018_09_05_15_40_56_402.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_15_40_56_402.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_08_35_46_371.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_08_35_46_371.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_08_35_46_371.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_09_19_41_373.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_09_19_41_373.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_09_19_41_373.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_08_19_37_370.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_08_19_37_370.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_08_19_37_370.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_13_39_43_379.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_13_39_43_379.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_13_39_43_379.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_12_55_53_385.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_12_55_53_385.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_12_55_53_385.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_10_12_06_190.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_10_12_06_190.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_10_12_06_190.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_10_37_33_374.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_10_37_33_374.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_10_37_33_374.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_14_32_41_383.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_14_32_41_383.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_14_32_41_383.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_08_11_03_369.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_08_11_03_369.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_08_11_03_369.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_13_28_54_384.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_13_28_54_384.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_13_28_54_384.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_12_32_30_160.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_12_32_30_160.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_12_32_30_160.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_11_16_58_174.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept_corrected files/sbs2data_2018_09_04_11_16_58_174.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_11_16_58_174.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_10_54_12_217.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_10_54_12_217.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_10_54_12_217.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_05_15_50_00_404.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_15_50_00_404.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_15_50_00_404.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_11_39_45_393.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_11_39_45_393.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_11_39_45_393.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_15_13_08_11.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_15_13_08_11.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_15_13_08_11.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_05_10_47_47_201.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_10_47_47_201.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_10_47_47_201.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_05_08_50_19_389.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_08_50_19_389.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_08_50_19_389.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_14_42_29_210.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_14_42_29_210.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_14_42_29_210.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_16_39_31_209.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_16_39_31_209.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_16_39_31_209.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_13_55_54_399.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_13_55_54_399.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_13_55_54_399.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_05_13_48_42_200.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/5Sept/sbs2data_2018_09_05_13_48_42_200.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_05_13_48_42_200.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_15_05_27_387FBD.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_15_05_27_387FBD.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_15_05_27_387FBD.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_10_21_06_375.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_10_21_06_375.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_10_21_06_375.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_15_14_35_386AD.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_15_14_35_386AD.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_15_14_35_386AD.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_12_35_42_182.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_12_35_42_182.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_12_35_42_182.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_10_13_12_372.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_10_13_12_372.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_10_13_12_372.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_11_44_32_377Part2.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_11_44_32_377Part2.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_11_44_32_377Part2.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_11_59_28_181.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_11_59_28_181.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_11_59_28_181.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_13_59_22_386CO.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_13_59_22_386CO.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_13_59_22_386CO.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_13_28_09_153.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_13_28_09_153.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_13_28_09_153.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_09_45_55_169.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_09_45_55_169.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_09_45_55_169.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_12_25_21_378.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_12_25_21_378.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_12_25_21_378.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_11_17_42_157.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_11_17_42_157.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_11_17_42_157.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_14_43_33_382.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_14_43_33_382.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_14_43_33_382.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_08_31_11_163.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_08_31_11_163.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_08_31_11_163.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_11_26_04_377Part1.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_11_26_04_377Part1.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_11_26_04_377Part1.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_12_26_12_180.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_12_26_12_180.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_12_26_12_180.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_04_13_57_44_387DM.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_13_57_44_387DM.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_13_57_44_387DM.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_04_14_33_08_381.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/4Sept/sbs2data_2018_09_04_14_33_08_381.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_04_14_33_08_381.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_16_45_42_425.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_16_45_42_425.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_16_45_42_425.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_08_19_10_257.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_08_19_10_257.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_08_19_10_257.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_13_37_08_417.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_13_37_08_417.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_13_37_08_417.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_11_57_57_419.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_11_57_57_419.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_11_57_57_419.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_15_57_44_422.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_15_57_44_422.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_15_57_44_422.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_11_21_41_412.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_11_21_41_412.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_11_21_41_412.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_13_22_41_416.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_13_22_41_416.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_13_22_41_416.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_09_06_37_405.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_09_06_37_405.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_09_06_37_405.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_10_16_58_406.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_10_16_58_406.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_10_16_58_406.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_15_52_45_43.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_15_52_45_43.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_15_52_45_43.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_09_54_34_410.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_09_54_34_410.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_09_54_34_410.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_14_54_12_228.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_14_54_12_228.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_14_54_12_228.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_12_32_08_413.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_12_32_08_413.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_12_32_08_413.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_12_39_03_251.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_12_39_03_251.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_12_39_03_251.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_12_29_17_418.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_12_29_17_418.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_12_29_17_418.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_11_27_41_261.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_11_27_41_261.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_11_27_41_261.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_15_34_13_246.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_15_34_13_246.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_15_34_13_246.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_08_16_49_221.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept/sbs2data_2018_09_06_08_16_49_221.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_08_16_49_221.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_11_11_54_442.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept/sbs2data_2018_09_07_11_11_54_442.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_11_11_54_442.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_09_57_13_428.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept/sbs2data_2018_09_07_09_57_13_428.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_09_57_13_428.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_09_44_49_433.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept/sbs2data_2018_09_07_09_44_49_433.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_09_44_49_433.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_08_37_34_427.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept/sbs2data_2018_09_07_08_37_34_427.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_08_37_34_427.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_12_23_22_435.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept/sbs2data_2018_09_07_12_23_22_435.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_12_23_22_435.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_14_02_34_129.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_14_02_34_129.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_14_02_34_129.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_03_13_54_22_365.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_13_54_22_365.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_13_54_22_365.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_03_11_38_39_138.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_11_38_39_138.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_11_38_39_138.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_13_11_39_140.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_13_11_39_140.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_13_11_39_140.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_12_07_47_360NAP.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_12_07_47_360NAP.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_12_07_47_360NAP.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_15_59_54_363.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_15_59_54_363.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_15_59_54_363.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_12_45_21_357.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_12_45_21_357.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_12_45_21_357.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_14_54_12_360ND.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_14_54_12_360ND.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_14_54_12_360ND.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_03_13_29_13_361.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_13_29_13_361.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_13_29_13_361.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_11_38_37_124.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_11_38_37_124.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_11_38_37_124.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_10_52_23_123.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_10_52_23_123.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_10_52_23_123.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_08_45_40_348.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_08_45_40_348.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_08_45_40_348.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_08_51_58_349.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_08_51_58_349.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_08_51_58_349.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 10.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_12_45_11_359KG.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_12_45_11_359KG.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_12_45_11_359KG.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_12_20_49_358.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_12_20_49_358.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_12_20_49_358.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_15_37_48_368.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_15_37_48_368.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_15_37_48_368.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_14_32_42_359DML.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_14_32_42_359DML.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_14_32_42_359DML.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_08_06_36_122.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_08_06_36_122.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_08_06_36_122.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_15_14_37_117.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_15_14_37_117.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_15_14_37_117.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_11_10_36_151.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_11_10_36_151.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_11_10_36_151.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_09_55_18_350.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_09_55_18_350.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_09_55_18_350.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_03_09_36_49_135.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_09_36_49_135.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_09_36_49_135.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_10_59_23_355.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_10_59_23_355.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_10_59_23_355.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_09_00_19_352.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_09_00_19_352.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_09_00_19_352.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_10_10_40_353.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_10_10_40_353.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_10_10_40_353.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_11_49_34_148.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_11_49_34_148.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_11_49_34_148.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_03_13_52_40_362.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_13_52_40_362.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_13_52_40_362.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_15_10_41_364.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_15_10_41_364.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_15_10_41_364.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_03_09_49_11_354.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/3Sept/sbs2data_2018_09_03_09_49_11_354.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_03_09_49_11_354.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_12_24_19_105.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_12_24_19_105.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_12_24_19_105.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_12_44_58_343.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_12_44_58_343.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_12_44_58_343.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_15_09_46_346.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_15_09_46_346.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_15_09_46_346.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_10_05_06_339.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_10_05_06_339.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_10_05_06_339.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_13_38_50_345YLB.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_13_38_50_345YLB.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_13_38_50_345YLB.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_13_05_18_347.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_13_05_18_347.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_13_05_18_347.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_12_30_52_341.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_12_30_52_341.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_12_30_52_341.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_11_56_10_342.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_11_56_10_342.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_11_56_10_342.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_11_15_15_345DJP.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_11_15_15_345DJP.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_11_15_15_345DJP.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_08_04_51_328.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_08_04_51_328.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_08_04_51_328.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_10_51_53_336.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_10_51_53_336.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_10_51_53_336.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_09_44_21_337.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_09_44_21_337.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_09_44_21_337.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_09_08_16_335.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_09_08_16_335.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_09_08_16_335.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_10_52_06_332.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_10_52_06_332.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_10_52_06_332.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_10_02_05_334.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_10_02_05_334.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_10_02_05_334.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_12_43_34_344.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_12_43_34_344.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_12_43_34_344.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_08_36_16_331.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_08_36_16_331.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_08_36_16_331.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_11_33_40_98.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_11_33_40_98.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_11_33_40_98.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_01_10_32_48_340.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_10_32_48_340.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_10_32_48_340.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_08_56_49_330.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_08_56_49_330.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_08_56_49_330.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_01_11_38_26_333.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/1Sept/sbs2data_2018_09_01_11_38_26_333.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_01_11_38_26_333.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_19_35_00_265.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_19_35_00_265.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_19_35_00_265.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_22_54_54_274.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_22_54_54_274.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_22_54_54_274.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_01_19_13_273A.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_30_01_19_13_273A.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_01_19_13_273A.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_20_51_05_267.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_20_51_05_267.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_20_51_05_267.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_11_57_12_269.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_11_57_12_269.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_11_57_12_269.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_17_53_04_27.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_17_53_04_27.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_17_53_04_27.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_20_29_19_164.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_20_29_19_164.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_20_29_19_164.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_21_56_16_14.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_21_56_16_14.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_21_56_16_14.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_23_02_23_27.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_23_02_23_27.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_23_02_23_27.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_01_22_14_166.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_30_01_22_14_166.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_01_22_14_166.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_01_11_37_19.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_01_11_37_19.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_01_11_37_19.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_00_01_43_275.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_30_00_01_43_275.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_00_01_43_275.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 10.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_19_21_25_1.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_19_21_25_1.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_19_21_25_1.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_02_15_58_273.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_02_15_58_273.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_02_15_58_273.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_20_43_10_25.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_20_43_10_25.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_20_43_10_25.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_23_59_58_6.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_23_59_58_6.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_23_59_58_6.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_22_50_25_7.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_22_50_25_7.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_22_50_25_7.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_21_41_25_3.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_29_21_41_25_3.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_21_41_25_3.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 4.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_28_22_49_01_270.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_28_22_49_01_270.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_28_22_49_01_270.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_28_19_50_49_266.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_28_19_50_49_266.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_28_19_50_49_266.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_28_21_39_09_268.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_28_21_39_09_268.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_28_21_39_09_268.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_00_07_05_134.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/29Aug_updated channels/sbs2data_2018_08_30_00_07_05_134.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_00_07_05_134.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_19_50_02_286Part3.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_19_50_02_286Part3.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_19_50_02_286Part3.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_29_23_31_26_58.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_29_23_31_26_58.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_23_31_26_58.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_20_04_54_282.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_29_20_04_54_282.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_20_04_54_282.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_16_26_07_279.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_16_26_07_279.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_16_26_07_279.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_18_52_58_287.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_18_52_58_287.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_18_52_58_287.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_19_39_35_288 part 2.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_19_39_35_288 part 2.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_19_39_35_288 part 2.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_18_51_43_280.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_29_18_51_43_280.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_18_51_43_280.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_02_59_38_301.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_02_59_38_301.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_02_59_38_301.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_19_37_22_286 Part2.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_19_37_22_286 Part2.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_19_37_22_286 Part2.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_22_56_57_295.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_22_56_57_295.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_22_56_57_295.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_17_55_31_49.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_17_55_31_49.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_17_55_31_49.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_29_21_10_12_283.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_29_21_10_12_283.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_29_21_10_12_283.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_20_04_54_292.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_20_04_54_292.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_20_04_54_292.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_00_40_24_56.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_00_40_24_56.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_00_40_24_56.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 2,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_19_13_16_286.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_19_13_16_286.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_19_13_16_286.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_04_05_20_296.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_04_05_20_296.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_04_05_20_296.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_17_45_20_37.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_17_45_20_37.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_17_45_20_37.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_20_14_54_289.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_20_14_54_289.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_20_14_54_289.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_08_30_19_49_07_286Part3.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_19_49_07_286Part3.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_19_49_07_286Part3.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 1.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_08_30_17_47_30_64.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/30Aug_updated channels/sbs2data_2018_08_30_17_47_30_64.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_08_30_17_47_30_64.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_07_15_37_33_102.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept_missing files/sbs2data_2018_09_07_15_37_33_102.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_15_37_33_102.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_07_08_57_30_430.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/7Sept_missing files/sbs2data_2018_09_07_08_57_30_430.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_07_08_57_30_430.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_15_12_48_421.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_15_12_48_421.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_15_12_48_421.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_16_20_33_424.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_16_20_33_424.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_16_20_33_424.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_09_49_32_409.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_09_49_32_409.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_09_49_32_409.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_14_33_11_420.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_14_33_11_420.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_14_33_11_420.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_12_46_27_414.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_12_46_27_414.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_12_46_27_414.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_09_45_42_408.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_09_45_42_408.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_09_45_42_408.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_12_57_09_415.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_12_57_09_415.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_12_57_09_415.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_16_26_17_423.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_16_26_17_423.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_16_26_17_423.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 5.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_14_06_21_232.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_14_06_21_232.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_14_06_21_232.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_11_50_34_411.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_11_50_34_411.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_11_50_34_411.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 3.0,
+            "Is Eeg Usable For Clinical Purposes": "No"
+        }
+    },
+    "sbs2data_2018_09_06_10_46_42_407.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_10_46_42_407.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_10_46_42_407.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 8.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_09_06_15_37_22_426.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Original participant EEGs/6Sept_missing files/sbs2data_2018_09_06_15_37_22_426.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_09_06_15_37_22_426.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 7.0,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2019_04_11_10_16_19_BEMT 61 EEGII.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Returning participant EEGs/Week 12/sbs2data_2019_04_11_10_16_19_BEMT 61 EEGII.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2019_04_11_10_16_19_BEMT 61 EEGII.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 9,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2019_04_23_11_53_02_BM 417 EEG II.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Returning participant EEGs/Week 12/sbs2data_2019_04_23_11_53_02_BM 417 EEG II.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2019_04_23_11_53_02_BM 417 EEG II.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": 6,
+            "Is Eeg Usable For Clinical Purposes": "Yes"
+        }
+    },
+    "sbs2data_2018_12_13_08_03_08_DA 14 EEG II.edf": {
+        "path": [
+            "dataEEG/data_farrahtue_EEG/Returning participant EEGs/Week V 9Dec-15Dec2018/sbs2data_2018_12_13_08_03_08_DA 14 EEG II.edf"
+        ],
+        "deathFlag": false,
+        "Files named sbs2data_2018_12_13_08_03_08_DA 14 EEG II.edf": 1,
+        "annotation": {
+            "Quality Of Eeg": "[\"9]\"",
+            "Is Eeg Usable For Clinical Purposes": "[\"Yes]\""
+        }
+    }
+}
