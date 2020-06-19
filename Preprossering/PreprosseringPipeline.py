@@ -414,4 +414,5 @@ def apply_transforms_new(image, size=(224,224)):
 
 
 if __name__ == "__main__":
-    pass
+    c=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC\data_farrahtue_EEG")
+    c.make_label(make_from_filenames=['sbs2data_2018_09_03_11_38_39_138.edf',])
