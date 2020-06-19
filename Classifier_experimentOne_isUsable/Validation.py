@@ -313,7 +313,7 @@ class classifier_validation():
         prob=[0.8,0.2]
         predict=np.random.choice(classes, size=len(x_test), p=prob)
         print("Random predict", np.mean(y_test == predict))
-        return predict
+        return predict,np.array([0,0,0])
 
 
 
@@ -329,22 +329,22 @@ def dict_to_pd(predict_dict):
     print(predict_dict)
 
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors'
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
-        # BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        # F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
-        # S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
+        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
         BC = r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG'
-        F = r''
+
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
-    CV.test(classifyers=["SVM","LDA","Random"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
-    CV.test(classifyers=["RF","Random"],folds=None,type="spectrograms",logname="spec_final",confusion_matrix=True)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows_test=10,max_windows_train=15)
+   # CV.test(classifyers=["Random"],folds=None, type="fetures", logname=None,confusion_matrix=False)
+    CV.test(classifyers=["Random"],folds=None,type="spectrograms",logname=None,confusion_matrix=False)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 

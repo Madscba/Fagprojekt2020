@@ -10,7 +10,7 @@ import gc
 
 
 def window_vector_loop(windowVec, featureVec):
-    if windowVec is 0:
+    if windowVec == 0:
         windowVec = featureVec
         print(i)
     else:
@@ -31,31 +31,54 @@ def feature_vector_loop_inner(tensor_window,model):
     return featureVec.detach()
 
 
-
-C=preprossingPipeline(BC_datapath='/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG',mac=True)
+C=preprossingPipeline(BC_datapath=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG",mac=False)
 fileNames=C.edfDict.keys()
-path_new='/Volumes/B/spectograms_rgb'
+wdir=r"C:\Users\Mads-\OneDrive\Skrivebord\FeatureVec"
+path_new=r'D:\spectograms_rgb'
 i=0
-file='sbs2data_2018_09_03_11_49_34_148.edf'
 model=VGG16_NoSoftmax_RGB()
 model.eval()
-
-
+for file in fileNames:
+    if os.path.exists(wdir+r'/spectograms/'+file)==True:
+        pass
+    else:
         #try:
-windowVec = 0
-tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path=path_new)
-tensor.requires_grad_(requires_grad=False)
-print(file)
-for i in range(int(len(tensor) / 14)):
-    feature_vector = feature_vector_loop_inner(tensor[0 + i * 14: 14 + i * 14],model=model)
-    windowVec = window_vector_loop(windowVec, feature_vector)
-    windowVec=windowVec.detach()
-    del feature_vector
-    gc.collect()
-    print(0 + i * 14, 14 + i * 14)
-    print(windowVec.shape)
-i += 1
-print(i)
+            windowVec = 0
+            tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path=path_new)
+            tensor.requires_grad_(requires_grad=False)
+            print(file)
+            for i in range(int(len(tensor) / 14)):
+                feature_vector = feature_vector_loop_inner(tensor[0 + i * 14: 14 + i * 14],model=model)
+                windowVec = window_vector_loop(windowVec, feature_vector)
+                windowVec=windowVec.detach()
+                print(i)
+                del feature_vector
+                gc.collect()
+            i += 1
+            print(i)
+            filename = file
+            np.save(os.path.join(wdir,filename), windowVec)
+        #except:
+            #print(file)
+C = preprossingPipeline(
+    BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG", mac=True)
+fileNames = C.edfDict.keys()
+i=0
+list(fileNames).sort()
+for file in fileNames:
+        if i<27:
+            pass
+        else:
+            try:
+                tensor, _, _, _ = C.make_label_cnn(make_from_filenames=[file], path='/Volumes/Elements SE/spectograms_rgb')
+                tensor.detach()
+                print(i)
+                del tensor
+            except Exception as e:
+                print(str(e))
+                print(file)
+        i+=1
+/Volumes/B/spectograms_rgb
 
     #Generate a pretrained VGG model
     # model = VGG16_NoSoftmax_OneChannel()
