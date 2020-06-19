@@ -336,9 +336,11 @@ if __name__ == '__main__':
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
-        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
-        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        # BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
+        # F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+        # S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        BC = r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG'
+        F = r''
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
     CV.test(classifyers=["SVM","LDA","Random"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
