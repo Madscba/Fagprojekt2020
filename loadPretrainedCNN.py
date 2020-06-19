@@ -82,5 +82,4 @@ if __name__ == "__main__":
     out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
     out2 = model_RGB(img2.unsqueeze_(0).float())
 
-
     pass

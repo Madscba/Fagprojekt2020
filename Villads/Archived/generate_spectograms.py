@@ -19,6 +19,7 @@ for file in fileNames:
                 break
             spectogram=spec[window_value].detach().numpy().reshape((1, 1, -1))
             if spectogram.shape[2] !=  8772:
+                print(i)
                 pass
             else:
                 if i == 0:
