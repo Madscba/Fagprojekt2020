@@ -26,7 +26,7 @@ for file in fileNames:
                     channel_spec = spec[window_value][channel].detach().numpy().reshape((1, 1, -1))
                     channel_specs =np.dstack((channel_specs ,channel_spec))
                 j+=1
-            print(channel_specs.shape[2])
+            print(i)
             if channel_specs.shape[2] != 8772*14:
                 pass
             else:
