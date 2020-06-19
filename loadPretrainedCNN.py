@@ -45,20 +45,13 @@ class VGG16_NoSoftmax_RGB(nn.Module):
     def __init__(self):
         super(VGG16_NoSoftmax_RGB, self).__init__()
         vgg16 = models.vgg16(pretrained=True)
-        self.features = nn.Sequential(*list(vgg16.features.children())[:])
-        self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
-        self.classifier = nn.Sequential(
-            nn.Linear(512 * 7 * 7, 4096),
-            nn.ReLU(True),
-            nn.Dropout(),
-            nn.Linear(4096, 4096),
-            nn.ReLU(True))
+
 
     def forward(self, x):
         x = self.features(x)
         x = self.avgpool(x)
         x = torch.flatten(x,1)
-        x = self.classifier(x)
+        x = self.classifier[0:5](x)
         return x
 
 def fetchImage(path =r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG' ):

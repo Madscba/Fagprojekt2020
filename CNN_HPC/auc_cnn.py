@@ -7,7 +7,7 @@ from CNN.modifyCNN import VGG16
 
 
 
-def kfold_roc(y_true,y_pred, test_sizes, title):
+def kfold_roc(y_true,y_pred, test_sizes, title, lr=np.array([0.0001,0.0005,0.001,0.01,0.02])):
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
@@ -17,10 +17,10 @@ def kfold_roc(y_true,y_pred, test_sizes, title):
     for i in range(5):
         if i == 0:
             viz = plot_roc_curve(y_true[:int(test_sizes[i])], y_pred[:int(test_sizes[i])],
-                                 name='ROC fold {}'.format(i+1), ax=ax)
+                                 name='ROC lr = {}'.format(lr[i]), ax=ax)
         else:
             viz = plot_roc_curve(y_true[int(test_sizes[i-1]):int(test_sizes[i])], y_pred[int(test_sizes[i-1]):int(test_sizes[i])],
-                                 name='ROC fold {}'.format(i+1), ax=ax)
+                                 name='ROC lr = {}'.format(lr[i]), ax=ax)
         interp_tpr = np.interp(mean_fpr, viz.fpr, viz.tpr)
         interp_tpr[0] = 0.0
         tprs.append(interp_tpr)
