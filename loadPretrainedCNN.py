@@ -70,16 +70,16 @@ def fetchImage(path =r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt202
     img2 = torch.from_numpy(b)
     return img2
 
-if __name__ == "__main__":
-    model_gray = VGG16_NoSoftmax_OneChannel()
-    model_RGB = VGG16_NoSoftmax_RGB()
+#if __name__ == "__main__":
+#    model_gray = VGG16_NoSoftmax_OneChannel()
+#    model_RGB = VGG16_NoSoftmax_RGB()
 
-    model_gray.eval()
-    model_RGB.eval()
+#    model_gray.eval()
+#    model_RGB.eval()
 
-    img2 = fetchImage()
+#    img2 = fetchImage()
 
-    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
-    out2 = model_RGB(img2.unsqueeze_(0).float())
+#    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
+#    out2 = model_RGB(img2.unsqueeze_(0).float())
 
-    pass
+#    pass
