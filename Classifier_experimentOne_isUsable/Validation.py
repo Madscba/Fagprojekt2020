@@ -43,7 +43,11 @@ class classifier_validation():
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
 
+
+
+
     def get_spectrogram(self,x,max_windows):
+        #OLD
         spectrograms, spectrogram_labels, _, idx = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
                                                                         is_usable=None,max_windows=max_windows,
                                                                         path=self.speck_path)  # 18 files = 1926
@@ -52,6 +56,7 @@ class classifier_validation():
         return spectrograms,spectrogram_labels,idx
 
     def get_balanced(self,x,path_s,max_windows):
+        #OLD
         is_useble=[]
         Not_useble=[]
         for name in x:
@@ -75,7 +80,7 @@ class classifier_validation():
         return windows,labels, idx
 
     def get_feturevectors(self,x,max_windows):
-
+        #OLD
         feature_vectors, feature_vectors_labels, _, idx = self.prepros.make_label(make_from_filenames=x,max_files=None,
                                                                                  quality=None, is_usable=None,
                                                                                  max_windows=max_windows,
@@ -331,9 +336,11 @@ if __name__ == '__main__':
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
-        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
-        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        # BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
+        # F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+        # S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        BC = r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG'
+        F = r''
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
     CV.test(classifyers=["SVM","LDA","Random"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
