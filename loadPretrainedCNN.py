@@ -45,6 +45,9 @@ class VGG16_NoSoftmax_RGB(nn.Module):
     def __init__(self):
         super(VGG16_NoSoftmax_RGB, self).__init__()
         vgg16 = models.vgg16(pretrained=True)
+        self.features = vgg16.features
+        self.avgpool = vgg16.avgpool
+        self.classifier = vgg16.classifier
 
 
     def forward(self, x):
