@@ -133,9 +133,10 @@ def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,basel
 
 
 if __name__ == '__main__':
-    # with open('C:\\Users\\Mads-\\OneDrive\\Dokumenter\\Universitet\\4. Semester\\downloads from hpc\\ClassifierTestLogs. Ex_10_split_bal_unbal\\ex_fea_bal0_predict.json') as json_file:
-    #     tempData = json.load(json_file)
-    # with open('C:\\Users\\Mads-\\OneDrive\\Dokumenter\\Universitet\\4. Semester\\downloads from hpc\\ClassifierTestLogs. Ex_10_split_bal_unbal\\ex_spec_bal0_predict.json') as json_file1:
+    with open('file:///C:/Users/Andre/Downloads/ex_fea_bal0_predict.json') as json_file:
+        tempData = json.load(json_file)
+    with open('file:///C:/Users/Andre/Downloads/ex_fea_unbal0_predict.json') as json_file1:
+        tempData = json.load(json_file1)
     #     tempData1 = json.load(json_file1)
     # pass
     # files_bal = ['ex_balanced_train_fea{i}_predict.json','ex_balanced_train_spec{i}_predict.json']

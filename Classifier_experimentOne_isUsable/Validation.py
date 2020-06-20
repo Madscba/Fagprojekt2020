@@ -9,6 +9,7 @@ import random
 import os
 import json
 
+from datetime import datetime
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
@@ -116,10 +117,14 @@ class classifier_validation():
         AC_collumns=np.append(classifyers,["N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
         AC_matrix = pd.DataFrame(index=np.arange(0, Nfold), columns=AC_collumns)
         resultDict={}
+        debuglog={}
         for n in range(Nfold):
+
             trainNames=folddic[f"train_{n}"]
             testNames=folddic[f"test_{n}"]
             resultDict[f"fold_{n}"]={}
+            now=datetime.now()
+            debuglog[f"fold_{n}"]={"tstat": now.strftime("%m/%d/%Y, %H:%M:%S")}
             if type=="fetures":
                 #Test feturevectors
                 if self.Balance_train:
@@ -175,13 +180,22 @@ class classifier_validation():
                             base2=np.full(len(y_test),lable2)
                             AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
-                resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
-                resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
+            resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
+            resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
+            debuglog[f"fold_{n}"]["train_idx"]=list(idx_train)
+            debuglog[f"fold_{n}"]["test_idx"] = list(idx_test)
+            debuglog[f"fold_{n}"]["trian_lengt"]=len(x_train)
+            debuglog[f"fold_{n}"]["test_lengt"]=len(x_test)
+            #Ad baseline to debyg log:
+            for lable in set(y_test):
+                base_test=np.full(len(y_test), lable)
+                base_train=np.full(len(y_train), lable)
+                debuglog[f"fold_{n}"][f"train {lable}"]=str(np.sum([y_train==base_train]))
+                debuglog[f"fold_{n}"][f"test {lable}"] = str(np.sum([y_test == base_test]))
 
             AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
             AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
             AC_matrix.loc[n, "N_TrainFiles"] = len(trainNames)
-            AC_matrix.loc[n, "N_TrainWindows"] = len(x_train)
             resultDict[f"fold_{n}"]["index"] = list(idx_test)
             resultDict[f"fold_{n}"]["True"]=list(y_test)
             # clear data
@@ -195,11 +209,14 @@ class classifier_validation():
 
 
             #print(AC_matrix)
-        if logname is not None:
-            AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
-            with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
-                json.dump(resultDict, fp, indent=6)
-        return  AC_matrix
+            if logname is not None:
+                AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
+                with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
+                    json.dump(resultDict, fp, indent=3)
+                with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_debuglog.json"), 'w') as fp:
+                    json.dump(debuglog, fp, indent=3)
+
+        return AC_matrix
 
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],EXP_name=None):
         """
@@ -249,6 +266,7 @@ class classifier_validation():
             Gen_error.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Genneralisation_errors.json"))
             Best_log.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Outerloop.json"))
 
+
         return Best_log,Gen_error
 
 
@@ -285,8 +303,9 @@ class classifier_validation():
         m_gaus = GaussianNB()
         m_gaus.fit(x_train, y_train)
         GNB_predict = np.append(GNB_predict, m_gaus.predict(x_test))
+        p=m_gaus.predict_proba(x_test)
         print("gaus done", np.mean(y_test == GNB_predict))
-        return  GNB_predict
+        return  GNB_predict,p
 
 
     def predict_DissionTree(self,x_train,y_train,x_test,y_test):
@@ -294,8 +313,9 @@ class classifier_validation():
         m_DecisionTree = DecisionTreeClassifier()
         m_DecisionTree.fit(x_train, y_train)
         DecisionTree_predict = np.append(DecisionTree_predict, m_DecisionTree.predict(x_test))
+        p=m_DecisionTree.predict_proba(x_test)
         print("DT done", np.mean(y_test == DecisionTree_predict))
-        return DecisionTree_predict
+        return DecisionTree_predict,p
 
     def predict_RF(self,x_train,y_train,x_test,y_test):
         p = np.array([])
