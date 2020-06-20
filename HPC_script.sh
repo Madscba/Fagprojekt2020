@@ -13,4 +13,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 CNN/trainCNN.py
+python3 Classifier_experimentOne_isUsable/All_in_one_go_EXP_setup.py
