@@ -13,5 +13,5 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 Classifier_experimentOne_isUsable/Validation.py
+python3 CNN_HPC/get_test_set.py
 echo "Done"
