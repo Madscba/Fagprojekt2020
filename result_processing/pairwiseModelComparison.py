@@ -143,7 +143,7 @@ if __name__ == '__main__':
     classifiers_unbal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
     jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
     pass
-    jeff_unbal.round(4).to_latex()
+    jeff_unbal.round(4)[['Model','ThetaA','Confidence interval']].to_latex()
     # baseline,SVM, LDA, RF
     #10 runs, 5 splits pr. run. Each run has spec and feature
     # computeMcNemarComparisons(files=files_bal,classifiers = classifiers_bal,n_splits=1)
