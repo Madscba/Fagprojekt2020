@@ -115,9 +115,11 @@ def getNumberOfAnnotators():
     for i in filenames:
         if i in loader.no_file:
             flist.append(loader.no_file[i]['annotation']['Reader'])
-#Debugging
+    pass
+# Debugging
 # import loadData
 # import os
+# getNumberOfAnnotators()
 # datadir=r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG\data_farrahtue_EEG"
 # loader=loadData.json_maker()
 # loader.find_edf(datadir)
@@ -129,5 +131,17 @@ def getNumberOfAnnotators():
 #
 # for i in filenames:
 #     if i in loader.no_file:
-#         flist.append(loader.no_file[i]['annotation']['Recording Length [seconds]'])
+#         flist.append(loader.no_file[i]['annotation']['reader'])
+#
+# with open('Preprossering/edfFiles.json') as json3_file:
+#     usefulData = json.load(json3_file)
+#
+# with open(r'C:\Users\Mads-\Downloads/compromised_files.json') as json4_file:
+#     compromisedData = json.load(json4_file)
+# pass
+# reasons = []
+# files = []
+# for i in compromisedData:
+#     reasons.append(compromisedData[i]['reson'])
+#
 # pass

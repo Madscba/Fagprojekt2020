@@ -8,7 +8,9 @@ import torch
 C=preprossingPipeline(BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG",mac=True)
 fileNames = C.edfDict.keys()
 wdir=os.getcwd()
+file_dict=dict()
 for file in fileNames:
+    file_dict[file]=[]
     i = 0
     if os.path.exists(wdir+r'/spectograms_all_ch/'+file)==True:
         pass
@@ -26,8 +28,8 @@ for file in fileNames:
                     channel_spec = spec[window_value][channel].detach().numpy().reshape((1, 1, -1))
                     channel_specs =np.dstack((channel_specs ,channel_spec))
                 j+=1
-            print(i)
             if channel_specs.shape[2] != 8772*14:
+                file_dict[file].append(i)
                 pass
             else:
                 if i == 0:
@@ -37,5 +39,3 @@ for file in fileNames:
                     spectogram = channel_specs
                     spectograms =np.hstack((spectograms,spectogram))
             i+=1
-        filename=r'/spectogram_all_ch/'+file
-        np.save(wdir+filename,spectograms)
