@@ -180,8 +180,8 @@ class classifier_validation():
                             base2=np.full(len(y_test),lable2)
                             AC_matrix.loc[n,f"Predicted {lable1} True {lable2}"]=np.sum(np.logical_and(predict==base1,y_test==base2))
 
-            resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
-            resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
+                resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
+                resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
             debuglog[f"fold_{n}"]["train_idx"]=list(idx_train)
             debuglog[f"fold_{n}"]["test_idx"] = list(idx_test)
             debuglog[f"fold_{n}"]["trian_lengt"]=len(x_train)
@@ -209,12 +209,12 @@ class classifier_validation():
 
 
             #print(AC_matrix)
-            if logname is not None:
-                AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
-                with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
-                    json.dump(resultDict, fp, indent=3)
-                with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_debuglog.json"), 'w') as fp:
-                    json.dump(debuglog, fp, indent=3)
+        if logname is not None:
+            AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
+            with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
+                json.dump(resultDict, fp, indent=3)
+            with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_debuglog.json"), 'w') as fp:
+                json.dump(debuglog, fp, indent=3)
 
         return AC_matrix
 
