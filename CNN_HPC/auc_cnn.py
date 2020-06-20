@@ -69,8 +69,8 @@ if __name__ == '__main__':
     model_0_ub_paths = []
     model_1_ub_paths = []
     model_0_b_paths = []
-    model_1_b_paths = []
-    X_test = torch.load(r'D:\Results Johannes\test_set.pt')
+    model_1_b_paths = [r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\CNN_b\model1_l5_b']
+    X_test = torch.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\CNN_b\test_set.pt')
     Y_test = np.load(r'D:\Results Johannes\test_labels.npy')
     test_sizes_0_ub, models_prob_0_ub = load_prob_cnn(paths=model_0_ub_paths,X_test=X_test,Y_test=Y_test)
     test_sizes_1_ub, models_prob_1_ub = load_prob_cnn(paths=model_1_ub_paths,X_test=X_test,Y_test=Y_test)
