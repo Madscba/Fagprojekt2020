@@ -164,7 +164,7 @@ def split_dataset_balanced(C,path,N,train_split,max_windows,num_channels):
 C = preprossingPipeline(BC_datapath=r"/work3/s173934/Fagprojekt/dataEEG")
 path_s = r'/work3/s173934/Fagprojekt/spectograms_rgb'
 criterion = nn.CrossEntropyLoss()
-X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset(C,path_s,N=120,train_split=80,max_windows=20,num_channels=14)
+X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset_balanced(C,path_s,N=120,train_split=80,max_windows=20,num_channels=14)
 modelA = VGG16()
 freeze_parameters(modelA,feature_extracting=True)
 list2 = np.array(list_of_features(modelA))

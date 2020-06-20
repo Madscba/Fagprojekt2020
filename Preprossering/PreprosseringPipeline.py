@@ -113,7 +113,7 @@ class preprossingPipeline:
                 ch_dict[ch] = img
             else:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
-                ch_dict[ch]=np.log(Sxx+np.finfo(float).eps) # for np del torch.tensor
+                ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
         return ch_dict
 
     def plot_window(self,name,win_idx,type="spec",plot=True):
