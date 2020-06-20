@@ -45,20 +45,16 @@ class VGG16_NoSoftmax_RGB(nn.Module):
     def __init__(self):
         super(VGG16_NoSoftmax_RGB, self).__init__()
         vgg16 = models.vgg16(pretrained=True)
-        self.features = nn.Sequential(*list(vgg16.features.children())[:])
-        self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
-        self.classifier = nn.Sequential(
-            nn.Linear(512 * 7 * 7, 4096),
-            nn.ReLU(True),
-            nn.Dropout(),
-            nn.Linear(4096, 4096),
-            nn.ReLU(True))
+        self.features = vgg16.features
+        self.avgpool = vgg16.avgpool
+        self.classifier = vgg16.classifier
+
 
     def forward(self, x):
         x = self.features(x)
         x = self.avgpool(x)
         x = torch.flatten(x,1)
-        x = self.classifier(x)
+        x = self.classifier[0:5](x)
         return x
 
 def fetchImage(path =r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt2020\testSpektrograms\test3_or_above1_0.JPG' ):
@@ -74,17 +70,16 @@ def fetchImage(path =r'C:\Users\Mads-_uop20qq\Documents\fagprojekt\Fagprojekt202
     img2 = torch.from_numpy(b)
     return img2
 
-if __name__ == "__main__":
-    model_gray = VGG16_NoSoftmax_OneChannel()
-    model_RGB = VGG16_NoSoftmax_RGB()
+#if __name__ == "__main__":
+#    model_gray = VGG16_NoSoftmax_OneChannel()
+#    model_RGB = VGG16_NoSoftmax_RGB()
 
-    model_gray.eval()
-    model_RGB.eval()
+#    model_gray.eval()
+#    model_RGB.eval()
 
-    img2 = fetchImage()
+#    img2 = fetchImage()
 
-    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
-    out2 = model_RGB(img2.unsqueeze_(0).float())
+#    out4 = model_gray(img2[1,:,:].unsqueeze(0).unsqueeze(0).float())
+#    out2 = model_RGB(img2.unsqueeze_(0).float())
 
-
-    pass
+#    pass

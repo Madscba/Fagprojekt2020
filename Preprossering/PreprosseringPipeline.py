@@ -95,7 +95,7 @@ class preprossingPipeline:
         #EEGseries.plot_sensors(show_names=True)
         return EEGseries
 
-    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=True):
+    def spectrogramMake(self,EEGseries=None, t0=0, tWindow=120,resized=False):
         #Not debygged
         edfFs = EEGseries.info["sfreq"]
         chWindows = EEGseries.get_data(start=int(t0), stop=int(t0+tWindow))
@@ -114,7 +114,6 @@ class preprossingPipeline:
             else:
                 fTemp, tTemp, Sxx = signal.spectrogram(chWindows[i], fs=edfFs)
                 ch_dict[ch]=torch.tensor(np.log(Sxx+np.finfo(float).eps)) # for np del torch.tensor
-
         return ch_dict
 
     def plot_window(self,name,win_idx,type="spec",plot=True):
@@ -242,7 +241,7 @@ class preprossingPipeline:
                 pass
             else:
                 if i == 0:
-                    window = np.load(fv_path)
+                    window = np.load(fv_path).squeeze()
                     if max_windows > window.shape[0]:
                         integer = 1
                     else:
@@ -414,4 +413,5 @@ def apply_transforms_new(image, size=(224,224)):
 
 
 if __name__ == "__main__":
-    pass
+    c=preprossingPipeline(BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC\data_farrahtue_EEG")
+    c.make_label(make_from_filenames=['sbs2data_2018_09_03_11_38_39_138.edf',])

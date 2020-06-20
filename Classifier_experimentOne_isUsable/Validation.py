@@ -9,6 +9,7 @@ import random
 import os
 import json
 
+from datetime import datetime
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
@@ -43,7 +44,11 @@ class classifier_validation():
         with open(os.path.join(os.getcwd(),Kfold_path) , "r") as read_file:
             self.Kfold = json.load(read_file)
 
+
+
+
     def get_spectrogram(self,x,max_windows):
+        #OLD
         spectrograms, spectrogram_labels, _, idx = self.prepros.make_label(make_from_filenames=x, quality=None,max_files=None,
                                                                         is_usable=None,max_windows=max_windows,
                                                                         path=self.speck_path)  # 18 files = 1926
@@ -52,6 +57,7 @@ class classifier_validation():
         return spectrograms,spectrogram_labels,idx
 
     def get_balanced(self,x,path_s,max_windows):
+        #OLD
         is_useble=[]
         Not_useble=[]
         for name in x:
@@ -75,7 +81,7 @@ class classifier_validation():
         return windows,labels, idx
 
     def get_feturevectors(self,x,max_windows):
-
+        #OLD
         feature_vectors, feature_vectors_labels, _, idx = self.prepros.make_label(make_from_filenames=x,max_files=None,
                                                                                  quality=None, is_usable=None,
                                                                                  max_windows=max_windows,
@@ -111,10 +117,14 @@ class classifier_validation():
         AC_collumns=np.append(classifyers,["N_TestFiles","N_TestWindows","N_TrainFiles","N_TrainWindows"])
         AC_matrix = pd.DataFrame(index=np.arange(0, Nfold), columns=AC_collumns)
         resultDict={}
+        debuglog={}
         for n in range(Nfold):
+
             trainNames=folddic[f"train_{n}"]
             testNames=folddic[f"test_{n}"]
             resultDict[f"fold_{n}"]={}
+            now=datetime.now()
+            debuglog[f"fold_{n}"]={"tstat": now.strftime("%m/%d/%Y, %H:%M:%S")}
             if type=="fetures":
                 #Test feturevectors
                 if self.Balance_train:
@@ -172,11 +182,20 @@ class classifier_validation():
 
                 resultDict[f"fold_{n}"][f"{C}_predict"]=list(predict)
                 resultDict[f"fold_{n}"][f"{C}_prob"] = prob.tolist()
+            debuglog[f"fold_{n}"]["train_idx"]=list(idx_train)
+            debuglog[f"fold_{n}"]["test_idx"] = list(idx_test)
+            debuglog[f"fold_{n}"]["trian_lengt"]=len(x_train)
+            debuglog[f"fold_{n}"]["test_lengt"]=len(x_test)
+            #Ad baseline to debyg log:
+            for lable in set(y_test):
+                base_test=np.full(len(y_test), lable)
+                base_train=np.full(len(y_train), lable)
+                debuglog[f"fold_{n}"][f"train {lable}"]=str(np.sum([y_train==base_train]))
+                debuglog[f"fold_{n}"][f"test {lable}"] = str(np.sum([y_test == base_test]))
 
             AC_matrix.loc[n,"N_TestFiles"]=len(testNames)
             AC_matrix.loc[n, "N_TestWindows"] = len(x_test)
             AC_matrix.loc[n, "N_TrainFiles"] = len(trainNames)
-            AC_matrix.loc[n, "N_TrainWindows"] = len(x_train)
             resultDict[f"fold_{n}"]["index"] = list(idx_test)
             resultDict[f"fold_{n}"]["True"]=list(y_test)
             # clear data
@@ -193,8 +212,11 @@ class classifier_validation():
         if logname is not None:
             AC_matrix.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_AC"))
             with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_predict.json"), 'w') as fp:
-                json.dump(resultDict, fp, indent=6)
-        return  AC_matrix
+                json.dump(resultDict, fp, indent=3)
+            with open(os.path.join(os.getcwd(),self.logfile_path,f"{logname}_debuglog.json"), 'w') as fp:
+                json.dump(debuglog, fp, indent=3)
+
+        return AC_matrix
 
     def two_layes(self,type,classifyers=["SVM", "LDA", "DecisionTree","GNB", "RF"],EXP_name=None):
         """
@@ -244,6 +266,7 @@ class classifier_validation():
             Gen_error.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Genneralisation_errors.json"))
             Best_log.to_csv(os.path.join(os.getcwd(),self.logfile_path,f"{EXP_name}_Outerloop.json"))
 
+
         return Best_log,Gen_error
 
 
@@ -280,8 +303,9 @@ class classifier_validation():
         m_gaus = GaussianNB()
         m_gaus.fit(x_train, y_train)
         GNB_predict = np.append(GNB_predict, m_gaus.predict(x_test))
+        p=m_gaus.predict_proba(x_test)
         print("gaus done", np.mean(y_test == GNB_predict))
-        return  GNB_predict
+        return  GNB_predict,p
 
 
     def predict_DissionTree(self,x_train,y_train,x_test,y_test):
@@ -289,8 +313,9 @@ class classifier_validation():
         m_DecisionTree = DecisionTreeClassifier()
         m_DecisionTree.fit(x_train, y_train)
         DecisionTree_predict = np.append(DecisionTree_predict, m_DecisionTree.predict(x_test))
+        p=m_DecisionTree.predict_proba(x_test)
         print("DT done", np.mean(y_test == DecisionTree_predict))
-        return DecisionTree_predict
+        return DecisionTree_predict,p
 
     def predict_RF(self,x_train,y_train,x_test,y_test):
         p = np.array([])
@@ -308,7 +333,7 @@ class classifier_validation():
         prob=[0.8,0.2]
         predict=np.random.choice(classes, size=len(x_test), p=prob)
         print("Random predict", np.mean(y_test == predict))
-        return predict
+        return predict,np.array([0,0,0])
 
 
 
@@ -324,22 +349,22 @@ def dict_to_pd(predict_dict):
     print(predict_dict)
 
 if __name__ == '__main__':
-    hpc=True
+    hpc=False
     if hpc:
         BC=r"/work3/s173934/Fagprojekt/dataEEG"
         F=r'/work3/s173934/Fagprojekt/FeatureVectors'
         S=r'/work3/s173934/Fagprojekt/Spektrograms'
         SP=r'/work3/s173934/Fagprojekt/spectograms_rgb'
     else:
-        # BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
-        # F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
-        # S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
+        BC=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
+        F=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+        S=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
         BC = r'C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\02466 Fagprojekt - Bachelor i kunstig intelligens og data\dataEEG'
-        F = r''
+
     Kfold_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
-    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows=40)
-    CV.test(classifyers=["SVM","LDA","Random"],folds=None, type="fetures", logname="feature_final",confusion_matrix=True)
-    CV.test(classifyers=["RF","Random"],folds=None,type="spectrograms",logname="spec_final",confusion_matrix=True)
+    CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows_test=10,max_windows_train=15)
+   # CV.test(classifyers=["Random"],folds=None, type="fetures", logname=None,confusion_matrix=False)
+    CV.test(classifyers=["Random"],folds=None,type="spectrograms",logname=None,confusion_matrix=False)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 

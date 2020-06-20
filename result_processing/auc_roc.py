@@ -55,10 +55,10 @@ def kfold_roc(y_true,y_pred, test_sizes, title):
     for i in range(5):
         if i == 0:
             viz = plot_roc_curve(y_true[:int(test_sizes[i])], y_pred[:int(test_sizes[i])],
-                                 name='ROC fold {}'.format(i), ax=ax)
+                                 name='ROC fold {}'.format(i+1), ax=ax)
         else:
             viz = plot_roc_curve(y_true[int(test_sizes[i-1]):int(test_sizes[i])], y_pred[int(test_sizes[i-1]):int(test_sizes[i])],
-                                 name='ROC fold {}'.format(i), ax=ax)
+                                 name='ROC fold {}'.format(i+1), ax=ax)
         interp_tpr = np.interp(mean_fpr, viz.fpr, viz.tpr)
         interp_tpr[0] = 0.0
         tprs.append(interp_tpr)
@@ -124,9 +124,8 @@ def load_prob(path,filename,classifiers,representation='spec'):
     with open(filepath) as json_file:
         tempData = json.load(json_file)
         for i in range(5):
-            fold_labels = tempData[f'fold_{i}']['True']
-            y_true = np.append(y_true, fold_labels)
-            test_size = np.append(test_size, np.shape(fold_labels)[0])
+            y_true = np.append(y_true, tempData[f'fold_{i}']['True'])
+            test_size = np.append(test_size, np.shape(y_true)[0])
             for c in classifiers:
                 if representation == 'spec':
                     if c == 'RF':
@@ -146,14 +145,14 @@ def load_prob(path,filename,classifiers,representation='spec'):
     return y_true, test_size, RF_prob, SVM_prob, LDA_prob
 
 if __name__ == '__main__':
-    path = r'D:\Johannes results\Classifier_results_with_probabilities'
-    files = ['ex_bal_proba_fea0_predict.json','ex_bal_proba_spec0_predict.json','ex_unbal_proba_fea0_predict.json','ex_unbal_proba_spec0_predict.json']
+    path = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\AUC'
+    files = ['ex_fea_bal0_predict.json','ex_spec_bal0_predict.json','ex_fea_unbal0_predict.json','ex_spec_unbal0_predict.json']
     y_true_feat_b, test_size_feat_b, _, SVM_prob_b, LDA_prob_b = load_prob(path,files[0],['RF','SVM','LDA'],representation='feature')
     y_true_spec_b, test_size_spec_b, RF_prob_b, _, _ = load_prob(path,files[1],['RF','SVM','LDA'])
     y_true_feat_ub, test_size_feat_ub, _, SVM_prob_ub, LDA_prob_ub = load_prob(path,files[2],['RF','SVM','LDA'],representation='feature')
     y_true_spec_ub, test_size_spec_ub, RF_prob_ub, _, _ = load_prob(path,files[3],['RF','SVM','LDA'])
-    kfold_roc(y_true=np.asarray(y_true_feat_b, dtype='float64'),
-              y_pred=np.asarray(SVM_prob_b, dtype='float64'),
+    kfold_roc(y_true=np.asarray(y_true_feat_b),
+              y_pred=np.asarray(SVM_prob_b),
               test_sizes=test_size_feat_b,
               title='ROC for SVM on feature vectors (balanced training set)')
     kfold_roc(y_true=np.asarray(y_true_feat_b, dtype='float64'),
@@ -176,8 +175,7 @@ if __name__ == '__main__':
               y_pred=np.asarray(RF_prob_ub, dtype='float64'),
               test_sizes=test_size_spec_ub,
               title='ROC for RF on spectrograms (imbalanced training set)')
-#AUC, tpr, fpr = roc_plot(np.asarray(SVM_prob_b[:int(test_size_feat_b[0])], dtype='float64'),
- #                            np.asarray(y_true_feat_b[:int(test_size_feat_b[0])], dtype='float64'))
+
 
 
 

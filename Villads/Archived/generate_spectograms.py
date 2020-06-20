@@ -8,8 +8,10 @@ import torch
 C=preprossingPipeline(BC_datapath=r"/Users/villadsstokbro/Dokumenter/DTU/KID/3. semester/Fagprojekt/BrainCapture/dataEEG",mac=True)
 fileNames = C.edfDict.keys()
 wdir=os.getcwd()
+file_dict=dict()
 for file in fileNames:
     i = 0
+    file_dict[file]=[]
     if os.path.exists(wdir+r'/spectograms/'+file)==True:
         pass
     else:
@@ -19,6 +21,7 @@ for file in fileNames:
                 break
             spectogram=spec[window_value].detach().numpy().reshape((1, 1, -1))
             if spectogram.shape[2] !=  8772:
+                print(i)
                 pass
             else:
                 if i == 0:
