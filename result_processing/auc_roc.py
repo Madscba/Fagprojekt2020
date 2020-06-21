@@ -133,6 +133,16 @@ def load_prob(path,filename,classifiers,representation='spec'):
                         A = tempData[f'fold_{i}'][f'{c}_prob']
                         A = np.array(A)
                         RF_prob = np.append(RF_prob, A[:,1].T)
+                    elif c == 'SVM':
+                        A = tempData[f'fold_{i}'][f'{c}_prob']
+                        A = np.array(A)
+                        SVM_prob = np.append(SVM_prob, A[:,1].T)
+                        SVM_prob = np.around(SVM_prob, decimals=2)
+                    elif c == 'LDA':
+                        A = tempData[f'fold_{i}'][f'{c}_prob']
+                        A = np.array(A)
+                        LDA_prob = np.append(LDA_prob, A[:,1].T)
+                        LDA_prob = np.around(LDA_prob, decimals=2)
                 else:
                     if c == 'SVM':
                         A = tempData[f'fold_{i}'][f'{c}_prob']
@@ -157,44 +167,60 @@ def load_prob(path,filename,classifiers,representation='spec'):
 
 if __name__ == '__main__':
     path = r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\AUC'
-    files = ['ex_fea_bal0_predict.json','ex_spec_bal0_predict.json','Feature_unbal_final1_predict.json','Spectrograms_unbal_final1_predict.json']
+    files = ['Feture_bal_final1_predict.json','Spectrograms_bal_final1_predict.json','Feature_unbal_final1_predict.json','Spectrograms_unbal_final1_predict.json']
     #files = ['Feature_unbal_final1_predict.json','Spectrograms_unbal_final1_predict.json']
-    #y_true_feat_b, test_size_feat_b, _, SVM_prob_b, LDA_prob_b = load_prob(path,files[0],['RF','SVM','LDA'],representation='feature')
-    #y_true_spec_b, test_size_spec_b, RF_prob_b, _, _ = load_prob(path,files[1],['RF','SVM','LDA'])
-    y_true_feat_ub, test_size_feat_ub, RF_prob_f_ub, SVM_prob_ub, LDA_prob_ub, GNB_prob_ub = load_prob(path,files[2],['RF','SVM','LDA','GNB'],representation='feature')
-    y_true_spec_ub, test_size_spec_ub, RF_prob_ub, _, _,_ = load_prob(path,files[3],['RF','SVM','LDA'])
+    #y_true_feat_b, test_size_feat_b, RF_prob_f_b, SVM_prob_b, LDA_prob_b, GNB_prob_b = load_prob(path,files[0],['RF','SVM','LDA','GNB'],representation='feature')
+    y_true_spec_b, test_size_spec_b, RF_prob_b, SVM_prob_s_b, LDA_prob_s_b, _ = load_prob(path,files[1],['RF','SVM','LDA'])
+    #y_true_feat_ub, test_size_feat_ub, RF_prob_f_ub, SVM_prob_ub, LDA_prob_ub, GNB_prob_ub = load_prob(path,files[2],['RF','SVM','LDA','GNB'],representation='feature')
+    y_true_spec_ub, test_size_spec_ub, RF_prob_ub,SVM_prob_s_ub, LDA_prob_s_ub,_ = load_prob(path,files[3],['RF','SVM','LDA'])
+    kfold_roc(y_true=np.asarray(y_true_spec_ub),
+              y_pred=np.asarray(LDA_prob_s_ub),
+              test_sizes=test_size_spec_ub,
+              title='ROC for LDA on spectrograms (imbalanced training set)')
+    kfold_roc(y_true=np.asarray(y_true_spec_ub),
+              y_pred=np.asarray(SVM_prob_s_ub),
+              test_sizes=test_size_spec_ub,
+              title='ROC for SVM on spectrograms (imbalanced training set)')
     #kfold_roc(y_true=np.asarray(y_true_feat_b),
-    #          y_pred=np.asarray(SVM_prob_b),
+    #          y_pred=np.asarray(RF_prob_f_b),
     #          test_sizes=test_size_feat_b,
-    #          title='ROC for SVM on feature vectors (balanced training set)')
+    #          title='ROC for RF on feature vectors (balanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_b),
+     #         y_pred=np.asarray(SVM_prob_b),
+     #         test_sizes=test_size_feat_b,
+     #         title='ROC for SVM on feature vectors (balanced training set)')
     #kfold_roc(y_true=np.asarray(y_true_feat_b, dtype='float64'),
     #          y_pred=np.asarray(LDA_prob_b, dtype='float64'),
     #          test_sizes=test_size_feat_b,
     #          title='ROC for LDA on feature vectors (balanced training set)')
-    kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
-              y_pred=np.asarray(SVM_prob_ub, dtype='float64'),
-              test_sizes=test_size_feat_ub,
-              title='ROC for SVM on feature vectors (imbalanced training set)')
-    kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
-              y_pred=np.asarray(RF_prob_f_ub, dtype='float64'),
-              test_sizes=test_size_feat_ub,
-              title='ROC for RF on feature vectors (imbalanced training set)')
-    kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
-              y_pred=np.asarray(GNB_prob_ub, dtype='float64'),
-              test_sizes=test_size_feat_ub,
-              title='ROC for GNB on feature vectors (imbalanced training set)')
-    kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
-              y_pred=np.asarray(LDA_prob_ub, dtype='float64'),
-              test_sizes=test_size_feat_ub,
-              title='ROC for LDA on feature vectors (imbalanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_b, dtype='float64'),
+    ##          y_pred=np.asarray(GNB_prob_b, dtype='float64'),
+     #         test_sizes=test_size_feat_b,
+     #         title='ROC for GNB on feature vectors (balanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
+    #          y_pred=np.asarray(SVM_prob_ub, dtype='float64'),
+     #         test_sizes=test_size_feat_ub,
+     #         title='ROC for SVM on feature vectors (imbalanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
+    #         y_pred=np.asarray(RF_prob_f_ub, dtype='float64'),
+    #         test_sizes=test_size_feat_ub,
+     #         title='ROC for RF on feature vectors (imbalanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
+    #          y_pred=np.asarray(GNB_prob_ub, dtype='float64'),
+     #         test_sizes=test_size_feat_ub,
+     #         title='ROC for GNB on feature vectors (imbalanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_feat_ub, dtype='float64'),
+     #         y_pred=np.asarray(LDA_prob_ub, dtype='float64'),
+     #         test_sizes=test_size_feat_ub,
+     #         title='ROC for LDA on feature vectors (imbalanced training set)')
     #kfold_roc(y_true=np.asarray(y_true_spec_b, dtype='float64'),
     #          y_pred=np.asarray(RF_prob_b, dtype='float64'),
     #          test_sizes=test_size_spec_b,
-    #          title='ROC for RF on spectrograms (balanced training set)')
-    kfold_roc(y_true=np.asarray(y_true_spec_ub, dtype='float64'),
-              y_pred=np.asarray(RF_prob_ub, dtype='float64'),
-              test_sizes=test_size_spec_ub,
-              title='ROC for RF on spectrograms (imbalanced training set)')
+     #         title='ROC for RF on spectrograms (balanced training set)')
+    #kfold_roc(y_true=np.asarray(y_true_spec_ub, dtype='float64'),
+    #          y_pred=np.asarray(RF_prob_ub, dtype='float64'),
+    #          test_sizes=test_size_spec_ub,
+    #          title='ROC for RF on spectrograms (imbalanced training set)')
 
 
 
