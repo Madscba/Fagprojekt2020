@@ -14,6 +14,8 @@ from sklearn.neighbors import KNeighborsClassifier
 #from Visualization.PCA_TSNE_plot import plot_pca
 from sklearn.decomposition import PCA
 from CNN_HPC.load_results import test_labels, test_windows
+from CNN_HPC.load_results_ub import test_labels_ub, test_windows_ub
+
 #from Visualization.plot_inteactive_functions import plot_pca_interactiv
 random.seed(42)
 
@@ -22,6 +24,12 @@ cpi = np.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Kode\G
 y_true = np.where(test_labels == 'Yes', 1, 0)
 labels = np.array(y_true[cpi],dtype='int64')
 windows = test_windows[cpi]
+
+new_fv_ub = np.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Kode\Gruppen\Fagprojekt2020\CNN_HPC\new_feature_vectors_ub.npy')
+cpi_ub = np.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Kode\Gruppen\Fagprojekt2020\CNN_HPC\cpi_ub.npy')
+y_true_ub = np.where(test_labels_ub == 'Yes', 1, 0)
+labels_ub = np.array(y_true_ub[cpi_ub],dtype='int64')
+windows_ub = test_windows_ub[cpi_ub]
 
 def fit_pca(fv):
     scaled_new_fv = scale_data(fv)
