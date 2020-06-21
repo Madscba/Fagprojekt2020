@@ -91,7 +91,7 @@ def computeJeffreyInveralFromFile(file,path="",classifiers=[],n_splits=10):
     alpha = 0.05
     data = []
     for k in range(n_splits):
-        file_path =file.replace('{i}',f'{k}')
+        file_path =file.replace('{i}',f'{k+1}')
         y_true,y_hat,_ = extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers)
         for i in range(len(classifiers)):
             [thetahatA, CIA] = jeffrey_interval(y_true, y_hat[0+len(y_true)*i:len(y_true)*(1+i)], alpha=alpha)
@@ -122,7 +122,7 @@ def computeMcNemarComparisons(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Univer
     return mcNemar_pred_all,model_all
 def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,baseline=True):
     for k in range(n_splits):
-        file_path =file.replace('{i}',f'{k}')
+        file_path =file.replace('{i}',f'{k+1}')
         y_true,y_hat, baseline= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
     model_name = np.append(classifiers,np.array(['True Label']))
     model_pred = y_true
@@ -133,23 +133,17 @@ def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,basel
 
 
 if __name__ == '__main__':
-    with open('file:///C:/Users/Andre/Downloads/ex_fea_bal0_predict.json') as json_file:
-        tempData = json.load(json_file)
-    with open('file:///C:/Users/Andre/Downloads/ex_fea_unbal0_predict.json') as json_file1:
-        tempData = json.load(json_file1)
-    #     tempData1 = json.load(json_file1)
-    # pass
-    # files_bal = ['ex_balanced_train_fea{i}_predict.json','ex_balanced_train_spec{i}_predict.json']
-    files_bal = ['ex_fea_bal{i}_predict.json','ex_spec_bal{i}_predict.json']
-    classifiers_bal = [['SVM', 'LDA'],['RF']]
+    # files_bal = ['Feture_bal_final{i}_predict.json','Spectrograms_bal_final{i}_predict.json']
+    # files_bal = ['ex_fea_bal{i}_predict.json','ex_spec_bal{i}_predict.json']
+    # classifiers_bal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
     # jeff_bal = computeJeffreyIntervals(classifiers = classifiers_bal,files=files_bal,n_splits=1)
-    pass
-    # files_unbal = ['ex_unbalanced_train_fea{i}_predict.json','ex_unbalanced_train_spec{i}_predict.json']
-    files_unbal = ['ex_fea_unbal{i}_predict.json', 'ex_spec_unbal{i}_predict.json']
-    classifiers_unbal = [['SVM', 'LDA'],['RF']]
-    # jeff_unbal = computeJeffreyIntervals(classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
-    pass
 
+    files_unbal = ['Feature_unbal_final{i}_predict.json','Spectrograms_unbal_final{i}_predict.json']
+    # files_unbal = ['ex_fea_unbal{i}_predict.json', 'ex_spec_unbal{i}_predict.json']
+    classifiers_unbal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
+    jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
+    pass
+    jeff_unbal.round(4)[['Model','ThetaA','Confidence interval']].to_latex()
     # baseline,SVM, LDA, RF
     #10 runs, 5 splits pr. run. Each run has spec and feature
-    computeMcNemarComparisons(files=files_bal,classifiers = classifiers_bal,n_splits=1)
+    # computeMcNemarComparisons(files=files_bal,classifiers = classifiers_bal,n_splits=1)

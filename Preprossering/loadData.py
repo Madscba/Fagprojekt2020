@@ -116,6 +116,7 @@ def getNumberOfAnnotators():
         if i in loader.no_file:
             flist.append(loader.no_file[i]['annotation']['Reader'])
     pass
+
 # Debugging
 # import loadData
 # import os
