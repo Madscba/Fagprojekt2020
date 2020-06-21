@@ -53,11 +53,13 @@ class plot_auto():
             self.X_test = scale_data(self.X_test)
 
         if type=="Spectrograms_balance":
-            self.X_train,self.Y_train,self.filenames_train,self.train_id=self.get_balance(5,spectrograms_path,annotation)
-            self.le.fit(self.filenames_train)
+            self.X_test,self.Y_test,self.filenames_test,self.test_id=self.get_balance(5,spectrograms_path,annotation)
+            self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_balance(26, spectrograms_path,annotation)
+            self.le.fit(self.filenames_test)
         if type=="Feature_balance":
-            self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_balance(5,feature_path,annotation)
-            self.le.fit(self.filenames_train)
+            self.X_test, self.Y_test, self.filenames_test, self.test_id = self.get_balance(5,feature_path,annotation)
+            self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_balance(26, feature_path,annotation)
+            self.le.fit(self.filenames_test)
     def get_balance(self,n,path,annotation):
         windows1, labels1, filenames1, window_idx_full1 = self.get_data.make_label(quality=None,max_files=n,
                                                                         is_usable="Yes",max_windows=30,
@@ -186,7 +188,7 @@ class plot_auto():
             testssting = "train set"
 
         plot_pca_interactiv(vectors, l, i, model=None,index=point)
-        #plot_pca_interactiv(vectors, self.le.transform(ln).astype(str), i, model=None)
+        plot_pca_interactiv(vectors, self.le.transform(ln).astype(str), i, model=None)
 
     def LDA_trian(self):
         print("Fitting LDA")
@@ -208,30 +210,30 @@ class plot_auto():
 
 
 if __name__ == '__main__':
-    feature_path=r"C:\Users\Andre\Desktop\Fagproject\Feture_vectors_new"
+    feature_path=r"C:\Users\Andre\Desktop\Fagproject\Feature_vector4"
 
     BC_datapath=r"C:\Users\Andre\Desktop\Fagproject\Data\BC"
     K_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     spectrograms_path=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
 
-    ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
-                         Kfold_path=K_path,type="Feature_balance")
-    ploterfature.plot_space("PCA",test=False,point=211)
+    #ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
+     #                    Kfold_path=K_path,type="Feature_balance")
+    #ploterfature.plot_space("PCA",test=True)
     #ploterfature.plot_space("PCA", test=True)
     #ploterfature.plot_EEG(224,test=False)
     #ploterfature.plot_Spec(224, test=False)
     #ploterfature.plot_all(72,test=False,N_chanel=2)
     #ploterfature.plot_space("LDA",test=False)
     #ploterfature.plot_space("LDA", test=True)
-    ploterfature.plot_space("TSNE",test=False)
+    #ploterfature.plot_space("TSNE",test=True)
     #ploterfature.plot_space("TSNE", test=True)
 
     ploterspec = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
                              Kfold_path=K_path, type="Spectrograms_balance")
-    ploterspec.plot_space("PCA",test=False)
+    ploterspec.plot_space("PCA",test=True)
     #ploterspec.plot_space("LDA",test=False)
     #loterspec.plot_space("LDA", test=True)
-    ploterspec.plot_space("TSNE",test=False)
+    ploterspec.plot_space("TSNE",test=True)
 
 
     dummy=1

@@ -365,6 +365,8 @@ if __name__ == '__main__':
     CV=classifier_validation(Bc_path=BC, feture_path=F, speck_path=S,Kfold_path=Kfold_path, logfile_path="ClassifierTestLogs",max_windows_test=10,max_windows_train=15)
    # CV.test(classifyers=["Random"],folds=None, type="fetures", logname=None,confusion_matrix=False)
     CV.test(classifyers=["Random"],folds=None,type="spectrograms",logname=None,confusion_matrix=False)
+    CV.test(classifyers=["Random"], folds=None, type="spectrograms", logname=None, confusion_matrix=False)
+    CV.test(classifyers=["Random"], folds=None, type="spectrograms", logname=None, confusion_matrix=False)
     # CV.two_layes(type="spectrograms", EXP_name="Spec_twofoldsrat_fulldataset")
     #CV.two_layes(type="spectrograms",EXP_name="test")
 
