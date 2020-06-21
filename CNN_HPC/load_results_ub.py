@@ -5,6 +5,7 @@ import pickle
 import sys
 from CNN.modifyCNN import VGG16
 
+test_set_ub = torch.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\CNN_ub\test_set_ub.pt')
 test_labels_ub = np.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\CNN_ub\test_labels_ub.npy')
 test_windows_ub = np.load(r'C:\Users\johan\iCloudDrive\DTU\KID\4. semester\Fagprojekt\Resultater\CNN_ub\test_windows_ub.npy')
 

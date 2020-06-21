@@ -13,4 +13,4 @@
 
 echo "Running script..."
 source classifier-env/bin/activate
-python3 Classifier_experimentOne_isUsable/All_in_one_go_EXP_setup.py
+python3 CNN_HPC/CNN_HPC_final.py
