@@ -66,9 +66,17 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
     # tempData{''}
     y_hat = np.where(y_hat == 'Yes', 1, 0)
     y_true = np.where(y_true == 'Yes', 1, 0)
-    # if baseline == True:
-    #     data_baseline = pd.read_csv(filepath.replace("_predict.json",""))
+
+    data_baseline = pd.read_csv(filepath.replace("_predict.json",""))
     base_results = np.repeat(1,len(y_true))
+    with open(r'C:\Users\Mads-\Downloads\Feature_unbal_final1_debuglog.json') as json0_file:
+        tempData0= json.load(json0_file)
+    with open(r'C:\Users\Mads-\Downloads\Feture_bal_final1_debuglog.json') as json1_file:
+        tempData1 = json.load(json1_file)
+    with open(r'C:\Users\Mads-\Downloads\Spectrograms_bal_final1_debuglog.json') as json2_file:
+        tempData2 = json.load(json2_file)
+    with open(r'C:\Users\Mads-\Downloads\Spectrograms_unbal_final1_debuglog.json') as json3_file:
+        tempData3 = json.load(json3_file)
     return y_true,y_hat,base_results
 
         # ex_balanced_train_fea0
@@ -110,40 +118,86 @@ def computeMcNemarComparisons(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Univer
             mcNemar_pred_all = mcNemar_pred
             model_all = model
         else:
-            mcNemar_pred_all = np.vstack((mcNemar_pred_all,mcNemar_pred[:,0:5080]))
+            mcNemar_pred_all = np.vstack((mcNemar_pred_all,mcNemar_pred))
             model_all = np.hstack((model_all,model))
 
-    pairs = list(itertools.combinations(['SVM','LDA','RF' ,'True Label'], 2))
+    pairs = list(itertools.combinations(['True Label','SVM','LDA','RF','GNB'], 2))
+    # pairs = list(itertools.combinations(['True Label','SVM','LDA','RF','GNB'], 2))
+    Baseline_SMVF_SVMS_get33matrix(mcNemar_pred_all,model_all)
+    measurements = []
     data = []
-    for n,m in pairs:
-        [thetahatA, CIA,p] = mcnemar(mcNemar_pred_all[np.where(model_all=='True Label')[0][0],:], mcNemar_pred_all[np.where(model_all==n)[0][0],:],mcNemar_pred_all[np.where(model_all==m)[0][0],:],alpha=0.05)
-        data.append([(n,m), thetahatA, CIA])
+    # for n,m in pairs:
+    #     [thetahatA, CIA,p] = mcnemar(mcNemar_pred_all[np.where(model_all=='True Label')[0][0],:], mcNemar_pred_all[np.where(model_all==n)[0][0],:],mcNemar_pred_all[np.where(model_all==m)[0][0],:],alpha=0.05)
+    #     measurements.append([thetahatA, CIA])
+    #     data.append([(n,m), thetahatA, CIA])
 
-    return mcNemar_pred_all,model_all
+    return data,pairs, measurements
+def Baseline_SMVF_SVMS_get33matrix(mcNemar_pred_all,model_all):
+    model = ['',"SVM(F)","Baseline",'','SVM(S)']
+    pairs = list(itertools.combinations([2,1,4], 2))
+    data, measurements = [], []
+    for i,j in pairs:
+        [thetahatA, CIA, p] = mcnemar(mcNemar_pred_all[np.where(model_all == 'True Label')[0][0], :],
+                                      mcNemar_pred_all[i, :],
+                                      mcNemar_pred_all[j, :], alpha=0.05)
+        measurements.append([thetahatA, CIA])
+        data.append([(model[i], model[j]), thetahatA, CIA])
+    pass
+
 def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,baseline=True):
     for k in range(n_splits):
         file_path =file.replace('{i}',f'{k+1}')
-        y_true,y_hat, baseline= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
-    model_name = np.append(classifiers,np.array(['True Label']))
+        y_true,y_hat, y_baseline= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
+
+    model_name = np.append(np.array(['True Label']),classifiers)
     model_pred = y_true
     for i in range(len(classifiers)):
         model_pred = np.vstack((model_pred,y_hat[0+i*len(y_true):(1+i)*len(y_true)]))
+    if baseline:
+        model_name = np.append(model_name,"Baseline")
+        model_pred = np.vstack((model_pred,y_baseline))
     return model_pred, model_name
 
+def formatMcNemar(model, values):
+    data = []
+    column = []
+    for i,j in model:
+        column.append(str(i)+","+str(j))
+    for j in values:
+        data.append(str(np.round(j[0],2))+" "+str(np.round(j[1],2)))
+    pass
+
+    s = ""
+
+    for i in range(len(data)):
+        s = s+ model[i][0] + "," + model[i][1]+ " &" + str(np.round(values[i][0],2)) + " &"+ str(np.round(values[i][1],2)) +"//"
+    s = s.replace("True Label","Baseline")
+
+    return s
 
 
 if __name__ == '__main__':
-    # files_bal = ['Feture_bal_final{i}_predict.json','Spectrograms_bal_final{i}_predict.json']
+    files_bal = ['Feture_bal_final{i}_predict.json','Spectrograms_bal_final{i}_predict.json']
     # files_bal = ['ex_fea_bal{i}_predict.json','ex_spec_bal{i}_predict.json']
     # classifiers_bal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
-    # jeff_bal = computeJeffreyIntervals(classifiers = classifiers_bal,files=files_bal,n_splits=1)
+    classifiers_bal = [["SVM"],["SVM"]]
+
+    # jeff_bal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers = classifiers_bal,files=files_bal,n_splits=1)
 
     files_unbal = ['Feature_unbal_final{i}_predict.json','Spectrograms_unbal_final{i}_predict.json']
     # files_unbal = ['ex_fea_unbal{i}_predict.json', 'ex_spec_unbal{i}_predict.json']
-    classifiers_unbal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
-    jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
+    classifiers_unbal = [["RF"],["RF"]]
+    # jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
     pass
-    jeff_unbal.round(4)[['Model','ThetaA','Confidence interval']].to_latex()
+    # pd.concat([jeff_unbal.round(4)[['Model', 'ThetaA', 'Confidence interval']][0:4],
+    #            jeff_unbal.round(4)[['ThetaA', 'Confidence interval']][4:8]], axis=1).to_latex()
+    # pd.concat([jeff_bal.round(4)[['Model', 'ThetaA', 'Confidence interval']][0:4],
+    #            jeff_bal.round(4)[['ThetaA', 'Confidence interval']][4:8]], axis=1).to_latex()
     # baseline,SVM, LDA, RF
     #10 runs, 5 splits pr. run. Each run has spec and feature
-    # computeMcNemarComparisons(files=files_bal,classifiers = classifiers_bal,n_splits=1)
+    complete_mcnemar_bal, model_pairs_bal, values_bal  = computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_bal,classifiers = classifiers_bal,n_splits=1)
+    complete_mcnemar_unbal, model_pairs_unbal, values_unbal =computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_unbal,classifiers = classifiers_unbal,n_splits=1)
+    s1 = formatMcNemar(model_pairs_bal,values_bal)
+    s2 = formatMcNemar(model_pairs_unbal,values_unbal)
+    pd.DataFrame(np.vstack((data, column))).to_latex()
+    pass
