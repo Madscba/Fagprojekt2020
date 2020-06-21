@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/zhome/87/9/127623/FagprojektBALANCEDTESTS/Fagprojekt2020')
+sys.path.append('/zhome/87/9/127623/Fagprojekt/Fagprojekt2020')
 from CNN.modifyCNN import VGG16, freeze_parameters, grad_parameters, list_of_features, check_grad
 import torch.optim as optim
 import torch
@@ -168,7 +168,7 @@ X_train, X_valid, Y_train, Y_valid,windows_id = split_dataset_balanced(C,path_s,
 modelB = VGG16()
 list2 = np.array(list_of_features(modelB))
 freeze_parameters(modelB,feature_extracting=True)
-PATH = '/zhome/87/9/127623/FagprojektBALANCEDTESTS'
+PATH = '/zhome/87/9/127623/Fagprojekt'
 activation_list = np.array([20,21,22,23,24, 25, 26, 27, 28, 29, 30, 31])
 grad_parameters(modelB, list(list2[activation_list]))
 optimizer = optim.Adam(modelB.parameters(), lr=0.0001)
