@@ -71,21 +71,34 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
     base_results = np.repeat(1,len(y_true))
     # with open(r'C:\Users\Mads-\Downloads\Feature_unbal_final1_debuglog.json') as json0_file:
     #     tempData0= json.load(json0_file)
-    # with open(r'C:\Users\Mads-\Downloads\Feture_bal_final1_debuglog.json') as json1_file:
-    #     tempData1 = json.load(json1_file)
-    # with open(r'C:\Users\Mads-\Downloads\Spectrograms_bal_final1_debuglog.json') as json2_file:
-    #     tempData2 = json.load(json2_file)
+    with open(r'C:\Users\Mads-\Downloads\Feture_bal_final1_debuglog.json') as json1_file:
+        tempData1 = json.load(json1_file)
+    with open(r'C:\Users\Mads-\Downloads\Spectrograms_bal_final1_debuglog.json') as json2_file:
+        tempData2 = json.load(json2_file)
     # with open(r'C:\Users\Mads-\Downloads\Spectrograms_unbal_final1_debuglog.json') as json3_file:
     #     tempData3 = json.load(json3_file)
-    if previous_testidx == None:
+    if type(previous_testidx)!=np.ndarray:
+        previous_testidx_testidx = np.array([])
         for i in range(5):
             previous_testidx = np.append(previous_testidx, tempData[f'fold_{i}']['index'])
+    else:
+        new_testidx=np.array([])
+        for i in range(5):
+            new_testidx = np.append(new_testidx, tempData[f'fold_{i}']['index'])
+        allign(previous_testidx,new_testidx,y_hat,y_true)
     return y_true,y_hat,base_results,previous_testidx
 
         # ex_balanced_train_fea0
         # ex_unbalanced_train_spec0
-def extractInformationTxtFile():
+def allign(previous_testidx,new_testidx,y_hat,y_true):
+    if previous_testidx[0]==None:
+        previous_testidx=previous_testidx[1:]
+
+    for idx,i in enumerate(previous_testidx):
+        if idx%2==0:
+            np.where(previous_testidx == new_testidx[0])
     pass
+
     return
 
 def computeJeffreyIntervals(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Universitet\4. Semester\downloads from hpc\ClassifierTestLogs. Ex_10_split_bal_unbal",classifiers=['SVM'],files="",n_splits=10):
@@ -153,7 +166,7 @@ def Baseline_SMVF_SVMS_get33matrix(mcNemar_pred_all,model_all):
 def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,baseline=True,previous_testidx=None):
     for k in range(n_splits):
         file_path =file.replace('{i}',f'{k+1}')
-        if type(previous_testidx)!=set:
+        if type(previous_testidx)!=np.ndarray:
             y_true,y_hat, y_baseline,previous_testidx= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
         else:
             y_true, y_hat, y_baseline,_ = extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline,previous_testidx=previous_testidx)
