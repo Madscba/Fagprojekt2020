@@ -91,12 +91,19 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
         # ex_balanced_train_fea0
         # ex_unbalanced_train_spec0
 def allign(previous_testidx,new_testidx,y_hat,y_true):
+    alligned_y_hat, alligned_y_true = np.array([]),np.array([])
+    validation_idx = np.array([])
     if previous_testidx[0]==None:
         previous_testidx=previous_testidx[1:]
 
     for idx,i in enumerate(previous_testidx):
         if idx%2==0:
-            np.where(previous_testidx == new_testidx[0])
+            matches = np.where(i == new_testidx)
+            for j in matches[0]:
+                if previous_testidx[idx+1] == j:
+                    alligned_y_hat = np.append(alligned_y_hat,[y_hat[matches[0][j]/2],y_hat[matches[0][j]+1]/2+1])
+                    alligned_y_true = np.append(alligned_y_true,[y_true[matches[0][j]/2],y_true[matches[0][j]/2+1]])
+                    validation_idx = np.append(validation_idx,[0])
     pass
 
     return
