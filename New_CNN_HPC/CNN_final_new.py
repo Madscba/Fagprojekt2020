@@ -160,6 +160,6 @@ train_acc, train_loss, val_acc, val_loss, wrong_guesses, wrong_predictions, all_
                                                                           num_epochs=2, preprocessed=True)
 torch.save(modelB.state_dict(), 'model1_final_ub.pt')
 valid_acc_data = np.asarray(val_acc)
-np.save((f'valid_acc_final_{i}_ub.npy'), valid_acc_data)
+np.save(('valid_acc_final_ub.npy'), valid_acc_data)
 all_pred_data = np.asarray(all_pred)
-np.save((f'all_guesses_final_{i}_ub.npy'), all_pred_data)
+np.save(('all_guesses_final_ub.npy'), all_pred_data)

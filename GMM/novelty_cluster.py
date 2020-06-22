@@ -64,5 +64,7 @@ mark3 = get_marked_window(['sbs2data_2018_09_03_13_54_22_365.edf','0','2'],windo
 mark5 = get_marked_window(['sbs2data_2018_09_01_09_08_16_335.edf','52','12'],windows)
 mark7 = get_marked_window(['sbs2data_2018_09_06_11_50_34_411.edf','0','5'],windows)
 
+mark9 = get_marked_window(['sbs2data_2018_09_06_14_06_21_232.edf','45','13'],windows)
+
 marks = append_mark([mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8])
 np.save('marked_windows.npy', np.array(marks,dtype='int64'))
