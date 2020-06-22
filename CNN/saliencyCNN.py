@@ -46,8 +46,19 @@ def visualize_saliency(model, tensor, k=1, guide=True):
     backprop = Backprop(model)
     backprop.visualize(tensor, k, guided=guide)
     plt.show()
+def get_image(image,num):
+    img1 = image[num, :, :, :].unsqueeze(0).requires_grad_(requires_grad=True)
+    return img1
+start = 0
+def multiple_saliency_maps(model, tensors, start, num, k=0, guide = True):
+    backprop = Backprop(model)
+    for i in range(start,start+num):
+        cur_image = tensors[i,:,:,:].unsqueeze(0).requires_grad_(requires_grad=True)
+        backprop.visualize(cur_image, k, guided=guide)
+        plt.show()
+    print("Range: ", start, " - ", start+num)
+    start += num
+    return start
 
-visualize_saliency(model,tensor=img1,k=0, guide=False)
-visualize_saliency(model,tensor=img1,k=0, guide=True)
-
-
+s = multiple_saliency_maps(model=model,tensors=data_set,start=start,num=10)
+s = multiple_saliency_maps(model=model,tensors=data_set,start=40,num=10)
