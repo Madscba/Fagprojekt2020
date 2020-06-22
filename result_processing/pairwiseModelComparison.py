@@ -53,7 +53,7 @@ def mcnemar(y_true, yhatA, yhatB, alpha=0.05):
     return thetahat, CI, p
 
 #Get labels y_true and predictions y_hat
-def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=False):
+def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=False,previous_testidx=None):
     y_true,y_hat = np.array([]),np.array([])
     filepath = os.path.join(path, filename)
     with open(filepath) as json_file:
@@ -69,15 +69,18 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
 
     data_baseline = pd.read_csv(filepath.replace("_predict.json",""))
     base_results = np.repeat(1,len(y_true))
-    with open(r'C:\Users\Mads-\Downloads\Feature_unbal_final1_debuglog.json') as json0_file:
-        tempData0= json.load(json0_file)
-    with open(r'C:\Users\Mads-\Downloads\Feture_bal_final1_debuglog.json') as json1_file:
-        tempData1 = json.load(json1_file)
-    with open(r'C:\Users\Mads-\Downloads\Spectrograms_bal_final1_debuglog.json') as json2_file:
-        tempData2 = json.load(json2_file)
-    with open(r'C:\Users\Mads-\Downloads\Spectrograms_unbal_final1_debuglog.json') as json3_file:
-        tempData3 = json.load(json3_file)
-    return y_true,y_hat,base_results
+    # with open(r'C:\Users\Mads-\Downloads\Feature_unbal_final1_debuglog.json') as json0_file:
+    #     tempData0= json.load(json0_file)
+    # with open(r'C:\Users\Mads-\Downloads\Feture_bal_final1_debuglog.json') as json1_file:
+    #     tempData1 = json.load(json1_file)
+    # with open(r'C:\Users\Mads-\Downloads\Spectrograms_bal_final1_debuglog.json') as json2_file:
+    #     tempData2 = json.load(json2_file)
+    # with open(r'C:\Users\Mads-\Downloads\Spectrograms_unbal_final1_debuglog.json') as json3_file:
+    #     tempData3 = json.load(json3_file)
+    if previous_testidx == None:
+        for i in range(5):
+            previous_testidx = np.append(previous_testidx, tempData[f'fold_{i}']['index'])
+    return y_true,y_hat,base_results,previous_testidx
 
         # ex_balanced_train_fea0
         # ex_unbalanced_train_spec0
@@ -113,7 +116,10 @@ def computeMcNemarComparisons(path = r"C:\Users\Mads-\OneDrive\Dokumenter\Univer
         raise Exception("No files given")
     for idx, file in enumerate(files):
         bool = True if idx ==0 else False
-        mcNemar_pred,model= extractMcNemarFromFile(file,path=path,classifiers=classifiers[idx],n_splits=n_splits,baseline= bool)
+        if bool:
+            mcNemar_pred,model,test_idx= extractMcNemarFromFile(file,path=path,classifiers=classifiers[idx],n_splits=n_splits,baseline= bool)
+        else:
+            mcNemar_pred, model,_ = extractMcNemarFromFile(file, path=path, classifiers=classifiers[idx],n_splits=n_splits, baseline=bool,previous_testidx = test_idx)
         if idx ==0:
             mcNemar_pred_all = mcNemar_pred
             model_all = model
@@ -144,10 +150,13 @@ def Baseline_SMVF_SVMS_get33matrix(mcNemar_pred_all,model_all):
         data.append([(model[i], model[j]), thetahatA, CIA])
     pass
 
-def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,baseline=True):
+def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,baseline=True,previous_testidx=None):
     for k in range(n_splits):
         file_path =file.replace('{i}',f'{k+1}')
-        y_true,y_hat, y_baseline= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
+        if type(previous_testidx)!=set:
+            y_true,y_hat, y_baseline,previous_testidx= extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline)
+        else:
+            y_true, y_hat, y_baseline,_ = extractLabelsAndModelPredictionsJson(path, file_path, classifiers=classifiers,baseline=baseline,previous_testidx=previous_testidx)
 
     model_name = np.append(np.array(['True Label']),classifiers)
     model_pred = y_true
@@ -156,7 +165,9 @@ def extractMcNemarFromFile(file="",path="",classifiers=["SVM"],n_splits=10,basel
     if baseline:
         model_name = np.append(model_name,"Baseline")
         model_pred = np.vstack((model_pred,y_baseline))
-    return model_pred, model_name
+    return model_pred, model_name,previous_testidx
+
+
 
 def formatMcNemar(model, values):
     data = []
