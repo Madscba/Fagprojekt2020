@@ -216,16 +216,16 @@ if __name__ == '__main__':
     K_path=r"Preprossering//K-stratified_is_useble_shuffle.json"
     spectrograms_path=r"C:\Users\Andre\Desktop\Fagproject\Spektrograms"
 
-    #ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
-     #                    Kfold_path=K_path,type="Feature_balance")
+    ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
+                         Kfold_path=K_path,type="Feature_balance")
     #ploterfature.plot_space("PCA",test=True)
-    #ploterfature.plot_space("PCA", test=True)
+    ploterfature.plot_space("PCA", test=True)
     #ploterfature.plot_EEG(224,test=False)
     #ploterfature.plot_Spec(224, test=False)
     #ploterfature.plot_all(72,test=False,N_chanel=2)
     #ploterfature.plot_space("LDA",test=False)
     #ploterfature.plot_space("LDA", test=True)
-    #ploterfature.plot_space("TSNE",test=True)
+    ploterfature.plot_space("TSNE",test=True)
     #ploterfature.plot_space("TSNE", test=True)
 
     ploterspec = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
