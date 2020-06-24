@@ -61,6 +61,7 @@ class plot_auto():
             self.X_train, self.Y_train, self.filenames_train, self.train_id = self.get_balance(26, feature_path,annotation)
             self.le.fit(self.filenames_test)
     def get_balance(self,n,path,annotation):
+
         windows1, labels1, filenames1, window_idx_full1 = self.get_data.make_label(quality=None,max_files=n,
                                                                         is_usable="Yes",max_windows=30,
                                                                         path=path)
@@ -119,39 +120,69 @@ class plot_auto():
             )
         fig.show()
     def plot_EEG(self,idx,N_chanel=None,test=False):
-        if test:
-            self.window_id=self.test_id
-        else:
-            self.window_id = self.train_id
-        EEG = self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="EEG", plot=False)
+        if isinstance(idx,int):
+            if test:
+                self.window_id=self.test_id
+            else:
+                self.window_id = self.train_id
+            name=self.window_id[idx][0]
+            window=self.window_id[idx][1]
+
+        if isinstance(idx,list):
+            name=idx[0]
+            window=idx[1]
+
+        EEG = self.get_data.plot_window(name, window, type="EEG", plot=False)
         EEG.time = EEG.time / 1000
         if N_chanel==None:
-            N_chanel=len(EEG.columns)-1
-        fig = make_subplots(rows=int(np.ceil(N_chanel/3)), cols=3,subplot_titles=EEG.columns[1:N_chanel+1])
-        for i,ch in enumerate(EEG.columns[1:N_chanel+1]):
+            N_chanel=len(EEG.columns)
+            N_start = 1
+        elif isinstance(N_chanel,int):
+            N_chanel+=1
+            N_start=1
+        elif isinstance(N_chanel,list):
+            N_start=N_chanel[0]+1
+            N_chanel=N_chanel[1]+1
+
+        fig = make_subplots(rows=4, cols=int(np.ceil((N_chanel-N_start)/4)),subplot_titles=EEG.columns[N_start:N_chanel])
+        for i,ch in enumerate(EEG.columns[N_start:N_chanel]):
 
             fig.add_trace(
                 go.Scatter(x=EEG.time, y=EEG[ch], mode="lines"),
-                row=int(i/3)+1, col=i%3+1)
-        fig.update_layout(title=f"File: {self.window_id[idx][0]} window {self.window_id[idx][1]}")
+                col=int(i/4)+1, row=i%4+1)
+            fig.update_xaxes(title_text="time (s)", col=int(i/4)+1, row=i%4+1)
+            fig.update_yaxes(title_text="mu V", col=int(i / 4) + 1, row=i % 4 + 1)
+        fig.update_layout(title=f"File: {name} window {window}")
         fig.show()
 
     def plot_Spec(self,idx,N_chanel=None,test=False):
-        if test:
-            self.window_id=self.test_id
-        else:
-            self.window_id = self.train_id
-        spectrogram=self.get_data.plot_window(self.window_id[idx][0], self.window_id[idx][1], type="spec",plot=False)
+        if isinstance(idx,int):
+            if test:
+                self.window_id=self.test_id
+            else:
+                self.window_id = self.train_id
+            name=self.window_id[idx][0]
+            window=self.window_id[idx][1]
+
+        if isinstance(idx,list):
+            name=idx[0]
+            window=idx[1]
+
+
+
+
+        spectrogram=self.get_data.plot_window(name, window, type="spec",plot=False)
+
         if N_chanel==None:
             N_chanel=len(list(spectrogram.keys()))
-        fig = make_subplots(rows=int(np.ceil(N_chanel/4)), cols=4,subplot_titles=list(spectrogram.keys())[:N_chanel])
+        fig = make_subplots(rows=int(np.ceil((N_chanel)/4)), cols=4,subplot_titles=list(spectrogram.keys())[:N_chanel])
         for i,ch in enumerate(list(spectrogram.keys())[:N_chanel]):
             pix = px.imshow(spectrogram[ch])
             trace1 = pix['data'][0]
             fig.add_trace(
                 trace1,
                 row=int(i/4)+1, col=i%4+1)
-        #fig.update_layout(title=f"File: {self.window_id[idx][0]} window {self.window_id[idx][1]}",showlegend: False)
+        fig.update_layout(title=f"File: {name} window {window}")
         fig.show()
 
     def plot_space(self,space,test=False,point=None):
@@ -218,15 +249,20 @@ if __name__ == '__main__':
 
     ploterfature = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
                          Kfold_path=K_path,type="Feature_balance")
-    #ploterfature.plot_space("PCA",test=True)
-    ploterfature.plot_space("PCA", test=True)
-    #ploterfature.plot_EEG(224,test=False)
-    #ploterfature.plot_Spec(224, test=False)
+
+    #ploterfature.plot_EEG(['sbs2data_2018_09_06_14_06_21_232.edf',70], test=False,N_chanel= None)
+    #ploterfature.plot_EEG(['sbs2data_2018_09_06_14_06_21_232.edf', 60], test=False, N_chanel=[6, 11])
+    #ploterfature.plot_EEG(['sbs2data_2018_09_06_14_06_21_232.edf', 80], test=False, N_chanel=[11, 13])
+    #ploterfature.plot_EEG(['sbs2data_2018_09_06_14_06_21_232.edf', 80], test=False, N_chanel=[12, 13])
+    ploterfature.plot_space("PCA",test=True)
+    #ploterfature.plot_space("PCA", test=True)
+    #ploterfature.plot_EEG(224,test=False,N_chanel=1)
+    #ploterfature.plot_Spec(224, test=False,N_chanel=4)
     #ploterfature.plot_all(72,test=False,N_chanel=2)
     #ploterfature.plot_space("LDA",test=False)
     #ploterfature.plot_space("LDA", test=True)
-    ploterfature.plot_space("TSNE",test=True)
-    #ploterfature.plot_space("TSNE", test=True)
+    #ploterfature.plot_space("TSNE",test=True)
+    ploterfature.plot_space("TSNE", test=True)
 
     ploterspec = plot_auto(feature_path=feature_path, spectrograms_path=spectrograms_path, BC_datapath=BC_datapath,
                              Kfold_path=K_path, type="Spectrograms_balance")
@@ -234,6 +270,7 @@ if __name__ == '__main__':
     #ploterspec.plot_space("LDA",test=False)
     #loterspec.plot_space("LDA", test=True)
     ploterspec.plot_space("TSNE",test=True)
+    ploterfature.plot_EEG(224, test=False, N_chanel=None)
 
 
     dummy=1
