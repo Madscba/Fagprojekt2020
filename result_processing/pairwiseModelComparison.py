@@ -59,11 +59,23 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
     with open(filepath) as json_file:
         tempData = json.load(json_file)
         for c in classifiers:
+            jeffrey_fold, temp, meta = np.array([]), np.array([]), np.array([])
             for i in range(5):
                 if c==classifiers[0]:
                     y_true = np.append(y_true,tempData[f'fold_{i}']['True'])
                 y_hat = np.append(y_hat, tempData[f'fold_{i}'][f'{c}_predict'])
-    # tempData{''}
+                if i ==0:
+                    temp = jeffrey_interval(np.where(np.array(tempData[f'fold_{i}']['True']) == 'Yes', 1, 0),np.where(np.array(tempData[f'fold_{i}'][f'{c}_predict']) == 'Yes', 1, 0),alpha=0.05)
+                    jeffrey_fold = temp
+                    meta = np.array([c,filename])
+
+                else:
+                    temp = jeffrey_interval(np.where(np.array(tempData[f'fold_{i}']['True'])=='Yes',1,0), np.where(np.array(tempData[f'fold_{i}'][f'{c}_predict'])=='Yes',1,0), alpha=0.05)
+                    jeffrey_fold = np.vstack((jeffrey_fold,temp))
+                    meta = np.vstack((meta,[c, filename]))
+
+            #Foldwise Jeffrey interval
+
     y_hat = np.where(y_hat == 'Yes', 1, 0)
     y_true = np.where(y_true == 'Yes', 1, 0)
 
@@ -86,7 +98,7 @@ def extractLabelsAndModelPredictionsJson(path, filename, classifiers,baseline=Fa
         for i in range(5):
             new_testidx = np.append(new_testidx, tempData[f'fold_{i}']['index'])
         allign(previous_testidx,new_testidx,y_hat,y_true)
-    return y_true,y_hat,base_results,previous_testidx
+    return y_true,y_hat,base_results
 
         # ex_balanced_train_fea0
         # ex_unbalanced_train_spec0
@@ -210,15 +222,17 @@ def formatMcNemar(model, values):
 if __name__ == '__main__':
     files_bal = ['Feture_bal_final{i}_predict.json','Spectrograms_bal_final{i}_predict.json']
     # files_bal = ['ex_fea_bal{i}_predict.json','ex_spec_bal{i}_predict.json']
-    # classifiers_bal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
-    classifiers_bal = [["SVM"],["SVM"]]
+    classifiers_bal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
+    # classifiers_bal = [["SVM"],["SVM"]]
 
-    # jeff_bal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers = classifiers_bal,files=files_bal,n_splits=1)
+    jeff_bal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers = classifiers_bal,files=files_bal,n_splits=1)
 
     files_unbal = ['Feature_unbal_final{i}_predict.json','Spectrograms_unbal_final{i}_predict.json']
     # files_unbal = ['ex_fea_unbal{i}_predict.json', 'ex_spec_unbal{i}_predict.json']
-    classifiers_unbal = [["RF"],["RF"]]
-    # jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
+    # classifiers_unbal = [["RF"],["RF"]]
+    classifiers_unbal = [["RF","SVM","LDA","GNB"],["RF","SVM","LDA","GNB"]]
+
+    jeff_unbal = computeJeffreyIntervals(path=r'C:\Users\Mads-\Downloads',classifiers=classifiers_unbal, files=files_unbal,n_splits=1)
     pass
     # pd.concat([jeff_unbal.round(4)[['Model', 'ThetaA', 'Confidence interval']][0:4],
     #            jeff_unbal.round(4)[['ThetaA', 'Confidence interval']][4:8]], axis=1).to_latex()
@@ -226,9 +240,9 @@ if __name__ == '__main__':
     #            jeff_bal.round(4)[['ThetaA', 'Confidence interval']][4:8]], axis=1).to_latex()
     # baseline,SVM, LDA, RF
     #10 runs, 5 splits pr. run. Each run has spec and feature
-    complete_mcnemar_bal, model_pairs_bal, values_bal  = computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_bal,classifiers = classifiers_bal,n_splits=1)
-    complete_mcnemar_unbal, model_pairs_unbal, values_unbal =computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_unbal,classifiers = classifiers_unbal,n_splits=1)
-    s1 = formatMcNemar(model_pairs_bal,values_bal)
-    s2 = formatMcNemar(model_pairs_unbal,values_unbal)
-    pd.DataFrame(np.vstack((data, column))).to_latex()
+    # complete_mcnemar_bal, model_pairs_bal, values_bal  = computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_bal,classifiers = classifiers_bal,n_splits=1)
+    # complete_mcnemar_unbal, model_pairs_unbal, values_unbal =computeMcNemarComparisons(path=r'C:\Users\Mads-\Downloads',files=files_unbal,classifiers = classifiers_unbal,n_splits=1)
+    # s1 = formatMcNemar(model_pairs_bal,values_bal)
+    # s2 = formatMcNemar(model_pairs_unbal,values_unbal)
+    # pd.DataFrame(np.vstack((data, column))).to_latex()
     pass

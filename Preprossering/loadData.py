@@ -121,6 +121,8 @@ def getNumberOfAnnotators():
     pass
 
 # Debugging
+
+#Til Andreas:
 # import loadData
 # import os
 # getNumberOfAnnotators()
@@ -132,11 +134,18 @@ def getNumberOfAnnotators():
 # flist = []
 # with open("filenames.txt", "r") as fh:
 #     filenames = fh.read().splitlines()
-#
-# for i in filenames:
+# length_usable,count_usable = [], []
+# length_non_usable, count_non_usable = [], []
+# for idx,i in enumerate(filenames):
 #     if i in loader.no_file:
-#         flist.append(loader.no_file[i]['annotation']['reader'])
-#
+#         if loader.no_file[i]['annotation']['Is Eeg Usable For Clinical Purposes'] == "Yes":
+#             length_usable.append(loader.no_file[i]['annotation']['Recording Length [seconds]'])
+#             count_usable += 1
+#         else:
+#             length_non_usable.append(loader.no_file[i]['annotation']['Recording Length [seconds]'])
+#             count_non_usable += 1
+#Slut Andreas
+
 # with open('Preprossering/edfFiles.json') as json3_file:
 #     usefulData = json.load(json3_file)
 #
